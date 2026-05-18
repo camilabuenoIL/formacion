@@ -13,7 +13,7 @@
           "badge": "reunion",
           "sessions": [
             {
-              "time": "9:00 – 11:00",
+              "time": "9:00 – 10:30",
               "owner": "Jorge Pando",
               "slot": "Mañana",
               "modality": "Presencial",
@@ -46,12 +46,12 @@
               "desc": "Actores del mercado, tipos de inmuebles, proyectos y propiedades usadas · oportunidades del rubro y diferencias con otros sectores de ventas"
             },
             {
-              "time": "3:00 – 5:00",
+              "time": "3:00 – 4:00",
               "owner": "Jorge Pando",
               "slot": "Tarde",
               "modality": "Presencial",
-              "title": "Proceso de compra inmobiliaria y conceptos clave",
-              "desc": "Ruta del cliente: reserva, separación, minuta, escritura, crédito, cuota inicial, partida registral · glosario mínimo para conversaciones comerciales seguras"
+              "title": "Fiscalidad e impuestos en el negocio inmobiliario",
+              "desc": "Impuestos aplicables en compraventa y arrendamiento · tratamiento de comisiones · obligaciones tributarias del agente · conceptos clave para asesorar con criterio financiero"
             }
           ]
         },
@@ -62,19 +62,19 @@
           "sessions": [
             {
               "time": "9:00 – 11:00",
-              "owner": "Jorge Pando",
+              "owner": "Allison Villanueva / Jorge Pando",
               "slot": "Mañana",
               "modality": "Presencial",
-              "title": "Perfil del comprador inmobiliario",
-              "desc": "Motivaciones, miedos y proceso de decisión · tipos de cliente: inversionista, primera vivienda, familia, crédito, contado e indeciso"
+              "title": "Financiamiento inmobiliario y crédito hipotecario + Proceso de compra",
+              "desc": "9:00–10:00 · Allison Villanueva: tipos de crédito hipotecario, cuota inicial, capacidad de endeudamiento, entidades financieras y criterios de aprobación · 10:00–11:00 · Jorge Pando: ruta del cliente desde reserva hasta escritura — separación, minuta, financiamiento, partida registral"
             },
             {
               "time": "3:00 – 5:00",
               "owner": "Jorge Pando",
               "slot": "Tarde",
               "modality": "Presencial",
-              "title": "Calificación comercial y matriz del lead",
-              "desc": "Presupuesto, zona, forma de pago, urgencia, decisión y disponibilidad · plantilla de calificación lista para usar desde el primer lead"
+              "title": "Perfil del comprador inmobiliario",
+              "desc": "Motivaciones, miedos y proceso de decisión · tipos de cliente: inversionista, primera vivienda, familia, crédito, contado e indeciso"
             }
           ]
         },
@@ -88,8 +88,8 @@
               "owner": "Jorge Pando",
               "slot": "Mañana",
               "modality": "Presencial",
-              "title": "Derecho inmobiliario — documentación y gestión",
-              "desc": "Marco legal básico: contratos, escrituras, due diligence · límites del rol del agente · momentos de escalamiento y documentos que debe conocer"
+              "title": "Derecho inmobiliario + Calificación comercial y matriz del lead",
+              "desc": "9:00–10:00 · Marco legal básico: contratos, escrituras, due diligence · límites del rol del agente y momentos de escalamiento · 10:00–11:00 · Matriz de calificación: presupuesto, zona, forma de pago, urgencia, decisión y disponibilidad"
             },
             {
               "time": "3:00 – 5:00",
@@ -258,7 +258,7 @@
               "slot": "Tarde",
               "modality": "Presencial",
               "title": "Evaluación final y plan de acción individual",
-              "desc": "Test teórico · roleplay evaluado · feedback individual · plan de mejora · decisión de habilitación comercial",
+              "desc": "Test teórico · roleplay de calificación y presentación evaluado · feedback individual · plan de mejora · decisión de habilitación comercial",
               "isEval": true
             }
           ]
@@ -293,114 +293,126 @@
     },
     {
       "num": "4",
-      "title": "Proceso de compra inmobiliaria y conceptos clave",
+      "title": "Fiscalidad e impuestos en el negocio inmobiliario",
       "owner": "Jorge Pando",
       "dia": "Día 2 · Tarde 3:00 · Presencial"
     },
     {
       "num": "5",
-      "title": "Perfil del comprador inmobiliario",
-      "owner": "Jorge Pando",
+      "title": "Financiamiento inmobiliario y crédito hipotecario",
+      "owner": "Allison Villanueva",
       "dia": "Día 3 · Mañana 9:00 · Presencial"
     },
     {
       "num": "6",
-      "title": "Calificación comercial y matriz del lead",
+      "title": "Proceso de compra inmobiliaria y conceptos clave",
+      "owner": "Jorge Pando",
+      "dia": "Día 3 · Mañana 10:00 · Presencial"
+    },
+    {
+      "num": "7",
+      "title": "Perfil del comprador inmobiliario",
       "owner": "Jorge Pando",
       "dia": "Día 3 · Tarde 3:00 · Presencial"
     },
     {
-      "num": "7",
+      "num": "8",
       "title": "Derecho inmobiliario — documentación y gestión",
       "owner": "Jorge Pando",
       "dia": "Día 4 · Mañana 9:00 · Presencial"
     },
     {
-      "num": "8",
+      "num": "9",
+      "title": "Calificación comercial y matriz del lead",
+      "owner": "Jorge Pando",
+      "dia": "Día 4 · Mañana 10:00 · Presencial"
+    },
+    {
+      "num": "10",
       "title": "Optimización perfiles — Parte 1: WhatsApp y LinkedIn",
       "owner": "Camila Bueno / Sofía Herreño",
       "dia": "Día 4 · Tarde 3:00 · Virtual"
     },
     {
-      "num": "9",
+      "num": "11",
       "title": "Optimización perfiles — Parte 2: Facebook e Instagram",
       "owner": "Camila Bueno / Sofía Herreño",
       "dia": "Día 5 · Mañana 10:00 · Virtual"
     },
     {
-      "num": "10",
+      "num": "12",
       "title": "Flujo de atención de leads y scripts de primer contacto",
       "owner": "Camila Bueno / Sofía Herreño",
       "dia": "Día 5 · Tarde 2:00 · Virtual"
     },
     {
-      "num": "11",
+      "num": "13",
       "title": "Reunión de equipo — semana 2",
       "owner": "Jorge Pando",
       "dia": "Día 6 · Mañana 9:00 · Presencial"
     },
     {
-      "num": "12",
+      "num": "14",
       "title": "CRM 1ª cap. — Presentación inicial",
       "owner": "Sofía Herreño",
       "dia": "Día 6 · Tarde 3:00 · Virtual"
     },
     {
-      "num": "13",
+      "num": "15",
       "title": "Notion 1ª cap. — Recursos digitales de la empresa",
       "owner": "Brooke Villanueva",
       "dia": "Día 6 · Tarde 4:30 · Presencial"
     },
     {
-      "num": "14",
+      "num": "16",
       "title": "Técnicas de negociación y manejo de objeciones",
       "owner": "Jorge Pando",
       "dia": "Día 7 · Mañana 9:00 · Presencial"
     },
     {
-      "num": "15",
+      "num": "17",
       "title": "Notion 2ª cap. — Inventario y gestión de información",
       "owner": "Brooke Villanueva",
       "dia": "Día 7 · Tarde 3:00 · Presencial"
     },
     {
-      "num": "16",
+      "num": "18",
       "title": "CRM 2ª cap. — Gestión de leads",
       "owner": "Sofía Herreño",
       "dia": "Día 8 · Mañana 10:30 · Virtual"
     },
     {
-      "num": "17",
+      "num": "19",
       "title": "Técnicas de seguimiento y captación de propiedades",
       "owner": "Jorge Pando",
       "dia": "Día 8 · Tarde 3:00 · Presencial"
     },
     {
-      "num": "18",
+      "num": "20",
       "title": "ACM + presentación comercial de propiedades y portales",
       "owner": "Jorge Pando",
       "dia": "Día 9 · Mañana 10:00 · Presencial"
     },
     {
-      "num": "19",
+      "num": "21",
       "title": "CRM 3ª cap. — Gestión de negocios",
       "owner": "Sofía Herreño",
       "dia": "Día 9 · Tarde 3:00 · Virtual"
     },
     {
-      "num": "20",
+      "num": "22",
       "title": "Simulación de visita y caso práctico en CRM",
       "owner": "Jorge Pando / Sofía Herreño",
       "dia": "Día 10 · Mañana 11:00 · Presencial"
     },
     {
-      "num": "21",
+      "num": "23",
       "title": "Evaluación final y plan de acción individual",
       "owner": "Walter Arias / Jorge Pando",
       "dia": "Día 10 · Tarde 3:00 · Presencial"
     },
     {
-      "num": "22",
+      "num": "24",
       "title": "Acompañamiento supervisado — 30 días post-habilitación",
       "owner": "Líder comercial",
       "dia": "Post Día 10"
