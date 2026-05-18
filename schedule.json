@@ -5,398 +5,158 @@
     {
       "label": "Semana 1",
       "title": "Identidad, fundamentos y criterio comercial",
-      "subtitle": "18 â 22 mayo",
+      "subtitle": "18 – 22 mayo",
       "days": [
         {
-          "num": 1,
-          "date": "Lunes 18 de mayo",
-          "badge": "reunion",
+          "num": 1, "date": "Lunes 18 de mayo", "badge": "reunion",
           "sessions": [
-            {
-              "time": "9:00 a 10:30",
-              "owner": "Jorge Pando",
-              "slot": "Mañana",
-              "modality": "Presencial",
-              "title": "Reunión semanal de equipo — Bienvenida oficial  ",
+            { "time": "9:00 – 10:30", "owner": "Jorge Pando", "slot": "Mañana", "modality": "Presencial",
+              "title": "Reunión semanal de equipo — Bienvenida oficial",
               "desc": "Presentación formal de nuevos agentes · dinámica del lunes · cada agente responde en 2 min quién es, su experiencia comercial y qué quiere construir en Inmobiliario Latam",
-              "isReunion": true
-            },
-            {
-              "time": "3:00 a 5:00",
-              "owner": "Walter Arias",
-              "slot": "Tarde",
-              "modality": "Virtual",
+              "isReunion": true },
+            { "time": "3:00 – 5:00", "owner": "Walter Arias", "slot": "Tarde", "modality": "Virtual",
               "title": "Presentación e inducción Inmobiliario Latam + Modelo de negocio",
-              "desc": "Cultura, valores, estructura de la empresa y roles · tipos de operación, comisiones, participaciones y responsabilidades de trazabilidad"
-            }
+              "desc": "Cultura, valores, estructura de la empresa y roles · tipos de operación, comisiones, participaciones y responsabilidades de trazabilidad" }
           ]
         },
         {
-          "num": 2,
-          "date": "Martes 19 de mayo",
-          "badge": null,
+          "num": 2, "date": "Martes 19 de mayo", "badge": null,
           "sessions": [
-            {
-              "time": "9:00 a 11:00",
-              "owner": "Jorge Pando",
-              "slot": "Mañana",
-              "modality": "Presencial",
+            { "time": "9:00 – 11:00", "owner": "Jorge Pando", "slot": "Mañana", "modality": "Presencial",
               "title": "Introducción al sector inmobiliario",
-              "desc": "Actores del mercado, tipos de inmuebles, proyectos y propiedades usadas · oportunidades del rubro y diferencias con otros sectores de ventas"
-            },
-            {
-              "time": "3:00 a 5:00",
-              "owner": "Jorge Pando",
-              "slot": "Tarde",
-              "modality": "Presencial",
+              "desc": "Actores del mercado, tipos de inmuebles, proyectos y propiedades usadas · oportunidades del rubro y diferencias con otros sectores de ventas" },
+            { "time": "3:00 – 5:00", "owner": "Jorge Pando", "slot": "Tarde", "modality": "Presencial",
               "title": "Proceso de compra inmobiliaria y conceptos clave",
-              "desc": "Ruta del cliente: reserva, separación, minuta, escritura, crédito, cuota inicial, partida registral · glosario mínimo para conversaciones comerciales seguras"
-            }
+              "desc": "Ruta del cliente: reserva, separación, minuta, escritura, crédito, cuota inicial, partida registral · glosario mínimo para conversaciones comerciales seguras" }
           ]
         },
         {
-          "num": 3,
-          "date": "MiÃ©rcoles 20 de mayo",
-          "badge": null,
+          "num": 3, "date": "Miércoles 20 de mayo", "badge": null,
           "sessions": [
-            {
-              "time": "9:00 a 11:00",
-              "owner": "Jorge Pando",
-              "slot": "Mañana",
-              "modality": "Presencial",
+            { "time": "9:00 – 11:00", "owner": "Jorge Pando", "slot": "Mañana", "modality": "Presencial",
               "title": "Perfil del comprador inmobiliario",
-              "desc": "Motivaciones, miedos y proceso de decisión · tipos de cliente: inversionista, primera vivienda, familia, crédito, contado e indeciso"
-            },
-            {
-              "time": "3:00 â 5:00",
-              "owner": "Jorge Pando",
-              "slot": "Tarde",
-              "modality": "Presencial",
-              "title": "CalificaciÃ³n comercial y matriz del lead",
-              "desc": "Presupuesto, zona, forma de pago, urgencia, decisiÃ³n y disponibilidad Â· plantilla de calificaciÃ³n lista para usar desde el primer lead"
-            }
+              "desc": "Motivaciones, miedos y proceso de decisión · tipos de cliente: inversionista, primera vivienda, familia, crédito, contado e indeciso" },
+            { "time": "3:00 – 5:00", "owner": "Jorge Pando", "slot": "Tarde", "modality": "Presencial",
+              "title": "Calificación comercial y matriz del lead",
+              "desc": "Presupuesto, zona, forma de pago, urgencia, decisión y disponibilidad · plantilla de calificación lista para usar desde el primer lead" }
           ]
         },
         {
-          "num": 4,
-          "date": "Jueves 21 de mayo",
-          "badge": null,
+          "num": 4, "date": "Jueves 21 de mayo", "badge": null,
           "sessions": [
-            {
-              "time": "9:00 â 11:00",
-              "owner": "Jorge Pando",
-              "slot": "Mañana",
-              "modality": "Presencial",
-              "title": "Derecho inmobiliario â documentaciÃ³n y gestiÃ³n",
-              "desc": "Marco legal bÃ¡sico: contratos, escrituras, due diligence Â· lÃ­mites del rol del agente Â· momentos de escalamiento y documentos que debe conocer"
-            },
-            {
-              "time": "3:00 â 5:00",
-              "owner": "Camila Bueno / SofÃ­a HerreÃ±o",
-              "slot": "Tarde",
-              "modality": "Virtual",
-              "title": "OptimizaciÃ³n de perfiles digitales â Parte 1: WhatsApp y LinkedIn",
-              "desc": "WhatsApp Business y LinkedIn: configuraciÃ³n profesional de perfil, bio, foto y mensaje de bienvenida coherentes con Inmobiliario Latam"
-            }
+            { "time": "9:00 – 11:00", "owner": "Jorge Pando", "slot": "Mañana", "modality": "Presencial",
+              "title": "Derecho inmobiliario — documentación y gestión",
+              "desc": "Marco legal básico: contratos, escrituras, due diligence · límites del rol del agente · momentos de escalamiento y documentos que debe conocer" },
+            { "time": "3:00 – 5:00", "owner": "Camila Bueno / Sofía Herreño", "slot": "Tarde", "modality": "Virtual",
+              "title": "Optimización de perfiles digitales — Parte 1: WhatsApp y LinkedIn",
+              "desc": "WhatsApp Business y LinkedIn: configuración profesional de perfil, bio, foto y mensaje de bienvenida coherentes con Inmobiliario Latam" }
           ]
         },
         {
-          "num": 5,
-          "date": "Viernes 22 de mayo",
-          "badge": null,
+          "num": 5, "date": "Viernes 22 de mayo", "badge": null,
           "sessions": [
-            {
-              "time": "10:00 â 12:00",
-              "owner": "Camila Bueno / SofÃ­a HerreÃ±o",
-              "slot": "Mañana",
-              "modality": "Virtual",
-              "title": "OptimizaciÃ³n de perfiles digitales â Parte 2: Facebook e Instagram",
-              "desc": "Facebook e Instagram: configuraciÃ³n profesional de perfil, bio, foto, portada e historias destacadas coherentes con Inmobiliario Latam"
-            },
-            {
-              "time": "2:00 â 3:00",
-              "owner": "Camila Bueno / SofÃ­a HerreÃ±o",
-              "slot": "Tarde",
-              "modality": "Virtual",
-              "title": "Flujo de atenciÃ³n de leads y scripts de primer contacto",
-              "desc": "Proceso completo desde la llegada del lead hasta la oportunidad Â· tipos de leads Â· criterios de priorizaciÃ³n Â· mensajes estÃ¡ndar para WhatsApp y llamada"
-            }
+            { "time": "10:00 – 12:00", "owner": "Camila Bueno / Sofía Herreño", "slot": "Mañana", "modality": "Virtual",
+              "title": "Optimización de perfiles digitales — Parte 2: Facebook e Instagram",
+              "desc": "Facebook e Instagram: configuración profesional de perfil, bio, foto, portada e historias destacadas coherentes con Inmobiliario Latam" },
+            { "time": "2:00 – 3:00", "owner": "Camila Bueno / Sofía Herreño", "slot": "Tarde", "modality": "Virtual",
+              "title": "Flujo de atención de leads y scripts de primer contacto",
+              "desc": "Proceso completo desde la llegada del lead hasta la oportunidad · tipos de leads · criterios de priorización · mensajes estándar para WhatsApp y llamada" }
           ]
         }
       ]
     },
     {
       "label": "Semana 2",
-      "title": "Herramientas, negociaciÃ³n y habilitaciÃ³n",
-      "subtitle": "25 â 29 mayo",
+      "title": "Herramientas, negociación y habilitación",
+      "subtitle": "25 – 29 mayo",
       "days": [
         {
-          "num": 6,
-          "date": "Lunes 25 de mayo",
-          "badge": "reunion",
+          "num": 6, "date": "Lunes 25 de mayo", "badge": "reunion",
           "sessions": [
-            {
-              "time": "9:00 â 10:30",
-              "owner": "Jorge Pando",
-              "slot": "Mañana",
-              "modality": "Presencial",
-              "title": "ReuniÃ³n semanal de equipo",
-              "desc": "ParticipaciÃ³n activa Â· revisiÃ³n de la semana 1 Â· casos reales del equipo Â· objetivos de la semana 2",
-              "isReunion": true
-            },
-            {
-              "time": "3:00 â 4:30",
-              "owner": "SofÃ­a HerreÃ±o",
-              "slot": "Tarde",
-              "modality": "Virtual",
-              "title": "CRM 1Âª cap. â PresentaciÃ³n inicial",
-              "desc": "IntroducciÃ³n al sistema Â· mÃ³dulos, flujo base y navegaciÃ³n Â· contactos, actividades, tareas, estados y primeras cargas guiadas"
-            },
-            {
-              "time": "4:30 â 5:30",
-              "owner": "Brooke Villanueva",
-              "slot": "Tarde",
-              "modality": "Presencial",
-              "title": "Notion 1Âª cap. â Recursos digitales de la empresa",
-              "desc": "Bases de datos, guÃ­as internas, procesos y biblioteca comercial Â· cÃ³mo navegar y consultar recursos disponibles para el agente"
-            }
+            { "time": "9:00 – 10:30", "owner": "Jorge Pando", "slot": "Mañana", "modality": "Presencial",
+              "title": "Reunión semanal de equipo",
+              "desc": "Participación activa · revisión de la semana 1 · casos reales del equipo · objetivos de la semana 2",
+              "isReunion": true },
+            { "time": "3:00 – 4:30", "owner": "Sofía Herreño", "slot": "Tarde", "modality": "Virtual",
+              "title": "CRM 1ª cap. — Presentación inicial",
+              "desc": "Introducción al sistema · módulos, flujo base y navegación · contactos, actividades, tareas, estados y primeras cargas guiadas" },
+            { "time": "4:30 – 5:30", "owner": "Brooke Villanueva", "slot": "Tarde", "modality": "Presencial",
+              "title": "Notion 1ª cap. — Recursos digitales de la empresa",
+              "desc": "Bases de datos, guías internas, procesos y biblioteca comercial · cómo navegar y consultar recursos disponibles para el agente" }
           ]
         },
         {
-          "num": 7,
-          "date": "Martes 26 de mayo",
-          "badge": null,
+          "num": 7, "date": "Martes 26 de mayo", "badge": null,
           "sessions": [
-            {
-              "time": "9:00 â 11:00",
-              "owner": "Jorge Pando",
-              "slot": "Mañana",
-              "modality": "Presencial",
-              "title": "TÃ©cnicas de negociaciÃ³n y manejo de objeciones",
-              "desc": "NegociaciÃ³n consultiva y Ã©tica Â· anclas, concesiones, contraofertas Â· respuestas profesionales ante objeciones frecuentes del rubro inmobiliario"
-            },
-            {
-              "time": "3:00 â 5:00",
-              "owner": "Brooke Villanueva",
-              "slot": "Tarde",
-              "modality": "Presencial",
-              "title": "Notion 2Âª cap. â Inventario y gestiÃ³n de informaciÃ³n",
-              "desc": "Carga y consulta de propiedades Â· lectura de ficha inmobiliaria Â· estados de disponibilidad Â· cÃ³mo traducir la ficha en argumentos comerciales"
-            }
+            { "time": "9:00 – 11:00", "owner": "Jorge Pando", "slot": "Mañana", "modality": "Presencial",
+              "title": "Técnicas de negociación y manejo de objeciones",
+              "desc": "Negociación consultiva y ética · anclas, concesiones, contraofertas · respuestas profesionales ante objeciones frecuentes del rubro inmobiliario" },
+            { "time": "3:00 – 5:00", "owner": "Brooke Villanueva", "slot": "Tarde", "modality": "Presencial",
+              "title": "Notion 2ª cap. — Inventario y gestión de información",
+              "desc": "Carga y consulta de propiedades · lectura de ficha inmobiliaria · estados de disponibilidad · cómo traducir la ficha en argumentos comerciales" }
           ]
         },
         {
-          "num": 8,
-          "date": "MiÃ©rcoles 27 de mayo",
-          "badge": null,
+          "num": 8, "date": "Miércoles 27 de mayo", "badge": null,
           "sessions": [
-            {
-              "time": "10:30 â 12:00",
-              "owner": "SofÃ­a HerreÃ±o",
-              "slot": "Mañana",
-              "modality": "Virtual",
-              "title": "CRM 2Âª cap. â GestiÃ³n de leads",
-              "desc": "Pipeline y etapas del funnel Â· actualizaciÃ³n de registros Â· interacciones, estados, notas y tareas Â· criterios para avanzar un lead en el sistema"
-            },
-            {
-              "time": "3:00 â 5:00",
-              "owner": "Jorge Pando",
-              "slot": "Tarde",
-              "modality": "Presencial",
-              "title": "TÃ©cnicas de seguimiento y captaciÃ³n de propiedades",
-              "desc": "Cadencia comercial sin saturar al cliente Â· prospecciÃ³n de propietarios Â· primer contacto Â· valuaciÃ³n bÃ¡sica y argumentos para captar el inmueble"
-            }
+            { "time": "10:30 – 12:00", "owner": "Sofía Herreño", "slot": "Mañana", "modality": "Virtual",
+              "title": "CRM 2ª cap. — Gestión de leads",
+              "desc": "Pipeline y etapas del funnel · actualización de registros · interacciones, estados, notas y tareas · criterios para avanzar un lead en el sistema" },
+            { "time": "3:00 – 5:00", "owner": "Jorge Pando", "slot": "Tarde", "modality": "Presencial",
+              "title": "Técnicas de seguimiento y captación de propiedades",
+              "desc": "Cadencia comercial sin saturar al cliente · prospección de propietarios · primer contacto · valuación básica y argumentos para captar el inmueble" }
           ]
         },
         {
-          "num": 9,
-          "date": "Jueves 28 de mayo",
-          "badge": null,
+          "num": 9, "date": "Jueves 28 de mayo", "badge": null,
           "sessions": [
-            {
-              "time": "10:00 â 12:00",
-              "owner": "Jorge Pando",
-              "slot": "Mañana",
-              "modality": "Presencial",
-              "title": "ACM â AnÃ¡lisis comparativo de mercado y presentaciÃ³n comercial",
-              "desc": "Criterio para evaluar precio, zona y competencia Â· cÃ³mo usar el ACM con propietarios y clientes Â· portales inmobiliarios y publicaciÃ³n efectiva"
-            },
-            {
-              "time": "3:00 â 4:30",
-              "owner": "SofÃ­a HerreÃ±o",
-              "slot": "Tarde",
-              "modality": "Virtual",
-              "title": "CRM 3Âª cap. â GestiÃ³n de negocios",
-              "desc": "CreaciÃ³n y avance de oportunidades en el pipeline Â· reportes y mÃ©tricas clave Â· cierre de negocios en sistema y trazabilidad completa"
-            }
+            { "time": "10:00 – 12:00", "owner": "Jorge Pando", "slot": "Mañana", "modality": "Presencial",
+              "title": "ACM — Análisis comparativo de mercado y presentación comercial",
+              "desc": "Criterio para evaluar precio, zona y competencia · cómo usar el ACM con propietarios y clientes · portales inmobiliarios y publicación efectiva" },
+            { "time": "3:00 – 4:30", "owner": "Sofía Herreño", "slot": "Tarde", "modality": "Virtual",
+              "title": "CRM 3ª cap. — Gestión de negocios",
+              "desc": "Creación y avance de oportunidades en el pipeline · reportes y métricas clave · cierre de negocios en sistema y trazabilidad completa" }
           ]
         },
         {
-          "num": 10,
-          "date": "Viernes 29 de mayo",
-          "badge": "eval",
+          "num": 10, "date": "Viernes 29 de mayo", "badge": "eval",
           "sessions": [
-            {
-              "time": "11:00 â 12:00",
-              "owner": "Jorge Pando / SofÃ­a HerreÃ±o",
-              "slot": "Mañana",
-              "modality": "Presencial",
-              "title": "SimulaciÃ³n de visita y caso prÃ¡ctico en CRM",
-              "desc": "Roleplay completo: recepciÃ³n del cliente, recorrido, manejo de objeciones en vivo Â· caso prÃ¡ctico en CRM con trazabilidad completa",
-              "isCampo": true
-            },
-            {
-              "time": "3:00 â 5:00",
-              "owner": "Walter Arias / Jorge Pando",
-              "slot": "Tarde",
-              "modality": "Presencial",
-              "title": "EvaluaciÃ³n final y plan de acciÃ³n individual",
-              "desc": "Test teÃ³rico Â· roleplay evaluado Â· feedback individual Â· plan de mejora Â· decisiÃ³n de habilitaciÃ³n comercial",
-              "isEval": true
-            }
+            { "time": "11:00 – 12:00", "owner": "Jorge Pando / Sofía Herreño", "slot": "Mañana", "modality": "Presencial",
+              "title": "Simulación de visita y caso práctico en CRM",
+              "desc": "Roleplay completo: recepción del cliente, recorrido, manejo de objeciones en vivo · caso práctico en CRM con trazabilidad completa",
+              "isCampo": true },
+            { "time": "3:00 – 5:00", "owner": "Walter Arias / Jorge Pando", "slot": "Tarde", "modality": "Presencial",
+              "title": "Evaluación final y plan de acción individual",
+              "desc": "Test teórico · roleplay evaluado · feedback individual · plan de mejora · decisión de habilitación comercial",
+              "isEval": true }
           ]
         }
       ]
     }
   ],
   "modules": [
-    {
-      "num": "0",
-      "title": "Pre-onboarding: registro, accesos y diagnÃ³stico",
-      "owner": "Camila Bueno",
-      "dia": "Previo al DÃ­a 1"
-    },
-    {
-      "num": "1",
-      "title": "ReuniÃ³n de equipo â bienvenida y presentaciÃ³n oficial",
-      "owner": "Jorge Pando",
-      "dia": "DÃ­a 1 Â· MaÃ±ana 9:00 Â· Presencial"
-    },
-    {
-      "num": "2",
-      "title": "InducciÃ³n Inmobiliario Latam + modelo de negocio",
-      "owner": "Walter Arias",
-      "dia": "DÃ­a 1 Â· Tarde 3:00 Â· Virtual"
-    },
-    {
-      "num": "3",
-      "title": "IntroducciÃ³n al sector inmobiliario",
-      "owner": "Jorge Pando",
-      "dia": "DÃ­a 2 Â· MaÃ±ana 9:00 Â· Presencial"
-    },
-    {
-      "num": "4",
-      "title": "Proceso de compra inmobiliaria y conceptos clave",
-      "owner": "Jorge Pando",
-      "dia": "DÃ­a 2 Â· Tarde 3:00 Â· Presencial"
-    },
-    {
-      "num": "5",
-      "title": "Perfil del comprador inmobiliario",
-      "owner": "Jorge Pando",
-      "dia": "DÃ­a 3 Â· MaÃ±ana 9:00 Â· Presencial"
-    },
-    {
-      "num": "6",
-      "title": "CalificaciÃ³n comercial y matriz del lead",
-      "owner": "Jorge Pando",
-      "dia": "DÃ­a 3 Â· Tarde 3:00 Â· Presencial"
-    },
-    {
-      "num": "7",
-      "title": "Derecho inmobiliario â documentaciÃ³n y gestiÃ³n",
-      "owner": "Jorge Pando",
-      "dia": "DÃ­a 4 Â· MaÃ±ana 9:00 Â· Presencial"
-    },
-    {
-      "num": "8",
-      "title": "OptimizaciÃ³n perfiles â Parte 1: WhatsApp y LinkedIn",
-      "owner": "Camila Bueno / SofÃ­a HerreÃ±o",
-      "dia": "DÃ­a 4 Â· Tarde 3:00 Â· Virtual"
-    },
-    {
-      "num": "9",
-      "title": "OptimizaciÃ³n perfiles â Parte 2: Facebook e Instagram",
-      "owner": "Camila Bueno / SofÃ­a HerreÃ±o",
-      "dia": "DÃ­a 5 Â· MaÃ±ana 10:00 Â· Virtual"
-    },
-    {
-      "num": "10",
-      "title": "Flujo de atenciÃ³n de leads y scripts de primer contacto",
-      "owner": "Camila Bueno / SofÃ­a HerreÃ±o",
-      "dia": "DÃ­a 5 Â· Tarde 2:00 Â· Virtual"
-    },
-    {
-      "num": "11",
-      "title": "ReuniÃ³n de equipo â semana 2",
-      "owner": "Jorge Pando",
-      "dia": "DÃ­a 6 Â· MaÃ±ana 9:00 Â· Presencial"
-    },
-    {
-      "num": "12",
-      "title": "CRM 1Âª cap. â PresentaciÃ³n inicial",
-      "owner": "SofÃ­a HerreÃ±o",
-      "dia": "DÃ­a 6 Â· Tarde 3:00 Â· Virtual"
-    },
-    {
-      "num": "13",
-      "title": "Notion 1Âª cap. â Recursos digitales de la empresa",
-      "owner": "Brooke Villanueva",
-      "dia": "DÃ­a 6 Â· Tarde 4:30 Â· Presencial"
-    },
-    {
-      "num": "14",
-      "title": "TÃ©cnicas de negociaciÃ³n y manejo de objeciones",
-      "owner": "Jorge Pando",
-      "dia": "DÃ­a 7 Â· MaÃ±ana 9:00 Â· Presencial"
-    },
-    {
-      "num": "15",
-      "title": "Notion 2Âª cap. â Inventario y gestiÃ³n de informaciÃ³n",
-      "owner": "Brooke Villanueva",
-      "dia": "DÃ­a 7 Â· Tarde 3:00 Â· Presencial"
-    },
-    {
-      "num": "16",
-      "title": "CRM 2Âª cap. â GestiÃ³n de leads",
-      "owner": "SofÃ­a HerreÃ±o",
-      "dia": "DÃ­a 8 Â· MaÃ±ana 10:30 Â· Virtual"
-    },
-    {
-      "num": "17",
-      "title": "TÃ©cnicas de seguimiento y captaciÃ³n de propiedades",
-      "owner": "Jorge Pando",
-      "dia": "DÃ­a 8 Â· Tarde 3:00 Â· Presencial"
-    },
-    {
-      "num": "18",
-      "title": "ACM + presentaciÃ³n comercial de propiedades y portales",
-      "owner": "Jorge Pando",
-      "dia": "DÃ­a 9 Â· MaÃ±ana 10:00 Â· Presencial"
-    },
-    {
-      "num": "19",
-      "title": "CRM 3Âª cap. â GestiÃ³n de negocios",
-      "owner": "SofÃ­a HerreÃ±o",
-      "dia": "DÃ­a 9 Â· Tarde 3:00 Â· Virtual"
-    },
-    {
-      "num": "20",
-      "title": "SimulaciÃ³n de visita y caso prÃ¡ctico en CRM",
-      "owner": "Jorge Pando / SofÃ­a HerreÃ±o",
-      "dia": "DÃ­a 10 Â· MaÃ±ana 11:00 Â· Presencial"
-    },
-    {
-      "num": "21",
-      "title": "EvaluaciÃ³n final y plan de acciÃ³n individual",
-      "owner": "Walter Arias / Jorge Pando",
-      "dia": "DÃ­a 10 Â· Tarde 3:00 Â· Presencial"
-    },
-    {
-      "num": "22",
-      "title": "AcompaÃ±amiento supervisado â 30 dÃ­as post-habilitaciÃ³n",
-      "owner": "LÃ­der comercial",
-      "dia": "Post DÃ­a 10"
-    }
+    { "num": "0",  "title": "Pre-onboarding: registro, accesos y diagnóstico",           "owner": "Camila Bueno",                 "dia": "Previo al Día 1" },
+    { "num": "1",  "title": "Reunión de equipo — bienvenida y presentación oficial",     "owner": "Jorge Pando",                  "dia": "Día 1 · Mañana 9:00 · Presencial" },
+    { "num": "2",  "title": "Inducción Inmobiliario Latam + modelo de negocio",          "owner": "Walter Arias",                  "dia": "Día 1 · Tarde 3:00 · Virtual" },
+    { "num": "3",  "title": "Introducción al sector inmobiliario",                       "owner": "Jorge Pando",                  "dia": "Día 2 · Mañana 9:00 · Presencial" },
+    { "num": "4",  "title": "Proceso de compra inmobiliaria y conceptos clave",          "owner": "Jorge Pando",                  "dia": "Día 2 · Tarde 3:00 · Presencial" },
+    { "num": "5",  "title": "Perfil del comprador inmobiliario",                         "owner": "Jorge Pando",                  "dia": "Día 3 · Mañana 9:00 · Presencial" },
+    { "num": "6",  "title": "Calificación comercial y matriz del lead",                  "owner": "Jorge Pando",                  "dia": "Día 3 · Tarde 3:00 · Presencial" },
+    { "num": "7",  "title": "Derecho inmobiliario — documentación y gestión",            "owner": "Jorge Pando",                  "dia": "Día 4 · Mañana 9:00 · Presencial" },
+    { "num": "8",  "title": "Optimización perfiles — Parte 1: WhatsApp y LinkedIn",     "owner": "Camila Bueno / Sofía Herreño", "dia": "Día 4 · Tarde 3:00 · Virtual" },
+    { "num": "9",  "title": "Optimización perfiles — Parte 2: Facebook e Instagram",    "owner": "Camila Bueno / Sofía Herreño", "dia": "Día 5 · Mañana 10:00 · Virtual" },
+    { "num": "10", "title": "Flujo de atención de leads y scripts de primer contacto",   "owner": "Camila Bueno / Sofía Herreño", "dia": "Día 5 · Tarde 2:00 · Virtual" },
+    { "num": "11", "title": "Reunión de equipo — semana 2",                              "owner": "Jorge Pando",                  "dia": "Día 6 · Mañana 9:00 · Presencial" },
+    { "num": "12", "title": "CRM 1ª cap. — Presentación inicial",                       "owner": "Sofía Herreño",                "dia": "Día 6 · Tarde 3:00 · Virtual" },
+    { "num": "13", "title": "Notion 1ª cap. — Recursos digitales de la empresa",        "owner": "Brooke Villanueva",            "dia": "Día 6 · Tarde 4:30 · Presencial" },
+    { "num": "14", "title": "Técnicas de negociación y manejo de objeciones",            "owner": "Jorge Pando",                  "dia": "Día 7 · Mañana 9:00 · Presencial" },
+    { "num": "15", "title": "Notion 2ª cap. — Inventario y gestión de información",     "owner": "Brooke Villanueva",            "dia": "Día 7 · Tarde 3:00 · Presencial" },
+    { "num": "16", "title": "CRM 2ª cap. — Gestión de leads",                           "owner": "Sofía Herreño",                "dia": "Día 8 · Mañana 10:30 · Virtual" },
+    { "num": "17", "title": "Técnicas de seguimiento y captación de propiedades",        "owner": "Jorge Pando",                  "dia": "Día 8 · Tarde 3:00 · Presencial" },
+    { "num": "18", "title": "ACM + presentación comercial de propiedades y portales",   "owner": "Jorge Pando",                  "dia": "Día 9 · Mañana 10:00 · Presencial" },
+    { "num": "19", "title": "CRM 3ª cap. — Gestión de negocios",                        "owner": "Sofía Herreño",                "dia": "Día 9 · Tarde 3:00 · Virtual" },
+    { "num": "20", "title": "Simulación de visita y caso práctico en CRM",              "owner": "Jorge Pando / Sofía Herreño", "dia": "Día 10 · Mañana 11:00 · Presencial" },
+    { "num": "21", "title": "Evaluación final y plan de acción individual",              "owner": "Walter Arias / Jorge Pando",  "dia": "Día 10 · Tarde 3:00 · Presencial" },
+    { "num": "22", "title": "Acompañamiento supervisado — 30 días post-habilitación",   "owner": "Líder comercial",              "dia": "Post Día 10" }
   ]
 }
