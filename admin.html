@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Admin — Inmobiliario Latam · Onboarding</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --black:#0D0D0D; --orange:#E84E0F; --orange-lt:#FDE8DF;
+  --gray:#5C5C5C; --gray-lt:#F5F4F2; --gray-mid:#E0DDD8; --white:#fff;
+  --green:#1A3D2B; --green-lt:#D6EDE1;
+  --blue:#1A2E4A; --blue-lt:#D4E4F7;
+  --red:#991B1B; --red-lt:#FEE2E2;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'DM Sans',sans-serif;background:var(--gray-lt);color:var(--black);min-height:100vh}
+
+/* TOPBAR */
+.topbar{background:var(--black);padding:14px 28px;display:flex;align-items:center;gap:12px;position:sticky;top:0;z-index:200}
+.topbar-logo{font-size:13px;font-weight:700;color:var(--white)}
+.topbar-logo span{color:var(--orange)}
+.topbar-badge{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;background:#1A1A1A;color:#888;border:1px solid #2A2A2A;padding:3px 10px;border-radius:2px;margin-left:4px}
+.topbar-actions{margin-left:auto;display:flex;gap:10px;align-items:center}
+.btn{font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;padding:8px 18px;border-radius:5px;cursor:pointer;border:none;transition:all .15s;display:flex;align-items:center;gap:6px}
+.btn-primary{background:var(--orange);color:#fff}.btn-primary:hover{background:#C93E08}
+.btn-secondary{background:#1A1A1A;color:#CCC;border:1px solid #333}.btn-secondary:hover{background:#222}
+.btn-ghost{background:transparent;color:#888;border:1px solid #333}.btn-ghost:hover{color:#fff;border-color:#555}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+
+/* LAYOUT */
+.layout{max-width:960px;margin:0 auto;padding:32px 28px 80px}
+
+/* STATUS BANNER */
+.status{border-radius:6px;padding:12px 16px;margin-bottom:24px;font-size:13px;display:none;align-items:center;gap:10px}
+.status.show{display:flex}
+.status.ok{background:var(--green-lt);color:var(--green);border:1px solid #A5D6B5}
+.status.err{background:var(--red-lt);color:var(--red);border:1px solid #FECACA}
+.status.info{background:var(--blue-lt);color:var(--blue);border:1px solid #BFDBFE}
+.status-dot{width:8px;height:8px;border-radius:50%;background:currentColor;flex-shrink:0}
+
+/* AUTH */
+.auth-card{background:#fff;border:1px solid var(--gray-mid);border-radius:10px;padding:32px;max-width:480px;margin:60px auto}
+.auth-title{font-size:18px;font-weight:600;margin-bottom:6px}
+.auth-sub{font-size:13px;color:var(--gray);margin-bottom:24px;line-height:1.6}
+.field{margin-bottom:16px}
+.field label{display:block;font-size:12px;font-weight:600;color:var(--gray);margin-bottom:6px;letter-spacing:.04em;text-transform:uppercase}
+.field input{width:100%;padding:10px 14px;border:1px solid var(--gray-mid);border-radius:6px;font-size:14px;font-family:'DM Sans',sans-serif;outline:none;transition:border .15s}
+.field input:focus{border-color:var(--orange)}
+
+/* CARD */
+.card{background:#fff;border:1px solid var(--gray-mid);border-radius:10px;margin-bottom:20px;overflow:hidden}
+.card-header{padding:16px 20px;border-bottom:1px solid var(--gray-mid);display:flex;align-items:center;gap:10px}
+.card-title{font-size:15px;font-weight:600;flex:1}
+.card-body{padding:20px}
+
+/* WEEK PILL */
+.week-pill{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:3px 10px;border-radius:2px;margin-right:8px}
+.wp-s1{background:var(--black);color:#fff}
+.wp-s2{background:var(--orange);color:#fff}
+
+/* SESSION EDITOR */
+.session-editor{border:1px solid var(--gray-mid);border-radius:8px;padding:16px;margin-bottom:12px;background:var(--gray-lt)}
+.session-editor:last-child{margin-bottom:0}
+.se-header{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.se-num{font-family:'DM Mono',monospace;font-size:11px;font-weight:600;color:var(--orange);background:var(--orange-lt);padding:3px 8px;border-radius:4px}
+.se-title-preview{font-size:13px;font-weight:500;color:var(--gray);flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+.fe{margin-bottom:0}
+.fe label{display:block;font-size:11px;font-weight:600;color:var(--gray);margin-bottom:5px;letter-spacing:.04em;text-transform:uppercase}
+.fe input,.fe select,.fe textarea{width:100%;padding:8px 12px;border:1px solid var(--gray-mid);border-radius:5px;font-size:13px;font-family:'DM Sans',sans-serif;outline:none;background:#fff;transition:border .15s}
+.fe input:focus,.fe select:focus,.fe textarea:focus{border-color:var(--orange)}
+.fe textarea{resize:vertical;min-height:60px;line-height:1.5}
+
+/* DAY BLOCK */
+.day-block{margin-bottom:16px}
+.day-label-bar{background:var(--black);color:#fff;padding:10px 16px;border-radius:6px 6px 0 0;font-size:13px;font-weight:600;display:flex;align-items:center;gap:8px}
+.day-label-bar.s2{background:var(--orange)}
+.day-num-badge{font-family:'DM Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.08em;background:rgba(255,255,255,.15);padding:2px 8px;border-radius:2px}
+.day-sessions{border:1px solid var(--gray-mid);border-top:none;border-radius:0 0 6px 6px;padding:16px;background:#fff}
+
+/* PUBLISH SECTION */
+.publish-card{background:#fff;border:2px solid var(--orange);border-radius:10px;padding:24px;margin-bottom:20px}
+.publish-title{font-size:16px;font-weight:600;margin-bottom:6px}
+.publish-sub{font-size:13px;color:var(--gray);line-height:1.6;margin-bottom:20px}
+.publish-info{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px}
+.pi-box{background:var(--gray-lt);border-radius:6px;padding:12px 14px}
+.pi-label{font-size:11px;color:var(--gray);font-family:'DM Mono',monospace;letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px}
+.pi-value{font-size:13px;font-weight:500;color:var(--black);word-break:break-all}
+.pi-value a{color:var(--orange);text-decoration:none}
+.pi-value a:hover{text-decoration:underline}
+
+/* SPINNER */
+.spinner{width:16px;height:16px;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:spin .6s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+@media(max-width:600px){
+  .topbar{padding:12px 16px}.layout{padding:20px 16px 60px}
+  .grid-2,.grid-3{grid-template-columns:1fr}
+  .publish-info{grid-template-columns:1fr}
+  .topbar-actions .btn-ghost{display:none}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-logo">INMOBILIARIO <span>LATAM</span></div>
+  <span class="topbar-badge">Admin · Onboarding</span>
+  <div class="topbar-actions">
+    <a href="https://camilabuenoil.github.io/formacion/" target="_blank" class="btn btn-ghost">Ver página pública ↗</a>
+    <button class="btn btn-primary" id="btn-publish" onclick="publishChanges()">
+      <span id="publish-icon">🚀</span> Publicar cambios
+    </button>
+  </div>
+</div>
+
+<div class="layout">
+
+  <!-- STATUS -->
+  <div class="status" id="status-bar">
+    <div class="status-dot"></div>
+    <span id="status-msg"></span>
+  </div>
+
+  <!-- AUTH (shown if no token) -->
+  <div id="auth-section" style="display:none">
+    <div class="auth-card">
+      <div class="auth-title">Configuración inicial</div>
+      <p class="auth-sub">Ingresa tu token de GitHub para conectar el panel con el repositorio. Solo se guarda en tu navegador.</p>
+      <div class="field">
+        <label>GitHub Token (fine-grained)</label>
+        <input type="password" id="token-input" placeholder="github_pat_..." />
+      </div>
+      <button class="btn btn-primary" style="width:100%" onclick="saveToken()">Conectar</button>
+    </div>
+  </div>
+
+  <!-- EDITOR -->
+  <div id="editor-section" style="display:none">
+
+    <!-- PUBLISH CARD -->
+    <div class="publish-card">
+      <div class="publish-title">🚀 Publicar cambios</div>
+      <p class="publish-sub">Cuando hagas cambios en cualquier sesión, haz clic en <strong>Publicar cambios</strong> (arriba a la derecha). Los agentes verán la actualización en su página en menos de un minuto.</p>
+      <div class="publish-info">
+        <div class="pi-box">
+          <div class="pi-label">Repositorio</div>
+          <div class="pi-value">camilabuenoIL/formacion</div>
+        </div>
+        <div class="pi-box">
+          <div class="pi-label">Página pública para agentes</div>
+          <div class="pi-value"><a href="https://camilabuenoil.github.io/formacion/" target="_blank">camilabuenoil.github.io/formacion ↗</a></div>
+        </div>
+        <div class="pi-box">
+          <div class="pi-label">Última publicación</div>
+          <div class="pi-value" id="last-pub">–</div>
+        </div>
+        <div class="pi-box">
+          <div class="pi-label">Estado</div>
+          <div class="pi-value" id="pub-status">Listo para publicar</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- METADATA -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title">📋 Información general</div>
+      </div>
+      <div class="card-body">
+        <div class="grid-2">
+          <div class="fe">
+            <label>Fecha de inicio (texto)</label>
+            <input type="text" id="meta-start" placeholder="Lunes 18 de mayo de 2026" />
+          </div>
+          <div class="fe">
+            <label>Nota de última actualización</label>
+            <input type="text" id="meta-updated" placeholder="18 de mayo de 2026" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SCHEDULE EDITOR (generated dynamically) -->
+    <div id="schedule-editor"></div>
+
+  </div>
+</div>
+
+<script>
+const REPO  = 'camilabuenoIL/formacion';
+const API   = 'https://api.github.com';
+const TOKEN_KEY = 'il_admin_token';
+
+let scheduleData = null;
+let fileSha = null;
+
+// ─── Auth ─────────────────────────────────────────────────────────────────────
+function getToken() { return localStorage.getItem(TOKEN_KEY) || ''; }
+
+function saveToken() {
+  const t = document.getElementById('token-input').value.trim();
+  if (!t) return showStatus('Ingresa un token válido.', 'err');
+  localStorage.setItem(TOKEN_KEY, t);
+  init();
+}
+
+// ─── Status ───────────────────────────────────────────────────────────────────
+function showStatus(msg, type='info') {
+  const bar = document.getElementById('status-bar');
+  bar.className = `status show ${type}`;
+  document.getElementById('status-msg').textContent = msg;
+  if (type === 'ok') setTimeout(() => bar.classList.remove('show'), 4000);
+}
+
+// ─── Init ─────────────────────────────────────────────────────────────────────
+async function init() {
+  const token = getToken();
+  if (!token) {
+    document.getElementById('auth-section').style.display = 'block';
+    return;
+  }
+  document.getElementById('auth-section').style.display = 'none';
+  document.getElementById('editor-section').style.display = 'block';
+  showStatus('Cargando cronograma desde GitHub...', 'info');
+  await loadFromGitHub();
+}
+
+// ─── Load from GitHub ─────────────────────────────────────────────────────────
+async function loadFromGitHub() {
+  try {
+    const r = await ghFetch(`/repos/${REPO}/contents/schedule.json`);
+    if (!r.ok) throw new Error(`HTTP ${r.status}`);
+    const meta = await r.json();
+    fileSha = meta.sha;
+    const content = atob(meta.content.replace(/\n/g,''));
+    scheduleData = JSON.parse(content);
+    renderEditor();
+    document.getElementById('status-bar').classList.remove('show');
+    document.getElementById('last-pub').textContent = scheduleData.lastUpdated || '–';
+  } catch(e) {
+    showStatus('Error cargando datos: ' + e.message + '. Verifica el token.', 'err');
+  }
+}
+
+// ─── GitHub fetch ─────────────────────────────────────────────────────────────
+function ghFetch(path, options={}) {
+  return fetch(API + path, {
+    ...options,
+    headers: {
+      'Authorization': 'Bearer ' + getToken(),
+      'Accept': 'application/vnd.github+json',
+      'Content-Type': 'application/json',
+      ...options.headers
+    }
+  });
+}
+
+// ─── Render editor ────────────────────────────────────────────────────────────
+function renderEditor() {
+  if (!scheduleData) return;
+
+  // Meta fields
+  document.getElementById('meta-start').value   = scheduleData.startDate || '';
+  document.getElementById('meta-updated').value = scheduleData.lastUpdated || '';
+
+  // Schedule
+  const container = document.getElementById('schedule-editor');
+  let html = '';
+
+  scheduleData.weeks.forEach((week, wi) => {
+    html += `<div class="card" style="margin-bottom:20px">
+      <div class="card-header">
+        <span class="week-pill ${wi===0?'wp-s1':'wp-s2'}">${week.label}</span>
+        <div class="card-title">${week.title} <span style="font-weight:400;color:var(--gray);font-size:13px">· ${week.subtitle}</span></div>
+      </div>
+      <div class="card-body" style="padding:16px">`;
+
+    week.days.forEach((day, di) => {
+      html += `<div class="day-block">
+        <div class="day-label-bar ${wi===1?'s2':''}">
+          <span class="day-num-badge">DÍA ${day.num}</span>
+          <span id="day-date-preview-${wi}-${di}">${day.date}</span>
+        </div>
+        <div class="day-sessions">`;
+
+      day.sessions.forEach((s, si) => {
+        const id = `${wi}-${di}-${si}`;
+        html += `<div class="session-editor">
+          <div class="se-header">
+            <span class="se-num">S${si+1}</span>
+            <span class="se-title-preview" id="title-preview-${id}">${s.title}</span>
+          </div>
+          <div class="grid-3" style="margin-bottom:10px">
+            <div class="fe">
+              <label>Hora</label>
+              <input type="text" id="time-${id}" value="${s.time}" oninput="markDirty()" />
+            </div>
+            <div class="fe">
+              <label>Responsable</label>
+              <input type="text" id="owner-${id}" value="${s.owner}" oninput="markDirty()" />
+            </div>
+            <div class="fe">
+              <label>Modalidad</label>
+              <select id="mod-${id}" onchange="markDirty()">
+                <option ${s.modality==='Presencial'?'selected':''}>Presencial</option>
+                <option ${s.modality==='Virtual'?'selected':''}>Virtual</option>
+                <option ${s.modality==='Presencial/Virtual'?'selected':''}>Presencial/Virtual</option>
+              </select>
+            </div>
+          </div>
+          <div class="grid-2" style="margin-bottom:10px">
+            <div class="fe">
+              <label>Franja</label>
+              <select id="slot-${id}" onchange="markDirty()">
+                <option ${s.slot==='Mañana'?'selected':''}>Mañana</option>
+                <option ${s.slot==='Tarde'?'selected':''}>Tarde</option>
+              </select>
+            </div>
+            <div class="fe">
+              <label>Título de la sesión</label>
+              <input type="text" id="title-${id}" value="${s.title}" oninput="markDirty();updatePreview('${id}')" />
+            </div>
+          </div>
+          <div class="fe">
+            <label>Descripción</label>
+            <textarea id="desc-${id}" oninput="markDirty()">${s.desc}</textarea>
+          </div>
+        </div>`;
+      });
+
+      html += `</div></div>`;
+    });
+
+    html += `</div></div>`;
+  });
+
+  container.innerHTML = html;
+}
+
+function updatePreview(id) {
+  const el = document.getElementById('title-preview-' + id);
+  if (el) el.textContent = document.getElementById('title-' + id).value;
+}
+
+let isDirty = false;
+function markDirty() {
+  isDirty = true;
+  document.getElementById('pub-status').textContent = '⚡ Cambios sin publicar';
+  document.getElementById('pub-status').style.color = 'var(--orange)';
+}
+
+// ─── Collect data from form ───────────────────────────────────────────────────
+function collectData() {
+  const updated = new Date().toLocaleDateString('es-ES', {day:'numeric',month:'long',year:'numeric'});
+  const data = JSON.parse(JSON.stringify(scheduleData)); // deep clone
+
+  data.startDate   = document.getElementById('meta-start').value;
+  data.lastUpdated = document.getElementById('meta-updated').value || updated;
+
+  data.weeks.forEach((week, wi) => {
+    week.days.forEach((day, di) => {
+      day.sessions.forEach((s, si) => {
+        const id = `${wi}-${di}-${si}`;
+        s.time     = document.getElementById('time-' + id)?.value  || s.time;
+        s.owner    = document.getElementById('owner-' + id)?.value || s.owner;
+        s.modality = document.getElementById('mod-' + id)?.value   || s.modality;
+        s.slot     = document.getElementById('slot-' + id)?.value  || s.slot;
+        s.title    = document.getElementById('title-' + id)?.value || s.title;
+        s.desc     = document.getElementById('desc-' + id)?.value  || s.desc;
+      });
+    });
+  });
+
+  return data;
+}
+
+// ─── Publish to GitHub ────────────────────────────────────────────────────────
+async function publishChanges() {
+  const btn = document.getElementById('btn-publish');
+  const icon = document.getElementById('publish-icon');
+  btn.disabled = true;
+  btn.innerHTML = '<div class="spinner"></div> Publicando...';
+  showStatus('Publicando cambios en GitHub...', 'info');
+
+  try {
+    const newData = collectData();
+    const content = btoa(unescape(encodeURIComponent(JSON.stringify(newData, null, 2))));
+    const now = new Date().toLocaleString('es-ES');
+    const commitMsg = `Actualización cronograma · ${now}`;
+
+    const body = JSON.stringify({
+      message: commitMsg,
+      content,
+      sha: fileSha
+    });
+
+    const r = await ghFetch(`/repos/${REPO}/contents/schedule.json`, { method:'PUT', body });
+
+    if (!r.ok) {
+      const err = await r.json();
+      throw new Error(err.message || `HTTP ${r.status}`);
+    }
+
+    const res = await r.json();
+    fileSha = res.content.sha;
+    scheduleData = newData;
+    isDirty = false;
+
+    document.getElementById('last-pub').textContent = newData.lastUpdated;
+    document.getElementById('pub-status').textContent = '✓ Publicado';
+    document.getElementById('pub-status').style.color = 'var(--green)';
+
+    showStatus('✓ Cambios publicados. La página de los agentes se actualiza en ~30 segundos.', 'ok');
+
+  } catch(e) {
+    showStatus('Error publicando: ' + e.message, 'err');
+  } finally {
+    btn.disabled = false;
+    btn.innerHTML = '<span id="publish-icon">🚀</span> Publicar cambios';
+  }
+}
+
+// ─── Warn before leaving with unsaved changes ─────────────────────────────────
+window.addEventListener('beforeunload', e => {
+  if (isDirty) { e.preventDefault(); e.returnValue = ''; }
+});
+
+// ─── Boot ─────────────────────────────────────────────────────────────────────
+// Pre-load token from URL param (optional convenience: admin.html?token=xxx)
+const urlToken = new URLSearchParams(location.search).get('token');
+if (urlToken) { localStorage.setItem(TOKEN_KEY, urlToken); history.replaceState({},'',location.pathname); }
+
+init();
+</script>
+</body>
+</html>
