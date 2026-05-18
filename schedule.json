@@ -61,12 +61,20 @@
           "badge": null,
           "sessions": [
             {
-              "time": "9:00 – 11:00",
-              "owner": "Allison Villanueva / Jorge Pando",
+              "time": "9:00 – 10:00",
+              "owner": "Allison Villanueva",
               "slot": "Mañana",
               "modality": "Presencial",
-              "title": "Financiamiento inmobiliario y crédito hipotecario + Proceso de compra",
-              "desc": "9:00–10:00 · Allison Villanueva: tipos de crédito hipotecario, cuota inicial, capacidad de endeudamiento, entidades financieras y criterios de aprobación · 10:00–11:00 · Jorge Pando: ruta del cliente desde reserva hasta escritura — separación, minuta, financiamiento, partida registral"
+              "title": "Financiamiento inmobiliario y crédito hipotecario",
+              "desc": "Tipos de crédito hipotecario · cuota inicial · capacidad de endeudamiento · entidades financieras y criterios de aprobación · cómo orientar al cliente según su perfil financiero"
+            },
+            {
+              "time": "10:00 – 11:00",
+              "owner": "Jorge Pando",
+              "slot": "Mañana",
+              "modality": "Presencial",
+              "title": "Proceso de compra inmobiliaria y conceptos clave",
+              "desc": "Ruta del cliente: reserva, separación, minuta, escritura, crédito, cuota inicial, partida registral · glosario mínimo para conversaciones comerciales seguras"
             },
             {
               "time": "3:00 – 5:00",
