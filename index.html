@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Programa de Onboarding — Inmobiliario Latam</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --black:#0D0D0D; --orange:#E84E0F; --orange-lt:#FDE8DF;
+  --gray:#6B6B6B; --gray-lt:#F5F4F2; --gray-mid:#E0DDD8; --white:#FFFFFF;
+  --presencial:#1A3D2B; --presencial-lt:#D6EDE1;
+  --virtual:#1A2E4A;   --virtual-lt:#D4E4F7;
+  --purple:#5B21B6;    --purple-lt:#F0EBF8;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--gray-lt);color:var(--black)}
+
+/* HERO */
+.hero{background:var(--black);position:relative;overflow:hidden}
+.hero-inner{max-width:880px;margin:0 auto;padding:52px 28px 44px}
+.hero-tag{display:inline-block;background:var(--orange);color:#fff;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:4px 12px;border-radius:2px;margin-bottom:20px}
+.hero h1{font-size:clamp(28px,5vw,48px);font-weight:600;color:#fff;line-height:1.1;margin-bottom:6px}
+.hero h1 span{color:var(--orange)}
+.hero-sub{font-size:14px;color:#999;margin-top:10px;line-height:1.6}
+.hero-meta{display:flex;gap:20px;flex-wrap:wrap;margin-top:24px;padding-top:20px;border-top:1px solid #1E1E1E}
+.hm{display:flex;flex-direction:column;gap:2px}
+.hm-label{font-size:10px;color:#555;font-family:'DM Mono',monospace;letter-spacing:.08em;text-transform:uppercase}
+.hm-value{font-size:13px;color:#CCC;font-weight:500}
+.updated-badge{display:inline-flex;align-items:center;gap:6px;background:#111;border:1px solid #222;border-radius:20px;padding:4px 12px;font-size:11px;color:#888;margin-top:16px}
+.updated-dot{width:6px;height:6px;border-radius:50%;background:#1A3D2B;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+
+/* TABS */
+.tabs-wrap{background:#fff;border-bottom:1px solid var(--gray-mid);position:sticky;top:0;z-index:100;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+.tabs{max-width:880px;margin:0 auto;display:flex;padding:0 28px;overflow-x:auto;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab{font-size:13px;font-weight:500;color:var(--gray);padding:13px 16px;border-bottom:2px solid transparent;cursor:pointer;white-space:nowrap;transition:all .15s}
+.tab:hover{color:var(--black)}
+.tab.active{color:var(--orange);border-bottom-color:var(--orange)}
+
+/* MAIN */
+.main{max-width:880px;margin:0 auto;padding:36px 28px 80px}
+.section{display:none}.section.active{display:block}
+
+/* WEEK BANNER */
+.week-banner{padding:14px 20px;border-radius:8px 8px 0 0;margin-top:32px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.wb-s1{background:var(--black)}
+.wb-s2{background:var(--orange)}
+.wb-label{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;background:rgba(255,255,255,.15);color:#fff;padding:3px 9px;border-radius:2px}
+.wb-title{font-size:14px;font-weight:500;color:#fff}
+.wb-dates{font-size:11px;color:rgba(255,255,255,.6);font-family:'DM Mono',monospace;margin-left:auto}
+
+/* DAY CARD */
+.day-card{background:#fff;border:1px solid var(--gray-mid);border-top:none}
+.day-card:last-of-type{border-radius:0 0 8px 8px}
+.day-header{display:flex;align-items:center;gap:10px;padding:13px 20px;border-bottom:1px solid var(--gray-mid);cursor:pointer;user-select:none;transition:background .12s}
+.day-header:hover{background:var(--gray-lt)}
+.day-num{font-size:10px;font-weight:700;color:var(--gray);font-family:'DM Mono',monospace;letter-spacing:.08em;min-width:40px}
+.day-date-label{font-size:14px;font-weight:600;color:var(--black);flex:1}
+.badge{font-size:11px;font-weight:500;padding:3px 10px;border-radius:20px}
+.badge-reunion{background:var(--purple-lt);color:var(--purple)}
+.badge-eval{background:var(--orange-lt);color:var(--orange)}
+.chevron{font-size:11px;color:var(--gray);transition:transform .18s;flex-shrink:0}
+.day-header.open .chevron{transform:rotate(180deg)}
+.sessions{display:none}.sessions.open{display:flex;flex-direction:column}
+
+/* SESSION */
+.session{display:grid;grid-template-columns:155px 1fr;border-top:1px solid var(--gray-lt)}
+.session:first-child{border-top-color:var(--gray-mid)}
+.s-left{padding:14px 16px 14px 20px;background:var(--gray-lt);display:flex;flex-direction:column;gap:5px}
+.s-time{font-size:13px;font-weight:600;font-family:'DM Mono',monospace}
+.s-time.reunion{color:var(--purple)}
+.s-time.eval{color:var(--orange)}
+.s-time.manana{color:var(--presencial)}
+.s-time.tarde{color:var(--virtual)}
+.s-owner{font-size:11px;color:var(--gray);line-height:1.4}
+.s-pill{font-size:10px;font-weight:600;padding:2px 8px;border-radius:20px;width:fit-content}
+.p-pres{background:var(--presencial-lt);color:var(--presencial)}
+.p-virt{background:var(--virtual-lt);color:var(--virtual)}
+.p-mix{background:#E9E0F7;color:#3B2464}
+.s-right{padding:14px 20px;display:flex;flex-direction:column;gap:3px}
+.s-slot{font-size:10px;color:var(--gray);font-style:italic;font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:.06em}
+.s-title{font-size:14px;font-weight:600;color:var(--black);line-height:1.35}
+.s-desc{font-size:12px;color:var(--gray);line-height:1.55;margin-top:2px}
+
+/* INFO BANNER */
+.info-box{background:var(--orange-lt);border-left:3px solid var(--orange);padding:13px 16px;border-radius:0 6px 6px 0;margin:18px 0;font-size:13px;line-height:1.6}
+
+/* SECTION HEADER */
+.sec-header{margin-bottom:20px}
+.sec-title{font-size:20px;font-weight:600;color:var(--black);padding-bottom:10px;border-bottom:2px solid var(--orange);display:inline-block}
+.sec-desc{font-size:14px;color:var(--gray);line-height:1.7;margin-top:10px;max-width:640px}
+
+/* TABLE */
+.tbl{width:100%;border-collapse:collapse;margin:14px 0;font-size:13px}
+.tbl th{background:var(--black);color:#fff;padding:10px 14px;text-align:left;font-size:11px;font-weight:600;letter-spacing:.05em}
+.tbl td{padding:10px 14px;border-bottom:1px solid var(--gray-mid);line-height:1.5;vertical-align:top}
+.tbl tr:nth-child(even) td{background:var(--gray-lt)}
+.tbl tr:last-child td{border-bottom:none}
+.peso{font-family:'DM Mono',monospace;font-weight:700;color:var(--orange)}
+
+/* EVAL CARDS */
+.eval-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:16px 0}
+.eval-card{background:#fff;border:1px solid var(--gray-mid);border-radius:8px;padding:18px;text-align:center}
+.eval-card.g{border-top:3px solid var(--presencial)}
+.eval-card.a{border-top:3px solid #B45309}
+.eval-card.r{border-top:3px solid #991B1B}
+.eval-score{font-size:15px;font-weight:700;color:var(--black);margin-bottom:4px}
+.eval-label{font-size:12px;font-weight:600;color:var(--gray);margin-bottom:8px}
+.eval-desc{font-size:12px;color:var(--gray);line-height:1.45}
+
+/* MODULE LIST */
+.mod-row{display:grid;grid-template-columns:32px 1fr auto;gap:10px;align-items:start;padding:11px 0;border-bottom:1px solid var(--gray-mid)}
+.mod-row:last-child{border-bottom:none}
+.mod-n{font-family:'DM Mono',monospace;font-size:12px;font-weight:600;color:var(--orange);padding-top:1px}
+.mod-t{font-size:13px;font-weight:500;color:var(--black);line-height:1.4}
+.mod-o{font-size:11px;color:var(--gray);margin-top:2px}
+.mod-d{font-size:11px;color:var(--gray);font-family:'DM Mono',monospace;text-align:right;white-space:nowrap;padding-top:2px}
+
+/* RESPONSIVE */
+@media(max-width:580px){
+  .hero-inner,.main{padding-left:16px;padding-right:16px}
+  .session{grid-template-columns:1fr}
+  .s-left{border-bottom:1px solid var(--gray-mid)}
+  .eval-grid{grid-template-columns:1fr}
+  .wb-dates,.mod-d{display:none}
+}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-tag">Inmobiliario Latam</div>
+    <h1>Programa de Onboarding<br><span>Comercial Inmobiliario</span></h1>
+    <p class="hero-sub">Cronograma de capacitación · nuevos agentes · mayo 2026</p>
+    <div class="hero-meta">
+      <div class="hm"><span class="hm-label">Inicio</span><span class="hm-value" id="meta-inicio">Lunes 18 de mayo de 2026</span></div>
+      <div class="hm"><span class="hm-label">Duración</span><span class="hm-value">10 días hábiles · 2 semanas</span></div>
+      <div class="hm"><span class="hm-label">Modalidad</span><span class="hm-value">Presencial y virtual</span></div>
+    </div>
+    <div class="updated-badge">
+      <div class="updated-dot"></div>
+      <span id="last-updated">Cargando última actualización...</span>
+    </div>
+  </div>
+</div>
+
+<div class="tabs-wrap">
+  <div class="tabs">
+    <div class="tab active" onclick="showTab('cronograma',this)">📅 Cronograma</div>
+    <div class="tab" onclick="showTab('metodologia',this)">📚 Metodología</div>
+    <div class="tab" onclick="showTab('modulos',this)">📋 Módulos</div>
+    <div class="tab" onclick="showTab('evaluacion',this)">✅ Evaluación</div>
+    <div class="tab" onclick="showTab('treinta',this)">🤝 30 días</div>
+  </div>
+</div>
+
+<div class="main">
+
+  <!-- ── CRONOGRAMA ── -->
+  <div class="section active" id="tab-cronograma">
+    <div class="info-box">🔔 <strong>Reunión de equipo todos los lunes a las 9:00 a.m.</strong> — El primer lunes presentación oficial. El segundo lunes participación como oyente activo.</div>
+    <div id="schedule-container">
+      <p style="color:var(--gray);font-size:13px;padding:40px 0;text-align:center">Cargando cronograma...</p>
+    </div>
+  </div>
+
+  <!-- ── METODOLOGÍA ── -->
+  <div class="section" id="tab-metodologia">
+    <div class="sec-header">
+      <div class="sec-title">Metodología de aprendizaje</div>
+      <p class="sec-desc">La ruta avanza en 7 capas progresivas. Cada fase prepara la siguiente sin saturar al agente.</p>
+    </div>
+    <table class="tbl">
+      <tr><th>Capa</th><th>Qué aprenderás</th><th>Por qué en este orden</th></tr>
+      <tr><td><strong>1 · Identidad y equipo</strong></td><td>Quiénes somos, cómo trabajamos y cuál es tu rol.</td><td>Pertenencia y alineación cultural desde el día 1.</td></tr>
+      <tr><td><strong>2 · Fundamentos inmobiliarios</strong></td><td>Cómo funciona el mercado, tipos de inmuebles, proceso de compra.</td><td>Lenguaje y seguridad antes de hablar con clientes.</td></tr>
+      <tr><td><strong>3 · Cliente y criterio</strong></td><td>Cómo entender al comprador y calificar un lead.</td><td>Diagnosticar antes de vender.</td></tr>
+      <tr><td><strong>4 · Presencia digital</strong></td><td>Proyectarte profesionalmente en redes y WhatsApp.</td><td>Confianza digital antes de contactar leads.</td></tr>
+      <tr><td><strong>5 · Flujo y herramientas</strong></td><td>Atender leads, usar el CRM y Notion.</td><td>Proceso primero, herramienta después.</td></tr>
+      <tr><td><strong>6 · Producto y negociación</strong></td><td>Leer el mercado, presentar propiedades y negociar.</td><td>Aplica con criterio cuando ya dominas el proceso.</td></tr>
+      <tr><td><strong>7 · Práctica y evaluación</strong></td><td>Simulación real, roleplay y evaluación final.</td><td>Consolida todo antes de recibir leads reales.</td></tr>
+    </table>
+    <div class="info-box">💡 <strong>Regla clave:</strong> No recibirás leads de forma autónoma hasta completar los perfiles digitales, el flujo comercial, el CRM y la práctica final.</div>
+  </div>
+
+  <!-- ── MÓDULOS ── -->
+  <div class="section" id="tab-modulos">
+    <div class="sec-header">
+      <div class="sec-title">Resumen de módulos</div>
+      <p class="sec-desc">Los 23 módulos del programa con responsable, día y franja asignada.</p>
+    </div>
+    <div id="modules-container"></div>
+  </div>
+
+  <!-- ── EVALUACIÓN ── -->
+  <div class="section" id="tab-evaluacion">
+    <div class="sec-header">
+      <div class="sec-title">¿Qué necesitas para ser habilitado?</div>
+      <p class="sec-desc">La evaluación es el Día 10. La habilitación te permite recibir leads reales de forma autónoma.</p>
+    </div>
+    <table class="tbl">
+      <tr><th>Criterio</th><th>Peso</th><th>Cómo se evalúa</th></tr>
+      <tr><td>Fundamentos inmobiliarios</td><td class="peso">20%</td><td>Preguntas sobre proceso de compra y tipos de operaciones.</td></tr>
+      <tr><td>Calificación comercial</td><td class="peso">20%</td><td>Roleplay con cliente simulado usando la matriz de calificación.</td></tr>
+      <tr><td>Comunicación y seguimiento</td><td class="peso">20%</td><td>Primer contacto y manejo de objeciones básicas.</td></tr>
+      <tr><td>CRM y trazabilidad</td><td class="peso">20%</td><td>Caso práctico real en el sistema.</td></tr>
+      <tr><td>Perfiles digitales</td><td class="peso">10%</td><td>Tus 4 canales revisados y aprobados.</td></tr>
+      <tr><td>Documentación y cierre</td><td class="peso">10%</td><td>Conocimiento de reserva y documentos básicos.</td></tr>
+    </table>
+    <div class="eval-grid">
+      <div class="eval-card g"><div class="eval-score">80 – 100</div><div class="eval-label">✓ Habilitado</div><div class="eval-desc">Recibes leads de forma autónoma. Entras al seguimiento de 30 días.</div></div>
+      <div class="eval-card a"><div class="eval-score">70 – 79</div><div class="eval-label">Habilitado supervisado</div><div class="eval-desc">Recibes leads con acompañamiento. Plan de refuerzo en puntos débiles.</div></div>
+      <div class="eval-card r"><div class="eval-score">Menos de 70</div><div class="eval-label">No habilitado</div><div class="eval-desc">Reforzamiento y nueva evaluación antes de recibir leads.</div></div>
+    </div>
+  </div>
+
+  <!-- ── 30 DÍAS ── -->
+  <div class="section" id="tab-treinta">
+    <div class="sec-header">
+      <div class="sec-title">Tus primeros 30 días</div>
+      <p class="sec-desc">La formación no termina el Día 10. Tendrás acompañamiento semanal con tu líder comercial.</p>
+    </div>
+    <table class="tbl">
+      <tr><th>Semana</th><th>Enfoque</th><th>Qué se revisa contigo</th></tr>
+      <tr><td><strong>Semana 1</strong></td><td>Tus primeros leads</td><td>Cómo contactas, cómo registras en CRM y cumplimiento de tareas.</td></tr>
+      <tr><td><strong>Semana 2</strong></td><td>Calificación y seguimiento</td><td>Cómo calificas oportunidades y haces seguimiento sin saturar.</td></tr>
+      <tr><td><strong>Semana 3</strong></td><td>Presentación y objeciones</td><td>Cómo presentas propiedades y manejas dudas del cliente.</td></tr>
+      <tr><td><strong>Semana 4</strong></td><td>Resultados y habilitación</td><td>KPIs iniciales, fortalezas, brechas y habilitación definitiva.</td></tr>
+    </table>
+    <div class="info-box">Participas en las reuniones de los lunes como miembro activo del equipo desde tu habilitación.</div>
+  </div>
+
+</div>
+
+<script>
+// ── Data source: schedule.json on same repo ────────────────────────────────
+const REPO = 'camilabuenoIL/formacion';
+const RAW  = `https://raw.githubusercontent.com/${REPO}/main/schedule.json`;
+
+async function loadSchedule() {
+  try {
+    const r = await fetch(RAW + '?t=' + Date.now());
+    if (!r.ok) throw new Error('No se pudo cargar');
+    const data = await r.json();
+    renderSchedule(data);
+    renderModules(data);
+    document.getElementById('last-updated').textContent =
+      'Última actualización: ' + (data.lastUpdated || 'Mayo 2026');
+    if (data.startDate) document.getElementById('meta-inicio').textContent = data.startDate;
+  } catch(e) {
+    document.getElementById('schedule-container').innerHTML =
+      '<p style="color:var(--gray);font-size:13px;padding:20px 0">Error cargando datos. Intenta recargar la página.</p>';
+  }
+}
+
+function pillClass(m) {
+  if (m === 'Presencial') return 'p-pres';
+  if (m === 'Virtual')    return 'p-virt';
+  return 'p-mix';
+}
+function pillText(m) {
+  if (m === 'Presencial') return '● Presencial';
+  if (m === 'Virtual')    return '● Virtual';
+  return '● Pres./Virt.';
+}
+function timeClass(s) {
+  if (s.isReunion) return 'reunion';
+  if (s.isEval)    return 'eval';
+  return s.slot === 'Mañana' ? 'manana' : 'tarde';
+}
+
+function renderSchedule(data) {
+  const container = document.getElementById('schedule-container');
+  let html = '';
+  data.weeks.forEach((week, wi) => {
+    html += `<div class="week-banner ${wi===0?'wb-s1':'wb-s2'}">
+      <span class="wb-label">${week.label}</span>
+      <span class="wb-title">${week.title}</span>
+      <span class="wb-dates">${week.subtitle}</span>
+    </div>`;
+    week.days.forEach((day, di) => {
+      const isLast = di === week.days.length - 1;
+      const badge = day.badge === 'reunion'
+        ? '<span class="badge badge-reunion">Reunión de equipo</span>'
+        : day.badge === 'eval'
+        ? '<span class="badge badge-eval">Evaluación final</span>' : '';
+      const isOpen = wi === 0 && di === 0;
+      html += `<div class="day-card"${isLast?' style="border-radius:0 0 8px 8px"':''}>
+        <div class="day-header${isOpen?' open':''}" onclick="toggleDay(this)">
+          <span class="day-num">DÍA ${day.num}</span>
+          <span class="day-date-label">${day.date}</span>
+          ${badge}
+          <span class="chevron">▼</span>
+        </div>
+        <div class="sessions${isOpen?' open':''}">`;
+      day.sessions.forEach(s => {
+        html += `<div class="session">
+          <div class="s-left">
+            <span class="s-time ${timeClass(s)}">${s.time}</span>
+            <span class="s-owner">${s.owner}</span>
+            <span class="s-pill ${pillClass(s.modality)}">${pillText(s.modality)}</span>
+          </div>
+          <div class="s-right">
+            <span class="s-slot">${s.slot}</span>
+            <span class="s-title">${s.title}</span>
+            <span class="s-desc">${s.desc}</span>
+          </div>
+        </div>`;
+      });
+      html += `</div></div>`;
+    });
+  });
+  container.innerHTML = html;
+}
+
+function renderModules(data) {
+  const c = document.getElementById('modules-container');
+  let html = '';
+  data.modules.forEach(m => {
+    html += `<div class="mod-row">
+      <span class="mod-n">${m.num}</span>
+      <div><div class="mod-t">${m.title}</div><div class="mod-o">${m.owner}</div></div>
+      <span class="mod-d">${m.dia}</span>
+    </div>`;
+  });
+  c.innerHTML = html;
+}
+
+function showTab(id, el) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('tab-' + id).classList.add('active');
+  el.classList.add('active');
+}
+function toggleDay(header) {
+  header.classList.toggle('open');
+  header.nextElementSibling.classList.toggle('open');
+}
+
+loadSchedule();
+</script>
+</body>
+</html>
