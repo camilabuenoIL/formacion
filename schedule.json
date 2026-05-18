@@ -13,21 +13,21 @@
           "badge": "reunion",
           "sessions": [
             {
-              "time": "9:00 â 10:30",
+              "time": "9:00 a 10:30",
               "owner": "Jorge Pando",
               "slot": "Mañana",
               "modality": "Presencial",
-              "title": "ReuniÃ³n semanal de equipo â Bienvenida oficial",
-              "desc": "PresentaciÃ³n formal de nuevos agentes Â· dinÃ¡mica del lunes Â· cada agente responde en 2 min quiÃ©n es, su experiencia comercial y quÃ© quiere construir en Inmobiliario Latam",
+              "title": "Reunión semanal de equipo — Bienvenida oficial  ",
+              "desc": "Presentación formal de nuevos agentes · dinámica del lunes · cada agente responde en 2 min quién es, su experiencia comercial y qué quiere construir en Inmobiliario Latam",
               "isReunion": true
             },
             {
-              "time": "3:00 â 5:00",
+              "time": "3:00 a 5:00",
               "owner": "Walter Arias",
               "slot": "Tarde",
               "modality": "Virtual",
               "title": "Presentación e inducción Inmobiliario Latam + Modelo de negocio",
-              "desc": "Cultura, valores, estructura de la empresa y roles Â· tipos de operación, comisiones, participaciones y responsabilidades de trazabilidad"
+              "desc": "Cultura, valores, estructura de la empresa y roles · tipos de operación, comisiones, participaciones y responsabilidades de trazabilidad"
             }
           ]
         },
@@ -37,20 +37,20 @@
           "badge": null,
           "sessions": [
             {
-              "time": "9:00 â 11:00",
+              "time": "9:00 a 11:00",
               "owner": "Jorge Pando",
               "slot": "Mañana",
               "modality": "Presencial",
-              "title": "IntroducciÃ³n al sector inmobiliario",
-              "desc": "Actores del mercado, tipos de inmuebles, proyectos y propiedades usadas Â· oportunidades del rubro y diferencias con otros sectores de ventas"
+              "title": "Introducción al sector inmobiliario",
+              "desc": "Actores del mercado, tipos de inmuebles, proyectos y propiedades usadas · oportunidades del rubro y diferencias con otros sectores de ventas"
             },
             {
-              "time": "3:00 â 5:00",
+              "time": "3:00 a 5:00",
               "owner": "Jorge Pando",
               "slot": "Tarde",
               "modality": "Presencial",
               "title": "Proceso de compra inmobiliaria y conceptos clave",
-              "desc": "Ruta del cliente: reserva, separaciÃ³n, minuta, escritura, crÃ©dito, cuota inicial, partida registral Â· glosario mÃ­nimo para conversaciones comerciales seguras"
+              "desc": "Ruta del cliente: reserva, separación, minuta, escritura, crédito, cuota inicial, partida registral · glosario mínimo para conversaciones comerciales seguras"
             }
           ]
         },
@@ -60,12 +60,12 @@
           "badge": null,
           "sessions": [
             {
-              "time": "9:00 â 11:00",
+              "time": "9:00 a 11:00",
               "owner": "Jorge Pando",
               "slot": "Mañana",
               "modality": "Presencial",
               "title": "Perfil del comprador inmobiliario",
-              "desc": "Motivaciones, miedos y proceso de decisiÃ³n Â· tipos de cliente: inversionista, primera vivienda, familia, crÃ©dito, contado e indeciso"
+              "desc": "Motivaciones, miedos y proceso de decisión · tipos de cliente: inversionista, primera vivienda, familia, crédito, contado e indeciso"
             },
             {
               "time": "3:00 â 5:00",
