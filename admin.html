@@ -5,212 +5,300 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Admin — Inmobiliario Latam</title>
 <style>
+:root{
+  --bg:#0D0D0D;--surface:#111;--surface2:#161616;--border:#1E1E1E;--border2:#2A2A2A;
+  --orange:#E84E0F;--orange-lt:#1A0800;--orange-bd:#3A1A00;
+  --green:#1A3D2B;--green-lt:#0A1A0A;--green-bd:#1A3D2B;--green-tx:#4ADE80;
+  --red-lt:#1A0A0A;--red-bd:#4A1A1A;--red-tx:#F87171;
+  --blue-lt:#0A1020;--blue-bd:#1A2A4A;--blue-tx:#60A5FA;
+  --amber-lt:#1A1200;--amber-bd:#3A2800;--amber-tx:#FBBF24;
+  --text:#fff;--text2:#aaa;--text3:#666;--text4:#444;
+}
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:system-ui,sans-serif;background:#0D0D0D;color:#fff;padding:28px;max-width:780px;margin:0 auto;min-height:100vh}
-.topbar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:24px;padding-bottom:16px;border-bottom:1px solid #1A1A1A}
-.logo{font-size:16px;font-weight:700}.logo span{color:#E84E0F}
-.cal-badge{font-size:10px;font-weight:600;padding:3px 10px;border-radius:20px;letter-spacing:.06em;text-transform:uppercase}
-.cal-on{background:#0A1A0A;color:#4ADE80;border:1px solid #1A3D2B}
-.cal-off{background:#1A0A0A;color:#F87171;border:1px solid #4A1A1A}
-.tbar-right{margin-left:auto;display:flex;gap:8px;align-items:center}
-.btn{display:inline-flex;align-items:center;gap:5px;border:none;padding:9px 16px;border-radius:5px;font-size:13px;font-weight:600;cursor:pointer;transition:all .15s;font-family:system-ui}
-.btn-orange{background:#E84E0F;color:#fff}.btn-orange:hover{background:#C93E08}
-.btn-dark{background:#1A1A1A;color:#ccc;border:1px solid #333}.btn-dark:hover{background:#222}
-.btn-ghost{background:transparent;color:#666;border:1px solid #2A2A2A}.btn-ghost:hover{color:#fff;border-color:#555}
+body{font-family:system-ui,sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+/* TOPBAR */
+.topbar{background:#0A0A0A;border-bottom:1px solid var(--border);padding:12px 24px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;position:sticky;top:0;z-index:200}
+.logo{font-size:15px;font-weight:700}.logo em{color:var(--orange);font-style:normal}
+.badge{font-size:10px;font-weight:600;padding:2px 9px;border-radius:20px;letter-spacing:.06em;text-transform:uppercase;flex-shrink:0}
+.badge-on{background:var(--green-lt);color:var(--green-tx);border:1px solid var(--green-bd)}
+.badge-off{background:var(--red-lt);color:var(--red-tx);border:1px solid var(--red-bd)}
+.topbar-right{margin-left:auto;display:flex;gap:8px;align-items:center}
+/* BUTTONS */
+.btn{display:inline-flex;align-items:center;gap:5px;border:none;padding:8px 14px;border-radius:5px;font-size:12px;font-weight:600;cursor:pointer;transition:all .15s;font-family:system-ui;line-height:1;white-space:nowrap}
+.btn-orange{background:var(--orange);color:#fff}.btn-orange:hover{background:#C93E08}
+.btn-dark{background:#1A1A1A;color:var(--text2);border:1px solid #333}.btn-dark:hover{background:#222}
+.btn-ghost{background:transparent;color:var(--text3);border:1px solid var(--border2)}.btn-ghost:hover{color:var(--text);border-color:#555}
+.btn-green{background:var(--green);color:#fff}.btn-green:hover{background:#0F2419}
+.btn-red{background:#7F1D1D;color:#fff}.btn-red:hover{background:#991B1B}
+.btn-sm{padding:5px 10px;font-size:11px}
 .btn:disabled{opacity:.35;cursor:not-allowed}
-.card{background:#111;border:1px solid #1E1E1E;border-radius:8px;padding:18px;margin-bottom:14px}
-.tag{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#E84E0F;margin-bottom:7px;display:block}
-.card-title{font-size:14px;font-weight:600;margin-bottom:4px}
-.card-sub{font-size:12px;color:#666;line-height:1.7}
-.status-bar{border-radius:6px;padding:10px 14px;margin-bottom:16px;font-size:13px;display:none;align-items:center;gap:8px}
-.status-bar.show{display:flex}
-.s-info{background:#0A1020;color:#60A5FA;border:1px solid #1A2A4A}
-.s-ok{background:#0A1A0A;color:#4ADE80;border:1px solid #1A3D2B}
-.s-err{background:#1A0A0A;color:#F87171;border:1px solid #4A1A1A}
-.s-warn{background:#1A1200;color:#FBBF24;border:1px solid #3A2800}
-/* TOKEN SETUP */
-.setup-card{background:#111;border:2px solid #E84E0F;border-radius:10px;padding:28px;max-width:500px;margin:60px auto}
-.setup-title{font-size:18px;font-weight:600;margin-bottom:6px}
-.setup-sub{font-size:13px;color:#888;margin-bottom:20px;line-height:1.6}
-.field label{display:block;font-size:11px;font-weight:600;color:#666;margin-bottom:5px;letter-spacing:.04em;text-transform:uppercase}
-.field input{width:100%;padding:9px 12px;border:1px solid #2A2A2A;border-radius:5px;font-size:13px;font-family:system-ui;background:#0A0A0A;color:#fff;outline:none;margin-bottom:14px;transition:border .15s}
-.field input:focus{border-color:#E84E0F}
-/* META */
-.meta-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.pub-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
-#log{background:#000;border:1px solid #1A1A1A;border-radius:5px;padding:12px;font-size:11px;font-family:monospace;min-height:50px;white-space:pre-wrap;display:none;margin-top:12px;line-height:1.8}
-.ok{color:#4ADE80}.err{color:#F87171}.info{color:#60A5FA}.warn{color:#FBBF24}
-/* SCHEDULE */
-.week-hdr{display:flex;align-items:center;gap:8px;margin:20px 0 8px;padding:10px 14px;background:#111;border:1px solid #1E1E1E;border-radius:6px}
-.wp{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:2px 8px;border-radius:2px}
-.wp-s1{background:#1A1A1A;color:#ccc;border:1px solid #333}
-.wp-s2{background:#E84E0F;color:#fff}
-.wt{font-size:13px;font-weight:500;color:#aaa}
-.day-bar{background:#161616;border:1px solid #222;border-radius:5px 5px 0 0;padding:8px 14px;font-size:12px;font-weight:600;display:flex;align-items:center;gap:8px;color:#bbb}
-.dn{font-size:10px;font-weight:700;background:#E84E0F;color:#fff;padding:1px 7px;border-radius:2px;font-family:monospace}
-.sessions{border:1px solid #1E1E1E;border-top:none;border-radius:0 0 5px 5px;padding:10px;background:#0D0D0D;margin-bottom:12px}
-.se{border:1px solid #1E1E1E;border-radius:5px;padding:12px;margin-bottom:8px;background:#111}
-.se:last-child{margin-bottom:0}
-.se-h{display:flex;align-items:center;gap:7px;margin-bottom:10px}
-.sn{font-size:10px;font-weight:700;color:#E84E0F;background:#1A0800;padding:2px 7px;border-radius:3px;font-family:monospace;border:1px solid #3A1A00}
-.sp{font-size:12px;font-weight:500;color:#777;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.sync{font-size:10px;padding:2px 7px;border-radius:20px;font-weight:600;flex-shrink:0}
-.sync-ok{background:#0A1A0A;color:#4ADE80;border:1px solid #1A3D2B}
-.sync-pend{background:#1A1200;color:#FBBF24;border:1px solid #3A2800}
-.sync-none{background:#1A1A1A;color:#555;border:1px solid #2A2A2A}
-.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:8px}
-.g2{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px}
-.fe label{display:block;font-size:10px;font-weight:600;color:#555;margin-bottom:3px;letter-spacing:.04em;text-transform:uppercase}
-.fe input,.fe select,.fe textarea{width:100%;padding:7px 10px;border:1px solid #2A2A2A;border-radius:4px;font-size:12px;font-family:system-ui;outline:none;background:#0A0A0A;color:#fff;transition:border .15s}
-.fe input:focus,.fe select:focus,.fe textarea:focus{border-color:#E84E0F}
+/* TABS */
+.tabs-wrap{border-bottom:1px solid var(--border);padding:0 24px;background:#0A0A0A}
+.tabs{display:flex;gap:0;max-width:100%;overflow-x:auto;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab{font-size:13px;font-weight:500;color:var(--text3);padding:12px 18px;border-bottom:2px solid transparent;cursor:pointer;white-space:nowrap;transition:all .15s}
+.tab:hover{color:var(--text2)}.tab.active{color:var(--orange);border-bottom-color:var(--orange)}
+/* LAYOUT */
+.content{max-width:900px;margin:0 auto;padding:24px 24px 80px}
+.section{display:none}.section.active{display:block}
+/* STATUS */
+.status{border-radius:6px;padding:10px 14px;margin-bottom:16px;font-size:13px;display:none;align-items:center;gap:8px}
+.status.show{display:flex}
+.s-info{background:var(--blue-lt);color:var(--blue-tx);border:1px solid var(--blue-bd)}
+.s-ok{background:var(--green-lt);color:var(--green-tx);border:1px solid var(--green-bd)}
+.s-err{background:var(--red-lt);color:var(--red-tx);border:1px solid var(--red-bd)}
+.s-warn{background:var(--amber-lt);color:var(--amber-tx);border:1px solid var(--amber-bd)}
+/* CARDS */
+.card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:18px;margin-bottom:14px}
+.card-header{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.card-title{font-size:14px;font-weight:600;flex:1}
+.tag{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--orange);margin-bottom:6px;display:block}
+.card-sub{font-size:12px;color:var(--text3);line-height:1.7}
+/* FIELDS */
+.fe{margin-bottom:12px}
+.fe:last-child{margin-bottom:0}
+.fe label{display:block;font-size:10px;font-weight:600;color:var(--text3);margin-bottom:4px;letter-spacing:.04em;text-transform:uppercase}
+.fe input,.fe select,.fe textarea{width:100%;padding:8px 11px;border:1px solid var(--border2);border-radius:5px;font-size:13px;font-family:system-ui;background:#0A0A0A;color:var(--text);outline:none;transition:border .15s}
+.fe input:focus,.fe select:focus,.fe textarea:focus{border-color:var(--orange)}
 .fe select option{background:#111}
-.fe textarea{resize:vertical;min-height:48px;line-height:1.5}
-@media(max-width:580px){.g3,.g2,.meta-grid{grid-template-columns:1fr}}
+.fe textarea{resize:vertical;min-height:56px;line-height:1.5}
+.fe input.changed{border-color:var(--orange)!important}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+.grid4{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:10px}
+/* WEEK / DAY / SESSION */
+.week-hdr{display:flex;align-items:center;gap:8px;margin:20px 0 8px;padding:10px 14px;background:var(--surface);border:1px solid var(--border);border-radius:6px}
+.wp{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:2px 8px;border-radius:2px}
+.wp-s1{background:#1A1A1A;color:var(--text2);border:1px solid #333}
+.wp-s2{background:var(--orange);color:#fff}
+.wt{font-size:13px;font-weight:500;color:var(--text2)}
+.day-wrap{margin-bottom:10px}
+.day-bar{background:var(--surface2);border:1px solid var(--border);border-radius:5px 5px 0 0;padding:8px 14px;font-size:12px;font-weight:600;display:flex;align-items:center;gap:8px;color:var(--text2)}
+.day-num-pill{font-size:10px;font-weight:700;background:var(--orange);color:#fff;padding:1px 7px;border-radius:2px;font-family:monospace}
+.sessions-wrap{border:1px solid var(--border);border-top:none;border-radius:0 0 5px 5px;padding:10px;background:#0A0A0A;margin-bottom:0}
+.se{border:1px solid var(--border);border-radius:6px;padding:12px;margin-bottom:8px;background:var(--surface);position:relative}
+.se:last-child{margin-bottom:0}
+.se-head{display:flex;align-items:center;gap:7px;margin-bottom:10px}
+.se-num{font-size:10px;font-weight:700;color:var(--orange);background:var(--orange-lt);padding:2px 7px;border-radius:3px;font-family:monospace;border:1px solid var(--orange-bd)}
+.se-title{font-size:12px;font-weight:500;color:var(--text3);flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.sync-badge{font-size:10px;padding:2px 7px;border-radius:20px;font-weight:600;flex-shrink:0}
+.sync-ok{background:var(--green-lt);color:var(--green-tx);border:1px solid var(--green-bd)}
+.sync-pend{background:var(--amber-lt);color:var(--amber-tx);border:1px solid var(--amber-bd)}
+.sync-none{background:#1A1A1A;color:var(--text4);border:1px solid #333}
+.se-actions{display:flex;gap:6px;margin-top:10px;flex-wrap:wrap;align-items:center}
+.meet-row{display:flex;gap:8px;align-items:center;margin-top:8px;padding:8px 10px;background:var(--blue-lt);border:1px solid var(--blue-bd);border-radius:5px}
+.meet-link{font-size:11px;color:var(--blue-tx);font-family:monospace;flex:1;overflow:hidden;text-overflow:ellipsis}
+.meet-link a{color:var(--blue-tx);text-decoration:none}
+/* ADD SESSION FORM */
+.add-session-form{background:var(--amber-lt);border:1px solid var(--amber-bd);border-radius:6px;padding:14px;margin-top:8px;display:none}
+.add-day-btn{margin-top:8px;width:100%}
+/* TEAM */
+.team-row{display:grid;grid-template-columns:1fr 1fr auto;gap:10px;align-items:end;padding:12px;background:var(--surface);border:1px solid var(--border);border-radius:6px;margin-bottom:8px}
+.team-row:last-child{margin-bottom:0}
+/* LOG */
+#pub-log{background:#000;border:1px solid var(--border);border-radius:5px;padding:12px;font-size:11px;font-family:monospace;min-height:40px;white-space:pre-wrap;display:none;margin-top:12px;line-height:1.8}
+.ok{color:var(--green-tx)}.err{color:var(--red-tx)}.info{color:var(--blue-tx)}.warn{color:var(--amber-tx)}
+/* SETUP */
+.setup-wrap{display:flex;align-items:center;justify-content:center;min-height:80vh}
+.setup-card{background:var(--surface);border:2px solid var(--orange);border-radius:10px;padding:32px;max-width:460px;width:100%}
+.setup-title{font-size:18px;font-weight:600;margin-bottom:6px}
+.setup-sub{font-size:13px;color:var(--text3);margin-bottom:20px;line-height:1.6}
+/* RESPONSIVE */
+@media(max-width:600px){
+  .content{padding:16px 16px 60px}.topbar,.tabs-wrap{padding-left:16px;padding-right:16px}
+  .grid2,.grid3,.grid4{grid-template-columns:1fr}
+  .team-row{grid-template-columns:1fr}
+}
 </style>
 </head>
 <body>
 
-<!-- TOKEN SETUP (shown only first time) -->
+<!-- SETUP (shown only if no token) -->
 <div id="setup-screen" style="display:none">
-  <div class="setup-card">
-    <div class="setup-title">🔑 Configuración inicial</div>
-    <p class="setup-sub">Ingresa tu token de GitHub. Solo se guarda en <strong>este navegador</strong> — nunca se sube al repositorio.</p>
-    <div class="field">
-      <label>GitHub Token (fine-grained)</label>
-      <input type="password" id="gh-token-input" placeholder="Pega tu token aquí..." />
+  <div class="setup-wrap">
+    <div class="setup-card">
+      <div class="setup-title">🏠 Inmobiliario Latam — Admin</div>
+      <p class="setup-sub">Ingresa tu token de GitHub para conectar el panel. Se guarda solo en este navegador — nunca en el repositorio.</p>
+      <div class="fe"><label>GitHub Token</label><input type="password" id="gh-inp" placeholder="Pega tu token aquí" /></div>
+      <button class="btn btn-orange" style="width:100%;margin-top:4px" onclick="saveToken()">Conectar →</button>
     </div>
-    <button class="btn btn-orange" style="width:100%" onclick="saveToken()">Conectar con GitHub</button>
   </div>
 </div>
 
-<!-- MAIN EDITOR -->
+<!-- MAIN -->
 <div id="main-screen" style="display:none">
 
   <div class="topbar">
-    <div class="logo">INMOBILIARIO <span>LATAM</span> <span style="font-size:11px;color:#333;font-weight:400">— Admin</span></div>
-    <span class="cal-badge cal-off" id="cal-badge">📅 Calendar: desconectado</span>
-    <div class="tbar-right">
-      <button class="btn btn-ghost" id="btn-cal" onclick="authCalendar()">🔐 Conectar Calendar</button>
+    <div class="logo">INMOBILIARIO <em>LATAM</em> <span style="font-size:11px;color:var(--text4);font-weight:400">Admin</span></div>
+    <span class="badge badge-off" id="cal-badge">📅 Calendar desconectado</span>
+    <div class="topbar-right">
+      <button class="btn btn-ghost" id="btn-cal-connect" onclick="authCalendar()">🔐 Conectar Calendar</button>
       <a href="https://camilabuenoil.github.io/formacion/" target="_blank" class="btn btn-ghost">Ver página ↗</a>
-      <button class="btn btn-orange" id="btn-pub" onclick="publishAll()" disabled>🚀 Publicar</button>
+      <button class="btn btn-orange" id="btn-pub-top" onclick="publishAll()" disabled>🚀 Publicar</button>
     </div>
   </div>
 
-  <div class="status-bar" id="sb"><span id="sm"></span></div>
-
-  <div class="card">
-    <span class="tag">Publicación inteligente</span>
-    <div class="card-title">Lee desde GitHub cada vez — nunca sobreescribe cambios manuales</div>
-    <div class="card-sub">Solo guarda los campos que edites aquí. Publicar = actualiza GitHub + Google Calendar simultáneamente.</div>
-  </div>
-
-  <div class="card" id="meta-card" style="display:none">
-    <span class="tag">Información general</span>
-    <div class="meta-grid">
-      <div class="fe"><label>Fecha de inicio</label><input type="text" id="meta-start" oninput="dirty()" /></div>
-      <div class="fe"><label>Última actualización</label><input type="text" id="meta-upd" oninput="dirty()" /></div>
+  <div class="tabs-wrap">
+    <div class="tabs">
+      <div class="tab active" onclick="showTab('cronograma',this)">📅 Cronograma</div>
+      <div class="tab" onclick="showTab('equipo',this)">👥 Equipo</div>
+      <div class="tab" onclick="showTab('publicar',this)">🚀 Publicar</div>
     </div>
   </div>
 
-  <div id="editor"></div>
+  <div class="content">
+    <div class="status" id="status-bar"><span id="status-msg"></span></div>
 
-  <div class="card" id="pub-card" style="display:none">
-    <span class="tag">Publicar cambios</span>
-    <div class="card-title">Estado: <span id="pub-st" style="color:#555">Sin cambios</span></div>
-    <div class="card-sub">Última publicación: <strong id="last-pub">–</strong> · <a href="https://camilabuenoil.github.io/formacion/" target="_blank" style="color:#E84E0F">Ver página ↗</a></div>
-    <div class="pub-row">
-      <button class="btn btn-orange" id="btn-pub2" onclick="publishAll()" disabled>🚀 GitHub + Google Calendar</button>
-      <button class="btn btn-dark" id="btn-gh" onclick="pubGH()" disabled>📁 Solo GitHub</button>
-      <button class="btn btn-ghost" style="margin-left:auto;font-size:11px" onclick="resetToken()">🔑 Cambiar token</button>
+    <!-- ── CRONOGRAMA ──────────────────────────────────────────── -->
+    <div class="section active" id="tab-cronograma">
+      <div class="card" style="margin-bottom:14px">
+        <span class="tag">Información general</span>
+        <div class="grid2">
+          <div class="fe"><label>Fecha de inicio</label><input type="text" id="meta-start" oninput="markDirty()" /></div>
+          <div class="fe"><label>Última actualización</label><input type="text" id="meta-upd" oninput="markDirty()" /></div>
+        </div>
+      </div>
+      <div id="schedule-editor"></div>
     </div>
-    <div id="log"></div>
-  </div>
 
-</div>
+    <!-- ── EQUIPO ──────────────────────────────────────────────── -->
+    <div class="section" id="tab-equipo">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">👥 Equipo de formación</div>
+          <button class="btn btn-orange btn-sm" onclick="addTeamMember()">+ Agregar persona</button>
+        </div>
+        <p class="card-sub" style="margin-bottom:14px">Los emails aquí se usan automáticamente al crear o actualizar eventos en Google Calendar. Agrega nuevos formadores sin tocar código.</p>
+        <div id="team-list"></div>
+      </div>
+    </div>
+
+    <!-- ── PUBLICAR ────────────────────────────────────────────── -->
+    <div class="section" id="tab-publicar">
+      <div class="card">
+        <span class="tag">Estado de publicación</span>
+        <div style="font-size:13px;margin-bottom:8px">Cambios pendientes: <strong id="pub-changes-count" style="color:var(--orange)">0</strong></div>
+        <div style="font-size:12px;color:var(--text3);margin-bottom:16px">Última publicación: <strong id="last-pub-display">–</strong><br>Página: <a href="https://camilabuenoil.github.io/formacion/" target="_blank" style="color:var(--orange)">camilabuenoil.github.io/formacion ↗</a></div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <button class="btn btn-orange" id="btn-pub-main" onclick="publishAll()" disabled>🚀 Publicar en GitHub + Calendar</button>
+          <button class="btn btn-dark" id="btn-pub-gh" onclick="pubGHOnly()" disabled>📁 Solo GitHub</button>
+          <button class="btn btn-ghost btn-sm" onclick="resetToken()" style="margin-left:auto">🔑 Cambiar token</button>
+        </div>
+        <div id="pub-log"></div>
+      </div>
+      <div class="card">
+        <span class="tag">Conexiones</span>
+        <div class="grid2">
+          <div style="padding:12px;background:#0A0A0A;border:1px solid var(--border);border-radius:6px">
+            <div style="font-size:11px;color:var(--text3);margin-bottom:4px;text-transform:uppercase;letter-spacing:.06em;font-family:monospace">GitHub</div>
+            <div style="font-size:13px;font-weight:600;color:var(--green-tx)" id="gh-status">● Conectado</div>
+            <div style="font-size:11px;color:var(--text3);margin-top:2px">camilabuenoIL/formacion</div>
+          </div>
+          <div style="padding:12px;background:#0A0A0A;border:1px solid var(--border);border-radius:6px">
+            <div style="font-size:11px;color:var(--text3);margin-bottom:4px;text-transform:uppercase;letter-spacing:.06em;font-family:monospace">Google Calendar</div>
+            <div style="font-size:13px;font-weight:600" id="cal-status-text">● Desconectado</div>
+            <div style="font-size:11px;color:var(--text3);margin-top:4px"><button class="btn btn-ghost btn-sm" onclick="authCalendar()">Conectar →</button></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /content -->
+</div><!-- /main -->
 
 <script>
-// ── KEYS ─────────────────────────────────────────────────────────────────────
-const GH_KEY  = 'il_gh_token_v3';
-const CAL_KEY = 'il_cal_token_v3';
-const REPO    = 'camilabuenoIL/formacion';
-const GHAPI   = 'https://api.github.com';
-const CAPI    = 'https://www.googleapis.com/calendar/v3';
-const CALID   = '808b334f4c90bb4b1eb29808d7c5cb5d0264486286c6ebc5ecd22c13e0dba77e@group.calendar.google.com';
-const GCL     = '1045894098226-s1619eg54tc79bg3rrimi4rnla72nvfn.apps.googleusercontent.com';
-const SCOPE   = 'https://www.googleapis.com/auth/calendar';
-const TZ      = 'America/Bogota';
-
-const EMAILS = {
-  'Jorge Pando':['jpando@inmobiliariolatam.com'],
-  'Walter Arias':['wlarias@inmobiliariolatam.com'],
-  'Camila Bueno':['cbueno@inmobiliariolatam.com'],
-  'Sofía Herreño':['sbueno@inmobiliariolatam.com'],
-  'Camila Bueno / Sofía Herreño':['cbueno@inmobiliariolatam.com','sbueno@inmobiliariolatam.com'],
-  'Brooke Villanueva':['bvillanueva@inmobiliariolatam.com'],
-  'Allison Villanueva':['avillanueva@inmobiliariolatam.com'],
-  'Paul Unsihuay Vila':['pvila@inmobiliariolatam.com'],
-  'Jorge Pando / Sofía Herreño':['jpando@inmobiliariolatam.com','sbueno@inmobiliariolatam.com'],
-  'Walter Arias / Jorge Pando':['wlarias@inmobiliariolatam.com','jpando@inmobiliariolatam.com'],
-};
+// ── CONFIG ────────────────────────────────────────────────────────────────────
+const GH_KEY   = 'il_gh_token_v4';
+const CAL_KEY  = 'il_cal_token_v4';
+const TEAM_KEY = 'il_team_v1';
+const REPO     = 'camilabuenoIL/formacion';
+const GHAPI    = 'https://api.github.com';
+const CAPI     = 'https://www.googleapis.com/calendar/v3';
+const CALID    = '808b334f4c90bb4b1eb29808d7c5cb5d0264486286c6ebc5ecd22c13e0dba77e@group.calendar.google.com';
+const GCL      = '1045894098226-s1619eg54tc79bg3rrimi4rnla72nvfn.apps.googleusercontent.com';
+const SCOPE    = 'https://www.googleapis.com/auth/calendar https://www.googleapis.com/auth/calendar.events';
+const TZ       = 'America/Bogota';
 
 const DATES = {
   1:'2026-05-18',2:'2026-05-19',3:'2026-05-20',4:'2026-05-21',5:'2026-05-22',
   6:'2026-05-25',7:'2026-05-26',8:'2026-05-27',9:'2026-05-28',10:'2026-05-29'
 };
 
+// Default team — loaded from localStorage if available
+let TEAM = JSON.parse(localStorage.getItem(TEAM_KEY) || 'null') || [
+  {name:'Jorge Pando',       email:'jpando@inmobiliariolatam.com'},
+  {name:'Walter Arias',      email:'wlarias@inmobiliariolatam.com'},
+  {name:'Camila Bueno',      email:'cbueno@inmobiliariolatam.com'},
+  {name:'Sofía Herreño',     email:'sbueno@inmobiliariolatam.com'},
+  {name:'Brooke Villanueva', email:'bvillanueva@inmobiliariolatam.com'},
+  {name:'Allison Villanueva',email:'avillanueva@inmobiliariolatam.com'},
+  {name:'Paul Unsihuay Vila',email:'pvila@inmobiliariolatam.com'},
+];
+
+function saveTeam() { localStorage.setItem(TEAM_KEY, JSON.stringify(TEAM)); }
+
+function getEmails(ownerStr) {
+  // Match by name — supports "Name1 / Name2" format
+  const names = ownerStr.split('/').map(n => n.trim());
+  const emails = [];
+  names.forEach(n => {
+    const m = TEAM.find(t => t.name.toLowerCase() === n.toLowerCase());
+    if (m && m.email) emails.push(m.email);
+  });
+  return emails;
+}
+
+// ── STATE ─────────────────────────────────────────────────────────────────────
 let DATA=null, SHA=null, isDirty=false, calTok=null, changed=new Set();
 
-// ── TOKEN MGMT ────────────────────────────────────────────────────────────────
+// ── TOKEN ─────────────────────────────────────────────────────────────────────
 function getGHToken() { return localStorage.getItem(GH_KEY) || ''; }
-
 function saveToken() {
-  const t = document.getElementById('gh-token-input').value.trim();
-  if (!t) { alert('Ingresa un token válido'); return; }
+  const t = document.getElementById('gh-inp').value.trim();
+  if (!t) { showStatus('Ingresa un token válido.', 'err'); return; }
   localStorage.setItem(GH_KEY, t);
-  showMain();
-}
-
-function resetToken() {
-  if (!confirm('¿Borrar el token guardado? Tendrás que ingresarlo nuevamente.')) return;
-  localStorage.removeItem(GH_KEY);
-  location.reload();
-}
-
-// ── SCREENS ───────────────────────────────────────────────────────────────────
-function showMain() {
   document.getElementById('setup-screen').style.display = 'none';
   document.getElementById('main-screen').style.display  = 'block';
   init();
 }
+function resetToken() {
+  if (!confirm('¿Borrar el token guardado?')) return;
+  localStorage.removeItem(GH_KEY);
+  location.reload();
+}
 
 // ── STATUS ─────────────────────────────────────────────────────────────────────
-function ss(msg, type) {
-  const b = document.getElementById('sb');
-  b.className = 'status-bar show s-' + (type||'info');
-  document.getElementById('sm').textContent = msg;
-  if (type === 'ok') setTimeout(() => b.classList.remove('show'), 5000);
-}
-function lg(m, c) {
-  const e = document.getElementById('log');
-  e.style.display = 'block';
-  e.innerHTML += '<span' + (c ? ' class="'+c+'"' : '') + '>' + m + '</span>\n';
-  e.scrollTop = e.scrollHeight;
+function showStatus(msg, type) {
+  const b = document.getElementById('status-bar');
+  b.className = 'status show s-' + (type||'info');
+  document.getElementById('status-msg').textContent = msg;
+  if (type==='ok') setTimeout(() => b.classList.remove('show'), 5000);
 }
 
-// ── DIRTY ──────────────────────────────────────────────────────────────────────
-function dirty(k) {
+// ── TABS ──────────────────────────────────────────────────────────────────────
+function showTab(id, el) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('tab-'+id).classList.add('active');
+  el.classList.add('active');
+}
+
+// ── DIRTY ─────────────────────────────────────────────────────────────────────
+function markDirty(key) {
   isDirty = true;
-  if (k) {
-    changed.add(k);
-    const b = document.getElementById('sy-'+k);
-    if (b) { b.textContent = 'Pendiente'; b.className = 'sync sync-pend'; }
+  if (key) {
+    changed.add(key);
+    const b = document.getElementById('sy-'+key);
+    if (b) { b.textContent='Pendiente'; b.className='sync-badge sync-pend'; }
   }
-  document.getElementById('pub-st').textContent = '⚡ ' + changed.size + ' sesión(es) modificadas';
-  document.getElementById('pub-st').style.color = '#E84E0F';
-  ['btn-pub','btn-pub2','btn-gh'].forEach(id => { const b=document.getElementById(id); if(b) b.disabled=false; });
+  const cnt = changed.size;
+  document.getElementById('pub-changes-count').textContent = cnt;
+  ['btn-pub-top','btn-pub-main','btn-pub-gh'].forEach(id => {
+    const b = document.getElementById(id); if (b) b.disabled = false;
+  });
 }
 
-// ── TIME ───────────────────────────────────────────────────────────────────────
+// ── TIME ──────────────────────────────────────────────────────────────────────
 function timeISO(dn, ts) {
   const date = DATES[dn]; if (!date) return {start:null,end:null};
   const p = ts.split('–').map(x => x.trim());
@@ -222,90 +310,88 @@ function timeISO(dn, ts) {
   return { start: date+'T'+fx(p[0]), end: date+'T'+fx(p[1]||p[0]) };
 }
 
-// ── GITHUB ──────────────────────────────────────────────────────────────────────
+// ── GITHUB ─────────────────────────────────────────────────────────────────────
 function ghF(p, o) {
-  o = o || {};
+  o = o||{};
   return fetch(GHAPI+p, Object.assign({}, o, {
     headers: Object.assign({
-      'Authorization': 'Bearer ' + getGHToken(),
-      'Accept': 'application/vnd.github+json',
-      'Content-Type': 'application/json'
-    }, o.headers || {})
+      'Authorization':'Bearer '+getGHToken(),
+      'Accept':'application/vnd.github+json',
+      'Content-Type':'application/json'
+    }, o.headers||{})
   }));
 }
-
 async function loadGH() {
-  ss('Cargando cronograma desde GitHub...', 'info');
+  showStatus('Cargando cronograma desde GitHub...', 'info');
   const r = await ghF('/repos/'+REPO+'/contents/schedule.json');
-  if (!r.ok) throw new Error('GitHub ' + r.status + '. Verifica tu token.');
+  if (!r.ok) throw new Error('GitHub '+r.status+'. Verifica tu token.');
   const m = await r.json(); SHA = m.sha;
   const bin = atob(m.content.replace(/\n/g,''));
   const bytes = new Uint8Array(bin.length);
   for (let i=0; i<bin.length; i++) bytes[i] = bin.charCodeAt(i);
   return JSON.parse(new TextDecoder('utf-8').decode(bytes));
 }
-
 async function saveGH(d) {
-  const s = JSON.stringify(d, null, 2);
+  const s = JSON.stringify(d,null,2);
   const utf8 = new TextEncoder().encode(s);
-  let bin = ''; utf8.forEach(b => bin += String.fromCharCode(b));
+  let bin=''; utf8.forEach(b => bin+=String.fromCharCode(b));
   const r = await ghF('/repos/'+REPO+'/contents/schedule.json', {
-    method: 'PUT',
+    method:'PUT',
     body: JSON.stringify({
-      message: 'Actualización cronograma · ' + new Date().toLocaleString('es-ES'),
-      content: btoa(bin),
-      sha: SHA
+      message: 'Actualización cronograma · '+new Date().toLocaleString('es-ES'),
+      content: btoa(bin), sha: SHA
     })
   });
-  if (!r.ok) { const e = await r.json(); throw new Error(e.message || r.status); }
+  if (!r.ok) { const e=await r.json(); throw new Error(e.message||r.status); }
   SHA = (await r.json()).content.sha;
 }
 
-// ── CALENDAR OAUTH ─────────────────────────────────────────────────────────────
+// ── CALENDAR AUTH ─────────────────────────────────────────────────────────────
 function authCalendar() {
   const st = Math.random().toString(36).slice(2);
   sessionStorage.setItem('oas', st);
   const redir = location.href.split('?')[0].split('#')[0];
   const p = new URLSearchParams({
-    client_id: GCL, redirect_uri: redir,
-    response_type: 'token', scope: SCOPE, state: st, prompt: 'consent'
+    client_id:GCL, redirect_uri:redir,
+    response_type:'token', scope:SCOPE, state:st, prompt:'consent'
   });
-  location.href = 'https://accounts.google.com/o/oauth2/v2/auth?' + p;
+  location.href = 'https://accounts.google.com/o/oauth2/v2/auth?'+p;
 }
-
 function handleOAuth() {
   if (!location.hash.includes('access_token')) return false;
   const p = new URLSearchParams(location.hash.substring(1));
   const t = p.get('access_token'); if (!t) return false;
-  history.replaceState(null, '', location.pathname);
+  history.replaceState(null,'',location.pathname);
   localStorage.setItem(CAL_KEY, t); calTok = t; setCalUI(true);
-  ss('✓ Google Calendar conectado', 'ok'); return true;
+  showStatus('✓ Google Calendar conectado', 'ok'); return true;
 }
-
 function loadCalTok() {
   const t = localStorage.getItem(CAL_KEY);
-  if (t) { calTok = t; setCalUI(true); return true; } return false;
+  if (t) { calTok=t; setCalUI(true); return true; } return false;
 }
-
 function setCalUI(on) {
-  const b = document.getElementById('cal-badge'), btn = document.getElementById('btn-cal');
+  const badge = document.getElementById('cal-badge');
+  const btn   = document.getElementById('btn-cal-connect');
+  const stat  = document.getElementById('cal-status-text');
   if (on) {
-    b.textContent = '📅 Calendar: conectado'; b.className = 'cal-badge cal-on';
-    btn.textContent = '✓ Conectado'; btn.disabled = true; btn.style.opacity = '.4';
+    badge.textContent='📅 Calendar conectado'; badge.className='badge badge-on';
+    btn.textContent='✓ Conectado'; btn.disabled=true; btn.style.opacity='.4';
+    if (stat) { stat.textContent='● Conectado'; stat.style.color='var(--green-tx)'; }
   } else {
-    b.textContent = '📅 Calendar: desconectado'; b.className = 'cal-badge cal-off';
-    btn.textContent = '🔐 Conectar Calendar'; btn.disabled = false; btn.style.opacity = '';
+    badge.textContent='📅 Calendar desconectado'; badge.className='badge badge-off';
+    btn.textContent='🔐 Conectar Calendar'; btn.disabled=false; btn.style.opacity='';
+    if (stat) { stat.textContent='● Desconectado'; stat.style.color='var(--red-tx)'; }
   }
 }
 
-// ── CALENDAR API ───────────────────────────────────────────────────────────────
+// ── CALENDAR API ──────────────────────────────────────────────────────────────
 async function calF(p, o) {
-  const t = calTok || localStorage.getItem(CAL_KEY);
-  const r = await fetch(CAPI+p, Object.assign({}, o, {
+  const t = calTok||localStorage.getItem(CAL_KEY);
+  const r = await fetch(CAPI+p, Object.assign({},o,{
     headers: Object.assign({'Authorization':'Bearer '+t,'Content-Type':'application/json'}, o?.headers||{})
   }));
-  if (r.status === 401) {
-    localStorage.removeItem(CAL_KEY); calTok = null; setCalUI(false);
+  if (r.status===401) {
+    localStorage.removeItem(CAL_KEY); calTok=null; setCalUI(false);
     throw new Error('Token de Calendar expirado. Reconecta y vuelve a publicar.');
   }
   return r;
@@ -313,20 +399,45 @@ async function calF(p, o) {
 
 async function updateCalEv(eid, s, dn) {
   const t = timeISO(dn, s.time); if (!t.start) return;
-  const v = s.modality === 'Virtual';
-  const em = s.isReunion ? '🟣' : s.isEval ? '🏆' : v ? '💻' : '📍';
-  const att = (EMAILS[s.owner]||[]).map(e => ({email:e}));
+  const virt = s.modality==='Virtual';
+  const em = s.isReunion?'🟣':s.isEval?'🏆':virt?'💻':'📍';
+  const att = getEmails(s.owner).map(e => ({email:e}));
   const body = {
     summary: em+' '+s.title+' · Día '+dn,
-    description: '<b>Programa de Formación Agente Inmobiliario</b><br><br>'+(v?'💻 <b>Virtual</b>':'📍 <b>Presencial</b>')+' · Día '+dn+' · '+s.slot+'<br>👤 Responsable: '+s.owner+'<br><br>'+s.desc+'<br><br>📅 <a href="https://camilabuenoil.github.io/formacion/">Ver cronograma completo</a>',
-    start: {dateTime:t.start,timeZone:TZ}, end: {dateTime:t.end,timeZone:TZ},
-    attendees: att, visibility: 'public'
+    description: '<b>Programa de Formación Agente Inmobiliario</b><br><br>'+(virt?'💻 <b>Virtual</b>':'📍 <b>Presencial</b>')+' · Día '+dn+' · '+s.slot+'<br>👤 Responsable: '+s.owner+'<br><br>'+s.desc+'<br><br>📅 <a href="https://camilabuenoil.github.io/formacion/">Ver cronograma completo</a>',
+    start:{dateTime:t.start,timeZone:TZ}, end:{dateTime:t.end,timeZone:TZ},
+    attendees:att, visibility:'public'
   };
-  const r = await calF('/calendars/'+encodeURIComponent(CALID)+'/events/'+eid, {method:'PATCH', body:JSON.stringify(body)});
-  if (!r.ok) { const e = await r.json(); throw new Error(eid+': '+(e.error?.message||r.status)); }
+  const r = await calF('/calendars/'+encodeURIComponent(CALID)+'/events/'+eid, {method:'PATCH',body:JSON.stringify(body)});
+  if (!r.ok) { const e=await r.json(); throw new Error(eid+': '+(e.error?.message||r.status)); }
 }
 
-// ── COLLECT ────────────────────────────────────────────────────────────────────
+async function createCalEv(s, dn, withMeet) {
+  const t = timeISO(dn, s.time); if (!t.start) return null;
+  const virt = s.modality==='Virtual';
+  const em = virt?'💻':'📍';
+  const att = getEmails(s.owner).map(e => ({email:e}));
+  const body = {
+    summary: em+' '+s.title+' · Día '+dn,
+    description: '<b>Programa de Formación Agente Inmobiliario</b><br><br>'+(virt?'💻 <b>Virtual</b>':'📍 <b>Presencial</b>')+' · Día '+dn+' · '+s.slot+'<br>👤 Responsable: '+s.owner+'<br><br>'+s.desc+'<br><br>📅 <a href="https://camilabuenoil.github.io/formacion/">Ver cronograma completo</a>',
+    start:{dateTime:t.start,timeZone:TZ}, end:{dateTime:t.end,timeZone:TZ},
+    attendees:att, visibility:'public',
+    reminders:{useDefault:false, overrides:[{method:'popup',minutes:30},{method:'popup',minutes:120},{method:'email',minutes:120}]},
+  };
+  if (withMeet) {
+    body.conferenceData = { createRequest: { requestId: Math.random().toString(36).slice(2), conferenceSolutionKey:{type:'hangoutsMeet'} } };
+  }
+  const url = '/calendars/'+encodeURIComponent(CALID)+'/events' + (withMeet?'?conferenceDataVersion=1':'');
+  const r = await calF(url, {method:'POST', body:JSON.stringify(body)});
+  if (!r.ok) { const e=await r.json(); throw new Error(e.error?.message||r.status); }
+  const ev = await r.json();
+  return {
+    eventId: ev.id,
+    meetUrl: ev.conferenceData?.entryPoints?.find(ep=>ep.entryPointType==='video')?.uri || null
+  };
+}
+
+// ── COLLECT ───────────────────────────────────────────────────────────────────
 function collect() {
   const d = JSON.parse(JSON.stringify(DATA));
   d.startDate   = document.getElementById('meta-start').value;
@@ -341,120 +452,363 @@ function collect() {
     s.slot     = g('sl-'+k) || s.slot;
     s.title    = g('ti-'+k) || s.title;
     s.desc     = g('d-'+k)  || s.desc;
+    const meetInput = document.getElementById('meet-'+k);
+    if (meetInput) s.meetUrl = meetInput.value || s.meetUrl;
   })));
   return d;
 }
 
-// ── PUBLISH ────────────────────────────────────────────────────────────────────
+// ── PUBLISH ───────────────────────────────────────────────────────────────────
+function lg(m,c) {
+  const e=document.getElementById('pub-log');
+  e.style.display='block';
+  e.innerHTML+='<span'+(c?' class="'+c+'"':'')+'>'+m+'</span>\n';
+  e.scrollTop=e.scrollHeight;
+}
 async function publishAll() {
   if (!calTok && !localStorage.getItem(CAL_KEY)) {
-    ss('Calendar no conectado. Publicando solo en GitHub.', 'warn');
+    showStatus('Calendar no conectado — publicando solo en GitHub.', 'warn');
     await _pub(false); return;
   }
   await _pub(true);
 }
-async function pubGH() { await _pub(false); }
+async function pubGHOnly() { await _pub(false); }
 
 async function _pub(cal) {
-  ['btn-pub','btn-pub2','btn-gh'].forEach(id => { const b=document.getElementById(id); if(b) b.disabled=true; });
-  document.getElementById('btn-pub').textContent = '⏳ Publicando...';
-  document.getElementById('log').innerHTML = '';
-  ss('Publicando...', 'info');
+  ['btn-pub-top','btn-pub-main','btn-pub-gh'].forEach(id=>{const b=document.getElementById(id);if(b)b.disabled=true;});
+  document.getElementById('btn-pub-top').innerHTML='⏳';
+  document.getElementById('pub-log').innerHTML='';
+  showStatus('Publicando...','info');
+  // Switch to publish tab
+  showTab('publicar', document.querySelectorAll('.tab')[2]);
   try {
     const nd = collect();
     nd.lastUpdated = new Date().toLocaleDateString('es-ES',{day:'numeric',month:'long',year:'numeric'});
     document.getElementById('meta-upd').value = nd.lastUpdated;
-    lg('⬆ Guardando en GitHub...', 'info');
-    await saveGH(nd); DATA = nd;
-    lg('✓ GitHub actualizado', 'ok');
+    lg('⬆ Guardando en GitHub...','info');
+    await saveGH(nd); DATA=nd;
+    lg('✓ GitHub actualizado','ok');
     let ok=0, errs=[];
-    if (cal && changed.size > 0) {
-      lg('\n📅 Sincronizando '+changed.size+' evento(s) en Google Calendar...', 'info');
+    if (cal && changed.size>0) {
+      lg('\n📅 Sincronizando '+changed.size+' evento(s) en Calendar...','info');
       for (const k of changed) {
         const [wi,di,si] = k.split('-').map(Number);
         const s = nd.weeks[wi]?.days[di]?.sessions[si];
         const dn = nd.weeks[wi]?.days[di]?.num;
         const eid = s?.calEventId;
-        if (!s || !eid) { lg('  ⚠ Sin eventId: '+k, 'warn'); continue; }
+        if (!s||!eid) { lg('  ⚠ Sin eventId en sesión '+k,'warn'); continue; }
         try {
-          await updateCalEv(eid, s, dn); ok++;
-          const b = document.getElementById('sy-'+k);
-          if (b) { b.textContent='Sincronizado'; b.className='sync sync-ok'; }
-          lg('  ✓ '+s.title.substring(0,45), 'ok');
-        } catch(e) { errs.push(e.message); lg('  ✕ '+e.message, 'err'); }
+          await updateCalEv(eid,s,dn); ok++;
+          const b=document.getElementById('sy-'+k);
+          if(b){b.textContent='Sincronizado';b.className='sync-badge sync-ok';}
+          lg('  ✓ '+s.title.substring(0,50),'ok');
+        } catch(e) { errs.push(e.message); lg('  ✕ '+e.message,'err'); }
       }
     }
-    changed.clear(); isDirty = false;
-    document.getElementById('last-pub').textContent = nd.lastUpdated;
-    document.getElementById('pub-st').textContent = '✓ Publicado';
-    document.getElementById('pub-st').style.color = '#4ADE80';
-    let msg = '✓ Publicado en GitHub. Página de agentes actualizada en ~30s.';
-    if (cal && ok > 0) msg += ' · '+ok+' evento(s) en Calendar.';
-    if (errs.length) msg += ' · Errores: '+errs.join('; ');
-    ss(msg, errs.length ? 'warn' : 'ok');
+    changed.clear(); isDirty=false;
+    document.getElementById('pub-changes-count').textContent='0';
+    document.getElementById('last-pub-display').textContent=nd.lastUpdated;
+    let msg='✓ Publicado en GitHub. Página actualizada en ~30s.';
+    if(cal&&ok>0) msg+=' · '+ok+' evento(s) en Calendar.';
+    if(errs.length) msg+=' · Errores: '+errs.join('; ');
+    showStatus(msg, errs.length?'warn':'ok');
+    lg('\n'+msg,'ok');
   } catch(e) {
-    ss('❌ ' + e.message, 'err');
-    lg('❌ ' + e.message, 'err');
+    showStatus('❌ '+e.message,'err'); lg('❌ '+e.message,'err');
   } finally {
-    ['btn-pub','btn-pub2','btn-gh'].forEach(id => { const b=document.getElementById(id); if(b) b.disabled=!isDirty; });
-    document.getElementById('btn-pub').textContent = '🚀 Publicar';
+    ['btn-pub-top','btn-pub-main','btn-pub-gh'].forEach(id=>{const b=document.getElementById(id);if(b)b.disabled=!isDirty;});
+    document.getElementById('btn-pub-top').innerHTML='🚀 Publicar';
   }
 }
 
-// ── RENDER ─────────────────────────────────────────────────────────────────────
-function render() {
-  document.getElementById('meta-start').value = DATA.startDate || '';
-  document.getElementById('meta-upd').value   = DATA.lastUpdated || '';
-  document.getElementById('meta-card').style.display = 'block';
-  document.getElementById('pub-card').style.display  = 'block';
-  document.getElementById('last-pub').textContent = DATA.lastUpdated || '–';
-  const con = document.getElementById('editor');
+// ── ADD SESSION ───────────────────────────────────────────────────────────────
+async function addSession(wi, di) {
+  const day = DATA.weeks[wi].days[di];
+  const formId = 'add-form-'+wi+'-'+di;
+  const form = document.getElementById(formId);
+  form.style.display = form.style.display==='none'?'block':'none';
+}
+
+async function saveNewSession(wi, di) {
+  const day = DATA.weeks[wi].days[di];
+  const g = id => document.getElementById(id)?.value?.trim();
+  const fid = 'nf-'+wi+'-'+di+'-';
+  const newSession = {
+    time:     g(fid+'time')     || '9:00 – 10:00',
+    owner:    g(fid+'owner')    || '',
+    slot:     g(fid+'slot')     || 'Mañana',
+    modality: g(fid+'mod')      || 'Presencial',
+    title:    g(fid+'title')    || 'Nueva sesión',
+    desc:     g(fid+'desc')     || '',
+    meetUrl:  '',
+    calEventId: ''
+  };
+
+  const withMeet = newSession.modality === 'Virtual' && (calTok||localStorage.getItem(CAL_KEY));
+  const createEvent = calTok || localStorage.getItem(CAL_KEY);
+
+  if (createEvent) {
+    showStatus('Creando evento en Google Calendar...', 'info');
+    try {
+      const result = await createCalEv(newSession, day.num, withMeet && newSession.modality==='Virtual');
+      if (result) {
+        newSession.calEventId = result.eventId;
+        if (result.meetUrl) newSession.meetUrl = result.meetUrl;
+        showStatus('✓ Evento creado en Calendar'+(result.meetUrl?' con Meet link':''), 'ok');
+      }
+    } catch(e) {
+      showStatus('⚠ Sesión agregada sin evento Calendar: '+e.message, 'warn');
+    }
+  }
+
+  DATA.weeks[wi].days[di].sessions.push(newSession);
+  isDirty = true;
+  markDirty();
+
+  // Hide form and re-render
+  const form = document.getElementById('add-form-'+wi+'-'+di);
+  if (form) {
+    form.querySelectorAll('input,textarea,select').forEach(el => el.value='');
+    form.style.display='none';
+  }
+  renderEditor();
+  showStatus('✓ Sesión agregada. Haz clic en Publicar para guardar.', 'ok');
+}
+
+// ── REMOVE SESSION ────────────────────────────────────────────────────────────
+function removeSession(wi, di, si) {
+  if (!confirm('¿Eliminar esta sesión del cronograma?')) return;
+  DATA.weeks[wi].days[di].sessions.splice(si, 1);
+  isDirty = true;
+  markDirty();
+  renderEditor();
+}
+
+// ── MEET MANAGEMENT ───────────────────────────────────────────────────────────
+async function createMeetForSession(wi, di, si) {
+  const s = DATA.weeks[wi].days[di].sessions[si];
+  const dn = DATA.weeks[wi].days[di].num;
+  const key = wi+'-'+di+'-'+si;
+  if (!calTok && !localStorage.getItem(CAL_KEY)) {
+    showStatus('Conecta Google Calendar primero.', 'err'); return;
+  }
+  showStatus('Creando Meet...', 'info');
+  try {
+    const result = await createCalEv(s, dn, true);
+    if (result) {
+      DATA.weeks[wi].days[di].sessions[si].calEventId = result.eventId;
+      if (result.meetUrl) {
+        DATA.weeks[wi].days[di].sessions[si].meetUrl = result.meetUrl;
+        showStatus('✓ Meet creado: '+result.meetUrl, 'ok');
+      }
+      markDirty(key);
+      renderEditor();
+    }
+  } catch(e) { showStatus('❌ '+e.message,'err'); }
+}
+
+// ── TEAM MANAGEMENT ───────────────────────────────────────────────────────────
+function renderTeam() {
+  const list = document.getElementById('team-list');
+  if (!list) return;
   let html = '';
+  TEAM.forEach((m, i) => {
+    html += `<div class="team-row">
+      <div class="fe" style="margin:0"><label>Nombre</label>
+        <input type="text" value="${esc(m.name)}" oninput="TEAM[${i}].name=this.value;saveTeam()" /></div>
+      <div class="fe" style="margin:0"><label>Email corporativo</label>
+        <input type="email" value="${esc(m.email)}" oninput="TEAM[${i}].email=this.value;saveTeam()" /></div>
+      <div style="padding-top:16px">
+        <button class="btn btn-red btn-sm" onclick="removeTeamMember(${i})">✕</button>
+      </div>
+    </div>`;
+  });
+  list.innerHTML = html;
+  // Update owner selects in editor with new team names
+  updateOwnerSelects();
+}
+
+function addTeamMember() {
+  TEAM.push({name:'', email:''});
+  saveTeam();
+  renderTeam();
+}
+function removeTeamMember(i) {
+  if (!confirm('¿Eliminar a '+TEAM[i].name+' del equipo?')) return;
+  TEAM.splice(i,1);
+  saveTeam();
+  renderTeam();
+}
+function updateOwnerSelects() {
+  // Refresh any owner datalists in the editor
+  const dl = document.getElementById('team-names-list');
+  if (!dl) return;
+  dl.innerHTML = TEAM.map(m => `<option value="${esc(m.name)}">`).join('');
+}
+
+// ── EDITOR RENDER ─────────────────────────────────────────────────────────────
+function esc(v) {
+  return String(v||'').replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;');
+}
+
+function renderEditor() {
+  document.getElementById('meta-start').value = DATA.startDate||'';
+  document.getElementById('meta-upd').value   = DATA.lastUpdated||'';
+  document.getElementById('last-pub-display').textContent = DATA.lastUpdated||'–';
+
+  const con = document.getElementById('schedule-editor');
+  // Team names datalist for autocomplete
+  let html = `<datalist id="team-names-list">${TEAM.map(m=>`<option value="${esc(m.name)}">`).join('')}</datalist>`;
+
   DATA.weeks.forEach((week, wi) => {
-    html += '<div class="week-hdr"><span class="wp '+(wi===0?'wp-s1':'wp-s2')+'">'+week.label+'</span><span class="wt">'+week.title+' · '+week.subtitle+'</span></div>';
+    html += `<div class="week-hdr">
+      <span class="wp ${wi===0?'wp-s1':'wp-s2'}">${week.label}</span>
+      <span class="wt">${week.title} · ${week.subtitle}</span>
+    </div>`;
+
     week.days.forEach((day, di) => {
-      html += '<div class="day-bar"><span class="dn">DÍA '+day.num+'</span>'+day.date+'</div><div class="sessions">';
+      html += `<div class="day-wrap">
+        <div class="day-bar">
+          <span class="day-num-pill">DÍA ${day.num}</span>${day.date}
+        </div>
+        <div class="sessions-wrap">`;
+
       day.sessions.forEach((s, si) => {
-        const k = wi+'-'+di+'-'+si;
+        const k = `${wi}-${di}-${si}`;
         const has = !!s.calEventId;
-        const sc = has ? 'sync-ok' : 'sync-none';
-        const st = has ? 'Sincronizado' : 'Sin evento';
-        function esc(v){ return String(v).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;'); }
-        html += '<div class="se"><div class="se-h"><span class="sn">S'+(si+1)+'</span><span class="sp" id="sp-'+k+'">'+esc(s.title)+'</span><span class="sync '+sc+'" id="sy-'+k+'">'+st+'</span></div>';
-        html += '<div class="g3">';
-        html += '<div class="fe"><label>Hora</label><input type="text" id="t-'+k+'" value="'+esc(s.time)+'" oninput="dirty(\''+k+'\');document.getElementById(\'sp-'+k+'\').textContent=document.getElementById(\'ti-'+k+'\').value" /></div>';
-        html += '<div class="fe"><label>Responsable</label><input type="text" id="o-'+k+'" value="'+esc(s.owner)+'" oninput="dirty(\''+k+'\')" /></div>';
-        html += '<div class="fe"><label>Modalidad</label><select id="m-'+k+'" onchange="dirty(\''+k+'\')"><option '+(s.modality==='Presencial'?'selected':'')+'>Presencial</option><option '+(s.modality==='Virtual'?'selected':'')+'>Virtual</option><option '+(s.modality==='Presencial/Virtual'?'selected':'')+'>Presencial/Virtual</option></select></div></div>';
-        html += '<div class="g2"><div class="fe"><label>Franja</label><select id="sl-'+k+'" onchange="dirty(\''+k+'\')"><option '+(s.slot==='Mañana'?'selected':'')+'>Mañana</option><option '+(s.slot==='Tarde'?'selected':'')+'>Tarde</option></select></div>';
-        html += '<div class="fe"><label>Título</label><input type="text" id="ti-'+k+'" value="'+esc(s.title)+'" oninput="dirty(\''+k+'\');document.getElementById(\'sp-'+k+'\').textContent=this.value" /></div></div>';
-        html += '<div class="fe"><label>Descripción</label><textarea id="d-'+k+'" oninput="dirty(\''+k+'\')">'+esc(s.desc)+'</textarea></div></div>';
+        const sc = has?'sync-ok':'sync-none';
+        const st = has?'Sincronizado':'Sin evento Calendar';
+        const isVirt = s.modality==='Virtual';
+
+        html += `<div class="se">
+          <div class="se-head">
+            <span class="se-num">S${si+1}</span>
+            <span class="se-title" id="sp-${k}">${esc(s.title)}</span>
+            <span class="sync-badge ${sc}" id="sy-${k}">${st}</span>
+          </div>
+          <div class="grid3">
+            <div class="fe"><label>Hora</label>
+              <input type="text" id="t-${k}" value="${esc(s.time)}" oninput="markDirty('${k}');document.getElementById('sp-${k}').textContent=document.getElementById('ti-${k}').value" /></div>
+            <div class="fe"><label>Responsable</label>
+              <input type="text" id="o-${k}" value="${esc(s.owner)}" list="team-names-list" oninput="markDirty('${k}')" /></div>
+            <div class="fe"><label>Modalidad</label>
+              <select id="m-${k}" onchange="markDirty('${k}');handleModalityChange('${k}')">
+                <option ${s.modality==='Presencial'?'selected':''}>Presencial</option>
+                <option ${s.modality==='Virtual'?'selected':''}>Virtual</option>
+                <option ${s.modality==='Presencial/Virtual'?'selected':''}>Presencial/Virtual</option>
+              </select></div>
+          </div>
+          <div class="grid2">
+            <div class="fe"><label>Franja</label>
+              <select id="sl-${k}" onchange="markDirty('${k}')">
+                <option ${s.slot==='Mañana'?'selected':''}>Mañana</option>
+                <option ${s.slot==='Tarde'?'selected':''}>Tarde</option>
+              </select></div>
+            <div class="fe"><label>Título</label>
+              <input type="text" id="ti-${k}" value="${esc(s.title)}" oninput="markDirty('${k}');document.getElementById('sp-${k}').textContent=this.value" /></div>
+          </div>
+          <div class="fe"><label>Descripción</label>
+            <textarea id="d-${k}" oninput="markDirty('${k}')">${esc(s.desc)}</textarea></div>`;
+
+        // Meet section
+        html += `<div id="meet-section-${k}">`;
+        if (s.meetUrl) {
+          html += `<div class="meet-row">
+            <div class="meet-link">🎥 <a href="${esc(s.meetUrl)}" target="_blank">${esc(s.meetUrl)}</a></div>
+            <input type="text" id="meet-${k}" value="${esc(s.meetUrl)}" style="display:none" oninput="markDirty('${k}')" />
+            <button class="btn btn-ghost btn-sm" onclick="editMeetLink('${k}')">✏️ Editar</button>
+          </div>`;
+        } else if (isVirt) {
+          html += `<div class="meet-row">
+            <input type="text" id="meet-${k}" value="" placeholder="Pegar link de Meet o crear automáticamente →" style="flex:1;background:#0A0A0A;border:1px solid var(--border2);border-radius:4px;padding:6px 10px;font-size:11px;color:var(--text)" oninput="markDirty('${k}')" />
+            <button class="btn btn-green btn-sm" onclick="createMeetForSession(${wi},${di},${si})">🎥 Crear Meet</button>
+          </div>`;
+        }
+        html += `</div>`;
+
+        // Actions
+        html += `<div class="se-actions">
+          <button class="btn btn-ghost btn-sm" onclick="removeSession(${wi},${di},${si})">🗑 Eliminar sesión</button>
+        </div></div>`;
       });
-      html += '</div>';
+
+      // Add session button + form
+      html += `
+        <button class="btn btn-ghost btn-sm add-day-btn" onclick="toggleAddForm(${wi},${di})">+ Agregar sesión en este día</button>
+        <div class="add-session-form" id="add-form-${wi}-${di}">
+          <div style="font-size:12px;font-weight:600;color:var(--amber-tx);margin-bottom:12px">Nueva sesión — Día ${day.num} · ${day.date}</div>
+          <div class="grid4">
+            <div class="fe"><label>Hora</label><input type="text" id="nf-${wi}-${di}-time" placeholder="9:00 – 10:00" /></div>
+            <div class="fe"><label>Responsable</label><input type="text" id="nf-${wi}-${di}-owner" list="team-names-list" /></div>
+            <div class="fe"><label>Franja</label>
+              <select id="nf-${wi}-${di}-slot"><option>Mañana</option><option>Tarde</option></select></div>
+            <div class="fe"><label>Modalidad</label>
+              <select id="nf-${wi}-${di}-mod"><option>Presencial</option><option>Virtual</option><option>Presencial/Virtual</option></select></div>
+          </div>
+          <div class="fe"><label>Título de la sesión</label><input type="text" id="nf-${wi}-${di}-title" /></div>
+          <div class="fe"><label>Descripción</label><textarea id="nf-${wi}-${di}-desc" rows="2"></textarea></div>
+          <div style="display:flex;gap:8px;margin-top:8px">
+            <button class="btn btn-orange btn-sm" onclick="saveNewSession(${wi},${di})">✓ Guardar sesión ${(calTok||localStorage.getItem(CAL_KEY))?'+ crear evento Calendar':''}</button>
+            <button class="btn btn-ghost btn-sm" onclick="toggleAddForm(${wi},${di})">Cancelar</button>
+          </div>
+        </div>
+        </div></div>`;
     });
   });
+
   con.innerHTML = html;
 }
 
-// ── INIT ───────────────────────────────────────────────────────────────────────
+function toggleAddForm(wi, di) {
+  const f = document.getElementById('add-form-'+wi+'-'+di);
+  if (f) f.style.display = f.style.display==='none'?'block':'none';
+}
+
+function handleModalityChange(k) {
+  // If switching to virtual, show meet section
+  const mod = document.getElementById('m-'+k)?.value;
+  const ms = document.getElementById('meet-section-'+k);
+  if (!ms) return;
+  const wi=parseInt(k.split('-')[0]), di=parseInt(k.split('-')[1]), si=parseInt(k.split('-')[2]);
+  const s = DATA.weeks[wi]?.days[di]?.sessions[si];
+  if (!s) return;
+  if (mod==='Virtual' && !s.meetUrl) {
+    ms.innerHTML = `<div class="meet-row">
+      <input type="text" id="meet-${k}" value="" placeholder="Pegar link o crear automáticamente →" style="flex:1;background:#0A0A0A;border:1px solid var(--border2);border-radius:4px;padding:6px 10px;font-size:11px;color:var(--text)" oninput="markDirty('${k}')" />
+      <button class="btn btn-green btn-sm" onclick="createMeetForSession(${wi},${di},${si})">🎥 Crear Meet</button>
+    </div>`;
+  } else if (mod!=='Virtual') {
+    ms.innerHTML = '';
+  }
+}
+
+function editMeetLink(k) {
+  const wi=parseInt(k.split('-')[0]),di=parseInt(k.split('-')[1]),si=parseInt(k.split('-')[2]);
+  const s = DATA.weeks[wi]?.days[di]?.sessions[si];
+  const ms = document.getElementById('meet-section-'+k);
+  ms.innerHTML = `<div class="meet-row">
+    <input type="text" id="meet-${k}" value="${esc(s.meetUrl||'')}" style="flex:1;background:#0A0A0A;border:1px solid var(--border2);border-radius:4px;padding:6px 10px;font-size:11px;color:var(--text)" oninput="markDirty('${k}')" />
+    <button class="btn btn-green btn-sm" onclick="createMeetForSession(${wi},${di},${si})">🎥 Nuevo Meet</button>
+  </div>`;
+}
+
+// ── INIT ──────────────────────────────────────────────────────────────────────
 async function init() {
   handleOAuth() || loadCalTok();
+  renderTeam();
   try {
     DATA = await loadGH();
-    render();
-    ss('✓ Cronograma cargado. Listo para editar.', 'ok');
+    renderEditor();
+    showStatus('✓ Cronograma cargado. Listo para editar.', 'ok');
   } catch(e) {
-    ss('❌ Error cargando desde GitHub: ' + e.message, 'err');
+    showStatus('❌ Error cargando desde GitHub: '+e.message, 'err');
   }
 }
 
 window.addEventListener('beforeunload', e => { if (isDirty) { e.preventDefault(); e.returnValue=''; } });
 
-// START
-if (location.hash.includes('access_token')) {
-  // OAuth callback — need main screen
-  document.getElementById('main-screen').style.display = 'block';
-  init();
-} else if (getGHToken()) {
+// Boot
+if (location.hash.includes('access_token') || getGHToken()) {
   document.getElementById('main-screen').style.display = 'block';
   init();
 } else {
