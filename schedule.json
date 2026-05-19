@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "18 de mayo de 2026",
+  "lastUpdated": "19 de mayo de 2026",
   "startDate": "Lunes 18 de mayo de 2026",
   "weeks": [
     {
@@ -99,16 +99,25 @@
           "badge": null,
           "sessions": [
             {
-              "time": "9:00 – 11:00",
+              "time": "9:00 – 10:00",
               "owner": "Jorge Pando",
               "slot": "Mañana",
               "modality": "Presencial",
-              "title": "Derecho inmobiliario + Calificación comercial y matriz del lead",
-              "desc": "9:00–10:00 · Marco legal básico: contratos, escrituras, due diligence · límites del rol del agente y momentos de escalamiento · 10:00–11:00 · Matriz de calificación: presupuesto, zona, forma de pago, urgencia, decisión y disponibilidad",
+              "title": "Derecho inmobiliario — documentación y gestión",
+              "desc": "Marco legal básico: contratos, escrituras, due diligence · límites del rol del agente · momentos de escalamiento y documentos que debe conocer",
               "calEventId": "trphjdmb0or560pr2slug52v7s"
             },
             {
-              "time": "2:00 – 4:00",
+              "time": "10:00 – 11:00",
+              "owner": "Jorge Pando",
+              "slot": "Mañana",
+              "modality": "Presencial",
+              "title": "Calificación comercial y matriz del lead",
+              "desc": "Presupuesto, zona, forma de pago, urgencia, decisión y disponibilidad · plantilla de calificación lista para usar desde el primer lead",
+              "calEventId": "491ci5sn8ovnpljt3uad2v7v3s"
+            },
+            {
+              "time": "3:00 – 5:00",
               "owner": "Camila Bueno / Sofía Herreño",
               "slot": "Tarde",
               "modality": "Virtual",
@@ -135,7 +144,7 @@
               "calEventId": "mrtq0vjvinke9l5vrctiig7gl8"
             },
             {
-              "time": "2:30 – 3:30",
+              "time": "2:00 – 3:00",
               "owner": "Camila Bueno / Sofía Herreño",
               "slot": "Tarde",
               "modality": "Virtual",
@@ -204,6 +213,15 @@
               "calEventId": "bd1vj7h5e31pv8uqmjj6591elo"
             },
             {
+              "time": "11:00 – 12:00",
+              "owner": "Walter Arias",
+              "slot": "Mañana",
+              "modality": "Presencial",
+              "title": "Tipos de negocio, comisiones y esquema de referidos",
+              "desc": "Tipos de negocio (Tipo 1 al 4) · modelos de comisión y cómo escalan · esquema de referidos Nivel 1 y Nivel 2 · ejemplos prácticos de liquidación · reglas de trazabilidad para proteger la comisión",
+              "calEventId": "1ffa0jcja6bdqinjjv71hmb9f8"
+            },
+            {
               "time": "3:00 – 5:00",
               "owner": "Brooke Villanueva",
               "slot": "Tarde",
@@ -247,7 +265,7 @@
           "sessions": [
             {
               "time": "10:00 – 12:00",
-              "owner": "Jorge Pando",
+              "owner": "Paul Unsihuay Vila",
               "slot": "Mañana",
               "modality": "Presencial",
               "title": "ACM — Análisis comparativo de mercado y presentación comercial",
@@ -255,7 +273,7 @@
               "calEventId": "f2fatl2p6a7psk0b36h8b6uot8"
             },
             {
-              "time": "2:30 – 4:00",
+              "time": "3:00 – 4:30",
               "owner": "Sofía Herreño",
               "slot": "Tarde",
               "modality": "Virtual",
@@ -401,48 +419,54 @@
     },
     {
       "num": "17",
+      "title": "Tipos de negocio, comisiones y esquema de referidos",
+      "owner": "Walter Arias",
+      "dia": "Día 7 · Mañana 11:00 · Presencial"
+    },
+    {
+      "num": "18",
       "title": "Notion 2ª cap. — Inventario y gestión de información",
       "owner": "Brooke Villanueva",
       "dia": "Día 7 · Tarde 3:00 · Presencial"
     },
     {
-      "num": "18",
+      "num": "19",
       "title": "CRM 2ª cap. — Gestión de leads",
       "owner": "Sofía Herreño",
       "dia": "Día 8 · Mañana 10:30 · Virtual"
     },
     {
-      "num": "19",
+      "num": "20",
       "title": "Técnicas de seguimiento y captación de propiedades",
       "owner": "Jorge Pando",
       "dia": "Día 8 · Tarde 3:00 · Presencial"
     },
     {
-      "num": "20",
-      "title": "ACM + presentación comercial de propiedades y portales",
-      "owner": "Jorge Pando",
+      "num": "21",
+      "title": "ACM — Análisis comparativo de mercado y presentación comercial",
+      "owner": "Paul Unsihuay Vila",
       "dia": "Día 9 · Mañana 10:00 · Presencial"
     },
     {
-      "num": "21",
+      "num": "22",
       "title": "CRM 3ª cap. — Gestión de negocios",
       "owner": "Sofía Herreño",
       "dia": "Día 9 · Tarde 3:00 · Virtual"
     },
     {
-      "num": "22",
+      "num": "23",
       "title": "Simulación de visita y caso práctico en CRM",
       "owner": "Jorge Pando / Sofía Herreño",
       "dia": "Día 10 · Mañana 11:00 · Presencial"
     },
     {
-      "num": "23",
+      "num": "24",
       "title": "Evaluación final y plan de acción individual",
       "owner": "Walter Arias / Jorge Pando",
       "dia": "Día 10 · Tarde 3:00 · Presencial"
     },
     {
-      "num": "24",
+      "num": "25",
       "title": "Acompañamiento supervisado — 30 días post-habilitación",
       "owner": "Líder comercial",
       "dia": "Post Día 10"
@@ -453,5 +477,8 @@
   "calConfig": {
     "calendarId": "808b334f4c90bb4b1eb29808d7c5cb5d0264486286c6ebc5ecd22c13e0dba77e@group.calendar.google.com",
     "timezone": "America/Bogota"
+  },
+  "responsibles": {
+    "Paul Unsihuay Vila": "pvila@inmobiliariolatam.com"
   }
 }
