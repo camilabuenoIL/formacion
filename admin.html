@@ -4,129 +4,163 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Admin — Inmobiliario Latam</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#0D0D0D;--s1:#111;--s2:#161616;--bd:#1E1E1E;--bd2:#2A2A2A;
-  --or:#E84E0F;--or-lt:#1A0800;--or-bd:#3A1A00;
-  --gn:#1A3D2B;--gn-lt:#0A1A0A;--gn-bd:#1A3D2B;--gn-tx:#4ADE80;
-  --re-lt:#1A0A0A;--re-bd:#4A1A1A;--re-tx:#F87171;
-  --bl-lt:#0A1020;--bl-bd:#1A2A4A;--bl-tx:#60A5FA;
-  --am-lt:#1A1200;--am-bd:#3A2800;--am-tx:#FBBF24;
-  --tx:#fff;--tx2:#aaa;--tx3:#666;--tx4:#333;
+  --bg:#F5F4F2;--white:#FFFFFF;--black:#0D0D0D;
+  --orange:#E84E0F;--orange-lt:#FDE8DF;--orange-bd:#F4A07A;
+  --gray:#5C5C5C;--gray-lt:#F0EFED;--gray-mid:#E0DDD8;--gray-dk:#3A3A3A;
+  --green:#1A3D2B;--green-lt:#D6EDE1;--green-bd:#A5D6B5;--green-tx:#1A3D2B;
+  --red:#991B1B;--red-lt:#FEE2E2;--red-bd:#FECACA;
+  --blue:#1A2E4A;--blue-lt:#D4E4F7;--blue-bd:#93C5FD;
+  --amber:#92400E;--amber-lt:#FEF3C7;--amber-bd:#FDE68A;
+  --purple:#5B21B6;--purple-lt:#F0EBF8;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:system-ui,sans-serif;background:var(--bg);color:var(--tx);min-height:100vh;font-size:14px}
+body{font-family:'DM Sans',system-ui,sans-serif;background:var(--bg);color:var(--black);min-height:100vh}
 
 /* TOPBAR */
-.topbar{background:#080808;border-bottom:1px solid var(--bd);padding:10px 20px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;position:sticky;top:0;z-index:300}
-.logo{font-size:14px;font-weight:700}.logo em{color:var(--or);font-style:normal}
-.badge{font-size:10px;font-weight:600;padding:2px 9px;border-radius:20px;letter-spacing:.06em;text-transform:uppercase}
-.b-on{background:var(--gn-lt);color:var(--gn-tx);border:1px solid var(--gn-bd)}
-.b-off{background:var(--re-lt);color:var(--re-tx);border:1px solid var(--re-bd)}
-.b-warn{background:var(--am-lt);color:var(--am-tx);border:1px solid var(--am-bd)}
-.tb-right{margin-left:auto;display:flex;gap:6px;align-items:center}
+.topbar{background:var(--black);padding:12px 28px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;position:sticky;top:0;z-index:300;box-shadow:0 2px 8px rgba(0,0,0,.3)}
+.logo{font-size:14px;font-weight:700;color:#fff}.logo em{color:var(--orange);font-style:normal}
+.logo-tag{font-size:10px;color:#666;font-weight:400;margin-left:4px}
+.badge{font-size:10px;font-weight:600;padding:3px 10px;border-radius:20px;letter-spacing:.06em;text-transform:uppercase}
+.b-on{background:var(--green-lt);color:var(--green-tx);border:1px solid var(--green-bd)}
+.b-off{background:var(--red-lt);color:var(--red);border:1px solid var(--red-bd)}
+.tb-right{margin-left:auto;display:flex;gap:8px;align-items:center}
 
 /* BUTTONS */
-.btn{display:inline-flex;align-items:center;gap:4px;border:none;padding:7px 13px;border-radius:5px;font-size:12px;font-weight:600;cursor:pointer;transition:all .15s;font-family:system-ui;line-height:1;white-space:nowrap}
-.b-or{background:var(--or);color:#fff}.b-or:hover{background:#C93E08}
-.b-dk{background:#1A1A1A;color:var(--tx2);border:1px solid #333}.b-dk:hover{background:#222}
-.b-gh{background:transparent;color:var(--tx3);border:1px solid var(--bd2)}.b-gh:hover{color:var(--tx);border-color:#555}
-.b-gn{background:var(--gn);color:#fff}.b-gn:hover{background:#0F2419}
-.b-re{background:#7F1D1D;color:#fff}.b-re:hover{background:#991B1B}
-.b-am{background:#78350F;color:#fff}.b-am:hover{background:#92400E}
-.b-sm{padding:4px 9px;font-size:11px}
-.btn:disabled{opacity:.35;cursor:not-allowed}
+.btn{display:inline-flex;align-items:center;gap:5px;border:none;padding:8px 16px;border-radius:6px;font-size:13px;font-weight:600;cursor:pointer;transition:all .15s;font-family:'DM Sans',system-ui;line-height:1;white-space:nowrap}
+.b-or{background:var(--orange);color:#fff}.b-or:hover{background:#C93E08}
+.b-dk{background:#1A1A1A;color:#ccc;border:1px solid #333}.b-dk:hover{background:#222}
+.b-gh{background:transparent;color:#888;border:1px solid #333}.b-gh:hover{color:#fff;border-color:#555}
+.b-wh{background:var(--white);color:var(--black);border:1px solid var(--gray-mid)}.b-wh:hover{background:var(--gray-lt)}
+.b-gn{background:var(--green);color:#fff}.b-gn:hover{background:#0F2419}
+.b-re{background:var(--red);color:#fff}.b-re:hover{background:#7F1D1D}
+.b-am{background:var(--amber);color:#fff}.b-am:hover{background:#78350F}
+.b-sm{padding:5px 10px;font-size:11px;border-radius:5px}
+.btn:disabled{opacity:.4;cursor:not-allowed}
 .btn-full{width:100%;justify-content:center}
 
 /* TABS */
-.tabs-bar{border-bottom:1px solid var(--bd);padding:0 20px;background:#080808}
+.tabs-bar{background:var(--white);border-bottom:2px solid var(--gray-mid);padding:0 28px}
 .tabs{display:flex;overflow-x:auto;scrollbar-width:none}
 .tabs::-webkit-scrollbar{display:none}
-.tab{font-size:12px;font-weight:500;color:var(--tx3);padding:10px 16px;border-bottom:2px solid transparent;cursor:pointer;white-space:nowrap;transition:all .15s}
-.tab:hover{color:var(--tx2)}.tab.on{color:var(--or);border-bottom-color:var(--or)}
+.tab{font-size:13px;font-weight:500;color:var(--gray);padding:13px 18px;border-bottom:3px solid transparent;cursor:pointer;white-space:nowrap;transition:all .15s;margin-bottom:-2px}
+.tab:hover{color:var(--black)}.tab.on{color:var(--orange);border-bottom-color:var(--orange);font-weight:600}
 
 /* LAYOUT */
-.page{max-width:920px;margin:0 auto;padding:20px 20px 80px}
+.page{max-width:940px;margin:0 auto;padding:28px 28px 80px}
 .sec{display:none}.sec.on{display:block}
 
 /* STATUS */
-.status{border-radius:6px;padding:10px 14px;margin-bottom:14px;font-size:12px;display:none;align-items:center;gap:8px}
+.status{border-radius:8px;padding:11px 16px;margin-bottom:16px;font-size:13px;display:none;align-items:center;gap:8px}
 .status.on{display:flex}
-.st-info{background:var(--bl-lt);color:var(--bl-tx);border:1px solid var(--bl-bd)}
-.st-ok{background:var(--gn-lt);color:var(--gn-tx);border:1px solid var(--gn-bd)}
-.st-err{background:var(--re-lt);color:var(--re-tx);border:1px solid var(--re-bd)}
-.st-warn{background:var(--am-lt);color:var(--am-tx);border:1px solid var(--am-bd)}
+.st-info{background:var(--blue-lt);color:var(--blue);border:1px solid var(--blue-bd)}
+.st-ok{background:var(--green-lt);color:var(--green-tx);border:1px solid var(--green-bd)}
+.st-err{background:var(--red-lt);color:var(--red);border:1px solid var(--red-bd)}
+.st-warn{background:var(--amber-lt);color:var(--amber);border:1px solid var(--amber-bd)}
 
 /* CARDS */
-.card{background:var(--s1);border:1px solid var(--bd);border-radius:8px;padding:16px;margin-bottom:12px}
-.card-hd{display:flex;align-items:center;gap:8px;margin-bottom:12px}
-.card-tt{font-size:13px;font-weight:600;flex:1}
-.tag{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--or);margin-bottom:5px;display:block}
+.card{background:var(--white);border:1px solid var(--gray-mid);border-radius:10px;padding:20px;margin-bottom:14px;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.card-hd{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.card-tt{font-size:14px;font-weight:600;flex:1;color:var(--black)}
+.tag{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--orange);margin-bottom:6px;display:block}
+.card-sub{font-size:13px;color:var(--gray);line-height:1.7}
 
 /* FORM FIELDS */
-.fe{margin-bottom:10px}.fe:last-child{margin-bottom:0}
-.fe label{display:block;font-size:10px;font-weight:600;color:var(--tx3);margin-bottom:3px;letter-spacing:.04em;text-transform:uppercase}
-.fe input,.fe select,.fe textarea{width:100%;padding:7px 10px;border:1px solid var(--bd2);border-radius:4px;font-size:12px;font-family:system-ui;background:#0A0A0A;color:var(--tx);outline:none;transition:border .15s}
-.fe input:focus,.fe select:focus,.fe textarea:focus{border-color:var(--or)}
-.fe select option{background:#111}
-.fe textarea{resize:vertical;min-height:52px;line-height:1.5}
-.g2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+.fe{margin-bottom:12px}.fe:last-child{margin-bottom:0}
+.fe label{display:block;font-size:11px;font-weight:600;color:var(--gray);margin-bottom:4px;letter-spacing:.04em;text-transform:uppercase}
+.fe input,.fe select,.fe textarea{width:100%;padding:8px 12px;border:1px solid var(--gray-mid);border-radius:6px;font-size:13px;font-family:'DM Sans',system-ui;background:var(--white);color:var(--black);outline:none;transition:border .15s}
+.fe input:focus,.fe select:focus,.fe textarea:focus{border-color:var(--orange);box-shadow:0 0 0 3px rgba(232,78,15,.1)}
+.fe textarea{resize:vertical;min-height:56px;line-height:1.5}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
 .g4{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:8px}
 
-/* COHORTE BANNER */
-.cohorte-card{background:linear-gradient(135deg,#1A0800,#0A0A0A);border:1px solid var(--or-bd);border-radius:10px;padding:18px;margin-bottom:16px}
-.cohorte-title{font-size:15px;font-weight:700;color:var(--or);margin-bottom:4px}
-.cohorte-sub{font-size:12px;color:var(--tx3);margin-bottom:14px;line-height:1.6}
-.days-preview{display:flex;gap:4px;flex-wrap:wrap;margin:10px 0}
-.day-chip{font-size:10px;font-weight:600;padding:3px 8px;border-radius:4px;border:1px solid var(--bd2);color:var(--tx3);font-family:monospace}
-.day-chip.active{background:var(--or-lt);color:var(--or);border-color:var(--or-bd)}
+/* WEEK */
+.week-hdr{display:flex;align-items:center;gap:10px;margin:22px 0 10px;padding:11px 16px;background:var(--black);border-radius:8px}
+.week-hdr.s2{background:var(--orange)}
+.wp{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:3px 9px;border-radius:2px;background:rgba(255,255,255,.15);color:#fff}
+.wt{font-size:13px;font-weight:500;color:#fff;flex:1}
+.wd{font-size:11px;color:rgba(255,255,255,.6);font-family:'DM Mono',monospace}
 
-/* WEEK / DAY / SESSION */
-.week-hdr{display:flex;align-items:center;gap:8px;margin:18px 0 8px;padding:9px 13px;background:var(--s1);border:1px solid var(--bd);border-radius:6px}
-.wp{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:2px 7px;border-radius:2px}
-.wp1{background:#1A1A1A;color:var(--tx2);border:1px solid #333}
-.wp2{background:var(--or);color:#fff}
-.wt{font-size:12px;font-weight:500;color:var(--tx2);flex:1}
-.day-wrap{margin-bottom:8px}
-.day-bar{background:var(--s2);border:1px solid var(--bd);border-radius:6px 6px 0 0;padding:8px 13px;font-size:12px;font-weight:600;display:flex;align-items:center;gap:8px;color:var(--tx2)}
-.day-pill{font-size:10px;font-weight:700;background:var(--or);color:#fff;padding:1px 7px;border-radius:2px;font-family:monospace}
-.day-date-input{background:#0A0A0A;border:1px solid var(--bd2);border-radius:4px;padding:3px 8px;font-size:11px;color:var(--tx2);font-family:monospace;width:130px;outline:none;transition:border .15s}
-.day-date-input:focus{border-color:var(--or);color:var(--tx)}
-.sessions-wrap{border:1px solid var(--bd);border-top:none;border-radius:0 0 6px 6px;padding:10px;background:#0A0A0A}
-.se{border:1px solid var(--bd);border-radius:6px;padding:11px;margin-bottom:7px;background:var(--s1);position:relative}
+/* DAY */
+.day-wrap{margin-bottom:10px}
+.day-bar{background:var(--white);border:1px solid var(--gray-mid);border-radius:8px 8px 0 0;padding:10px 16px;display:flex;align-items:center;gap:10px;border-bottom:none}
+.day-pill{font-size:10px;font-weight:700;background:var(--black);color:#fff;padding:3px 9px;border-radius:3px;font-family:'DM Mono',monospace}
+.day-date-inp{border:1px solid var(--gray-mid);border-radius:5px;padding:5px 10px;font-size:12px;font-family:'DM Mono',monospace;color:var(--gray);background:var(--gray-lt);outline:none;transition:border .15s;min-width:200px}
+.day-date-inp:focus{border-color:var(--orange);background:var(--white);color:var(--black)}
+.sessions-wrap{background:var(--gray-lt);border:1px solid var(--gray-mid);border-top:none;border-radius:0 0 8px 8px;padding:12px}
+
+/* SESSION CARD */
+.se{background:var(--white);border:1px solid var(--gray-mid);border-radius:8px;padding:14px;margin-bottom:8px;box-shadow:0 1px 2px rgba(0,0,0,.04)}
 .se:last-child{margin-bottom:0}
-.se-hd{display:flex;align-items:center;gap:6px;margin-bottom:9px}
-.se-n{font-size:10px;font-weight:700;color:var(--or);background:var(--or-lt);padding:2px 6px;border-radius:3px;font-family:monospace;border:1px solid var(--or-bd)}
-.se-tt{font-size:12px;font-weight:500;color:var(--tx3);flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.sync-b{font-size:10px;padding:2px 6px;border-radius:20px;font-weight:600;flex-shrink:0}
-.sy-ok{background:var(--gn-lt);color:var(--gn-tx);border:1px solid var(--gn-bd)}
-.sy-pend{background:var(--am-lt);color:var(--am-tx);border:1px solid var(--am-bd)}
-.sy-none{background:#1A1A1A;color:var(--tx4);border:1px solid #333}
-.se-acts{display:flex;gap:5px;margin-top:9px;flex-wrap:wrap;align-items:center}
-.meet-row{display:flex;gap:7px;align-items:center;margin-top:7px;padding:7px 10px;background:var(--bl-lt);border:1px solid var(--bl-bd);border-radius:5px}
-.meet-lnk{font-size:11px;color:var(--bl-tx);font-family:monospace;flex:1;overflow:hidden;text-overflow:ellipsis}
-.add-form{background:var(--am-lt);border:1px solid var(--am-bd);border-radius:6px;padding:13px;margin-top:7px;display:none}
-.add-form-title{font-size:11px;font-weight:700;color:var(--am-tx);margin-bottom:10px}
+.se-hd{display:flex;align-items:center;gap:8px;margin-bottom:12px}
+.se-n{font-size:10px;font-weight:700;color:var(--orange);background:var(--orange-lt);padding:3px 8px;border-radius:4px;font-family:'DM Mono',monospace;border:1px solid var(--orange-bd)}
+.se-tt{font-size:13px;font-weight:500;color:var(--gray);flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.sync-b{font-size:10px;padding:3px 8px;border-radius:20px;font-weight:600;flex-shrink:0}
+.sy-ok{background:var(--green-lt);color:var(--green-tx);border:1px solid var(--green-bd)}
+.sy-pend{background:var(--amber-lt);color:var(--amber);border:1px solid var(--amber-bd)}
+.sy-none{background:var(--gray-lt);color:var(--gray);border:1px solid var(--gray-mid)}
+.se-acts{display:flex;gap:6px;margin-top:10px;flex-wrap:wrap;padding-top:10px;border-top:1px solid var(--gray-lt)}
+
+/* MEET ROW */
+.meet-row{display:flex;gap:8px;align-items:center;margin-top:10px;padding:9px 12px;background:var(--blue-lt);border:1px solid var(--blue-bd);border-radius:6px}
+.meet-lnk{font-size:12px;color:var(--blue);font-family:'DM Mono',monospace;flex:1;overflow:hidden;text-overflow:ellipsis}
+.meet-lnk a{color:var(--blue);text-decoration:none;font-weight:500}.meet-lnk a:hover{text-decoration:underline}
+.meet-inp{flex:1;padding:6px 10px;border:1px solid var(--blue-bd);border-radius:5px;font-size:12px;background:var(--white);color:var(--black);outline:none;font-family:'DM Mono',monospace}
+.meet-inp:focus{border-color:var(--blue)}
+
+/* ADD SESSION */
+.add-form{background:var(--amber-lt);border:1px solid var(--amber-bd);border-radius:8px;padding:14px;margin-top:10px;display:none}
+.add-form-tt{font-size:12px;font-weight:600;color:var(--amber);margin-bottom:12px}
+.add-btn{width:100%;margin-top:10px;justify-content:center;background:var(--gray-lt);color:var(--gray);border:1px dashed var(--gray-mid);border-radius:6px;padding:8px}
+.add-btn:hover{background:var(--white);color:var(--black);border-color:var(--orange)}
+
+/* COHORTE */
+.cohorte-banner{background:linear-gradient(135deg,var(--black),var(--gray-dk));border-radius:10px;padding:22px;margin-bottom:16px;color:#fff}
+.cohorte-tt{font-size:16px;font-weight:700;color:var(--orange);margin-bottom:6px}
+.cohorte-sub{font-size:13px;color:#aaa;line-height:1.7;margin-bottom:16px}
+.days-preview{display:flex;gap:6px;flex-wrap:wrap;margin:12px 0}
+.day-chip{font-size:11px;font-weight:600;padding:4px 10px;border-radius:5px;border:1px solid #333;color:#888;font-family:'DM Mono',monospace;background:#1A1A1A}
+.day-chip.active{background:var(--orange-lt);color:var(--orange);border-color:var(--orange-bd)}
+.cohorte-fields{background:rgba(255,255,255,.06);border-radius:8px;padding:14px;margin-bottom:14px}
+.cohorte-fe label{display:block;font-size:10px;font-weight:600;color:#888;margin-bottom:4px;letter-spacing:.04em;text-transform:uppercase}
+.cohorte-fe input{width:100%;padding:8px 12px;border:1px solid #333;border-radius:6px;font-size:13px;background:#1A1A1A;color:#fff;outline:none;transition:border .15s}
+.cohorte-fe input:focus{border-color:var(--orange)}
+.cohorte-btns{display:flex;gap:8px;flex-wrap:wrap}
+#cohorte-log{background:rgba(0,0,0,.4);border:1px solid #333;border-radius:6px;padding:12px;font-size:11px;font-family:'DM Mono',monospace;white-space:pre-wrap;display:none;margin-top:12px;line-height:1.8;color:#ccc}
 
 /* TEAM */
-.team-row{display:grid;grid-template-columns:1fr 1fr auto;gap:8px;align-items:end;padding:10px;background:var(--s1);border:1px solid var(--bd);border-radius:6px;margin-bottom:7px}
+.team-row{display:grid;grid-template-columns:1fr 1fr auto;gap:10px;align-items:end;padding:12px 14px;background:var(--gray-lt);border:1px solid var(--gray-mid);border-radius:8px;margin-bottom:8px}
 .team-row:last-child{margin-bottom:0}
 
-/* LOG */
-#pub-log{background:#000;border:1px solid var(--bd);border-radius:5px;padding:10px;font-size:11px;font-family:monospace;min-height:40px;white-space:pre-wrap;display:none;margin-top:10px;line-height:1.8}
-.ok{color:var(--gn-tx)}.err{color:var(--re-tx)}.info{color:var(--bl-tx)}.warn{color:var(--am-tx)}
+/* PUB LOG */
+#pub-log{background:var(--black);border:1px solid var(--gray-mid);border-radius:6px;padding:12px;font-size:11px;font-family:'DM Mono',monospace;min-height:40px;white-space:pre-wrap;display:none;margin-top:12px;line-height:1.8;color:#ccc}
 
 /* SETUP */
-.setup-wrap{display:flex;align-items:center;justify-content:center;min-height:80vh}
-.setup-card{background:var(--s1);border:2px solid var(--or);border-radius:10px;padding:28px;max-width:440px;width:100%}
-.setup-title{font-size:17px;font-weight:700;margin-bottom:5px}
-.setup-sub{font-size:12px;color:var(--tx3);margin-bottom:18px;line-height:1.6}
+.setup-wrap{display:flex;align-items:center;justify-content:center;min-height:80vh;padding:20px}
+.setup-card{background:var(--white);border:1px solid var(--gray-mid);border-radius:12px;padding:32px;max-width:440px;width:100%;box-shadow:0 4px 20px rgba(0,0,0,.08)}
+.setup-title{font-size:20px;font-weight:700;margin-bottom:6px}
+.setup-sub{font-size:13px;color:var(--gray);margin-bottom:24px;line-height:1.7}
+.setup-divider{display:flex;align-items:center;gap:12px;margin:6px 0 14px;color:var(--gray);font-size:12px}
+.setup-divider::before,.setup-divider::after{content:'';flex:1;height:1px;background:var(--gray-mid)}
+
+/* STAT BOXES */
+.stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px}
+.stat-box{background:var(--gray-lt);border:1px solid var(--gray-mid);border-radius:8px;padding:14px}
+.stat-label{font-size:10px;color:var(--gray);font-family:'DM Mono',monospace;letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px}
+.stat-val{font-size:13px;font-weight:600;color:var(--black)}
+.stat-sub{font-size:11px;color:var(--gray);margin-top:2px}
+
+/* LOG COLORS */
+.ok{color:var(--green-tx)}.err{color:var(--red)}.info{color:var(--blue)}.warn{color:var(--amber)}
 
 /* RESPONSIVE */
-@media(max-width:580px){
-  .topbar,.tabs-bar,.page{padding-left:14px;padding-right:14px}
-  .g2,.g3,.g4,.team-row{grid-template-columns:1fr}
+@media(max-width:600px){
+  .topbar,.tabs-bar,.page{padding-left:16px;padding-right:16px}
+  .g2,.g3,.g4,.team-row,.stat-grid{grid-template-columns:1fr}
+  .tb-right .b-gh:not(#btn-cal){display:none}
 }
 </style>
 </head>
@@ -136,28 +170,33 @@ body{font-family:system-ui,sans-serif;background:var(--bg);color:var(--tx);min-h
 <div id="setup-scr" style="display:none">
   <div class="setup-wrap">
     <div class="setup-card">
-      <div class="setup-title">🏠 Inmobiliario Latam — Admin</div>
-      <p class="setup-sub">Ingresa tu token de GitHub. Se guarda solo en este navegador.</p>
+      <div style="font-size:22px;margin-bottom:16px">🏠</div>
+      <div class="setup-title">Inmobiliario Latam</div>
+      <p class="setup-sub">Panel de administración del programa de formación. Ingresa tu token de GitHub para conectar.</p>
       <div class="fe"><label>GitHub Token</label><input type="password" id="gh-inp" placeholder="Pega tu token aquí" /></div>
-      <button class="btn b-or btn-full" style="margin-top:4px" onclick="saveToken()">Conectar →</button>
+      <button class="btn b-or btn-full" style="margin-top:4px" onclick="saveToken()">Conectar con GitHub →</button>
+      <div class="setup-divider">acceso privado</div>
+      <div style="font-size:11px;color:var(--gray);text-align:center">El token se guarda solo en este navegador — nunca en el repositorio.</div>
     </div>
   </div>
 </div>
 
 <!-- MAIN -->
 <div id="main-scr" style="display:none">
+
   <div class="topbar">
-    <div class="logo">INMOBILIARIO <em>LATAM</em> <span style="font-size:11px;color:var(--tx4);font-weight:400">Admin</span></div>
+    <div class="logo">INMOBILIARIO <em>LATAM</em><span class="logo-tag">Admin</span></div>
     <span class="badge b-off" id="cal-badge">📅 Calendar desconectado</span>
     <div class="tb-right">
       <button class="btn b-gh" id="btn-cal" onclick="authCal()">🔐 Conectar Calendar</button>
-      <a href="https://camilabuenoil.github.io/formacion/" target="_blank" class="btn b-gh">↗ Ver página</a>
+      <a href="https://camilabuenoil.github.io/formacion/" target="_blank" class="btn b-gh">↗ Página</a>
       <button class="btn b-or" id="btn-pub-top" onclick="publishAll()" disabled>🚀 Publicar</button>
     </div>
   </div>
+
   <div class="tabs-bar">
     <div class="tabs">
-      <div class="tab on" onclick="goTab('cronograma',this)">📅 Cronograma</div>
+      <div class="tab on"  onclick="goTab('cronograma',this)">📅 Cronograma</div>
       <div class="tab" onclick="goTab('cohorte',this)">🔄 Nueva cohorte</div>
       <div class="tab" onclick="goTab('equipo',this)">👥 Equipo</div>
       <div class="tab" onclick="goTab('publicar',this)">🚀 Publicar</div>
@@ -181,39 +220,34 @@ body{font-family:system-ui,sans-serif;background:var(--bg);color:var(--tx);min-h
 
     <!-- ── NUEVA COHORTE ── -->
     <div class="sec" id="tab-cohorte">
-      <div class="cohorte-card">
-        <div class="cohorte-title">🔄 Iniciar nueva cohorte</div>
-        <p class="cohorte-sub">Ingresa la fecha de inicio del próximo programa. El admin calcula automáticamente los 10 días hábiles (lunes a viernes), actualiza todas las fechas del cronograma y crea todos los eventos nuevos en Google Calendar de una vez.</p>
-        <div class="g2" style="margin-bottom:12px">
-          <div class="fe">
-            <label>Fecha de inicio (lunes)</label>
-            <input type="date" id="cohorte-date" onchange="previewCohorte()" />
+      <div class="cohorte-banner">
+        <div class="cohorte-tt">🔄 Iniciar nueva cohorte</div>
+        <p class="cohorte-sub">Selecciona la fecha de inicio del próximo programa. El admin calcula los 10 días hábiles, elimina los eventos anteriores del calendario y crea todos los eventos nuevos automáticamente.</p>
+        <div class="cohorte-fields">
+          <div class="g2" style="margin-bottom:12px">
+            <div class="cohorte-fe"><label>Fecha de inicio (lunes)</label><input type="date" id="cohorte-date" onchange="previewCohorte()" /></div>
+            <div class="cohorte-fe"><label>Nombre de la cohorte (opcional)</label><input type="text" id="cohorte-name" placeholder="Ej: Cohorte Junio 2026" /></div>
           </div>
-          <div class="fe">
-            <label>Nombre de la cohorte (opcional)</label>
-            <input type="text" id="cohorte-name" placeholder="Ej: Cohorte Junio 2026" />
+          <div id="cohorte-preview" style="display:none">
+            <div style="font-size:10px;color:#888;margin-bottom:6px;text-transform:uppercase;letter-spacing:.06em;font-family:'DM Mono',monospace">10 días hábiles calculados:</div>
+            <div class="days-preview" id="days-chips"></div>
           </div>
         </div>
-        <div id="cohorte-preview" style="display:none">
-          <div style="font-size:11px;color:var(--tx3);margin-bottom:6px;text-transform:uppercase;letter-spacing:.06em">10 días hábiles calculados:</div>
-          <div class="days-preview" id="days-chips"></div>
+        <div class="cohorte-btns">
+          <button class="btn b-or" id="btn-cohorte" onclick="applyCohorte()" disabled>🔄 Aplicar + crear eventos en Calendar</button>
+          <button class="btn b-dk" id="btn-cohorte-gh" onclick="applyCohorteGH()" style="display:none">📁 Solo actualizar fechas</button>
         </div>
-        <div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap">
-          <button class="btn b-or" id="btn-cohorte" onclick="applyCohorte()" disabled>🔄 Aplicar fechas + crear eventos en Calendar</button>
-          <button class="btn b-dk" onclick="applyCohorteGHOnly()" id="btn-cohorte-gh" style="display:none">📁 Solo actualizar fechas (sin Calendar)</button>
-        </div>
-        <div id="cohorte-log" style="background:#000;border:1px solid var(--bd);border-radius:5px;padding:10px;font-size:11px;font-family:monospace;white-space:pre-wrap;display:none;margin-top:10px;line-height:1.8"></div>
+        <div id="cohorte-log"></div>
       </div>
       <div class="card">
-        <span class="tag">¿Cómo funciona?</span>
-        <div style="font-size:12px;color:var(--tx3);line-height:1.8">
-          1. Seleccionas la fecha de inicio (debe ser lunes)<br>
-          2. El admin calcula los 10 días hábiles saltando fines de semana<br>
-          3. Actualiza todas las fechas en el cronograma<br>
-          4. Elimina los eventos anteriores de Calendar<br>
-          5. Crea 20+ eventos nuevos con los responsables y horarios de cada sesión<br>
-          6. Publica el schedule.json en GitHub con las nuevas fechas<br>
-          7. La página de agentes se actualiza automáticamente
+        <span class="tag">Cómo funciona</span>
+        <div style="font-size:13px;color:var(--gray);line-height:2">
+          1️⃣ Seleccionas la fecha de inicio (debe ser lunes)<br>
+          2️⃣ Se calculan los 10 días hábiles saltando fines de semana<br>
+          3️⃣ Se eliminan todos los eventos anteriores del calendario<br>
+          4️⃣ Se crean los eventos nuevos con horarios, responsables y Meet links<br>
+          5️⃣ Se publica el schedule.json en GitHub con las nuevas fechas<br>
+          6️⃣ La página de agentes se actualiza automáticamente
         </div>
       </div>
     </div>
@@ -223,24 +257,32 @@ body{font-family:system-ui,sans-serif;background:var(--bg);color:var(--tx);min-h
       <div class="card">
         <div class="card-hd">
           <div class="card-tt">👥 Equipo de formación</div>
-          <button class="btn b-or b-sm" onclick="addMember()">+ Agregar</button>
+          <button class="btn b-or b-sm" onclick="addMember()">+ Agregar persona</button>
         </div>
-        <p style="font-size:12px;color:var(--tx3);margin-bottom:12px;line-height:1.6">Los emails se usan automáticamente en las invitaciones de Google Calendar. Agrega o edita sin tocar código.</p>
+        <p class="card-sub" style="margin-bottom:14px">Los emails se usan automáticamente en las invitaciones de Google Calendar. Nombre y email de cada formador.</p>
         <div id="team-list"></div>
       </div>
     </div>
 
     <!-- ── PUBLICAR ── -->
     <div class="sec" id="tab-publicar">
-      <div class="card">
-        <span class="tag">Estado</span>
-        <div style="font-size:13px;margin-bottom:6px">Cambios pendientes: <strong id="pub-cnt" style="color:var(--or)">0</strong></div>
-        <div style="font-size:12px;color:var(--tx3);margin-bottom:14px">Última publicación: <strong id="last-pub">–</strong><br>
-          <a href="https://camilabuenoil.github.io/formacion/" target="_blank" style="color:var(--or)">camilabuenoil.github.io/formacion ↗</a>
+      <div class="stat-grid">
+        <div class="stat-box">
+          <div class="stat-label">Cambios pendientes</div>
+          <div class="stat-val" id="pub-cnt" style="color:var(--orange)">0</div>
+          <div class="stat-sub">sesiones modificadas</div>
         </div>
-        <div style="display:flex;gap:7px;flex-wrap:wrap">
-          <button class="btn b-or" id="btn-pub-main" onclick="publishAll()" disabled>🚀 GitHub + Calendar</button>
-          <button class="btn b-dk" id="btn-pub-gh" onclick="pubGH()" disabled>📁 Solo GitHub</button>
+        <div class="stat-box">
+          <div class="stat-label">Última publicación</div>
+          <div class="stat-val" id="last-pub">–</div>
+          <div class="stat-sub"><a href="https://camilabuenoil.github.io/formacion/" target="_blank" style="color:var(--orange);text-decoration:none;font-size:11px">Ver página ↗</a></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-hd"><div class="card-tt">Publicar cambios</div></div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <button class="btn b-or" id="btn-pub-main" onclick="publishAll()" disabled>🚀 GitHub + Google Calendar</button>
+          <button class="btn b-wh" id="btn-pub-gh" onclick="pubGH()" disabled>📁 Solo GitHub</button>
           <button class="btn b-gh b-sm" onclick="resetToken()" style="margin-left:auto">🔑 Cambiar token</button>
         </div>
         <div id="pub-log"></div>
@@ -248,645 +290,249 @@ body{font-family:system-ui,sans-serif;background:var(--bg);color:var(--tx);min-h
       <div class="card">
         <span class="tag">Conexiones</span>
         <div class="g2">
-          <div style="padding:10px;background:#0A0A0A;border:1px solid var(--bd);border-radius:6px">
-            <div style="font-size:10px;color:var(--tx3);margin-bottom:3px;text-transform:uppercase;letter-spacing:.06em;font-family:monospace">GitHub</div>
-            <div style="font-size:12px;font-weight:600;color:var(--gn-tx)">● Conectado</div>
-            <div style="font-size:10px;color:var(--tx3);margin-top:2px">camilabuenoIL/formacion</div>
+          <div class="stat-box">
+            <div class="stat-label">GitHub</div>
+            <div class="stat-val" style="color:var(--green-tx)">● Conectado</div>
+            <div class="stat-sub">camilabuenoIL/formacion</div>
           </div>
-          <div style="padding:10px;background:#0A0A0A;border:1px solid var(--bd);border-radius:6px">
-            <div style="font-size:10px;color:var(--tx3);margin-bottom:3px;text-transform:uppercase;letter-spacing:.06em;font-family:monospace">Google Calendar</div>
-            <div style="font-size:12px;font-weight:600" id="cal-st-txt">● Desconectado</div>
-            <div style="margin-top:5px"><button class="btn b-gh b-sm" onclick="authCal()">Conectar →</button></div>
+          <div class="stat-box">
+            <div class="stat-label">Google Calendar</div>
+            <div class="stat-val" id="cal-st-txt">● Desconectado</div>
+            <div class="stat-sub" style="margin-top:6px"><button class="btn b-wh b-sm" onclick="authCal()" id="cal-connect-btn">Conectar →</button></div>
           </div>
         </div>
       </div>
     </div>
+
   </div>
 </div>
 
 <script>
-// ── CONFIG ────────────────────────────────────────────────────────────────────
-const GH_KEY   = 'il_gh_v5';
-const CAL_KEY  = 'il_cal_v5';
-const TEAM_KEY = 'il_team_v2';
-const REPO     = 'camilabuenoIL/formacion';
-const GHAPI    = 'https://api.github.com';
-const CAPI     = 'https://www.googleapis.com/calendar/v3';
-const CALID    = '808b334f4c90bb4b1eb29808d7c5cb5d0264486286c6ebc5ecd22c13e0dba77e@group.calendar.google.com';
-const GCL      = '1045894098226-s1619eg54tc79bg3rrimi4rnla72nvfn.apps.googleusercontent.com';
-const SCOPE    = 'https://www.googleapis.com/auth/calendar https://www.googleapis.com/auth/calendar.events';
-const TZ       = 'America/Bogota';
+const GH_KEY='il_gh_v6',CAL_KEY='il_cal_v6',TEAM_KEY='il_team_v3';
+const REPO='camilabuenoIL/formacion',GHAPI='https://api.github.com';
+const CAPI='https://www.googleapis.com/calendar/v3';
+const CALID='808b334f4c90bb4b1eb29808d7c5cb5d0264486286c6ebc5ecd22c13e0dba77e@group.calendar.google.com';
+const GCL='1045894098226-s1619eg54tc79bg3rrimi4rnla72nvfn.apps.googleusercontent.com';
+const SCOPE='https://www.googleapis.com/auth/calendar https://www.googleapis.com/auth/calendar.events';
+const TZ='America/Bogota';
 
-let DATA=null, SHA=null, isDirty=false, calTok=null, changed=new Set();
-
-let TEAM = JSON.parse(localStorage.getItem(TEAM_KEY)||'null') || [
-  {name:'Jorge Pando',        email:'jpando@inmobiliariolatam.com'},
-  {name:'Walter Arias',       email:'wlarias@inmobiliariolatam.com'},
-  {name:'Camila Bueno',       email:'cbueno@inmobiliariolatam.com'},
-  {name:'Sofía Herreño',      email:'sbueno@inmobiliariolatam.com'},
-  {name:'Brooke Villanueva',  email:'bvillanueva@inmobiliariolatam.com'},
-  {name:'Allison Villanueva', email:'avillanueva@inmobiliariolatam.com'},
-  {name:'Paul Unsihuay Vila', email:'pvila@inmobiliariolatam.com'},
+let DATA=null,SHA=null,isDirty=false,calTok=null,changed=new Set();
+let TEAM=JSON.parse(localStorage.getItem(TEAM_KEY)||'null')||[
+  {name:'Jorge Pando',email:'jpando@inmobiliariolatam.com'},
+  {name:'Walter Arias',email:'wlarias@inmobiliariolatam.com'},
+  {name:'Camila Bueno',email:'cbueno@inmobiliariolatam.com'},
+  {name:'Sofía Herreño',email:'sbueno@inmobiliariolatam.com'},
+  {name:'Brooke Villanueva',email:'bvillanueva@inmobiliariolatam.com'},
+  {name:'Allison Villanueva',email:'avillanueva@inmobiliariolatam.com'},
+  {name:'Paul Unsihuay Vila',email:'pvila@inmobiliariolatam.com'},
 ];
 function saveTeam(){localStorage.setItem(TEAM_KEY,JSON.stringify(TEAM));}
-function getEmails(owner){
-  return owner.split('/').map(n=>n.trim())
-    .flatMap(n=>{const m=TEAM.find(t=>t.name.toLowerCase()===n.toLowerCase());return m?.email?[m.email]:[];});
-}
+function getEmails(o){return o.split('/').map(n=>n.trim()).flatMap(n=>{const m=TEAM.find(t=>t.name.toLowerCase()===n.toLowerCase());return m?.email?[m.email]:[];});}
 
-// ── TOKEN ─────────────────────────────────────────────────────────────────────
+// TOKEN
 function getGHToken(){return localStorage.getItem(GH_KEY)||'';}
-function saveToken(){
-  const t=document.getElementById('gh-inp').value.trim();
-  if(!t){ss('Ingresa un token válido','err');return;}
-  localStorage.setItem(GH_KEY,t);
-  document.getElementById('setup-scr').style.display='none';
-  document.getElementById('main-scr').style.display='block';
-  init();
-}
-function resetToken(){
-  if(!confirm('¿Borrar el token guardado?'))return;
-  localStorage.removeItem(GH_KEY);location.reload();
-}
+function saveToken(){const t=document.getElementById('gh-inp').value.trim();if(!t){ss('Ingresa un token válido','err');return;}localStorage.setItem(GH_KEY,t);document.getElementById('setup-scr').style.display='none';document.getElementById('main-scr').style.display='block';init();}
+function resetToken(){if(!confirm('¿Borrar el token guardado?'))return;localStorage.removeItem(GH_KEY);location.reload();}
 
-// ── STATUS ─────────────────────────────────────────────────────────────────────
-function ss(msg,type){
-  const b=document.getElementById('status-bar');
-  b.className='status on st-'+(type||'info');
-  document.getElementById('status-msg').textContent=msg;
-  if(type==='ok')setTimeout(()=>b.classList.remove('on'),5000);
-}
+// STATUS
+function ss(msg,type){const b=document.getElementById('status-bar');b.className='status on st-'+(type||'info');document.getElementById('status-msg').textContent=msg;if(type==='ok')setTimeout(()=>b.classList.remove('on'),5000);}
 
-// ── TABS ──────────────────────────────────────────────────────────────────────
-function goTab(id,el){
-  document.querySelectorAll('.sec').forEach(s=>s.classList.remove('on'));
-  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('on'));
-  document.getElementById('tab-'+id).classList.add('on');
-  el.classList.add('on');
-}
+// TABS
+function goTab(id,el){document.querySelectorAll('.sec').forEach(s=>s.classList.remove('on'));document.querySelectorAll('.tab').forEach(t=>t.classList.remove('on'));document.getElementById('tab-'+id).classList.add('on');el.classList.add('on');}
 
-// ── DIRTY ─────────────────────────────────────────────────────────────────────
-function dirty(key){
-  isDirty=true;
-  if(key){changed.add(key);const b=document.getElementById('sy-'+key);if(b){b.textContent='Pendiente';b.className='sync-b sy-pend';}}
-  document.getElementById('pub-cnt').textContent=changed.size;
-  ['btn-pub-top','btn-pub-main','btn-pub-gh'].forEach(id=>{const b=document.getElementById(id);if(b)b.disabled=false;});
-}
+// DIRTY
+function dirty(k){isDirty=true;if(k){changed.add(k);const b=document.getElementById('sy-'+k);if(b){b.textContent='Pendiente';b.className='sync-b sy-pend';}}document.getElementById('pub-cnt').textContent=changed.size;['btn-pub-top','btn-pub-main','btn-pub-gh'].forEach(id=>{const b=document.getElementById(id);if(b)b.disabled=false;});}
 
-// ── DATE HELPERS ──────────────────────────────────────────────────────────────
-function calcWorkDays(startDateStr, count) {
-  const days=[];
-  const d=new Date(startDateStr+'T12:00:00');
-  while(days.length<count){
-    const dow=d.getDay();
-    if(dow!==0&&dow!==6)days.push(new Date(d));
-    d.setDate(d.getDate()+1);
-  }
-  return days;
-}
+// DATE HELPERS
+function calcWorkDays(startStr,count){const days=[];const d=new Date(startStr+'T12:00:00');while(days.length<count){if(d.getDay()!==0&&d.getDay()!==6)days.push(new Date(d));d.setDate(d.getDate()+1);}return days;}
+function fmtDate(d){const dn=['domingo','lunes','martes','miércoles','jueves','viernes','sábado'];const mn=['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];return dn[d.getDay()]+' '+d.getDate()+' de '+mn[d.getMonth()]+' de '+d.getFullYear();}
+function fmtISO(d){return d.toISOString().split('T')[0];}
+function isoDateTime(dateStr,timeStr){const p=timeStr.split('–').map(t=>t.trim());function fx(s){const m=s.match(/(\d+):(\d+)/);if(!m)return'00:00:00';let h=parseInt(m[1]);if(h<8)h+=12;return String(h).padStart(2,'0')+':'+m[2]+':00';}return{start:dateStr+'T'+fx(p[0]),end:dateStr+'T'+fx(p[1]||p[0])};}
+function extractISO(dateStr){if(/^\d{4}-\d{2}-\d{2}$/.test(dateStr))return dateStr;const mo={enero:1,febrero:2,marzo:3,abril:4,mayo:5,junio:6,julio:7,agosto:8,septiembre:9,octubre:10,noviembre:11,diciembre:12};const m=dateStr.match(/(\d+)\s+de\s+(\w+)\s+de\s+(\d{4})/);if(m){const month=mo[m[2].toLowerCase()];if(month)return m[3]+'-'+String(month).padStart(2,'0')+'-'+m[1].padStart(2,'0');}return null;}
 
-function formatDate(d){
-  const days=['domingo','lunes','martes','miércoles','jueves','viernes','sábado'];
-  const months=['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
-  return days[d.getDay()]+' '+d.getDate()+' de '+months[d.getMonth()]+' de '+d.getFullYear();
-}
-function formatDateShort(d){
-  return d.toISOString().split('T')[0]; // YYYY-MM-DD
-}
-function isoDateTime(dateStr, timeStr){
-  const parts=timeStr.split('–').map(t=>t.trim());
-  function fix(s){const m=s.match(/(\d+):(\d+)/);if(!m)return'00:00:00';let h=parseInt(m[1]);if(h<8)h+=12;return String(h).padStart(2,'0')+':'+m[2]+':00';}
-  return{start:dateStr+'T'+fix(parts[0]),end:dateStr+'T'+fix(parts[1]||parts[0])};
-}
-
-// ── PREVIEW COHORTE ───────────────────────────────────────────────────────────
+// COHORTE PREVIEW
 function previewCohorte(){
-  const val=document.getElementById('cohorte-date').value;
-  if(!val)return;
+  const val=document.getElementById('cohorte-date').value;if(!val)return;
   const d=new Date(val+'T12:00:00');
   if(d.getDay()!==1){ss('La fecha de inicio debe ser un lunes.','warn');return;}
   const wdays=calcWorkDays(val,10);
-  const chips=document.getElementById('days-chips');
-  chips.innerHTML=wdays.map((wd,i)=>`<span class="day-chip active">D${i+1} · ${wd.toLocaleDateString('es-ES',{weekday:'short',day:'numeric',month:'short'})}</span>`).join('');
+  document.getElementById('days-chips').innerHTML=wdays.map((wd,i)=>`<span class="day-chip active">D${i+1} · ${wd.toLocaleDateString('es-ES',{weekday:'short',day:'numeric',month:'short'})}</span>`).join('');
   document.getElementById('cohorte-preview').style.display='block';
   document.getElementById('btn-cohorte').disabled=false;
   document.getElementById('btn-cohorte-gh').style.display='inline-flex';
-  ss('10 días calculados. Verifica y aplica.','info');
+  ss('10 días calculados correctamente. Verifica y aplica.','ok');
 }
 
-// ── APPLY COHORTE ─────────────────────────────────────────────────────────────
 async function applyCohorte(){await _applyCohorte(true);}
-async function applyCohorteGHOnly(){await _applyCohorte(false);}
-
+async function applyCohorteGH(){await _applyCohorte(false);}
 async function _applyCohorte(withCal){
   const val=document.getElementById('cohorte-date').value;
   if(!val){ss('Selecciona una fecha de inicio','err');return;}
   const d=new Date(val+'T12:00:00');
   if(d.getDay()!==1){ss('La fecha debe ser lunes','err');return;}
-
-  const btn=document.getElementById('btn-cohorte');
-  btn.disabled=true;btn.textContent='⏳ Aplicando...';
-  const clog=document.getElementById('cohorte-log');
-  clog.style.display='block';clog.innerHTML='';
+  const btn=document.getElementById('btn-cohorte');btn.disabled=true;btn.textContent='⏳ Aplicando...';
+  const clog=document.getElementById('cohorte-log');clog.style.display='block';clog.innerHTML='';
   function cll(m,c){clog.innerHTML+='<span'+(c?' class="'+c+'"':'')+'>'+m+'</span>\n';clog.scrollTop=clog.scrollHeight;}
-
   try{
     const wdays=calcWorkDays(val,10);
-    cll('📅 Calculando 10 días hábiles...','info');
-
-    // Update dates in DATA
-    let dayIdx=0;
-    DATA.weeks.forEach(week=>{
-      week.days.forEach(day=>{
-        if(dayIdx<wdays.length){
-          day.date=formatDate(wdays[dayIdx]);
-          day._isoDate=formatDateShort(wdays[dayIdx]);
-          dayIdx++;
-        }
-      });
-    });
-
+    cll('📅 10 días hábiles calculados','info');
+    let di=0;
+    DATA.weeks.forEach(w=>w.days.forEach(day=>{if(di<wdays.length){day.date=fmtDate(wdays[di]);day._isoDate=fmtISO(wdays[di]);di++;}}));
     const name=document.getElementById('cohorte-name').value||'';
-    const startStr=wdays[0].toLocaleDateString('es-ES',{day:'numeric',month:'long',year:'numeric'});
     DATA.startDate='Lunes '+wdays[0].getDate()+' de '+wdays[0].toLocaleDateString('es-ES',{month:'long'})+' de '+wdays[0].getFullYear();
     DATA.lastUpdated=new Date().toLocaleDateString('es-ES',{day:'numeric',month:'long',year:'numeric'});
     if(name)DATA.cohorteName=name;
-
     document.getElementById('meta-start').value=DATA.startDate;
     document.getElementById('meta-upd').value=DATA.lastUpdated;
-
-    cll('✓ Fechas actualizadas en el cronograma','ok');
-
-    // Save to GitHub
+    cll('✓ Fechas del cronograma actualizadas','ok');
     cll('\n⬆ Guardando en GitHub...','info');
-    await saveGH(DATA);
-    cll('✓ GitHub actualizado','ok');
-
-    // Calendar
+    await saveGH(DATA);cll('✓ GitHub actualizado','ok');
     if(withCal&&(calTok||localStorage.getItem(CAL_KEY))){
       cll('\n📅 Procesando Google Calendar...','info');
-
-      // Delete old events
-      let deleted=0;
-      DATA.weeks.forEach(w=>w.days.forEach(d=>d.sessions.forEach(s=>{
-        if(s.calEventId)deleted++;
-      })));
-      cll('  Eliminando '+deleted+' eventos anteriores...','info');
-
-      for(const w of DATA.weeks){
-        for(const day of w.days){
-          for(const s of day.sessions){
-            if(s.calEventId){
-              try{
-                await calF('/calendars/'+encodeURIComponent(CALID)+'/events/'+s.calEventId,{method:'DELETE'});
-                s.calEventId='';s.meetUrl='';
-              }catch(e){cll('  ⚠ No se pudo eliminar evento: '+s.calEventId,'warn');}
-            }
-          }
-        }
+      let del=0;
+      for(const w of DATA.weeks)for(const day of w.days)for(const s of day.sessions){
+        if(s.calEventId){try{await calF('/calendars/'+encodeURIComponent(CALID)+'/events/'+s.calEventId,{method:'DELETE'});del++;s.calEventId='';s.meetUrl='';}catch(e){}}
       }
-      cll('  ✓ Eventos anteriores eliminados','ok');
-
-      // Create new events
+      cll('  ✓ '+del+' eventos anteriores eliminados','ok');
       cll('  Creando nuevos eventos...','info');
       let created=0;
-      for(const w of DATA.weeks){
-        for(const day of w.days){
-          for(const s of day.sessions){
-            const dateStr=day._isoDate;
-            if(!dateStr)continue;
-            try{
-              const res=await createCalEv(s,day.num,dateStr,s.modality==='Virtual');
-              if(res){
-                s.calEventId=res.eventId;
-                if(res.meetUrl)s.meetUrl=res.meetUrl;
-                created++;
-              }
-            }catch(e){cll('  ⚠ Error creando evento: '+s.title.substring(0,40)+': '+e.message,'warn');}
-          }
-        }
+      for(const w of DATA.weeks)for(const day of w.days)for(const s of day.sessions){
+        const dateStr=day._isoDate;if(!dateStr)continue;
+        try{const res=await createCalEv(s,day.num,dateStr,s.modality==='Virtual');if(res){s.calEventId=res.eventId;if(res.meetUrl)s.meetUrl=res.meetUrl;created++;}}
+        catch(e){cll('  ⚠ '+s.title.substring(0,35)+': '+e.message,'warn');}
       }
-      cll('  ✓ '+created+' eventos creados en Calendar','ok');
-
-      // Save again with new event IDs
-      cll('\n⬆ Guardando IDs de eventos en GitHub...','info');
-      await saveGH(DATA);
-      cll('✓ Todo sincronizado','ok');
+      cll('  ✓ '+created+' eventos creados','ok');
+      cll('\n⬆ Guardando IDs en GitHub...','info');
+      await saveGH(DATA);cll('✓ Todo sincronizado','ok');
     }
-
-    isDirty=false;changed.clear();
-    document.getElementById('pub-cnt').textContent='0';
-    document.getElementById('last-pub').textContent=DATA.lastUpdated;
-    renderEditor();
-    ss('✓ Nueva cohorte aplicada correctamente.','ok');
-    cll('\n✅ ¡Nueva cohorte lista!','ok');
-
-  }catch(e){
-    ss('❌ '+e.message,'err');cll('❌ '+e.message,'err');
-  }finally{
-    btn.disabled=false;btn.textContent='🔄 Aplicar fechas + crear eventos en Calendar';
-  }
+    isDirty=false;changed.clear();document.getElementById('pub-cnt').textContent='0';document.getElementById('last-pub').textContent=DATA.lastUpdated;
+    renderEditor();ss('✓ Nueva cohorte aplicada correctamente.','ok');cll('\n✅ ¡Nueva cohorte lista!','ok');
+  }catch(e){ss('❌ '+e.message,'err');cll('❌ '+e.message,'err');}
+  finally{btn.disabled=false;btn.textContent='🔄 Aplicar + crear eventos en Calendar';}
 }
 
-// ── GITHUB ─────────────────────────────────────────────────────────────────────
-function ghF(p,o){
-  o=o||{};
-  return fetch(GHAPI+p,Object.assign({},o,{headers:Object.assign({
-    'Authorization':'Bearer '+getGHToken(),
-    'Accept':'application/vnd.github+json',
-    'Content-Type':'application/json'
-  },o.headers||{})}));
-}
-async function loadGH(){
-  ss('Cargando desde GitHub...','info');
-  const r=await ghF('/repos/'+REPO+'/contents/schedule.json');
-  if(!r.ok)throw new Error('GitHub '+r.status+'. Verifica tu token.');
-  const m=await r.json();SHA=m.sha;
-  const bin=atob(m.content.replace(/\n/g,''));
-  const bytes=new Uint8Array(bin.length);
-  for(let i=0;i<bin.length;i++)bytes[i]=bin.charCodeAt(i);
-  return JSON.parse(new TextDecoder('utf-8').decode(bytes));
-}
-async function saveGH(d){
-  const s=JSON.stringify(d,null,2);
-  const utf8=new TextEncoder().encode(s);
-  let bin='';utf8.forEach(b=>bin+=String.fromCharCode(b));
-  const r=await ghF('/repos/'+REPO+'/contents/schedule.json',{
-    method:'PUT',
-    body:JSON.stringify({message:'Actualización · '+new Date().toLocaleString('es-ES'),content:btoa(bin),sha:SHA})
-  });
-  if(!r.ok){const e=await r.json();throw new Error(e.message||r.status);}
-  SHA=(await r.json()).content.sha;
-}
+// GITHUB
+function ghF(p,o){o=o||{};return fetch(GHAPI+p,Object.assign({},o,{headers:Object.assign({'Authorization':'Bearer '+getGHToken(),'Accept':'application/vnd.github+json','Content-Type':'application/json'},o.headers||{})}));}
+async function loadGH(){ss('Cargando desde GitHub...','info');const r=await ghF('/repos/'+REPO+'/contents/schedule.json');if(!r.ok)throw new Error('GitHub '+r.status+'. Verifica tu token.');const m=await r.json();SHA=m.sha;const bin=atob(m.content.replace(/\n/g,''));const bytes=new Uint8Array(bin.length);for(let i=0;i<bin.length;i++)bytes[i]=bin.charCodeAt(i);return JSON.parse(new TextDecoder('utf-8').decode(bytes));}
+async function saveGH(d){const s=JSON.stringify(d,null,2);const utf8=new TextEncoder().encode(s);let bin='';utf8.forEach(b=>bin+=String.fromCharCode(b));const r=await ghF('/repos/'+REPO+'/contents/schedule.json',{method:'PUT',body:JSON.stringify({message:'Actualización · '+new Date().toLocaleString('es-ES'),content:btoa(bin),sha:SHA})});if(!r.ok){const e=await r.json();throw new Error(e.message||r.status);}SHA=(await r.json()).content.sha;}
 
-// ── CALENDAR AUTH ─────────────────────────────────────────────────────────────
-function authCal(){
-  const st=Math.random().toString(36).slice(2);
-  sessionStorage.setItem('oas',st);
-  const redir=location.href.split('?')[0].split('#')[0];
-  const p=new URLSearchParams({client_id:GCL,redirect_uri:redir,response_type:'token',scope:SCOPE,state:st,prompt:'consent'});
-  location.href='https://accounts.google.com/o/oauth2/v2/auth?'+p;
-}
-function handleOAuth(){
-  if(!location.hash.includes('access_token'))return false;
-  const p=new URLSearchParams(location.hash.substring(1));
-  const t=p.get('access_token');if(!t)return false;
-  history.replaceState(null,'',location.pathname);
-  localStorage.setItem(CAL_KEY,t);calTok=t;setCalUI(true);
-  ss('✓ Google Calendar conectado','ok');return true;
-}
+// CALENDAR AUTH
+function authCal(){const st=Math.random().toString(36).slice(2);sessionStorage.setItem('oas',st);const redir=location.href.split('?')[0].split('#')[0];const p=new URLSearchParams({client_id:GCL,redirect_uri:redir,response_type:'token',scope:SCOPE,state:st,prompt:'consent'});location.href='https://accounts.google.com/o/oauth2/v2/auth?'+p;}
+function handleOAuth(){if(!location.hash.includes('access_token'))return false;const p=new URLSearchParams(location.hash.substring(1));const t=p.get('access_token');if(!t)return false;history.replaceState(null,'',location.pathname);localStorage.setItem(CAL_KEY,t);calTok=t;setCalUI(true);ss('✓ Google Calendar conectado','ok');return true;}
 function loadCalTok(){const t=localStorage.getItem(CAL_KEY);if(t){calTok=t;setCalUI(true);return true;}return false;}
 function setCalUI(on){
-  const badge=document.getElementById('cal-badge'),btn=document.getElementById('btn-cal'),st=document.getElementById('cal-st-txt');
-  if(on){
-    badge.textContent='📅 Calendar conectado';badge.className='badge b-on';
-    btn.textContent='✓ Conectado';btn.disabled=true;btn.style.opacity='.4';
-    if(st){st.textContent='● Conectado';st.style.color='var(--gn-tx)';}
-  }else{
-    badge.textContent='📅 Calendar desconectado';badge.className='badge b-off';
-    btn.textContent='🔐 Conectar Calendar';btn.disabled=false;btn.style.opacity='';
-    if(st){st.textContent='● Desconectado';st.style.color='var(--re-tx)';}
-  }
+  const badge=document.getElementById('cal-badge'),btn=document.getElementById('btn-cal'),st=document.getElementById('cal-st-txt'),cb=document.getElementById('cal-connect-btn');
+  if(on){badge.textContent='📅 Calendar conectado';badge.className='badge b-on';btn.textContent='✓ Conectado';btn.disabled=true;btn.style.opacity='.5';if(st){st.textContent='● Conectado';st.style.color='var(--green-tx)';}if(cb)cb.style.display='none';}
+  else{badge.textContent='📅 Calendar desconectado';badge.className='badge b-off';btn.textContent='🔐 Conectar Calendar';btn.disabled=false;btn.style.opacity='';if(st){st.textContent='● Desconectado';st.style.color='var(--red)';}if(cb)cb.style.display='';}
 }
 
-// ── CALENDAR API ──────────────────────────────────────────────────────────────
-async function calF(p,o){
-  const t=calTok||localStorage.getItem(CAL_KEY);
-  const r=await fetch(CAPI+p,Object.assign({},o,{headers:Object.assign({'Authorization':'Bearer '+t,'Content-Type':'application/json'},o?.headers||{})}));
-  if(r.status===401){localStorage.removeItem(CAL_KEY);calTok=null;setCalUI(false);throw new Error('Token de Calendar expirado. Reconecta y vuelve a publicar.');}
-  return r;
-}
-async function updateCalEv(eid,s,dateStr){
-  const t=isoDateTime(dateStr,s.time);if(!t.start)return;
-  const v=s.modality==='Virtual';
-  const em=s.isReunion?'🟣':s.isEval?'🏆':v?'💻':'📍';
-  const att=getEmails(s.owner).map(e=>({email:e}));
-  const body={
-    summary:em+' '+s.title,
-    description:'<b>Programa de Formación Agente Inmobiliario</b><br><br>'+(v?'💻 <b>Virtual</b>':'📍 <b>Presencial</b>')+' · Día '+' · '+s.slot+'<br>👤 '+s.owner+'<br><br>'+s.desc+'<br><br>📅 <a href="https://camilabuenoil.github.io/formacion/">Ver cronograma</a>',
-    start:{dateTime:t.start,timeZone:TZ},end:{dateTime:t.end,timeZone:TZ},
-    attendees:att,visibility:'public'
-  };
-  const r=await calF('/calendars/'+encodeURIComponent(CALID)+'/events/'+eid,{method:'PATCH',body:JSON.stringify(body)});
-  if(!r.ok){const e=await r.json();throw new Error(e.error?.message||r.status);}
-}
-async function createCalEv(s,dayNum,dateStr,withMeet){
-  const t=isoDateTime(dateStr,s.time);if(!t.start)return null;
-  const v=s.modality==='Virtual';
-  const em=s.isReunion?'🟣':s.isEval?'🏆':v?'💻':'📍';
-  const att=getEmails(s.owner).map(e=>({email:e}));
-  const body={
-    summary:em+' '+s.title+' · Día '+dayNum,
-    description:'<b>Programa de Formación Agente Inmobiliario</b><br><br>'+(v?'💻 <b>Virtual</b>':'📍 <b>Presencial</b>')+' · Día '+dayNum+' · '+s.slot+'<br>👤 '+s.owner+'<br><br>'+s.desc+'<br><br>📅 <a href="https://camilabuenoil.github.io/formacion/">Ver cronograma</a>',
-    start:{dateTime:t.start,timeZone:TZ},end:{dateTime:t.end,timeZone:TZ},
-    attendees:att,visibility:'public',
-    reminders:{useDefault:false,overrides:[{method:'popup',minutes:30},{method:'popup',minutes:120},{method:'email',minutes:120}]},
-  };
-  if(withMeet)body.conferenceData={createRequest:{requestId:Math.random().toString(36).slice(2),conferenceSolutionKey:{type:'hangoutsMeet'}}};
-  const url='/calendars/'+encodeURIComponent(CALID)+'/events'+(withMeet?'?conferenceDataVersion=1':'');
-  const r=await calF(url,{method:'POST',body:JSON.stringify(body)});
-  if(!r.ok){const e=await r.json();throw new Error(e.error?.message||r.status);}
-  const ev=await r.json();
-  return{eventId:ev.id,meetUrl:ev.conferenceData?.entryPoints?.find(ep=>ep.entryPointType==='video')?.uri||null};
-}
-async function deleteCalEv(eid){
-  const r=await calF('/calendars/'+encodeURIComponent(CALID)+'/events/'+eid,{method:'DELETE'});
-  if(r.status===404)return; // already deleted
-  if(!r.ok){const e=await r.json();throw new Error(e.error?.message||r.status);}
-}
+// CALENDAR API
+async function calF(p,o){const t=calTok||localStorage.getItem(CAL_KEY);const r=await fetch(CAPI+p,Object.assign({},o,{headers:Object.assign({'Authorization':'Bearer '+t,'Content-Type':'application/json'},o?.headers||{})}));if(r.status===401){localStorage.removeItem(CAL_KEY);calTok=null;setCalUI(false);throw new Error('Token de Calendar expirado. Reconecta y vuelve a publicar.');}return r;}
+async function updateCalEv(eid,s,dateStr){const t=isoDateTime(dateStr,s.time);if(!t.start)return;const v=s.modality==='Virtual';const em=s.isReunion?'🟣':s.isEval?'🏆':v?'💻':'📍';const body={summary:em+' '+s.title,description:'<b>Programa de Formación</b><br>'+(v?'💻 Virtual':'📍 Presencial')+' · '+s.slot+' · '+s.owner+'<br><br>'+s.desc+'<br><br>📅 <a href="https://camilabuenoil.github.io/formacion/">Ver cronograma</a>',start:{dateTime:t.start,timeZone:TZ},end:{dateTime:t.end,timeZone:TZ},attendees:getEmails(s.owner).map(e=>({email:e})),visibility:'public'};const r=await calF('/calendars/'+encodeURIComponent(CALID)+'/events/'+eid,{method:'PATCH',body:JSON.stringify(body)});if(!r.ok){const e=await r.json();throw new Error(e.error?.message||r.status);}}
+async function createCalEv(s,dayNum,dateStr,withMeet){const t=isoDateTime(dateStr,s.time);if(!t.start)return null;const v=s.modality==='Virtual';const em=s.isReunion?'🟣':s.isEval?'🏆':v?'💻':'📍';const att=getEmails(s.owner).map(e=>({email:e}));const body={summary:em+' '+s.title+' · Día '+dayNum,description:'<b>Programa de Formación</b><br>'+(v?'💻 Virtual':'📍 Presencial')+' · Día '+dayNum+' · '+s.slot+'<br>👤 '+s.owner+'<br><br>'+s.desc+'<br><br>📅 <a href="https://camilabuenoil.github.io/formacion/">Ver cronograma</a>',start:{dateTime:t.start,timeZone:TZ},end:{dateTime:t.end,timeZone:TZ},attendees:att,visibility:'public',reminders:{useDefault:false,overrides:[{method:'popup',minutes:30},{method:'popup',minutes:120},{method:'email',minutes:120}]}};if(withMeet)body.conferenceData={createRequest:{requestId:Math.random().toString(36).slice(2),conferenceSolutionKey:{type:'hangoutsMeet'}}};const url='/calendars/'+encodeURIComponent(CALID)+'/events'+(withMeet?'?conferenceDataVersion=1':'');const r=await calF(url,{method:'POST',body:JSON.stringify(body)});if(!r.ok){const e=await r.json();throw new Error(e.error?.message||r.status);}const ev=await r.json();return{eventId:ev.id,meetUrl:ev.conferenceData?.entryPoints?.find(ep=>ep.entryPointType==='video')?.uri||null};}
+async function deleteCalEv(eid){const r=await calF('/calendars/'+encodeURIComponent(CALID)+'/events/'+eid,{method:'DELETE'});if(r.status===404)return;if(!r.ok){const e=await r.json();throw new Error(e.error?.message||r.status);}}
 
-// ── COLLECT ───────────────────────────────────────────────────────────────────
-function collect(){
-  const d=JSON.parse(JSON.stringify(DATA));
-  d.startDate=document.getElementById('meta-start').value;
-  d.lastUpdated=document.getElementById('meta-upd').value||new Date().toLocaleDateString('es-ES',{day:'numeric',month:'long',year:'numeric'});
-  d.weeks.forEach((w,wi)=>w.days.forEach((day,di)=>{
-    const dateInput=document.getElementById('date-'+wi+'-'+di);
-    if(dateInput&&dateInput.value)day.date=dateInput.value;
-    day.sessions.forEach((s,si)=>{
-      const k=wi+'-'+di+'-'+si;
-      const g=id=>document.getElementById(id)?.value;
-      s.time=g('t-'+k)||s.time;s.owner=g('o-'+k)||s.owner;
-      s.modality=g('m-'+k)||s.modality;s.slot=g('sl-'+k)||s.slot;
-      s.title=g('ti-'+k)||s.title;s.desc=g('d-'+k)||s.desc;
-      const meet=document.getElementById('meet-'+k);if(meet)s.meetUrl=meet.value||s.meetUrl;
-    });
-  }));
-  return d;
-}
+// COLLECT
+function collect(){const d=JSON.parse(JSON.stringify(DATA));d.startDate=document.getElementById('meta-start').value;d.lastUpdated=document.getElementById('meta-upd').value||new Date().toLocaleDateString('es-ES',{day:'numeric',month:'long',year:'numeric'});d.weeks.forEach((w,wi)=>w.days.forEach((day,di)=>{const di2=document.getElementById('date-'+wi+'-'+di);if(di2&&di2.value)day.date=di2.value;day.sessions.forEach((s,si)=>{const k=wi+'-'+di+'-'+si;const g=id=>document.getElementById(id)?.value;s.time=g('t-'+k)||s.time;s.owner=g('o-'+k)||s.owner;s.modality=g('m-'+k)||s.modality;s.slot=g('sl-'+k)||s.slot;s.title=g('ti-'+k)||s.title;s.desc=g('d-'+k)||s.desc;const meet=document.getElementById('meet-'+k);if(meet)s.meetUrl=meet.value||s.meetUrl;});}));return d;}
 
-// ── PUBLISH ───────────────────────────────────────────────────────────────────
+// PUBLISH
 function lg(m,c){const e=document.getElementById('pub-log');e.style.display='block';e.innerHTML+='<span'+(c?' class="'+c+'"':'')+'>'+m+'</span>\n';e.scrollTop=e.scrollHeight;}
-async function publishAll(){
-  if(!calTok&&!localStorage.getItem(CAL_KEY)){ss('Calendar no conectado — publicando solo en GitHub.','warn');await _pub(false);return;}
-  await _pub(true);
-}
+async function publishAll(){if(!calTok&&!localStorage.getItem(CAL_KEY)){ss('Calendar no conectado — publicando solo en GitHub.','warn');await _pub(false);return;}await _pub(true);}
 async function pubGH(){await _pub(false);}
 async function _pub(cal){
   ['btn-pub-top','btn-pub-main','btn-pub-gh'].forEach(id=>{const b=document.getElementById(id);if(b)b.disabled=true;});
-  document.getElementById('btn-pub-top').innerHTML='⏳';
-  document.getElementById('pub-log').innerHTML='';
-  ss('Publicando...','info');
-  goTab('publicar',document.querySelectorAll('.tab')[3]);
+  document.getElementById('btn-pub-top').innerHTML='⏳';document.getElementById('pub-log').innerHTML='';
+  ss('Publicando...','info');goTab('publicar',document.querySelectorAll('.tab')[3]);
   try{
-    const nd=collect();
-    nd.lastUpdated=new Date().toLocaleDateString('es-ES',{day:'numeric',month:'long',year:'numeric'});
-    document.getElementById('meta-upd').value=nd.lastUpdated;
-    lg('⬆ Guardando en GitHub...','info');
-    await saveGH(nd);DATA=nd;
-    lg('✓ GitHub actualizado','ok');
+    const nd=collect();nd.lastUpdated=new Date().toLocaleDateString('es-ES',{day:'numeric',month:'long',year:'numeric'});document.getElementById('meta-upd').value=nd.lastUpdated;
+    lg('⬆ Guardando en GitHub...','info');await saveGH(nd);DATA=nd;lg('✓ GitHub actualizado','ok');
     let ok=0,errs=[];
-    if(cal&&changed.size>0){
-      lg('\n📅 Sincronizando '+changed.size+' evento(s)...','info');
-      for(const k of changed){
-        const[wi,di,si]=k.split('-').map(Number);
-        const s=nd.weeks[wi]?.days[di]?.sessions[si];
-        const day=nd.weeks[wi]?.days[di];
-        const eid=s?.calEventId;
-        if(!s||!eid){lg('  ⚠ Sin eventId: '+k,'warn');continue;}
-        const dateStr=day._isoDate||extractISODate(day.date);
-        try{await updateCalEv(eid,s,dateStr);ok++;const b=document.getElementById('sy-'+k);if(b){b.textContent='Sincronizado';b.className='sync-b sy-ok';}lg('  ✓ '+s.title.substring(0,45),'ok');}
-        catch(e){errs.push(e.message);lg('  ✕ '+e.message,'err');}
-      }
-    }
-    changed.clear();isDirty=false;
-    document.getElementById('pub-cnt').textContent='0';
-    document.getElementById('last-pub').textContent=nd.lastUpdated;
-    let msg='✓ Publicado en GitHub.';
-    if(cal&&ok>0)msg+=' · '+ok+' evento(s) en Calendar.';
-    if(errs.length)msg+=' · Errores: '+errs.join('; ');
+    if(cal&&changed.size>0){lg('\n📅 Sincronizando '+changed.size+' evento(s)...','info');for(const k of changed){const[wi,di,si]=k.split('-').map(Number);const s=nd.weeks[wi]?.days[di]?.sessions[si];const day=nd.weeks[wi]?.days[di];const eid=s?.calEventId;if(!s||!eid){lg('  ⚠ Sin eventId: '+k,'warn');continue;}const dateStr=day._isoDate||extractISO(day.date);try{await updateCalEv(eid,s,dateStr);ok++;const b=document.getElementById('sy-'+k);if(b){b.textContent='Sincronizado';b.className='sync-b sy-ok';}lg('  ✓ '+s.title.substring(0,45),'ok');}catch(e){errs.push(e.message);lg('  ✕ '+e.message,'err');}}}
+    changed.clear();isDirty=false;document.getElementById('pub-cnt').textContent='0';document.getElementById('last-pub').textContent=nd.lastUpdated;
+    let msg='✓ Publicado en GitHub.';if(cal&&ok>0)msg+=' · '+ok+' evento(s) en Calendar.';if(errs.length)msg+=' · Errores: '+errs.join('; ');
     ss(msg,errs.length?'warn':'ok');lg('\n'+msg,'ok');
   }catch(e){ss('❌ '+e.message,'err');lg('❌ '+e.message,'err');}
-  finally{
-    ['btn-pub-top','btn-pub-main','btn-pub-gh'].forEach(id=>{const b=document.getElementById(id);if(b)b.disabled=!isDirty;});
-    document.getElementById('btn-pub-top').innerHTML='🚀 Publicar';
-  }
+  finally{['btn-pub-top','btn-pub-main','btn-pub-gh'].forEach(id=>{const b=document.getElementById(id);if(b)b.disabled=!isDirty;});document.getElementById('btn-pub-top').innerHTML='🚀 Publicar';}
 }
 
-// ── ADD / REMOVE SESSION ──────────────────────────────────────────────────────
-function toggleAdd(wi,di){
-  const f=document.getElementById('af-'+wi+'-'+di);
-  if(f)f.style.display=f.style.display==='none'?'block':'none';
-}
+// SESSION ACTIONS
+function toggleAdd(wi,di){const f=document.getElementById('af-'+wi+'-'+di);if(f)f.style.display=f.style.display==='none'?'block':'none';}
 async function saveNewSession(wi,di){
-  const day=DATA.weeks[wi].days[di];
-  const fid='nf-'+wi+'-'+di+'-';
-  const g=id=>document.getElementById(id)?.value?.trim();
-  const s={
-    time:g(fid+'time')||'9:00 – 10:00',owner:g(fid+'owner')||'',
-    slot:g(fid+'slot')||'Mañana',modality:g(fid+'mod')||'Presencial',
-    title:g(fid+'title')||'Nueva sesión',desc:g(fid+'desc')||'',
-    meetUrl:'',calEventId:''
-  };
-  const withMeet=s.modality==='Virtual';
-  const hasCal=calTok||localStorage.getItem(CAL_KEY);
-  if(hasCal){
-    ss('Creando evento en Calendar...','info');
-    try{
-      const dateStr=day._isoDate||extractISODate(day.date);
-      const res=await createCalEv(s,day.num,dateStr,withMeet);
-      if(res){s.calEventId=res.eventId;if(res.meetUrl)s.meetUrl=res.meetUrl;}
-      ss('✓ Sesión creada con evento en Calendar','ok');
-    }catch(e){ss('⚠ Sesión sin evento Calendar: '+e.message,'warn');}
-  }
-  DATA.weeks[wi].days[di].sessions.push(s);
-  dirty();
-  document.getElementById('af-'+wi+'-'+di).style.display='none';
-  renderEditor();
+  const day=DATA.weeks[wi].days[di];const fid='nf-'+wi+'-'+di+'-';const g=id=>document.getElementById(id)?.value?.trim();
+  const s={time:g(fid+'time')||'9:00 – 10:00',owner:g(fid+'owner')||'',slot:g(fid+'slot')||'Mañana',modality:g(fid+'mod')||'Presencial',title:g(fid+'title')||'Nueva sesión',desc:g(fid+'desc')||'',meetUrl:'',calEventId:''};
+  if(calTok||localStorage.getItem(CAL_KEY)){ss('Creando evento en Calendar...','info');try{const dateStr=day._isoDate||extractISO(day.date);const res=await createCalEv(s,day.num,dateStr,s.modality==='Virtual');if(res){s.calEventId=res.eventId;if(res.meetUrl)s.meetUrl=res.meetUrl;}ss('✓ Sesión creada con evento en Calendar','ok');}catch(e){ss('⚠ Sesión sin evento Calendar: '+e.message,'warn');}}
+  DATA.weeks[wi].days[di].sessions.push(s);dirty();document.getElementById('af-'+wi+'-'+di).style.display='none';renderEditor();
 }
 async function removeSession(wi,di,si){
-  if(!confirm('¿Eliminar esta sesión?'))return;
+  if(!confirm('¿Eliminar esta sesión? Si tiene evento en Calendar, también se eliminará.'))return;
   const s=DATA.weeks[wi].days[di].sessions[si];
-  if(s.calEventId&&(calTok||localStorage.getItem(CAL_KEY))){
-    ss('Eliminando evento de Calendar...','info');
-    try{await deleteCalEv(s.calEventId);ss('✓ Eliminado de Calendar','ok');}
-    catch(e){ss('⚠ No se pudo eliminar de Calendar: '+e.message,'warn');}
-  }
-  changed.delete(wi+'-'+di+'-'+si);
-  DATA.weeks[wi].days[di].sessions.splice(si,1);
-  dirty();renderEditor();
+  if(s.calEventId&&(calTok||localStorage.getItem(CAL_KEY))){ss('Eliminando evento de Calendar...','info');try{await deleteCalEv(s.calEventId);ss('✓ Eliminado de Calendar y del cronograma.','ok');}catch(e){ss('⚠ Sesión eliminada, pero no se pudo borrar de Calendar: '+e.message,'warn');}}
+  changed.delete(wi+'-'+di+'-'+si);DATA.weeks[wi].days[di].sessions.splice(si,1);dirty();renderEditor();
 }
+async function createMeet(wi,di,si){const s=DATA.weeks[wi].days[di].sessions[si];const day=DATA.weeks[wi].days[di];if(!calTok&&!localStorage.getItem(CAL_KEY)){ss('Conecta Google Calendar primero.','err');return;}ss('Creando Meet...','info');try{const dateStr=day._isoDate||extractISO(day.date);const res=await createCalEv(s,day.num,dateStr,true);if(res){DATA.weeks[wi].days[di].sessions[si].calEventId=res.eventId;if(res.meetUrl){DATA.weeks[wi].days[di].sessions[si].meetUrl=res.meetUrl;ss('✓ Meet creado correctamente.','ok');}dirty(wi+'-'+di+'-'+si);renderEditor();}}catch(e){ss('❌ '+e.message,'err');}}
 
-// ── MEET ──────────────────────────────────────────────────────────────────────
-async function createMeet(wi,di,si){
-  const s=DATA.weeks[wi].days[di].sessions[si];
-  const day=DATA.weeks[wi].days[di];
-  if(!calTok&&!localStorage.getItem(CAL_KEY)){ss('Conecta Google Calendar primero.','err');return;}
-  ss('Creando Meet...','info');
-  try{
-    const dateStr=day._isoDate||extractISODate(day.date);
-    const res=await createCalEv(s,day.num,dateStr,true);
-    if(res){
-      DATA.weeks[wi].days[di].sessions[si].calEventId=res.eventId;
-      if(res.meetUrl){DATA.weeks[wi].days[di].sessions[si].meetUrl=res.meetUrl;ss('✓ Meet creado: '+res.meetUrl,'ok');}
-      dirty(wi+'-'+di+'-'+si);renderEditor();
-    }
-  }catch(e){ss('❌ '+e.message,'err');}
-}
-
-// ── TEAM ──────────────────────────────────────────────────────────────────────
+// TEAM
 function renderTeam(){
   const list=document.getElementById('team-list');if(!list)return;
   let html='';
-  TEAM.forEach((m,i)=>{
-    html+=`<div class="team-row">
-      <div class="fe" style="margin:0"><label>Nombre</label><input type="text" value="${esc(m.name)}" oninput="TEAM[${i}].name=this.value;saveTeam()" /></div>
-      <div class="fe" style="margin:0"><label>Email corporativo</label><input type="email" value="${esc(m.email)}" oninput="TEAM[${i}].email=this.value;saveTeam()" /></div>
-      <div style="padding-top:16px"><button class="btn b-re b-sm" onclick="removeMember(${i})">✕</button></div>
-    </div>`;
-  });
-  list.innerHTML=html;
-  updateDatalist();
+  TEAM.forEach((m,i)=>{html+=`<div class="team-row"><div class="fe" style="margin:0"><label>Nombre completo</label><input type="text" value="${esc(m.name)}" oninput="TEAM[${i}].name=this.value;saveTeam()" /></div><div class="fe" style="margin:0"><label>Email corporativo</label><input type="email" value="${esc(m.email)}" oninput="TEAM[${i}].email=this.value;saveTeam()" /></div><div style="padding-top:16px"><button class="btn b-re b-sm" onclick="removeMember(${i})">✕</button></div></div>`;});
+  list.innerHTML=html;updateDL();
 }
 function addMember(){TEAM.push({name:'',email:''});saveTeam();renderTeam();}
 function removeMember(i){if(!confirm('¿Eliminar a '+TEAM[i].name+'?'))return;TEAM.splice(i,1);saveTeam();renderTeam();}
-function updateDatalist(){const dl=document.getElementById('team-dl');if(dl)dl.innerHTML=TEAM.map(m=>`<option value="${esc(m.name)}">`).join('');}
+function updateDL(){const dl=document.getElementById('team-dl');if(dl)dl.innerHTML=TEAM.map(m=>`<option value="${esc(m.name)}">`).join('');}
 
-// ── RENDER EDITOR ─────────────────────────────────────────────────────────────
+// ESC HELPER
 function esc(v){return String(v||'').replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;');}
 
-// Try to extract ISO date from display date string
-function extractISODate(dateStr){
-  // If already ISO
-  if(/^\d{4}-\d{2}-\d{2}$/.test(dateStr))return dateStr;
-  // Try to parse "lunes 18 de mayo de 2026"
-  const months={enero:1,febrero:2,marzo:3,abril:4,mayo:5,junio:6,julio:7,agosto:8,septiembre:9,octubre:10,noviembre:11,diciembre:12};
-  const m=dateStr.match(/(\d+)\s+de\s+(\w+)\s+de\s+(\d{4})/);
-  if(m){const mo=months[m[2].toLowerCase()];if(mo)return m[3]+'-'+String(mo).padStart(2,'0')+'-'+m[1].padStart(2,'0');}
-  return null;
-}
-
+// RENDER EDITOR
 function renderEditor(){
   document.getElementById('meta-start').value=DATA.startDate||'';
   document.getElementById('meta-upd').value=DATA.lastUpdated||'';
   document.getElementById('last-pub').textContent=DATA.lastUpdated||'–';
   const con=document.getElementById('editor');
   let html=`<datalist id="team-dl">${TEAM.map(m=>`<option value="${esc(m.name)}">`).join('')}</datalist>`;
-
   DATA.weeks.forEach((week,wi)=>{
-    html+=`<div class="week-hdr"><span class="wp ${wi===0?'wp1':'wp2'}">${week.label}</span><span class="wt">${week.title} · ${week.subtitle}</span></div>`;
+    html+=`<div class="week-hdr ${wi===1?'s2':''}"><span class="wp">${week.label}</span><span class="wt">${week.title}</span><span class="wd">${week.subtitle}</span></div>`;
     week.days.forEach((day,di)=>{
-      const isoDate=day._isoDate||extractISODate(day.date)||'';
-      html+=`<div class="day-wrap">
-        <div class="day-bar">
-          <span class="day-pill">DÍA ${day.num}</span>
-          <input class="day-date-input" id="date-${wi}-${di}" value="${esc(day.date)}" oninput="dirty()" title="Editar fecha del día" />
-        </div>
-        <div class="sessions-wrap">`;
-
+      html+=`<div class="day-wrap"><div class="day-bar"><span class="day-pill">DÍA ${day.num}</span><input class="day-date-inp" id="date-${wi}-${di}" value="${esc(day.date)}" oninput="dirty()" placeholder="Ej: lunes 18 de mayo de 2026" /></div><div class="sessions-wrap">`;
       day.sessions.forEach((s,si)=>{
-        const k=`${wi}-${di}-${si}`;
-        const has=!!s.calEventId;
-        const sc=has?'sy-ok':'sy-none';const st=has?'Sincronizado':'Sin evento';
-        const isVirt=s.modality==='Virtual';
-        html+=`<div class="se">
-          <div class="se-hd">
-            <span class="se-n">S${si+1}</span>
-            <span class="se-tt" id="sp-${k}">${esc(s.title)}</span>
-            <span class="sync-b ${sc}" id="sy-${k}">${st}</span>
-          </div>
-          <div class="g3">
-            <div class="fe"><label>Hora</label><input type="text" id="t-${k}" value="${esc(s.time)}" oninput="dirty('${k}');document.getElementById('sp-${k}').textContent=document.getElementById('ti-${k}').value" /></div>
-            <div class="fe"><label>Responsable</label><input type="text" id="o-${k}" value="${esc(s.owner)}" list="team-dl" oninput="dirty('${k}')" /></div>
-            <div class="fe"><label>Modalidad</label>
-              <select id="m-${k}" onchange="dirty('${k}');onModalityChange('${k}',${wi},${di},${si})">
-                <option ${s.modality==='Presencial'?'selected':''}>Presencial</option>
-                <option ${s.modality==='Virtual'?'selected':''}>Virtual</option>
-                <option ${s.modality==='Presencial/Virtual'?'selected':''}>Presencial/Virtual</option>
-              </select></div>
-          </div>
-          <div class="g2">
-            <div class="fe"><label>Franja</label>
-              <select id="sl-${k}" onchange="dirty('${k}')">
-                <option ${s.slot==='Mañana'?'selected':''}>Mañana</option>
-                <option ${s.slot==='Tarde'?'selected':''}>Tarde</option>
-              </select></div>
-            <div class="fe"><label>Título de la sesión</label><input type="text" id="ti-${k}" value="${esc(s.title)}" oninput="dirty('${k}');document.getElementById('sp-${k}').textContent=this.value" /></div>
-          </div>
-          <div class="fe"><label>Descripción</label><textarea id="d-${k}" oninput="dirty('${k}')">${esc(s.desc)}</textarea></div>`;
-
-        // Meet row
+        const k=`${wi}-${di}-${si}`;const has=!!s.calEventId;const isVirt=s.modality==='Virtual';
+        html+=`<div class="se"><div class="se-hd"><span class="se-n">S${si+1}</span><span class="se-tt" id="sp-${k}">${esc(s.title)}</span><span class="sync-b ${has?'sy-ok':'sy-none'}" id="sy-${k}">${has?'✓ Sincronizado':'Sin evento'}</span></div>`;
+        html+=`<div class="g3"><div class="fe"><label>Hora</label><input type="text" id="t-${k}" value="${esc(s.time)}" oninput="dirty('${k}');document.getElementById('sp-${k}').textContent=document.getElementById('ti-${k}').value" /></div><div class="fe"><label>Responsable</label><input type="text" id="o-${k}" value="${esc(s.owner)}" list="team-dl" oninput="dirty('${k}')" /></div><div class="fe"><label>Modalidad</label><select id="m-${k}" onchange="dirty('${k}');onModChange('${k}',${wi},${di},${si})"><option ${s.modality==='Presencial'?'selected':''}>Presencial</option><option ${s.modality==='Virtual'?'selected':''}>Virtual</option><option ${s.modality==='Presencial/Virtual'?'selected':''}>Presencial/Virtual</option></select></div></div>`;
+        html+=`<div class="g2"><div class="fe"><label>Franja</label><select id="sl-${k}" onchange="dirty('${k}')"><option ${s.slot==='Mañana'?'selected':''}>Mañana</option><option ${s.slot==='Tarde'?'selected':''}>Tarde</option></select></div><div class="fe"><label>Título de la sesión</label><input type="text" id="ti-${k}" value="${esc(s.title)}" oninput="dirty('${k}');document.getElementById('sp-${k}').textContent=this.value" /></div></div>`;
+        html+=`<div class="fe"><label>Descripción</label><textarea id="d-${k}" oninput="dirty('${k}')">${esc(s.desc)}</textarea></div>`;
         html+=`<div id="meet-sec-${k}">`;
-        if(s.meetUrl){
-          html+=`<div class="meet-row">
-            <div class="meet-lnk">🎥 <a href="${esc(s.meetUrl)}" target="_blank">${esc(s.meetUrl)}</a></div>
-            <input type="text" id="meet-${k}" value="${esc(s.meetUrl)}" style="display:none" oninput="dirty('${k}')" />
-            <button class="btn b-gh b-sm" onclick="editMeet('${k}',${wi},${di},${si})">✏️</button>
-          </div>`;
-        }else if(isVirt){
-          html+=`<div class="meet-row">
-            <input type="text" id="meet-${k}" placeholder="Pegar link o crear automáticamente →" style="flex:1;background:#0A0A0A;border:1px solid var(--bd2);border-radius:4px;padding:5px 9px;font-size:11px;color:var(--tx)" oninput="dirty('${k}')" />
-            <button class="btn b-gn b-sm" onclick="createMeet(${wi},${di},${si})">🎥 Crear Meet</button>
-          </div>`;
-        }
+        if(s.meetUrl){html+=`<div class="meet-row"><div class="meet-lnk">🎥 <a href="${esc(s.meetUrl)}" target="_blank">${esc(s.meetUrl)}</a></div><input type="text" id="meet-${k}" value="${esc(s.meetUrl)}" style="display:none" oninput="dirty('${k}')" /><button class="btn b-wh b-sm" onclick="editMeet('${k}',${wi},${di},${si})">✏️ Editar</button></div>`;}
+        else if(isVirt){html+=`<div class="meet-row"><input type="text" id="meet-${k}" class="meet-inp" placeholder="Pegar link de Meet o crear automáticamente →" oninput="dirty('${k}')" /><button class="btn b-gn b-sm" onclick="createMeet(${wi},${di},${si})">🎥 Crear Meet</button></div>`;}
         html+=`</div>`;
-
-        html+=`<div class="se-acts">
-          <button class="btn b-re b-sm" onclick="removeSession(${wi},${di},${si})">🗑 Eliminar sesión</button>
-        </div></div>`;
+        html+=`<div class="se-acts"><button class="btn b-re b-sm" onclick="removeSession(${wi},${di},${si})">🗑 Eliminar sesión</button></div></div>`;
       });
-
-      html+=`<button class="btn b-gh b-sm" style="width:100%;margin-top:7px;justify-content:center" onclick="toggleAdd(${wi},${di})">+ Agregar sesión en este día</button>
-        <div class="add-form" id="af-${wi}-${di}">
-          <div class="add-form-title">Nueva sesión — Día ${day.num} · ${day.date}</div>
-          <div class="g4">
-            <div class="fe"><label>Hora</label><input type="text" id="nf-${wi}-${di}-time" placeholder="9:00 – 10:00" /></div>
-            <div class="fe"><label>Responsable</label><input type="text" id="nf-${wi}-${di}-owner" list="team-dl" /></div>
-            <div class="fe"><label>Franja</label><select id="nf-${wi}-${di}-slot"><option>Mañana</option><option>Tarde</option></select></div>
-            <div class="fe"><label>Modalidad</label><select id="nf-${wi}-${di}-mod"><option>Presencial</option><option>Virtual</option></select></div>
-          </div>
-          <div class="fe"><label>Título</label><input type="text" id="nf-${wi}-${di}-title" /></div>
-          <div class="fe"><label>Descripción</label><textarea id="nf-${wi}-${di}-desc" rows="2"></textarea></div>
-          <div style="display:flex;gap:7px;margin-top:8px">
-            <button class="btn b-or b-sm" onclick="saveNewSession(${wi},${di})">✓ Guardar${(calTok||localStorage.getItem(CAL_KEY))?' + Calendar':''}</button>
-            <button class="btn b-gh b-sm" onclick="toggleAdd(${wi},${di})">Cancelar</button>
-          </div>
-        </div>
-      </div></div>`;
+      html+=`<button class="btn add-btn" onclick="toggleAdd(${wi},${di})">+ Agregar sesión en este día</button>`;
+      html+=`<div class="add-form" id="af-${wi}-${di}"><div class="add-form-tt">Nueva sesión — Día ${day.num}</div><div class="g4"><div class="fe"><label>Hora</label><input type="text" id="nf-${wi}-${di}-time" placeholder="9:00 – 10:00" /></div><div class="fe"><label>Responsable</label><input type="text" id="nf-${wi}-${di}-owner" list="team-dl" /></div><div class="fe"><label>Franja</label><select id="nf-${wi}-${di}-slot"><option>Mañana</option><option>Tarde</option></select></div><div class="fe"><label>Modalidad</label><select id="nf-${wi}-${di}-mod"><option>Presencial</option><option>Virtual</option></select></div></div><div class="fe"><label>Título</label><input type="text" id="nf-${wi}-${di}-title" /></div><div class="fe"><label>Descripción</label><textarea id="nf-${wi}-${di}-desc" rows="2"></textarea></div><div style="display:flex;gap:8px;margin-top:10px"><button class="btn b-or b-sm" onclick="saveNewSession(${wi},${di})">✓ Guardar sesión</button><button class="btn b-wh b-sm" onclick="toggleAdd(${wi},${di})">Cancelar</button></div></div>`;
+      html+=`</div></div>`;
     });
   });
   con.innerHTML=html;
 }
 
-function onModalityChange(k,wi,di,si){
-  const mod=document.getElementById('m-'+k)?.value;
-  const sec=document.getElementById('meet-sec-'+k);if(!sec)return;
+function onModChange(k,wi,di,si){
+  const mod=document.getElementById('m-'+k)?.value;const sec=document.getElementById('meet-sec-'+k);if(!sec)return;
   const s=DATA.weeks[wi]?.days[di]?.sessions[si];if(!s)return;
-  if(mod==='Virtual'&&!s.meetUrl){
-    sec.innerHTML=`<div class="meet-row">
-      <input type="text" id="meet-${k}" placeholder="Pegar link o crear →" style="flex:1;background:#0A0A0A;border:1px solid var(--bd2);border-radius:4px;padding:5px 9px;font-size:11px;color:var(--tx)" oninput="dirty('${k}')" />
-      <button class="btn b-gn b-sm" onclick="createMeet(${wi},${di},${si})">🎥 Crear Meet</button></div>`;
-  }else if(mod!=='Virtual'){sec.innerHTML='';}
+  if(mod==='Virtual'&&!s.meetUrl){sec.innerHTML=`<div class="meet-row"><input type="text" id="meet-${k}" class="meet-inp" placeholder="Pegar link o crear →" oninput="dirty('${k}')" /><button class="btn b-gn b-sm" onclick="createMeet(${wi},${di},${si})">🎥 Crear Meet</button></div>`;}
+  else if(mod!=='Virtual'){sec.innerHTML='';}
 }
-function editMeet(k,wi,di,si){
-  const s=DATA.weeks[wi]?.days[di]?.sessions[si];
-  document.getElementById('meet-sec-'+k).innerHTML=`<div class="meet-row">
-    <input type="text" id="meet-${k}" value="${esc(s?.meetUrl||'')}" style="flex:1;background:#0A0A0A;border:1px solid var(--bd2);border-radius:4px;padding:5px 9px;font-size:11px;color:var(--tx)" oninput="dirty('${k}')" />
-    <button class="btn b-gn b-sm" onclick="createMeet(${wi},${di},${si})">🎥 Nuevo Meet</button></div>`;
-}
+function editMeet(k,wi,di,si){const s=DATA.weeks[wi]?.days[di]?.sessions[si];document.getElementById('meet-sec-'+k).innerHTML=`<div class="meet-row"><input type="text" id="meet-${k}" class="meet-inp" value="${esc(s?.meetUrl||'')}" oninput="dirty('${k}')" /><button class="btn b-gn b-sm" onclick="createMeet(${wi},${di},${si})">🎥 Nuevo Meet</button></div>`;}
 
-// ── INIT ──────────────────────────────────────────────────────────────────────
+// INIT
 async function init(){
-  handleOAuth()||loadCalTok();
-  renderTeam();
-  try{
-    DATA=await loadGH();
-    // Inject _isoDate for each day based on date string
-    DATA.weeks.forEach(w=>w.days.forEach(d=>{if(!d._isoDate)d._isoDate=extractISODate(d.date)||'';}));
-    renderEditor();
-    ss('✓ Cronograma cargado. Listo para editar.','ok');
-  }catch(e){ss('❌ '+e.message,'err');}
+  handleOAuth()||loadCalTok();renderTeam();
+  try{DATA=await loadGH();DATA.weeks.forEach(w=>w.days.forEach(d=>{if(!d._isoDate)d._isoDate=extractISO(d.date)||'';}));renderEditor();ss('✓ Cronograma cargado. Listo para editar.','ok');}
+  catch(e){ss('❌ '+e.message,'err');}
 }
-
 window.addEventListener('beforeunload',e=>{if(isDirty){e.preventDefault();e.returnValue='';}});
-
-// BOOT
-if(location.hash.includes('access_token')||getGHToken()){
-  document.getElementById('main-scr').style.display='block';
-  init();
-}else{
-  document.getElementById('setup-scr').style.display='block';
-}
+if(location.hash.includes('access_token')||getGHToken()){document.getElementById('main-scr').style.display='block';init();}
+else{document.getElementById('setup-scr').style.display='block';}
 </script>
 </body>
 </html>
