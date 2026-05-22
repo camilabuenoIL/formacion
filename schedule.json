@@ -200,16 +200,6 @@
               "title": "Notion 1ª cap. — Recursos digitales de la empresa",
               "desc": "Bases de datos, guías internas, procesos y biblioteca comercial · cómo navegar y consultar recursos disponibles para el agente",
               "calEventId": "0e8sc4dodgogarboosmqjuves8"
-            },
-            {
-              "time": "2:00 – 3:00",
-              "owner": "Sofía Herreño",
-              "slot": "Tarde",
-              "modality": "Virtual",
-              "title": "Optimización de perfiles digitales — Parte 3: Facebook e Instagram (Continuación)",
-              "desc": "Facebook e Instagram: configuración profesional de perfil, bio, foto, portada e historias destacadas coherentes con Inmobiliario Latam",
-              "meetUrl": "Crear automaticamente",
-              "calEventId": ""
             }
           ],
           "_isoDate": ""
@@ -272,6 +262,16 @@
               "title": "Técnicas de seguimiento y captación de propiedades",
               "desc": "Cadencia comercial sin saturar al cliente · prospección de propietarios · primer contacto · valuación básica y argumentos para captar el inmueble",
               "calEventId": "ccs0l0angmvl4dmrrtas7hl7gc"
+            },
+            {
+              "time": "09:00 – 10:00",
+              "owner": "Sofía Herreño",
+              "slot": "Mañana",
+              "modality": "Virtual",
+              "title": "Optimización de perfiles digitales — Parte 3: Facebook e Instagram (Continuación)",
+              "desc": "Facebook e Instagram: configuración profesional de perfil, bio, foto, portada e historias destacadas coherentes con Inmobiliario Latam",
+              "meetUrl": "",
+              "calEventId": ""
             }
           ],
           "_isoDate": ""
