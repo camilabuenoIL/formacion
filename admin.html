@@ -394,7 +394,7 @@ async function _applyCohorte(withCal){
       cll('\n📅 Procesando Google Calendar...','info');
       let del=0;
       for(const w of DATA.weeks)for(const day of w.days)for(const s of day.sessions){
-        if(s.calEventId){try{await calF('/calendars/'+encodeURIComponent(CALID)+'/events/'+s.calEventId,{method:'DELETE'});del++;s.calEventId='';s.meetUrl='';}catch(e){}}
+        if(s.calEventId){try{await proxyCall({action:'delete',eventId:s.calEventId});del++;s.calEventId='';s.meetUrl='';}catch(e){}}
       }
       cll('  ✓ '+del+' eventos anteriores eliminados','ok');
       cll('  Creando nuevos eventos...','info');
@@ -445,64 +445,53 @@ function setCalUI(on){
   }
 }
 
-// CALENDAR API
-async function calF(p,o){const t=calTok||localStorage.getItem(CAL_KEY);const r=await fetch(CAPI+p,Object.assign({},o,{headers:Object.assign({'Authorization':'Bearer '+t,'Content-Type':'application/json'},o?.headers||{})}));if(r.status===401){localStorage.removeItem(CAL_KEY);calTok=null;setCalUI(false);throw new Error('Token de Calendar expirado. Reconecta y vuelve a publicar.');}return r;}
-async function updateCalEv(eid,s,dateStr){const t=isoDateTime(dateStr,s.time);if(!t.start)return;const v=s.modality==='Virtual';const em=s.isReunion?'🟣':s.isEval?'🏆':v?'💻':'📍';const body={summary:em+' '+s.title,description:'<b>Programa de Formación</b><br>'+(v?'💻 Virtual':'📍 Presencial')+' · '+s.slot+' · '+s.owner+'<br><br>'+s.desc+'<br><br>📅 <a href="https://camilabuenoil.github.io/formacion/">Ver cronograma</a>',start:{dateTime:t.start,timeZone:TZ},end:{dateTime:t.end,timeZone:TZ},attendees:getEmails(s.owner).map(e=>({email:e})),visibility:'public'};const r=await calF('/calendars/'+encodeURIComponent(CALID)+'/events/'+eid,{method:'PATCH',body:JSON.stringify(body)});if(!r.ok){const e=await r.json();throw new Error(e.error?.message||r.status);}}
+// CALENDAR via Google Apps Script Proxy (sin tokens que expiran)
+const PROXY='https://script.google.com/macros/s/AKfycbzZj-Ryd2r-NacAz-kDOma9Wnps1bfi768DyMzJJMAvWXpoZungosAHNiAkgRXHw62b/exec';
+
+async function proxyCall(body){
+  const r=await fetch(PROXY,{method:'POST',headers:{'Content-Type':'text/plain'},body:JSON.stringify(body)});
+  if(!r.ok)throw new Error('Error del servidor: '+r.status);
+  const d=await r.json();
+  if(d.error)throw new Error(d.error);
+  return d;
+}
+
 async function createCalEv(s,dayNum,dateStr,withMeet){
-  const t=isoDateTime(dateStr,s.time);
-  if(!t.start)return null;
+  const t=isoDateTime(dateStr,s.time);if(!t.start)return null;
   const v=s.modality==='Virtual';
   const em=s.isReunion?'🟣':s.isEval?'🏆':v?'💻':'📍';
-  const att=getEmails(s.owner).map(e=>({email:e}));
-  const body={
-    summary:em+' '+s.title+' · Día '+dayNum,
+  const d=await proxyCall({
+    action:'create',
+    title:em+' '+s.title+' · Día '+dayNum,
     description:'<b>Programa de Formación</b><br>'+(v?'💻 Virtual':'📍 Presencial')+' · Día '+dayNum+' · '+s.slot+'<br>👤 '+s.owner+'<br><br>'+s.desc+'<br><br>📅 <a href="https://camilabuenoil.github.io/formacion/">Ver cronograma</a>',
-    start:{dateTime:t.start,timeZone:TZ},
-    end:{dateTime:t.end,timeZone:TZ},
-    attendees:att,
-    visibility:'public',
-    reminders:{useDefault:false,overrides:[{method:'popup',minutes:30},{method:'popup',minutes:120},{method:'email',minutes:120}]}
-  };
-
-  if(withMeet){
-    // Method 1: Try conferenceDataVersion=1 (works with some OAuth setups)
-    body.conferenceData={createRequest:{requestId:'il-'+Date.now()+'-'+Math.random().toString(36).slice(2),conferenceSolutionKey:{type:'hangoutsMeet'}}};
-    try{
-      const r1=await calF('/calendars/'+encodeURIComponent(CALID)+'/events?conferenceDataVersion=1&sendUpdates=none',{method:'POST',body:JSON.stringify(body)});
-      if(r1.ok){
-        const ev=await r1.json();
-        // Poll for Meet link — sometimes it takes a moment to generate
-        const meetUrl=ev.conferenceData?.entryPoints?.find(ep=>ep.entryPointType==='video')?.uri
-          || ev.hangoutLink
-          || null;
-        if(meetUrl) return{eventId:ev.id,meetUrl};
-        // Event created but Meet not yet ready — fetch event again after 1.5s
-        await new Promise(res=>setTimeout(res,1500));
-        const r2=await calF('/calendars/'+encodeURIComponent(CALID)+'/events/'+ev.id);
-        if(r2.ok){
-          const ev2=await r2.json();
-          const meetUrl2=ev2.conferenceData?.entryPoints?.find(ep=>ep.entryPointType==='video')?.uri
-            || ev2.hangoutLink
-            || null;
-          return{eventId:ev2.id,meetUrl:meetUrl2};
-        }
-        return{eventId:ev.id,meetUrl:null};
-      }
-    }catch(e){
-      // Fall through to create without Meet
-    }
-    // Method 2: Create without Meet, return event ID — user can add Meet manually
-    delete body.conferenceData;
-    ss('⚠ No se pudo crear Meet automáticamente. Creando evento sin Meet — puedes pegar el link manualmente.','warn');
-  }
-
-  // Create without Meet
-  const r=await calF('/calendars/'+encodeURIComponent(CALID)+'/events?sendUpdates=none',{method:'POST',body:JSON.stringify(body)});
-  if(!r.ok){const e=await r.json();throw new Error(e.error?.message||r.status);}
-  const ev=await r.json();
-  return{eventId:ev.id,meetUrl:ev.hangoutLink||null};
+    start:t.start,end:t.end,
+    attendees:getEmails(s.owner),
+    withMeet:!!withMeet
+  });
+  return{eventId:d.eventId,meetUrl:d.meetUrl||null};
 }
-async function deleteCalEv(eid){const r=await calF('/calendars/'+encodeURIComponent(CALID)+'/events/'+eid,{method:'DELETE'});if(r.status===404)return;if(!r.ok){const e=await r.json();throw new Error(e.error?.message||r.status);}}
+
+async function updateCalEv(eid,s,dateStr){
+  const t=isoDateTime(dateStr,s.time);if(!t.start)return;
+  const v=s.modality==='Virtual';
+  const em=s.isReunion?'🟣':s.isEval?'🏆':v?'💻':'📍';
+  await proxyCall({
+    action:'update',eventId:eid,
+    title:em+' '+s.title,
+    description:'<b>Programa de Formación</b><br>'+(v?'💻 Virtual':'📍 Presencial')+' · '+s.slot+'<br>👤 '+s.owner+'<br><br>'+s.desc+'<br><br>📅 <a href="https://camilabuenoil.github.io/formacion/">Ver cronograma</a>',
+    start:t.start,end:t.end,attendees:getEmails(s.owner)
+  });
+}
+
+async function deleteCalEv(eid){
+  try{await proxyCall({action:'delete',eventId:eid});}catch(e){console.warn('delete:',e.message);}
+}
+
+// Keep calF as fallback for auth checks only
+async function calF(p,o){
+  const t=calTok||localStorage.getItem(CAL_KEY);
+  return fetch('https://www.googleapis.com/calendar/v3'+p,Object.assign({},o,{headers:Object.assign({'Authorization':'Bearer '+t,'Content-Type':'application/json'},o?.headers||{})}));
+}
 
 // COLLECT
 function collect(){const d=JSON.parse(JSON.stringify(DATA));d.startDate=document.getElementById('meta-start').value;d.lastUpdated=document.getElementById('meta-upd').value||new Date().toLocaleDateString('es-ES',{day:'numeric',month:'long',year:'numeric'});d.weeks.forEach((w,wi)=>w.days.forEach((day,di)=>{const di2=document.getElementById('date-'+wi+'-'+di);if(di2&&di2.value)day.date=di2.value;day.sessions.forEach((s,si)=>{const k=wi+'-'+di+'-'+si;const g=id=>document.getElementById(id)?.value;s.time=g('t-'+k)||s.time;s.owner=g('o-'+k)||s.owner;s.modality=g('m-'+k)||s.modality;s.slot=g('sl-'+k)||s.slot;s.title=g('ti-'+k)||s.title;s.desc=g('d-'+k)||s.desc;const meet=document.getElementById('meet-'+k);if(meet)s.meetUrl=meet.value||s.meetUrl;});}));return d;}
