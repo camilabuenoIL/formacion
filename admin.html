@@ -457,11 +457,65 @@ async function _pub(cal){
 
 // SESSION ACTIONS
 function toggleAdd(wi,di){const f=document.getElementById('af-'+wi+'-'+di);if(f)f.style.display=f.style.display==='none'?'block':'none';}
+
 async function saveNewSession(wi,di){
-  const day=DATA.weeks[wi].days[di];const fid='nf-'+wi+'-'+di+'-';const g=id=>document.getElementById(id)?.value?.trim();
-  const s={time:g(fid+'time')||'9:00 – 10:00',owner:g(fid+'owner')||'',slot:g(fid+'slot')||'Mañana',modality:g(fid+'mod')||'Presencial',title:g(fid+'title')||'Nueva sesión',desc:g(fid+'desc')||'',meetUrl:'',calEventId:''};
-  if(calTok||localStorage.getItem(CAL_KEY)){ss('Creando evento en Calendar...','info');try{const dateStr=day._isoDate||extractISO(day.date);const res=await createCalEv(s,day.num,dateStr,s.modality==='Virtual');if(res){s.calEventId=res.eventId;if(res.meetUrl)s.meetUrl=res.meetUrl;}ss('✓ Sesión creada con evento en Calendar','ok');}catch(e){ss('⚠ Sesión sin evento Calendar: '+e.message,'warn');}}
-  DATA.weeks[wi].days[di].sessions.push(s);dirty();document.getElementById('af-'+wi+'-'+di).style.display='none';renderEditor();
+  const day=DATA.weeks[wi].days[di];
+  const fid='nf-'+wi+'-'+di+'-';
+  const g=id=>document.getElementById(id)?.value?.trim();
+  const modVal=g(fid+'mod')||'Presencial';
+  const timeVal=g(fid+'time')||'9:00 – 10:00';
+  const s={
+    time:timeVal, owner:g(fid+'owner')||'', slot:g(fid+'slot')||'Mañana',
+    modality:modVal, title:g(fid+'title')||'Nueva sesión',
+    desc:g(fid+'desc')||'', meetUrl:'', calEventId:''
+  };
+  // Resolve dateStr — try multiple sources
+  const dateStr = day._isoDate || extractISO(day.date) || extractISO(document.getElementById('date-'+wi+'-'+di)?.value||'');
+  if(calTok||localStorage.getItem(CAL_KEY)){
+    if(!dateStr){
+      ss('⚠ No se pudo determinar la fecha del día. Sesión guardada sin evento Calendar.','warn');
+    } else {
+      ss('Creando evento en Calendar...','info');
+      try{
+        const res=await createCalEv(s,day.num,dateStr,modVal==='Virtual');
+        if(res){
+          s.calEventId=res.eventId;
+          if(res.meetUrl){s.meetUrl=res.meetUrl;ss('✓ Sesión creada con evento y Meet link en Calendar','ok');}
+          else{ss('✓ Sesión creada con evento en Calendar','ok');}
+        }
+      }catch(e){ss('⚠ Sesión guardada sin evento Calendar: '+e.message,'warn');}
+    }
+  }
+  DATA.weeks[wi].days[di].sessions.push(s);
+  dirty();
+  document.getElementById('af-'+wi+'-'+di).style.display='none';
+  renderEditor();
+}
+
+// Move session up or down within a day
+function moveSession(wi,di,si,dir){
+  const sessions=DATA.weeks[wi].days[di].sessions;
+  const newSi=si+dir;
+  if(newSi<0||newSi>=sessions.length)return;
+  // Collect current values from form before moving
+  const collectSession=(idx)=>{
+    const k=wi+'-'+di+'-'+idx;
+    const g=id=>document.getElementById(id)?.value;
+    const s=sessions[idx];
+    return{
+      ...s,
+      time:g('t-'+k)||s.time, owner:g('o-'+k)||s.owner,
+      modality:g('m-'+k)||s.modality, slot:g('sl-'+k)||s.slot,
+      title:g('ti-'+k)||s.title, desc:g('d-'+k)||s.desc,
+      meetUrl:(document.getElementById('meet-'+k)||{}).value||s.meetUrl,
+    };
+  };
+  const a=collectSession(si);
+  const b=collectSession(newSi);
+  sessions[si]=b;
+  sessions[newSi]=a;
+  dirty();
+  renderEditor();
 }
 async function removeSession(wi,di,si){
   if(!confirm('¿Eliminar esta sesión? Si tiene evento en Calendar, también se eliminará.'))return;
@@ -506,7 +560,11 @@ function renderEditor(){
         if(s.meetUrl){html+=`<div class="meet-row"><div class="meet-lnk">🎥 <a href="${esc(s.meetUrl)}" target="_blank">${esc(s.meetUrl)}</a></div><input type="text" id="meet-${k}" value="${esc(s.meetUrl)}" style="display:none" oninput="dirty('${k}')" /><button class="btn b-wh b-sm" onclick="editMeet('${k}',${wi},${di},${si})">✏️ Editar</button></div>`;}
         else if(isVirt){html+=`<div class="meet-row"><input type="text" id="meet-${k}" class="meet-inp" placeholder="Pegar link de Meet o crear automáticamente →" oninput="dirty('${k}')" /><button class="btn b-gn b-sm" onclick="createMeet(${wi},${di},${si})">🎥 Crear Meet</button></div>`;}
         html+=`</div>`;
-        html+=`<div class="se-acts"><button class="btn b-re b-sm" onclick="removeSession(${wi},${di},${si})">🗑 Eliminar sesión</button></div></div>`;
+        html+=`<div class="se-acts">
+          <button class="btn b-wh b-sm" onclick="moveSession(${wi},${di},${si},-1)" ${si===0?'disabled':''} title="Subir sesión">↑ Subir</button>
+          <button class="btn b-wh b-sm" onclick="moveSession(${wi},${di},${si},1)" ${si===day.sessions.length-1?'disabled':''} title="Bajar sesión">↓ Bajar</button>
+          <button class="btn b-re b-sm" onclick="removeSession(${wi},${di},${si})">🗑 Eliminar</button>
+        </div></div>`;
       });
       html+=`<button class="btn add-btn" onclick="toggleAdd(${wi},${di})">+ Agregar sesión en este día</button>`;
       html+=`<div class="add-form" id="af-${wi}-${di}"><div class="add-form-tt">Nueva sesión — Día ${day.num}</div><div class="g4"><div class="fe"><label>Hora</label><input type="text" id="nf-${wi}-${di}-time" placeholder="9:00 – 10:00" /></div><div class="fe"><label>Responsable</label><input type="text" id="nf-${wi}-${di}-owner" list="team-dl" /></div><div class="fe"><label>Franja</label><select id="nf-${wi}-${di}-slot"><option>Mañana</option><option>Tarde</option></select></div><div class="fe"><label>Modalidad</label><select id="nf-${wi}-${di}-mod"><option>Presencial</option><option>Virtual</option></select></div></div><div class="fe"><label>Título</label><input type="text" id="nf-${wi}-${di}-title" /></div><div class="fe"><label>Descripción</label><textarea id="nf-${wi}-${di}-desc" rows="2"></textarea></div><div style="display:flex;gap:8px;margin-top:10px"><button class="btn b-or b-sm" onclick="saveNewSession(${wi},${di})">✓ Guardar sesión</button><button class="btn b-wh b-sm" onclick="toggleAdd(${wi},${di})">Cancelar</button></div></div>`;
