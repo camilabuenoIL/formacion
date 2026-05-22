@@ -313,7 +313,7 @@ const REPO='camilabuenoIL/formacion',GHAPI='https://api.github.com';
 const CAPI='https://www.googleapis.com/calendar/v3';
 const CALID='808b334f4c90bb4b1eb29808d7c5cb5d0264486286c6ebc5ecd22c13e0dba77e@group.calendar.google.com';
 const GCL='1045894098226-s1619eg54tc79bg3rrimi4rnla72nvfn.apps.googleusercontent.com';
-const SCOPE='https://www.googleapis.com/auth/calendar https://www.googleapis.com/auth/calendar.events';
+const SCOPE='https://www.googleapis.com/auth/calendar https://www.googleapis.com/auth/calendar.events https://www.googleapis.com/auth/calendar.app.created';
 const TZ='America/Bogota';
 
 let DATA=null,SHA=null,isDirty=false,calTok=null,changed=new Set();
@@ -429,7 +429,45 @@ function setCalUI(on){
 // CALENDAR API
 async function calF(p,o){const t=calTok||localStorage.getItem(CAL_KEY);const r=await fetch(CAPI+p,Object.assign({},o,{headers:Object.assign({'Authorization':'Bearer '+t,'Content-Type':'application/json'},o?.headers||{})}));if(r.status===401){localStorage.removeItem(CAL_KEY);calTok=null;setCalUI(false);throw new Error('Token de Calendar expirado. Reconecta y vuelve a publicar.');}return r;}
 async function updateCalEv(eid,s,dateStr){const t=isoDateTime(dateStr,s.time);if(!t.start)return;const v=s.modality==='Virtual';const em=s.isReunion?'🟣':s.isEval?'🏆':v?'💻':'📍';const body={summary:em+' '+s.title,description:'<b>Programa de Formación</b><br>'+(v?'💻 Virtual':'📍 Presencial')+' · '+s.slot+' · '+s.owner+'<br><br>'+s.desc+'<br><br>📅 <a href="https://camilabuenoil.github.io/formacion/">Ver cronograma</a>',start:{dateTime:t.start,timeZone:TZ},end:{dateTime:t.end,timeZone:TZ},attendees:getEmails(s.owner).map(e=>({email:e})),visibility:'public'};const r=await calF('/calendars/'+encodeURIComponent(CALID)+'/events/'+eid,{method:'PATCH',body:JSON.stringify(body)});if(!r.ok){const e=await r.json();throw new Error(e.error?.message||r.status);}}
-async function createCalEv(s,dayNum,dateStr,withMeet){const t=isoDateTime(dateStr,s.time);if(!t.start)return null;const v=s.modality==='Virtual';const em=s.isReunion?'🟣':s.isEval?'🏆':v?'💻':'📍';const att=getEmails(s.owner).map(e=>({email:e}));const body={summary:em+' '+s.title+' · Día '+dayNum,description:'<b>Programa de Formación</b><br>'+(v?'💻 Virtual':'📍 Presencial')+' · Día '+dayNum+' · '+s.slot+'<br>👤 '+s.owner+'<br><br>'+s.desc+'<br><br>📅 <a href="https://camilabuenoil.github.io/formacion/">Ver cronograma</a>',start:{dateTime:t.start,timeZone:TZ},end:{dateTime:t.end,timeZone:TZ},attendees:att,visibility:'public',reminders:{useDefault:false,overrides:[{method:'popup',minutes:30},{method:'popup',minutes:120},{method:'email',minutes:120}]}};if(withMeet)body.conferenceData={createRequest:{requestId:Math.random().toString(36).slice(2),conferenceSolutionKey:{type:'hangoutsMeet'}}};const url='/calendars/'+encodeURIComponent(CALID)+'/events'+(withMeet?'?conferenceDataVersion=1':'');const r=await calF(url,{method:'POST',body:JSON.stringify(body)});if(!r.ok){const e=await r.json();throw new Error(e.error?.message||r.status);}const ev=await r.json();return{eventId:ev.id,meetUrl:ev.conferenceData?.entryPoints?.find(ep=>ep.entryPointType==='video')?.uri||null};}
+async function createCalEv(s,dayNum,dateStr,withMeet){
+  const t=isoDateTime(dateStr,s.time);if(!t.start)return null;
+  const v=s.modality==='Virtual';
+  const em=s.isReunion?'🟣':s.isEval?'🏆':v?'💻':'📍';
+  const att=getEmails(s.owner).map(e=>({email:e}));
+  const body={
+    summary:em+' '+s.title+' · Día '+dayNum,
+    description:'<b>Programa de Formación</b><br>'+(v?'💻 Virtual':'📍 Presencial')+' · Día '+dayNum+' · '+s.slot+'<br>👤 '+s.owner+'<br><br>'+s.desc+'<br><br>📅 <a href="https://camilabuenoil.github.io/formacion/">Ver cronograma</a>',
+    start:{dateTime:t.start,timeZone:TZ},end:{dateTime:t.end,timeZone:TZ},
+    attendees:att,visibility:'public',
+    reminders:{useDefault:false,overrides:[{method:'popup',minutes:30},{method:'popup',minutes:120},{method:'email',minutes:120}]}
+  };
+  // Try with Meet first, fall back to without Meet if 400
+  if(withMeet){
+    body.conferenceData={createRequest:{requestId:Math.random().toString(36).slice(2),conferenceSolutionKey:{type:'hangoutsMeet'}}};
+    const url='/calendars/'+encodeURIComponent(CALID)+'/events?conferenceDataVersion=1';
+    const r=await calF(url,{method:'POST',body:JSON.stringify(body)});
+    if(r.ok){
+      const ev=await r.json();
+      const meetUrl=ev.conferenceData?.entryPoints?.find(ep=>ep.entryPointType==='video')?.uri||null;
+      if(meetUrl)return{eventId:ev.id,meetUrl};
+      // Event created but no Meet link — return event without meet
+      return{eventId:ev.id,meetUrl:null};
+    }
+    // 400 error on conference — retry without Meet
+    if(r.status===400){
+      ss('⚠ No se pudo crear Meet automáticamente. Creando evento sin Meet...','warn');
+      delete body.conferenceData;
+    } else {
+      const e=await r.json();throw new Error(e.error?.message||r.status);
+    }
+  }
+  // Create without Meet
+  const url='/calendars/'+encodeURIComponent(CALID)+'/events';
+  const r=await calF(url,{method:'POST',body:JSON.stringify(body)});
+  if(!r.ok){const e=await r.json();throw new Error(e.error?.message||r.status);}
+  const ev=await r.json();
+  return{eventId:ev.id,meetUrl:null};
+}
 async function deleteCalEv(eid){const r=await calF('/calendars/'+encodeURIComponent(CALID)+'/events/'+eid,{method:'DELETE'});if(r.status===404)return;if(!r.ok){const e=await r.json();throw new Error(e.error?.message||r.status);}}
 
 // COLLECT
