@@ -341,9 +341,9 @@
             {
               "time": "5:00 – 6:00",
               "owner": "Camila Bueno",
-              "slot": "Mañana",
+              "slot": "Tarde",
               "modality": "Virtual",
-              "title": "Prueba",
+              "title": "prueba",
               "desc": "Prueba",
               "meetUrl": "",
               "calEventId": ""
