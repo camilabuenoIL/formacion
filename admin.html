@@ -298,7 +298,10 @@ body{font-family:'DM Sans',system-ui,sans-serif;background:var(--bg);color:var(-
           <div class="stat-box">
             <div class="stat-label">Google Calendar</div>
             <div class="stat-val" id="cal-st-txt">● Desconectado</div>
-            <div class="stat-sub" style="margin-top:6px"><button class="btn b-wh b-sm" onclick="authCal()" id="cal-connect-btn">Conectar →</button></div>
+            <div class="stat-sub" style="margin-top:6px;display:flex;gap:6px;flex-wrap:wrap">
+              <button class="btn b-wh b-sm" onclick="authCal()" id="cal-connect-btn">Conectar →</button>
+              <button class="btn b-re b-sm" onclick="disconnectCal()" id="cal-disconnect-btn" style="display:none">Reconectar</button>
+            </div>
           </div>
         </div>
       </div>
@@ -417,13 +420,29 @@ async function loadGH(){ss('Cargando desde GitHub...','info');const r=await ghF(
 async function saveGH(d){const s=JSON.stringify(d,null,2);const utf8=new TextEncoder().encode(s);let bin='';utf8.forEach(b=>bin+=String.fromCharCode(b));const r=await ghF('/repos/'+REPO+'/contents/schedule.json',{method:'PUT',body:JSON.stringify({message:'Actualización · '+new Date().toLocaleString('es-ES'),content:btoa(bin),sha:SHA})});if(!r.ok){const e=await r.json();throw new Error(e.message||r.status);}SHA=(await r.json()).content.sha;}
 
 // CALENDAR AUTH
+function disconnectCal(){
+  localStorage.removeItem(CAL_KEY);
+  calTok=null;
+  setCalUI(false);
+  ss('Calendar desconectado. Haz clic en "Conectar Calendar" para reconectar con permisos de Meet.','info');
+}
 function authCal(){const st=Math.random().toString(36).slice(2);sessionStorage.setItem('oas',st);const redir=location.href.split('?')[0].split('#')[0];const p=new URLSearchParams({client_id:GCL,redirect_uri:redir,response_type:'token',scope:SCOPE,state:st,prompt:'consent'});location.href='https://accounts.google.com/o/oauth2/v2/auth?'+p;}
 function handleOAuth(){if(!location.hash.includes('access_token'))return false;const p=new URLSearchParams(location.hash.substring(1));const t=p.get('access_token');if(!t)return false;history.replaceState(null,'',location.pathname);localStorage.setItem(CAL_KEY,t);calTok=t;setCalUI(true);ss('✓ Google Calendar conectado','ok');return true;}
 function loadCalTok(){const t=localStorage.getItem(CAL_KEY);if(t){calTok=t;setCalUI(true);return true;}return false;}
 function setCalUI(on){
-  const badge=document.getElementById('cal-badge'),btn=document.getElementById('btn-cal'),st=document.getElementById('cal-st-txt'),cb=document.getElementById('cal-connect-btn');
-  if(on){badge.textContent='📅 Calendar conectado';badge.className='badge b-on';btn.textContent='✓ Conectado';btn.disabled=true;btn.style.opacity='.5';if(st){st.textContent='● Conectado';st.style.color='var(--green-tx)';}if(cb)cb.style.display='none';}
-  else{badge.textContent='📅 Calendar desconectado';badge.className='badge b-off';btn.textContent='🔐 Conectar Calendar';btn.disabled=false;btn.style.opacity='';if(st){st.textContent='● Desconectado';st.style.color='var(--red)';}if(cb)cb.style.display='';}
+  const badge=document.getElementById('cal-badge'),btn=document.getElementById('btn-cal'),st=document.getElementById('cal-st-txt');
+  const cb=document.getElementById('cal-connect-btn'),db=document.getElementById('cal-disconnect-btn');
+  if(on){
+    badge.textContent='📅 Calendar conectado';badge.className='badge b-on';
+    btn.textContent='✓ Conectado';btn.disabled=true;btn.style.opacity='.5';
+    if(st){st.textContent='● Conectado';st.style.color='var(--green-tx)';}
+    if(cb)cb.style.display='none';if(db)db.style.display='';
+  }else{
+    badge.textContent='📅 Calendar desconectado';badge.className='badge b-off';
+    btn.textContent='🔐 Conectar Calendar';btn.disabled=false;btn.style.opacity='';
+    if(st){st.textContent='● Desconectado';st.style.color='var(--red)';}
+    if(cb)cb.style.display='';if(db)db.style.display='none';
+  }
 }
 
 // CALENDAR API
