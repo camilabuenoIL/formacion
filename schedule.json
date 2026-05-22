@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "19 de mayo de 2026",
+  "lastUpdated": "22 de mayo de 2026",
   "startDate": "Lunes 18 de mayo de 2026",
   "weeks": [
     {
@@ -200,6 +200,16 @@
               "title": "Notion 1ª cap. — Recursos digitales de la empresa",
               "desc": "Bases de datos, guías internas, procesos y biblioteca comercial · cómo navegar y consultar recursos disponibles para el agente",
               "calEventId": "0e8sc4dodgogarboosmqjuves8"
+            },
+            {
+              "time": "3:00 – 4:00",
+              "owner": "Sofía Herreño",
+              "slot": "Tarde",
+              "modality": "Virtual",
+              "title": "Optimización de perfiles digitales — Parte 3: Facebook e Instagram (Continuación)",
+              "desc": "Facebook e Instagram: configuración profesional de perfil, bio, foto, portada e historias destacadas coherentes con Inmobiliario Latam",
+              "meetUrl": "",
+              "calEventId": ""
             }
           ],
           "_isoDate": ""
