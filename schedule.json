@@ -245,16 +245,6 @@
           "badge": null,
           "sessions": [
             {
-              "time": "09:00 – 10:00",
-              "owner": "Sofía Herreño",
-              "slot": "Mañana",
-              "modality": "Virtual",
-              "title": "Optimización de perfiles digitales — Parte 3: Facebook e Instagram (Continuación)",
-              "desc": "Facebook e Instagram: configuración profesional de perfil, bio, foto, portada e historias destacadas coherentes con Inmobiliario Latam",
-              "meetUrl": "",
-              "calEventId": ""
-            },
-            {
               "time": "10:30 – 12:00",
               "owner": "Sofía Herreño",
               "slot": "Mañana",
@@ -272,6 +262,16 @@
               "title": "Técnicas de seguimiento y captación de propiedades",
               "desc": "Cadencia comercial sin saturar al cliente · prospección de propietarios · primer contacto · valuación básica y argumentos para captar el inmueble",
               "calEventId": "ccs0l0angmvl4dmrrtas7hl7gc"
+            },
+            {
+              "time": "09:00 – 10:00",
+              "owner": "Sofía Herreño",
+              "slot": "Mañana",
+              "modality": "Virtual",
+              "title": "Optimización de perfiles digitales — Parte 3: Facebook e Instagram (Continuación)",
+              "desc": "Facebook e Instagram: configuración profesional de perfil, bio, foto, portada e historias destacadas coherentes con Inmobiliario Latam",
+              "meetUrl": "",
+              "calEventId": ""
             }
           ],
           "_isoDate": ""
