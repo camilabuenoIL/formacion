@@ -272,6 +272,16 @@
               "title": "Técnicas de seguimiento y captación de propiedades",
               "desc": "Cadencia comercial sin saturar al cliente · prospección de propietarios · primer contacto · valuación básica y argumentos para captar el inmueble",
               "calEventId": "ccs0l0angmvl4dmrrtas7hl7gc"
+            },
+            {
+              "time": "6:00 – 7:00",
+              "owner": "Camila Bueno",
+              "slot": "Mañana",
+              "modality": "Virtual",
+              "title": "Prueba",
+              "desc": "Prueba",
+              "meetUrl": "",
+              "calEventId": ""
             }
           ],
           "_isoDate": ""
