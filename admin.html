@@ -460,7 +460,30 @@ function setCalUI(on){
   }
 }
 
-// CALENDAR via Google Apps Script Proxy (sin tokens que expiran)
+// KNOWN DATES fallback map — used when date string can't be parsed
+const KNOWN_DATES = {
+  1:'2026-05-18',2:'2026-05-19',3:'2026-05-20',4:'2026-05-21',5:'2026-05-22',
+  6:'2026-05-25',7:'2026-05-26',8:'2026-05-27',9:'2026-05-28',10:'2026-05-29'
+};
+
+function resolveDate(wi, di) {
+  const day = DATA.weeks[wi].days[di];
+  // Try _isoDate first
+  if (day._isoDate && /^\d{4}-\d{2}-\d{2}$/.test(day._isoDate)) return day._isoDate;
+  // Try extractISO from date string
+  const fromStr = extractISO(day.date);
+  if (fromStr) { day._isoDate = fromStr; return fromStr; }
+  // Try date input field
+  const inputEl = document.getElementById('date-'+wi+'-'+di);
+  if (inputEl?.value) {
+    const fromInput = extractISO(inputEl.value);
+    if (fromInput) { day._isoDate = fromInput; return fromInput; }
+  }
+  // Fallback to known dates by day number
+  const known = KNOWN_DATES[day.num];
+  if (known) { day._isoDate = known; return known; }
+  return null;
+}
 const PROXY='https://script.google.com/macros/s/AKfycbzZj-Ryd2r-NacAz-kDOma9Wnps1bfi768DyMzJJMAvWXpoZungosAHNiAkgRXHw62b/exec';
 
 async function proxyCall(body){
@@ -523,7 +546,7 @@ async function _pub(cal){
     const nd=collect();nd.lastUpdated=new Date().toLocaleDateString('es-ES',{day:'numeric',month:'long',year:'numeric'});document.getElementById('meta-upd').value=nd.lastUpdated;
     lg('⬆ Guardando en GitHub...','info');await saveGH(nd);DATA=nd;lg('✓ GitHub actualizado','ok');
     let ok=0,errs=[];
-    if(cal&&changed.size>0){lg('\n📅 Sincronizando '+changed.size+' evento(s)...','info');for(const k of changed){const[wi,di,si]=k.split('-').map(Number);const s=nd.weeks[wi]?.days[di]?.sessions[si];const day=nd.weeks[wi]?.days[di];const eid=s?.calEventId;if(!s||!eid){lg('  ⚠ Sin eventId: '+k,'warn');continue;}const dateStr=day._isoDate||extractISO(day.date);try{await updateCalEv(eid,s,dateStr);ok++;const b=document.getElementById('sy-'+k);if(b){b.textContent='Sincronizado';b.className='sync-b sy-ok';}lg('  ✓ '+s.title.substring(0,45),'ok');}catch(e){errs.push(e.message);lg('  ✕ '+e.message,'err');}}}
+    if(cal&&changed.size>0){lg('\n📅 Sincronizando '+changed.size+' evento(s)...','info');for(const k of changed){const[wi,di,si]=k.split('-').map(Number);const s=nd.weeks[wi]?.days[di]?.sessions[si];const day=nd.weeks[wi]?.days[di];const eid=s?.calEventId;if(!s||!eid){lg('  ⚠ Sin eventId: '+k,'warn');continue;}const dateStr=resolveDate(wi,di);try{await updateCalEv(eid,s,dateStr);ok++;const b=document.getElementById('sy-'+k);if(b){b.textContent='Sincronizado';b.className='sync-b sy-ok';}lg('  ✓ '+s.title.substring(0,45),'ok');}catch(e){errs.push(e.message);lg('  ✕ '+e.message,'err');}}}
     changed.clear();isDirty=false;document.getElementById('pub-cnt').textContent='0';document.getElementById('last-pub').textContent=nd.lastUpdated;
     let msg='✓ Publicado en GitHub.';if(cal&&ok>0)msg+=' · '+ok+' evento(s) en Calendar.';if(errs.length)msg+=' · Errores: '+errs.join('; ');
     ss(msg,errs.length?'warn':'ok');lg('\n'+msg,'ok');
@@ -545,8 +568,7 @@ async function saveNewSession(wi,di){
     modality:modVal, title:g(fid+'title')||'Nueva sesión',
     desc:g(fid+'desc')||'', meetUrl:'', calEventId:''
   };
-  const dateInputEl=document.getElementById('date-'+wi+'-'+di);
-  const dateStr = day._isoDate || extractISO(day.date) || extractISO(dateInputEl?.value||'');
+  const dateStr = resolveDate(wi, di);
   if(calTok||localStorage.getItem(CAL_KEY)){
     if(!dateStr){
       ss('⚠ No se pudo determinar la fecha del día. Sesión guardada sin evento Calendar.','warn');
@@ -602,13 +624,9 @@ async function removeSession(wi,di,si){
 async function createMeet(wi,di,si){
   const s=DATA.weeks[wi].days[di].sessions[si];
   const day=DATA.weeks[wi].days[di];
-  // Try all sources for date
-  const dateInputEl=document.getElementById('date-'+wi+'-'+di);
-  const dateStr=day._isoDate
-    ||extractISO(day.date)
-    ||extractISO(dateInputEl?.value||'');
+  const dateStr=resolveDate(wi,di);
   if(!dateStr){
-    ss('❌ No se pudo determinar la fecha del Día '+day.num+'. Verifica que el campo de fecha tenga el formato correcto (ej: lunes 29 de mayo de 2026).','err');
+    ss('❌ No se pudo determinar la fecha del Día '+day.num+'. Verifica el campo de fecha.','err');
     return;
   }
   ss('Creando evento con Meet en Calendar...','info');
@@ -619,8 +637,8 @@ async function createMeet(wi,di,si){
       if(res.meetUrl){
         DATA.weeks[wi].days[di].sessions[si].meetUrl=res.meetUrl;
         ss('✓ Evento creado con Meet: '+res.meetUrl,'ok');
-      } else {
-        ss('✓ Evento creado en Calendar. Meet link no disponible — puedes pegarlo manualmente.','warn');
+      }else{
+        ss('✓ Evento creado en Calendar sin Meet link.','warn');
       }
       dirty(wi+'-'+di+'-'+si);
       renderEditor();
