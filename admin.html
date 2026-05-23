@@ -351,7 +351,22 @@ function calcWorkDays(startStr,count){const days=[];const d=new Date(startStr+'T
 function fmtDate(d){const dn=['domingo','lunes','martes','miércoles','jueves','viernes','sábado'];const mn=['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];return dn[d.getDay()]+' '+d.getDate()+' de '+mn[d.getMonth()]+' de '+d.getFullYear();}
 function fmtISO(d){return d.toISOString().split('T')[0];}
 function isoDateTime(dateStr,timeStr){const p=timeStr.split('–').map(t=>t.trim());function fx(s){const m=s.match(/(\d+):(\d+)/);if(!m)return'00:00:00';let h=parseInt(m[1]);if(h<8)h+=12;return String(h).padStart(2,'0')+':'+m[2]+':00';}return{start:dateStr+'T'+fx(p[0]),end:dateStr+'T'+fx(p[1]||p[0])};}
-function extractISO(dateStr){if(/^\d{4}-\d{2}-\d{2}$/.test(dateStr))return dateStr;const mo={enero:1,febrero:2,marzo:3,abril:4,mayo:5,junio:6,julio:7,agosto:8,septiembre:9,octubre:10,noviembre:11,diciembre:12};const m=dateStr.match(/(\d+)\s+de\s+(\w+)\s+de\s+(\d{4})/);if(m){const month=mo[m[2].toLowerCase()];if(month)return m[3]+'-'+String(month).padStart(2,'0')+'-'+m[1].padStart(2,'0');}return null;}
+function extractISO(dateStr){
+  if(!dateStr)return null;
+  // Already ISO
+  if(/^\d{4}-\d{2}-\d{2}$/.test(dateStr))return dateStr;
+  const mo={enero:'01',febrero:'02',marzo:'03',abril:'04',mayo:'05',junio:'06',
+            julio:'07',agosto:'08',septiembre:'09',octubre:'10',noviembre:'11',diciembre:'12'};
+  // "lunes 18 de mayo de 2026" or "18 de mayo de 2026" or "Lunes 18 de mayo"
+  const m=dateStr.match(/(\d{1,2})\s+de\s+(\w+)(?:\s+de\s+(\d{4}))?/i);
+  if(m){
+    const day=m[1].padStart(2,'0');
+    const month=mo[m[2].toLowerCase()];
+    const year=m[3]||'2026';
+    if(month)return year+'-'+month+'-'+day;
+  }
+  return null;
+}
 
 // COHORTE PREVIEW
 function previewCohorte(){
@@ -530,8 +545,8 @@ async function saveNewSession(wi,di){
     modality:modVal, title:g(fid+'title')||'Nueva sesión',
     desc:g(fid+'desc')||'', meetUrl:'', calEventId:''
   };
-  // Resolve dateStr — try multiple sources
-  const dateStr = day._isoDate || extractISO(day.date) || extractISO(document.getElementById('date-'+wi+'-'+di)?.value||'');
+  const dateInputEl=document.getElementById('date-'+wi+'-'+di);
+  const dateStr = day._isoDate || extractISO(day.date) || extractISO(dateInputEl?.value||'');
   if(calTok||localStorage.getItem(CAL_KEY)){
     if(!dateStr){
       ss('⚠ No se pudo determinar la fecha del día. Sesión guardada sin evento Calendar.','warn');
@@ -587,27 +602,25 @@ async function removeSession(wi,di,si){
 async function createMeet(wi,di,si){
   const s=DATA.weeks[wi].days[di].sessions[si];
   const day=DATA.weeks[wi].days[di];
-  if(!calTok&&!localStorage.getItem(CAL_KEY)){ss('Conecta Google Calendar primero.','err');return;}
-  ss('Creando evento con Meet...','info');
+  // Try all sources for date
+  const dateInputEl=document.getElementById('date-'+wi+'-'+di);
+  const dateStr=day._isoDate
+    ||extractISO(day.date)
+    ||extractISO(dateInputEl?.value||'');
+  if(!dateStr){
+    ss('❌ No se pudo determinar la fecha del Día '+day.num+'. Verifica que el campo de fecha tenga el formato correcto (ej: lunes 29 de mayo de 2026).','err');
+    return;
+  }
+  ss('Creando evento con Meet en Calendar...','info');
   try{
-    const dateStr=day._isoDate||extractISO(day.date);
-    if(!dateStr){ss('❌ No se pudo determinar la fecha. Edita la fecha del día primero.','err');return;}
     const res=await createCalEv(s,day.num,dateStr,true);
     if(res){
       DATA.weeks[wi].days[di].sessions[si].calEventId=res.eventId;
       if(res.meetUrl){
         DATA.weeks[wi].days[di].sessions[si].meetUrl=res.meetUrl;
-        ss('✓ Evento creado con Meet link automáticamente.','ok');
+        ss('✓ Evento creado con Meet: '+res.meetUrl,'ok');
       } else {
-        // No Meet link from API — open the event in Google Calendar so user can add it
-        DATA.weeks[wi].days[di].sessions[si].meetUrl='';
-        const calUrl='https://calendar.google.com/calendar/r/eventedit?calid='+encodeURIComponent(CALID)+'&eid='+res.eventId;
-        ss('✓ Evento creado. El Meet no se generó automáticamente — abre el evento en Calendar para agregar Meet.','warn');
-        // Show open calendar button
-        setTimeout(()=>{
-          const bar=document.getElementById('status-bar');
-          bar.innerHTML+=' <a href="https://calendar.google.com/calendar/r" target="_blank" style="color:var(--blue);font-weight:600;margin-left:8px">Abrir Calendar ↗</a>';
-        },100);
+        ss('✓ Evento creado en Calendar. Meet link no disponible — puedes pegarlo manualmente.','warn');
       }
       dirty(wi+'-'+di+'-'+si);
       renderEditor();
