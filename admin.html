@@ -637,8 +637,14 @@ async function removeSession(wi,di,si){
   changed.delete(wi+'-'+di+'-'+si);DATA.weeks[wi].days[di].sessions.splice(si,1);dirty();renderEditor();
 }
 async function createMeet(wi,di,si){
-  const s=DATA.weeks[wi].days[di].sessions[si];
   const day=DATA.weeks[wi].days[di];
+  const k=wi+'-'+di+'-'+si;
+  // Read current values from form (may have been edited)
+  const ownerFromForm=document.getElementById('o-'+k)?.value;
+  const s={...DATA.weeks[wi].days[di].sessions[si]};
+  if(ownerFromForm)s.owner=ownerFromForm;
+  const timeFromForm=document.getElementById('t-'+k)?.value;
+  if(timeFromForm)s.time=timeFromForm;
   const dateStr=resolveDate(wi,di);
   if(!dateStr){
     ss('❌ No se pudo determinar la fecha del Día '+day.num+'. Verifica el campo de fecha.','err');
@@ -655,7 +661,7 @@ async function createMeet(wi,di,si){
       }else{
         ss('✓ Evento creado en Calendar sin Meet link.','warn');
       }
-      dirty(wi+'-'+di+'-'+si);
+      dirty(k);
       renderEditor();
     }
   }catch(e){ss('❌ '+e.message,'err');}
