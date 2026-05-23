@@ -574,8 +574,7 @@ async function saveNewSession(wi,di){
   const day=DATA.weeks[wi].days[di];
   const fid='nf-'+wi+'-'+di+'-';
   const g=id=>document.getElementById(id)?.value?.trim();
-  const ownerKey='nf-'+wi+'-'+di+'-owner';
-  const ownerVal=document.getElementById('o-'+ownerKey)?.value||'';
+  const ownerVal=g(fid+'owner')||'';
   const modVal=g(fid+'mod')||'Presencial';
   const timeVal=g(fid+'time')||'9:00 – 10:00';
   const s={
@@ -747,7 +746,7 @@ function renderEditor(){
       day.sessions.forEach((s,si)=>{
         const k=`${wi}-${di}-${si}`;const has=!!s.calEventId;const isVirt=s.modality==='Virtual';
         html+=`<div class="se"><div class="se-hd"><span class="se-n">S${si+1}</span><span class="se-tt" id="sp-${k}">${esc(s.title)}</span><span class="sync-b ${has?'sy-ok':'sy-none'}" id="sy-${k}">${has?'✓ Sincronizado':'Sin evento'}</span></div>`;
-        html+=`<div class="g3"><div class="fe"><label>Hora</label><input type="text" id="t-${k}" value="${esc(s.time)}" oninput="dirty('${k}');document.getElementById('sp-${k}').textContent=document.getElementById('ti-${k}').value" /></div><div class="fe"><label>Responsable(s)</label>${ownerHTML(k,s.owner)}</div><div class="fe"><label>Modalidad</label><select id="m-${k}" onchange="dirty('${k}');onModChange('${k}',${wi},${di},${si})"><option ${s.modality==='Presencial'?'selected':''}>Presencial</option><option ${s.modality==='Virtual'?'selected':''}>Virtual</option><option ${s.modality==='Presencial/Virtual'?'selected':''}>Presencial/Virtual</option></select></div></div>`;
+        html+=`<div class="g3"><div class="fe"><label>Hora</label><input type="text" id="t-${k}" value="${esc(s.time)}" oninput="dirty('${k}');document.getElementById('sp-${k}').textContent=document.getElementById('ti-${k}').value" /></div><div class="fe"><label>Responsable(s)</label><input type="text" id="o-${k}" value="${esc(s.owner)}" list="team-dl" placeholder="Nombre o Nombre1 / Nombre2" oninput="dirty('${k}')" /></div><div class="fe"><label>Modalidad</label><select id="m-${k}" onchange="dirty('${k}');onModChange('${k}',${wi},${di},${si})"><option ${s.modality==='Presencial'?'selected':''}>Presencial</option><option ${s.modality==='Virtual'?'selected':''}>Virtual</option><option ${s.modality==='Presencial/Virtual'?'selected':''}>Presencial/Virtual</option></select></div></div>`;
         html+=`<div class="g2"><div class="fe"><label>Franja</label><select id="sl-${k}" onchange="dirty('${k}')"><option ${s.slot==='Mañana'?'selected':''}>Mañana</option><option ${s.slot==='Tarde'?'selected':''}>Tarde</option></select></div><div class="fe"><label>Título de la sesión</label><input type="text" id="ti-${k}" value="${esc(s.title)}" oninput="dirty('${k}');document.getElementById('sp-${k}').textContent=this.value" /></div></div>`;
         html+=`<div class="fe"><label>Descripción</label><textarea id="d-${k}" oninput="dirty('${k}')">${esc(s.desc)}</textarea></div>`;
         html+=`<div id="meet-sec-${k}">`;
@@ -761,7 +760,7 @@ function renderEditor(){
         </div></div>`;
       });
       html+=`<button class="btn add-btn" onclick="toggleAdd(${wi},${di})">+ Agregar sesión en este día</button>`;
-      html+=`<div class="add-form" id="af-${wi}-${di}"><div class="add-form-tt">Nueva sesión — Día ${day.num}</div><div class="g4"><div class="fe"><label>Hora</label><input type="text" id="nf-${wi}-${di}-time" placeholder="9:00 – 10:00" /></div><div class="fe"><label>Responsable(s)</label>${ownerHTML('nf-'+wi+'-'+di+'-owner','')}</div><div class="fe"><label>Franja</label><select id="nf-${wi}-${di}-slot"><option>Mañana</option><option>Tarde</option></select></div><div class="fe"><label>Modalidad</label><select id="nf-${wi}-${di}-mod"><option>Presencial</option><option>Virtual</option></select></div></div><div class="fe"><label>Título</label><input type="text" id="nf-${wi}-${di}-title" /></div><div class="fe"><label>Descripción</label><textarea id="nf-${wi}-${di}-desc" rows="2"></textarea></div><div style="display:flex;gap:8px;margin-top:10px"><button class="btn b-or b-sm" onclick="saveNewSession(${wi},${di})">✓ Guardar sesión</button><button class="btn b-wh b-sm" onclick="toggleAdd(${wi},${di})">Cancelar</button></div></div>`;
+      html+=`<div class="add-form" id="af-${wi}-${di}"><div class="add-form-tt">Nueva sesión — Día ${day.num}</div><div class="g4"><div class="fe"><label>Hora</label><input type="text" id="nf-${wi}-${di}-time" placeholder="9:00 – 10:00" /></div><div class="fe"><label>Responsable(s)</label><input type="text" id="nf-${wi}-${di}-owner" list="team-dl" placeholder="Nombre o Nombre1 / Nombre2" /></div><div class="fe"><label>Franja</label><select id="nf-${wi}-${di}-slot"><option>Mañana</option><option>Tarde</option></select></div><div class="fe"><label>Modalidad</label><select id="nf-${wi}-${di}-mod"><option>Presencial</option><option>Virtual</option></select></div></div><div class="fe"><label>Título</label><input type="text" id="nf-${wi}-${di}-title" /></div><div class="fe"><label>Descripción</label><textarea id="nf-${wi}-${di}-desc" rows="2"></textarea></div><div style="display:flex;gap:8px;margin-top:10px"><button class="btn b-or b-sm" onclick="saveNewSession(${wi},${di})">✓ Guardar sesión</button><button class="btn b-wh b-sm" onclick="toggleAdd(${wi},${di})">Cancelar</button></div></div>`;
       html+=`</div></div>`;
     });
   });
