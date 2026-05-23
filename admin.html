@@ -156,6 +156,19 @@ body{font-family:'DM Sans',system-ui,sans-serif;background:var(--bg);color:var(-
 /* LOG COLORS */
 .ok{color:var(--green-tx)}.err{color:var(--red)}.info{color:var(--blue)}.warn{color:var(--amber)}
 
+/* MULTI-SELECT OWNER */
+.owner-wrap{position:relative}
+.owner-btn{width:100%;padding:7px 10px;border:1px solid var(--gray-mid);border-radius:6px;font-size:12px;font-family:'DM Sans',system-ui;background:var(--white);color:var(--black);outline:none;cursor:pointer;text-align:left;display:flex;align-items:center;justify-content:space-between;transition:border .15s}
+.owner-btn:hover,.owner-btn.open{border-color:var(--orange);box-shadow:0 0 0 3px rgba(232,78,15,.1)}
+.owner-btn-text{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.owner-dropdown{position:absolute;top:calc(100% + 4px);left:0;right:0;background:var(--white);border:1px solid var(--gray-mid);border-radius:8px;box-shadow:0 4px 16px rgba(0,0,0,.12);z-index:200;padding:6px;display:none;max-height:220px;overflow-y:auto}
+.owner-dropdown.open{display:block}
+.owner-opt{display:flex;align-items:center;gap:8px;padding:7px 8px;border-radius:5px;cursor:pointer;transition:background .1s}
+.owner-opt:hover{background:var(--gray-lt)}
+.owner-opt input[type=checkbox]{width:14px;height:14px;accent-color:var(--orange);flex-shrink:0;cursor:pointer}
+.owner-opt-name{font-size:12px;color:var(--black);flex:1}
+.owner-opt-email{font-size:10px;color:var(--gray);font-family:'DM Mono',monospace}
+
 /* RESPONSIVE */
 @media(max-width:600px){
   .topbar,.tabs-bar,.page{padding-left:16px;padding-right:16px}
@@ -561,10 +574,12 @@ async function saveNewSession(wi,di){
   const day=DATA.weeks[wi].days[di];
   const fid='nf-'+wi+'-'+di+'-';
   const g=id=>document.getElementById(id)?.value?.trim();
+  const ownerKey='nf-'+wi+'-'+di+'-owner';
+  const ownerVal=document.getElementById('o-'+ownerKey)?.value||'';
   const modVal=g(fid+'mod')||'Presencial';
   const timeVal=g(fid+'time')||'9:00 – 10:00';
   const s={
-    time:timeVal, owner:g(fid+'owner')||'', slot:g(fid+'slot')||'Mañana',
+    time:timeVal, owner:ownerVal, slot:g(fid+'slot')||'Mañana',
     modality:modVal, title:g(fid+'title')||'Nueva sesión',
     desc:g(fid+'desc')||'', meetUrl:'', calEventId:''
   };
@@ -660,6 +675,58 @@ function updateDL(){const dl=document.getElementById('team-dl');if(dl)dl.innerHT
 // ESC HELPER
 function esc(v){return String(v||'').replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;');}
 
+// MULTI-SELECT OWNER
+function ownerHTML(k, currentOwner) {
+  const selected = currentOwner ? currentOwner.split('/').map(n=>n.trim()).filter(Boolean) : [];
+  const selText = selected.length ? selected.join(' / ') : 'Seleccionar responsable...';
+  const opts = TEAM.map(m => {
+    const checked = selected.some(s => s.toLowerCase() === m.name.toLowerCase());
+    return `<label class="owner-opt">
+      <input type="checkbox" ${checked?'checked':''} value="${esc(m.name)}" onchange="ownerChange('${k}')" />
+      <span class="owner-opt-name">${esc(m.name)}</span>
+      <span class="owner-opt-email">${esc(m.email)}</span>
+    </label>`;
+  }).join('');
+  return `<div class="owner-wrap" id="ow-${k}">
+    <button type="button" class="owner-btn" onclick="toggleOwnerDD('${k}')" id="obtn-${k}">
+      <span class="owner-btn-text" id="otext-${k}">${esc(selText)}</span>
+      <span>▾</span>
+    </button>
+    <div class="owner-dropdown" id="odd-${k}">${opts}</div>
+    <input type="hidden" id="o-${k}" value="${esc(currentOwner||'')}" />
+  </div>`;
+}
+
+function toggleOwnerDD(k) {
+  const dd = document.getElementById('odd-'+k);
+  const btn = document.getElementById('obtn-'+k);
+  // Close all other dropdowns first
+  document.querySelectorAll('.owner-dropdown.open').forEach(el => {
+    if (el.id !== 'odd-'+k) { el.classList.remove('open'); document.getElementById(el.id.replace('odd-','obtn-'))?.classList.remove('open'); }
+  });
+  dd.classList.toggle('open');
+  btn.classList.toggle('open');
+}
+
+function ownerChange(k) {
+  const dd = document.getElementById('odd-'+k);
+  const checked = [...dd.querySelectorAll('input[type=checkbox]:checked')].map(cb => cb.value);
+  const val = checked.join(' / ');
+  document.getElementById('o-'+k).value = val;
+  document.getElementById('otext-'+k).textContent = val || 'Seleccionar responsable...';
+  dirty(k);
+}
+
+// Close dropdowns when clicking outside
+document.addEventListener('click', e => {
+  if (!e.target.closest('.owner-wrap')) {
+    document.querySelectorAll('.owner-dropdown.open').forEach(el => {
+      el.classList.remove('open');
+      document.getElementById(el.id.replace('odd-','obtn-'))?.classList.remove('open');
+    });
+  }
+});
+
 // RENDER EDITOR
 function renderEditor(){
   document.getElementById('meta-start').value=DATA.startDate||'';
@@ -674,7 +741,7 @@ function renderEditor(){
       day.sessions.forEach((s,si)=>{
         const k=`${wi}-${di}-${si}`;const has=!!s.calEventId;const isVirt=s.modality==='Virtual';
         html+=`<div class="se"><div class="se-hd"><span class="se-n">S${si+1}</span><span class="se-tt" id="sp-${k}">${esc(s.title)}</span><span class="sync-b ${has?'sy-ok':'sy-none'}" id="sy-${k}">${has?'✓ Sincronizado':'Sin evento'}</span></div>`;
-        html+=`<div class="g3"><div class="fe"><label>Hora</label><input type="text" id="t-${k}" value="${esc(s.time)}" oninput="dirty('${k}');document.getElementById('sp-${k}').textContent=document.getElementById('ti-${k}').value" /></div><div class="fe"><label>Responsable</label><input type="text" id="o-${k}" value="${esc(s.owner)}" list="team-dl" oninput="dirty('${k}')" /></div><div class="fe"><label>Modalidad</label><select id="m-${k}" onchange="dirty('${k}');onModChange('${k}',${wi},${di},${si})"><option ${s.modality==='Presencial'?'selected':''}>Presencial</option><option ${s.modality==='Virtual'?'selected':''}>Virtual</option><option ${s.modality==='Presencial/Virtual'?'selected':''}>Presencial/Virtual</option></select></div></div>`;
+        html+=`<div class="g3"><div class="fe"><label>Hora</label><input type="text" id="t-${k}" value="${esc(s.time)}" oninput="dirty('${k}');document.getElementById('sp-${k}').textContent=document.getElementById('ti-${k}').value" /></div><div class="fe"><label>Responsable(s)</label>${ownerHTML(k,s.owner)}</div><div class="fe"><label>Modalidad</label><select id="m-${k}" onchange="dirty('${k}');onModChange('${k}',${wi},${di},${si})"><option ${s.modality==='Presencial'?'selected':''}>Presencial</option><option ${s.modality==='Virtual'?'selected':''}>Virtual</option><option ${s.modality==='Presencial/Virtual'?'selected':''}>Presencial/Virtual</option></select></div></div>`;
         html+=`<div class="g2"><div class="fe"><label>Franja</label><select id="sl-${k}" onchange="dirty('${k}')"><option ${s.slot==='Mañana'?'selected':''}>Mañana</option><option ${s.slot==='Tarde'?'selected':''}>Tarde</option></select></div><div class="fe"><label>Título de la sesión</label><input type="text" id="ti-${k}" value="${esc(s.title)}" oninput="dirty('${k}');document.getElementById('sp-${k}').textContent=this.value" /></div></div>`;
         html+=`<div class="fe"><label>Descripción</label><textarea id="d-${k}" oninput="dirty('${k}')">${esc(s.desc)}</textarea></div>`;
         html+=`<div id="meet-sec-${k}">`;
@@ -688,7 +755,7 @@ function renderEditor(){
         </div></div>`;
       });
       html+=`<button class="btn add-btn" onclick="toggleAdd(${wi},${di})">+ Agregar sesión en este día</button>`;
-      html+=`<div class="add-form" id="af-${wi}-${di}"><div class="add-form-tt">Nueva sesión — Día ${day.num}</div><div class="g4"><div class="fe"><label>Hora</label><input type="text" id="nf-${wi}-${di}-time" placeholder="9:00 – 10:00" /></div><div class="fe"><label>Responsable</label><input type="text" id="nf-${wi}-${di}-owner" list="team-dl" /></div><div class="fe"><label>Franja</label><select id="nf-${wi}-${di}-slot"><option>Mañana</option><option>Tarde</option></select></div><div class="fe"><label>Modalidad</label><select id="nf-${wi}-${di}-mod"><option>Presencial</option><option>Virtual</option></select></div></div><div class="fe"><label>Título</label><input type="text" id="nf-${wi}-${di}-title" /></div><div class="fe"><label>Descripción</label><textarea id="nf-${wi}-${di}-desc" rows="2"></textarea></div><div style="display:flex;gap:8px;margin-top:10px"><button class="btn b-or b-sm" onclick="saveNewSession(${wi},${di})">✓ Guardar sesión</button><button class="btn b-wh b-sm" onclick="toggleAdd(${wi},${di})">Cancelar</button></div></div>`;
+      html+=`<div class="add-form" id="af-${wi}-${di}"><div class="add-form-tt">Nueva sesión — Día ${day.num}</div><div class="g4"><div class="fe"><label>Hora</label><input type="text" id="nf-${wi}-${di}-time" placeholder="9:00 – 10:00" /></div><div class="fe"><label>Responsable(s)</label>${ownerHTML('nf-'+wi+'-'+di+'-owner','')}</div><div class="fe"><label>Franja</label><select id="nf-${wi}-${di}-slot"><option>Mañana</option><option>Tarde</option></select></div><div class="fe"><label>Modalidad</label><select id="nf-${wi}-${di}-mod"><option>Presencial</option><option>Virtual</option></select></div></div><div class="fe"><label>Título</label><input type="text" id="nf-${wi}-${di}-title" /></div><div class="fe"><label>Descripción</label><textarea id="nf-${wi}-${di}-desc" rows="2"></textarea></div><div style="display:flex;gap:8px;margin-top:10px"><button class="btn b-or b-sm" onclick="saveNewSession(${wi},${di})">✓ Guardar sesión</button><button class="btn b-wh b-sm" onclick="toggleAdd(${wi},${di})">Cancelar</button></div></div>`;
       html+=`</div></div>`;
     });
   });
