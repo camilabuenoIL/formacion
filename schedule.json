@@ -33,7 +33,7 @@
               "calEventId": "lju7n7nbtb62uh61c3n5er8sms"
             }
           ],
-          "_isoDate": ""
+          "_isoDate": "2026-05-18"
         },
         {
           "num": 2,
@@ -59,7 +59,7 @@
               "calEventId": "goivvnrjhpvaegukmh9icqpr40"
             }
           ],
-          "_isoDate": ""
+          "_isoDate": "2026-05-19"
         },
         {
           "num": 3,
@@ -94,7 +94,7 @@
               "calEventId": "5oleel1k9kqm4hnpio1d2bvpns"
             }
           ],
-          "_isoDate": ""
+          "_isoDate": "2026-05-20"
         },
         {
           "num": 4,
@@ -130,7 +130,7 @@
               "calEventId": "6mkkm23ui5plnas6rbh2gjaupc"
             }
           ],
-          "_isoDate": ""
+          "_isoDate": "2026-05-21"
         },
         {
           "num": 5,
@@ -158,7 +158,7 @@
               "calEventId": "9tr4bptc3inafqhbs40c4v2h6s"
             }
           ],
-          "_isoDate": ""
+          "_isoDate": "2026-05-22"
         }
       ]
     },
@@ -202,7 +202,7 @@
               "calEventId": "0e8sc4dodgogarboosmqjuves8"
             }
           ],
-          "_isoDate": ""
+          "_isoDate": "2026-05-25"
         },
         {
           "num": 7,
@@ -237,7 +237,7 @@
               "calEventId": "msqhs3l9emk47bb27bb9s75vqo"
             }
           ],
-          "_isoDate": ""
+          "_isoDate": "2026-05-26"
         },
         {
           "num": 8,
@@ -284,7 +284,7 @@
               "calEventId": ""
             }
           ],
-          "_isoDate": ""
+          "_isoDate": "2026-05-27"
         },
         {
           "num": 9,
@@ -311,7 +311,7 @@
               "calEventId": "r7qdk8jhbm3lpb6l3tanv28jbk"
             }
           ],
-          "_isoDate": ""
+          "_isoDate": "2026-05-28"
         },
         {
           "num": 10,
@@ -337,19 +337,9 @@
               "desc": "Test teórico · roleplay de calificación y presentación evaluado · feedback individual · plan de mejora · decisión de habilitación comercial",
               "isEval": true,
               "calEventId": "h0kktan4a38oqflieo3mb8omu4"
-            },
-            {
-              "time": "5:00 – 6:00",
-              "owner": "Camila Bueno",
-              "slot": "Tarde",
-              "modality": "Virtual",
-              "title": "prueba",
-              "desc": "Prueba",
-              "meetUrl": "",
-              "calEventId": ""
             }
           ],
-          "_isoDate": ""
+          "_isoDate": "2026-05-29"
         }
       ]
     }
