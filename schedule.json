@@ -313,11 +313,11 @@
               "time": "11:00 – 12:00",
               "owner": "Jorge Pando / Sofía Herreño",
               "slot": "Mañana",
-              "modality": "Presencial",
+              "modality": "Presencial/Virtual",
               "title": "Simulación de visita y caso práctico en CRM",
               "desc": "Roleplay completo: recepción del cliente, recorrido, manejo de objeciones en vivo · caso práctico en CRM con trazabilidad completa",
-              "isCampo": true,
-              "calEventId": "ters1ac3t9a170bg3feamo1u7c"
+              "meetUrl": "https://meet.google.com/eem-qrsh-jik",
+              "calEventId": "vlhlv62v5mb309g2efu9ga3bo8"
             },
             {
               "time": "3:00 – 5:00",
