@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "22 de mayo de 2026",
+  "lastUpdated": "26 de mayo de 2026",
   "startDate": "Lunes 18 de mayo de 2026",
   "weeks": [
     {
@@ -226,15 +226,6 @@
               "title": "Tipos de negocio, comisiones y esquema de referidos",
               "desc": "Tipos de negocio (Tipo 1 al 4) · modelos de comisión y cómo escalan · esquema de referidos Nivel 1 y Nivel 2 · ejemplos prácticos de liquidación · reglas de trazabilidad para proteger la comisión",
               "calEventId": "1ffa0jcja6bdqinjjv71hmb9f8"
-            },
-            {
-              "time": "3:00 – 5:00",
-              "owner": "Brooke Villanueva",
-              "slot": "Tarde",
-              "modality": "Presencial",
-              "title": "Notion 2ª cap. — Inventario y gestión de información",
-              "desc": "Carga y consulta de propiedades · lectura de ficha inmobiliaria · estados de disponibilidad · cómo traducir la ficha en argumentos comerciales",
-              "calEventId": "msqhs3l9emk47bb27bb9s75vqo"
             }
           ],
           "_isoDate": "2026-05-26"
@@ -265,13 +256,23 @@
               "calEventId": "f6h2prs9joho6nq0ptueh793i0"
             },
             {
-              "time": "3:00 – 5:00",
+              "time": "3:00 – 4:00",
               "owner": "Jorge Pando",
               "slot": "Tarde",
               "modality": "Presencial",
               "title": "Técnicas de seguimiento y captación de propiedades",
               "desc": "Cadencia comercial sin saturar al cliente · prospección de propietarios · primer contacto · valuación básica y argumentos para captar el inmueble",
               "calEventId": "ccs0l0angmvl4dmrrtas7hl7gc"
+            },
+            {
+              "time": "4:00 – 5:00",
+              "owner": "Walter Arias / Brooke Villanueva",
+              "slot": "Tarde",
+              "modality": "Presencial",
+              "title": "Notion 2ª cap. — Inventario y gestión de información",
+              "desc": "Carga y consulta de propiedades · lectura de ficha inmobiliaria · estados de disponibilidad · cómo traducir la ficha en argumentos comerciales",
+              "meetUrl": "https://meet.google.com/hgy-awsh-gfa",
+              "calEventId": "v9ra56rr4l643lek3er1en1bdg"
             }
           ],
           "_isoDate": "2026-05-27"
