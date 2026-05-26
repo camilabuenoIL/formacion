@@ -635,19 +635,24 @@ async function removeSession(wi,di,si){
   if(s.calEventId&&(calTok||localStorage.getItem(CAL_KEY))){ss('Eliminando evento de Calendar...','info');try{await deleteCalEv(s.calEventId);ss('✓ Eliminado de Calendar y del cronograma.','ok');}catch(e){ss('⚠ Sesión eliminada, pero no se pudo borrar de Calendar: '+e.message,'warn');}}
   changed.delete(wi+'-'+di+'-'+si);DATA.weeks[wi].days[di].sessions.splice(si,1);dirty();renderEditor();
 }
+/* PATCH: delete-before-create-v1 */
 async function createMeet(wi,di,si){
   const day=DATA.weeks[wi].days[di];
   const k=wi+'-'+di+'-'+si;
-  // Read current values from form (may have been edited)
   const ownerFromForm=document.getElementById('o-'+k)?.value;
   const s={...DATA.weeks[wi].days[di].sessions[si]};
   if(ownerFromForm)s.owner=ownerFromForm;
   const timeFromForm=document.getElementById('t-'+k)?.value;
   if(timeFromForm)s.time=timeFromForm;
   const dateStr=resolveDate(wi,di);
-  if(!dateStr){
-    ss('❌ No se pudo determinar la fecha del Día '+day.num+'. Verifica el campo de fecha.','err');
-    return;
+  if(!dateStr){ss('❌ No se pudo determinar la fecha del Día '+day.num+'.','err');return;}
+  // Delete previous event if exists
+  const prevEid=DATA.weeks[wi].days[di].sessions[si].calEventId;
+  if(prevEid){
+    ss('Eliminando evento anterior de Calendar...','info');
+    try{await deleteCalEv(prevEid);}catch(e){console.warn('Could not delete prev event:',e);}
+    DATA.weeks[wi].days[di].sessions[si].calEventId='';
+    DATA.weeks[wi].days[di].sessions[si].meetUrl='';
   }
   ss('Creando evento con Meet en Calendar...','info');
   try{
@@ -660,8 +665,7 @@ async function createMeet(wi,di,si){
       }else{
         ss('✓ Evento creado en Calendar sin Meet link.','warn');
       }
-      dirty(k);
-      renderEditor();
+      dirty(k);renderEditor();
     }
   }catch(e){ss('❌ '+e.message,'err');}
 }
