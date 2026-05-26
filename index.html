@@ -75,6 +75,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--gray-lt);color:var(--blac
 .s-pill{font-size:10px;font-weight:600;padding:2px 8px;border-radius:20px;width:fit-content}
 .p-pres{background:var(--presencial-lt);color:var(--presencial)}
 .p-virt{background:var(--virtual-lt);color:var(--virtual)}
+.p-both{background:#F0EBF8;color:#5B21B6}
 .s-right{padding:14px 16px 14px 20px;display:flex;flex-direction:column;gap:4px}
 .s-slot{font-size:10px;color:var(--gray);font-style:italic;font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:.06em}
 .s-title{font-size:14px;font-weight:600;color:var(--black);line-height:1.35}
@@ -284,11 +285,13 @@ function timeToISO(dayNum, timeStr) {
 function pillClass(m) {
   if(m==='Presencial') return 'p-pres';
   if(m==='Virtual') return 'p-virt';
+  if(m==='Presencial/Virtual') return 'p-both';
   return 'p-pres';
 }
 function pillText(m) {
   if(m==='Presencial') return '● Presencial';
   if(m==='Virtual') return '● Virtual';
+  if(m==='Presencial/Virtual') return '● Presencial / Virtual';
   return '● ' + m;
 }
 function timeClass(s) {
@@ -305,18 +308,20 @@ function buildActions(s, dayNum) {
   var gcal = gcalUrl(calTitle, calDesc, times.start, times.end, 'America/Bogota');
 
   var html = '<div class="s-actions">';
+  var isVirtual = s.modality === 'Virtual' || s.modality === 'Presencial/Virtual';
 
-  // Meet button for virtual sessions
-  if(s.meetUrl) {
+  // Meet button — only if has meetUrl AND is virtual or hybrid
+  if(s.meetUrl && isVirtual) {
     html += '<a class="btn-cal btn-meet" href="' + s.meetUrl + '" target="_blank">'
       + '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M17 10.5V7a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h12a1 1 0 001-1v-3.5l4 4v-11l-4 4z"/></svg>'
       + ' Unirse al Meet</a>';
   }
 
-  // Add to Google Calendar
+  // Calendar button — label changes by modality
+  var calLabel = isVirtual ? ' + Agregar a mi calendario' : ' + Recordatorio';
   html += '<a class="btn-cal btn-gcal" href="' + gcal + '" target="_blank">'
     + '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 3h-1V1h-2v2H8V1H6v2H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V5a2 2 0 00-2-2zm0 16H5V9h14v10zm0-12H5V5h14v2zM7 11h2v2H7zm4 0h2v2h-2zm4 0h2v2h-2z"/></svg>'
-    + (s.modality==='Virtual' ? ' + Agregar a mi calendario' : ' + Recordatorio') + '</a>';
+    + calLabel + '</a>';
 
   html += '</div>';
   return html;
