@@ -236,6 +236,16 @@
           "badge": null,
           "sessions": [
             {
+              "time": "9:00 – 10:30",
+              "owner": "Sofía Herreño",
+              "slot": "Mañana",
+              "modality": "Virtual",
+              "title": "Optimización de perfiles digitales — Parte 3: Facebook e Instagram",
+              "desc": "Facebook e Instagram: configuración profesional de perfil, bio, foto, portada e historias destacadas coherentes con Inmobiliario Latam (Continuación)",
+              "meetUrl": "https://meet.google.com/mjj-spqu-twp",
+              "calEventId": "66oh51l5o77dukd0astq0tenk4"
+            },
+            {
               "time": "10:30 – 12:00",
               "owner": "Sofía Herreño",
               "slot": "Mañana",
