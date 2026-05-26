@@ -328,16 +328,6 @@
               "desc": "Test teórico · roleplay de calificación y presentación evaluado · feedback individual · plan de mejora · decisión de habilitación comercial",
               "isEval": true,
               "calEventId": "h0kktan4a38oqflieo3mb8omu4"
-            },
-            {
-              "time": "6:00 – 7:00",
-              "owner": "Camila Bueno",
-              "slot": "Mañana",
-              "modality": "Presencial/Virtual",
-              "title": "Prueba",
-              "desc": "Prueba 1",
-              "meetUrl": "https://meet.google.com/zes-edhn-uqj",
-              "calEventId": "gg5i2j3ssqial8tjhi7d77ng24"
             }
           ],
           "_isoDate": "2026-05-29"
