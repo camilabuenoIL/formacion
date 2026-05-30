@@ -219,6 +219,83 @@ body{font-family:'DM Sans',sans-serif;background:var(--gray-lt);color:var(--blac
       <div class="eval-card a"><div class="eval-score">70 – 79</div><div class="eval-label">Habilitado con supervisión</div><div class="eval-desc">Recibes leads con acompañamiento. Plan de refuerzo en puntos débiles.</div></div>
       <div class="eval-card r"><div class="eval-score">Menos de 70</div><div class="eval-label">No habilitado temporalmente</div><div class="eval-desc">Reforzamiento y nueva evaluación antes de recibir leads.</div></div>
     </div>
+
+    <!-- TEST SECTION -->
+    <div style="margin-top:28px">
+      <!-- Test intro card -->
+      <div id="test-intro-card" style="background:linear-gradient(135deg,#FDE8DF,#FFF8F5);border:1px solid #F4A07A;border-radius:12px;padding:22px 24px;display:flex;align-items:center;gap:20px;flex-wrap:wrap">
+        <div style="flex:1;min-width:200px">
+          <div style="font-size:11px;font-weight:700;color:#E84E0F;text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px">Test interactivo</div>
+          <div style="font-size:16px;font-weight:700;color:#0D0D0D;margin-bottom:5px">Evaluación final del programa</div>
+          <div style="font-size:13px;color:#5C5C5C;line-height:1.6;margin-bottom:10px">30 preguntas · 4 áreas · Solo válido al completar los 10 días de formación · Recibes tu resultado por correo</div>
+          <div style="display:flex;gap:6px;flex-wrap:wrap">
+            <span style="background:#fff;border:1px solid #E0DDD8;border-radius:20px;padding:3px 10px;font-size:11px;color:#5C5C5C">📚 Fundamentos</span>
+            <span style="background:#fff;border:1px solid #E0DDD8;border-radius:20px;padding:3px 10px;font-size:11px;color:#5C5C5C">💼 Comercial</span>
+            <span style="background:#fff;border:1px solid #E0DDD8;border-radius:20px;padding:3px 10px;font-size:11px;color:#5C5C5C">🛠 Herramientas</span>
+            <span style="background:#fff;border:1px solid #E0DDD8;border-radius:20px;padding:3px 10px;font-size:11px;color:#5C5C5C">🏦 Financiamiento</span>
+          </div>
+        </div>
+        <button onclick="openTest()" style="background:#E84E0F;color:#fff;border:none;padding:14px 26px;border-radius:9px;font-size:14px;font-weight:700;cursor:pointer;white-space:nowrap;flex-shrink:0;transition:background .15s" onmouseover="this.style.background='#C93E08'" onmouseout="this.style.background='#E84E0F'">
+          ▶ Iniciar evaluación
+        </button>
+      </div>
+
+      <!-- Test modal overlay -->
+      <div id="test-overlay" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:500;overflow-y:auto;padding:20px">
+        <div style="max-width:780px;margin:0 auto;padding-bottom:40px">
+
+          <!-- Modal header -->
+          <div style="background:#0D0D0D;border-radius:12px 12px 0 0;padding:16px 22px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:10">
+            <div style="display:flex;align-items:center;gap:10px">
+              <div style="font-size:14px;font-weight:700;color:#fff">Evaluación Final — Inmobiliario Latam</div>
+              <div id="tst-prog-badge" style="background:#E84E0F;color:#fff;border-radius:20px;padding:2px 10px;font-size:11px;font-weight:600">0/30</div>
+            </div>
+            <button onclick="closeTest()" style="background:rgba(255,255,255,.1);border:none;color:#fff;font-size:13px;cursor:pointer;padding:5px 12px;border-radius:5px">✕ Cerrar</button>
+          </div>
+
+          <!-- Progress bar -->
+          <div style="background:#1A1A1A;height:4px;border-radius:0">
+            <div id="tst-prog-bar" style="height:100%;background:#E84E0F;border-radius:0;transition:width .3s;width:0%"></div>
+          </div>
+
+          <!-- Start form -->
+          <div id="tst-start" style="background:#fff;border-radius:0 0 12px 12px;padding:28px">
+            <div style="background:#FEF3C7;border:1px solid #FDE68A;border-radius:8px;padding:14px 16px;margin-bottom:20px;display:flex;gap:10px">
+              <span style="font-size:18px;flex-shrink:0">⚠️</span>
+              <div>
+                <div style="font-size:13px;font-weight:700;color:#92400E;margin-bottom:3px">Importante antes de comenzar</div>
+                <div style="font-size:12px;color:#92400E;line-height:1.6">Este test <strong>solo tiene validez si has completado el programa de formación completo</strong> de 10 días. Si aún no has finalizado, los resultados no serán válidos para tu habilitación. Confirma con tu formador antes de iniciar.</div>
+              </div>
+            </div>
+            <div style="font-size:17px;font-weight:700;color:#0D0D0D;margin-bottom:4px">Bienvenido a tu evaluación final</div>
+            <div style="font-size:13px;color:#5C5C5C;margin-bottom:20px;line-height:1.6">Completa tus datos y responde las 30 preguntas. Al terminar verás tu resultado al instante y recibirás tu reporte por correo.</div>
+            <div style="margin-bottom:12px">
+              <label style="display:block;font-size:11px;font-weight:700;color:#5C5C5C;margin-bottom:4px;text-transform:uppercase;letter-spacing:.05em">Nombre completo</label>
+              <input type="text" id="tst-name" placeholder="Escribe tu nombre..." style="width:100%;padding:10px 14px;border:1px solid #E0DDD8;border-radius:7px;font-size:14px;outline:none;font-family:inherit" onfocus="this.style.borderColor='#E84E0F'" onblur="this.style.borderColor='#E0DDD8'">
+            </div>
+            <div style="margin-bottom:20px">
+              <label style="display:block;font-size:11px;font-weight:700;color:#5C5C5C;margin-bottom:4px;text-transform:uppercase;letter-spacing:.05em">Correo electrónico</label>
+              <input type="email" id="tst-email" placeholder="tucorreo@email.com" style="width:100%;padding:10px 14px;border:1px solid #E0DDD8;border-radius:7px;font-size:14px;outline:none;font-family:inherit" onfocus="this.style.borderColor='#E84E0F'" onblur="this.style.borderColor='#E0DDD8'">
+            </div>
+            <button onclick="tstStart()" style="width:100%;background:#E84E0F;color:#fff;border:none;padding:13px;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer">Comenzar evaluación →</button>
+          </div>
+
+          <!-- Quiz -->
+          <div id="tst-quiz" style="display:none"></div>
+
+          <!-- Submit bar -->
+          <div id="tst-submit-bar" style="display:none;position:sticky;bottom:0;background:#fff;border-top:1px solid #E0DDD8;padding:12px 20px;display:none;justify-content:space-between;align-items:center;gap:12px">
+            <span id="tst-hint" style="font-size:12px;color:#5C5C5C">Responde todas las preguntas</span>
+            <button id="tst-submit-btn" onclick="tstSubmit()" disabled style="background:#E84E0F;color:#fff;border:none;padding:10px 22px;border-radius:7px;font-size:13px;font-weight:700;cursor:pointer;opacity:.4">Ver resultados →</button>
+          </div>
+
+          <!-- Results -->
+          <div id="tst-results" style="display:none"></div>
+
+        </div>
+      </div>
+    </div><!-- /test section -->
+
   </div>
 
   <div class="section" id="tab-treinta">
@@ -417,6 +494,347 @@ function toggleDay(header) {
 }
 
 loadSchedule();
+</script>
+
+<style>
+/* TEST STYLES */
+.tst-area-hdr{border-radius:8px;padding:11px 16px;margin-bottom:10px;display:flex;align-items:center;gap:10px}
+.tst-a1{background:#0D0D0D}.tst-a2{background:#E84E0F}.tst-a3{background:#1A2E4A}.tst-a4{background:#1A3D2B}
+.tst-area-pill{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:2px 8px;border-radius:2px;background:rgba(255,255,255,.2);color:#fff}
+.tst-area-title{font-size:13px;font-weight:600;color:#fff}
+.tst-qcard{background:#fff;border:1px solid #E0DDD8;border-radius:10px;padding:16px;margin-bottom:10px;transition:border .2s}
+.tst-qcard.answered{border-color:#1A3D2B}
+.tst-qnum{font-size:10px;font-weight:700;color:#E84E0F;background:#FDE8DF;padding:2px 8px;border-radius:4px;display:inline-block;margin-bottom:8px}
+.tst-qtext{font-size:14px;font-weight:600;color:#0D0D0D;margin-bottom:12px;line-height:1.6}
+.tst-opts{display:flex;flex-direction:column;gap:7px}
+.tst-opt{display:flex;align-items:flex-start;gap:9px;padding:10px 13px;border:1px solid #E0DDD8;border-radius:8px;cursor:pointer;transition:all .15s;background:#F5F4F2;user-select:none}
+.tst-opt:hover{border-color:#E84E0F;background:#FDE8DF}
+.tst-opt.sel{border-color:#E84E0F;background:#FDE8DF}
+.tst-opt.ok{border-color:#1A3D2B;background:#D6EDE1;pointer-events:none}
+.tst-opt.wrong{border-color:#991B1B;background:#FEE2E2;pointer-events:none}
+.tst-opt-ltr{font-size:11px;font-weight:700;color:#5C5C5C;background:#fff;border:1px solid #E0DDD8;border-radius:4px;width:22px;height:22px;min-width:22px;display:flex;align-items:center;justify-content:center;margin-top:1px}
+.tst-opt.sel .tst-opt-ltr{background:#E84E0F;color:#fff;border-color:#E84E0F}
+.tst-opt.ok .tst-opt-ltr{background:#1A3D2B;color:#fff;border-color:#1A3D2B}
+.tst-opt.wrong .tst-opt-ltr{background:#991B1B;color:#fff;border-color:#991B1B}
+.tst-opt-text{font-size:13px;color:#0D0D0D;line-height:1.5;flex:1}
+.tst-fb{margin-top:9px;padding:9px 12px;border-radius:6px;font-size:12px;line-height:1.6;display:none}
+.tst-fb-ok{background:#D6EDE1;color:#1A3D2B;border:1px solid #A5D6B5}
+.tst-fb-err{background:#FEE2E2;color:#991B1B;border:1px solid #FECACA}
+</style>
+<script>
+/* ── TEST INMOBILIARIO LATAM ──────────────────────────────────────────── */
+const AREAS = [
+  {
+    id:'a1', num:1, title:'Fundamentos Inmobiliarios', cls:'a1', tgcls:'tg-a1',
+    questions:[
+      {id:1,q:'¿Qué es el mercado secundario en bienes raíces?',ans:1,
+       opts:['El mercado de propiedades nuevas en planos','El mercado de propiedades usadas o de segunda mano','El mercado exclusivo para inversionistas','El mercado de propiedades de lujo'],
+       exp:'El mercado secundario son propiedades que ya tuvieron un dueño anterior.',
+       guide:'Pregunte: "¿Puedes darme un ejemplo de una propiedad en mercado secundario?" Señal de alerta: si confunde con mercado de valores o con propiedades en remate.',
+       criterio:'El agente debe distinguir claramente nuevo vs. usado y entender que el proceso de compra puede variar entre ambos mercados.'},
+      {id:2,q:'¿Cuál es el orden correcto del proceso de compra inmobiliaria?',ans:1,
+       opts:['Visita → Reserva → Calificación → Minuta → Escritura','Calificación → Visita → Negociación → Separación → Minuta → Escritura','Minuta → Visita → Calificación → Reserva','Escritura → Minuta → Separación → Visita'],
+       exp:'La calificación siempre va primero — antes de visitar o negociar.',
+       guide:'Pregunte: "¿Por qué la calificación va antes de la visita?" Si el agente dice que la visita puede ir primero, profundizar sobre el desgaste que genera mostrar propiedades a clientes no calificados.',
+       criterio:'Comprensión del por qué del orden: evitar desgaste, proteger tiempo del agente y del propietario.'},
+      {id:3,q:'¿Cuándo debe el agente escalar a un asesor fiscal o contador?',ans:1,
+       opts:['Cuando el cliente pregunta cualquier cosa sobre impuestos','Cuando el cliente pide detalles sobre declaraciones, retenciones o crédito fiscal','Nunca — el agente debe saber todo sobre impuestos','Solo cuando la propiedad supera $500,000'],
+       exp:'El agente orienta en términos básicos pero deriva los detalles específicos.',
+       guide:'Pregunte: "Si un cliente te pregunta cuánto paga de retención en la fuente, ¿qué le dices?" Señal de alerta: si el agente inventa cifras o dice que lo sabe todo.',
+       criterio:'Conoce sus límites de rol. No pretende ser asesor fiscal. Tiene claro a quién derivar.'},
+      {id:4,q:'¿Qué tipo de cliente toma decisiones basado principalmente en retorno de inversión?',ans:2,
+       opts:['Comprador de primera vivienda','Comprador familiar','Inversionista','Cliente indeciso'],
+       exp:'El inversionista prioriza el ROI sobre el uso personal.',
+       guide:'Pregunte: "¿Cómo cambia tu discurso entre un inversionista y un comprador de primera vivienda?" Evalúa si adapta el lenguaje: retorno vs. espacio familiar, zonas de valorización vs. colegios cercanos.',
+       criterio:'Entiende que el mismo inmueble se vende con argumentos completamente distintos según el perfil.'},
+      {id:5,q:'¿Cuál describe correctamente la "separación" en el proceso de compra?',ans:1,
+       opts:['El documento final que certifica la propiedad','Un acuerdo preliminar que aparta la propiedad con un monto inicial mientras se prepara la documentación','El avalúo oficial de la propiedad','El contrato de arrendamiento temporal'],
+       exp:'La separación aparta la propiedad, es previa a la minuta y la escritura.',
+       guide:'Pregunte: "¿Qué pasa si un cliente firma una separación y luego se arrepiente?" Evalúa si conoce las implicaciones legales básicas y cuándo escalar a asesor jurídico.',
+       criterio:'Diferencia separación, minuta y escritura correctamente y sabe en qué etapa está el cliente en cada momento.'},
+    ]
+  },
+  {
+    id:'a2', num:2, title:'Área Comercial y Negociación', cls:'a2', tgcls:'tg-a2',
+    questions:[
+      {id:6,q:'En la matriz de calificación, ¿cuál de estos criterios NO es un factor estándar?',ans:1,
+       opts:['Presupuesto disponible','Color favorito del cliente','Urgencia de compra','Capacidad financiera'],
+       exp:'Los criterios son presupuesto, zona, forma de pago, urgencia, decisión y capacidad financiera.',
+       guide:'Pida al agente que aplique la matriz en voz alta con un cliente ficticio. Evalúe si hace las preguntas en orden natural sin sonar a interrogatorio. Señal de alerta: si solo hace 1 o 2 preguntas.',
+       criterio:'Maneja los 6 criterios de calificación con fluidez y naturalidad, integrándolos en una conversación real.'},
+      {id:7,q:'Un cliente dice: "Está muy caro, lo voy a pensar." ¿Cuál es la respuesta más adecuada?',ans:2,
+       opts:['Bajar inmediatamente el precio','Terminar la conversación y esperar','Preguntar qué aspecto le genera duda y ofrecer datos comparativos de mercado','Insistir hasta que acepte'],
+       exp:'Explorar la duda real y respaldar con datos de mercado.',
+       guide:'Haga un roleplay: "Está muy caro." Escuche si el agente hace la pregunta correcta antes de argumentar. Señal de alerta: si ofrece descuento sin explorar la objeción.',
+       criterio:'No cede precio sin entender la objeción real. Usa datos del ACM. Define siempre un siguiente paso.'},
+      {id:8,q:'¿Para qué sirve el ACM (Análisis Comparativo de Mercado) en la conversación con un propietario?',ans:1,
+       opts:['Para convencerlo de bajar el precio sin datos','Para respaldar el precio sugerido con comparables reales de mercado y generar confianza','Para calcular la comisión del agente','Para determinar si el propietario tiene deudas hipotecarias'],
+       exp:'El ACM genera confianza basada en datos reales del mercado.',
+       guide:'Pida al agente que explique el ACM como si hablara con un propietario. Evalúe si usa lenguaje claro, no técnico. Señal de alerta: si solo menciona precio sin explicar comparables.',
+       criterio:'Puede construir un ACM básico, explicarlo en términos simples y usarlo para anclar una conversación de precio.'},
+      {id:9,q:'¿Cuál es el propósito principal del seguimiento post-visita?',ans:1,
+       opts:['Presionar al cliente para que decida rápido','Aportar valor con información relevante y definir el siguiente paso concreto','Enviar el mismo mensaje todos los días','Ofrecer un descuento inmediato'],
+       exp:'Aporte de valor + próximo paso definido.',
+       guide:'Pida al agente que redacte el mensaje de seguimiento post-visita para un cliente interesado pero indeciso. Evalúe si define el siguiente paso con fecha y propósito.',
+       criterio:'Seguimiento tiene estructura: valor + contexto + próximo paso. No repite el mismo mensaje. Adapta el tono según la etapa del cliente.'},
+      {id:10,q:'En el esquema de comisiones Tipo 1 de Inmobiliario Latam, ¿quién suministra el lead y el inventario?',ans:1,
+       opts:['El agente suministra ambos','Inmobiliario Latam suministra ambos','El agente suministra el lead y Latam el inventario','El cliente suministra la propiedad'],
+       exp:'En Tipo 1, Inmobiliario Latam suministra ambas variables.',
+       guide:'Pregunte: "¿Qué diferencia hay entre Tipo 1 y Tipo 2 para ti como agente?" Evalúa si entiende el impacto en su comisión y responsabilidad.',
+       criterio:'Comprende los 4 tipos de negocio y sabe identificar cuál aplica en cada oportunidad que recibe.'},
+      {id:11,q:'¿Cuál es la mejor forma de hacer el primer contacto con un propietario para captar su inmueble?',ans:1,
+       opts:['Ofrecerle dinero inmediato sin conocer la propiedad','Presentarse con el ACM de la zona, explicar el proceso y generar confianza antes de hablar de comisión','Pedirle que firme el contrato en el primer encuentro','Decirle que ya tiene un comprador listo sin verificarlo'],
+       exp:'Presentarse con valor (ACM) y construir confianza antes de hablar de comisión.',
+       guide:'Haga roleplay de primer contacto con propietario. Evalúe si el agente presenta valor antes de pedir algo. Señal de alerta: habla de comisión en los primeros 2 minutos.',
+       criterio:'Usa el ACM como herramienta de apertura. Genera confianza antes de proponer. Escucha más de lo que habla en el primer contacto.'},
+      {id:12,q:'¿En qué momento del proceso es más adecuado intentar cerrar la venta?',ans:1,
+       opts:['Al primer contacto, antes de calificar','Cuando el cliente expresa señales claras de decisión y se han resuelto sus objeciones principales','Cuando el agente necesita cumplir su meta del mes','Siempre al final de la primera visita, sin importar las señales'],
+       exp:'El cierre se da cuando hay señales claras y objeciones resueltas.',
+       guide:'Pregunte: "¿Cómo sabes que un cliente está listo para cerrar?" Evalúe si menciona señales de compra. Señal de alerta: si asocia cierre con presión o con el tiempo que lleva el proceso.',
+       criterio:'Identifica señales de decisión. No presiona antes de tiempo. Entiende que forzar el cierre daña la relación y el negocio.'},
+    ]
+  },
+  {
+    id:'a3', num:3, title:'Herramientas Digitales — CRM, Notion y Perfiles', cls:'a3', tgcls:'tg-a3',
+    questions:[
+      {id:13,q:'¿Cuándo se debe crear un "negocio" en el CRM?',ans:1,
+       opts:['Cuando el cliente pregunta por primera vez','Cuando hay una oportunidad comercial real con intención verificada','Al recibir cualquier lead nuevo sin calificar','Cuando el cliente firma la escritura'],
+       exp:'Un negocio requiere intención verificada, no solo primer contacto.',
+       guide:'Pida al agente que navegue el CRM y muestre dónde crearía un negocio. Evalúe si diferencia entre contacto, lead calificado y oportunidad real.',
+       criterio:'Entiende la diferencia entre contacto, lead y negocio. Sabe en qué momento crea cada registro y por qué.'},
+      {id:14,q:'¿Para qué sirve principalmente Notion en el trabajo diario del agente?',ans:1,
+       opts:['Para publicar propiedades en portales inmobiliarios','Para consultar fichas de propiedades, inventario disponible y recursos internos del equipo','Para gestionar las llamadas telefónicas de clientes','Para calcular comisiones automáticamente'],
+       exp:'Notion es la biblioteca interna: fichas, inventario y guías del equipo.',
+       guide:'Pregunte: "Antes de presentar una propiedad, ¿qué pasos sigues en Notion?" Evalúe si consulta disponibilidad y ficha antes de hablar con el cliente.',
+       criterio:'Usa Notion proactivamente, no reactivamente. Verifica información antes de comprometerse con un cliente.'},
+      {id:15,q:'¿Cuál de estos elementos NO debe faltar en el perfil de LinkedIn de un agente de Inmobiliario Latam?',ans:1,
+       opts:['Foto de mascota','Titular como asesor inmobiliario con propuesta de valor clara','Lista de películas favoritas','Publicaciones de temas no relacionados con bienes raíces'],
+       exp:'El titular debe comunicar el rol y propuesta de valor del agente.',
+       guide:'Revise el LinkedIn del agente en tiempo real. Evalúe titular, foto profesional, extracto y presencia de Inmobiliario Latam en experiencia. Señal de alerta: foto informal o titular genérico.',
+       criterio:'Tiene perfil profesional activo. El titular es claro. La experiencia menciona Inmobiliario Latam. Hay contenido de valor publicado.'},
+      {id:16,q:'En el CRM, ¿qué significa "trazabilidad"?',ans:1,
+       opts:['Dibujar el recorrido de una propiedad en el mapa','Registrar todas las interacciones con el cliente para que cualquier miembro del equipo pueda continuar la gestión','Calcular la distancia entre propiedades','Rastrear la ubicación física del agente'],
+       exp:'Trazabilidad garantiza continuidad y protege la comisión del agente.',
+       guide:'Pregunte: "¿Qué pasa si tu equipo necesita atender a uno de tus clientes y tú no estás disponible?" Evalúe si entiende que la trazabilidad protege al cliente y al agente.',
+       criterio:'Comprende que registrar no es burocracia, es protección: de la comisión, del cliente y del equipo.'},
+      {id:17,q:'¿Cuál de estas acciones representa un ERROR común al registrar en el CRM?',ans:1,
+       opts:['Agregar una nota después de cada llamada con el resumen y el próximo paso','Avanzar la etapa del lead sin evidencia real de progreso comercial','Crear una tarea con fecha límite para el próximo contacto','Registrar el lead desde el primer mensaje recibido'],
+       exp:'Avanzar etapas sin evidencia distorsiona el pipeline y genera datos falsos.',
+       guide:'Muestre el pipeline del agente y pregunte por qué ciertos leads están en ciertas etapas. Señal de alerta: leads en etapa avanzada sin notas o actividad reciente.',
+       criterio:'Mantiene el pipeline limpio y real. Solo avanza etapas con evidencia concreta. Entiende que el pipeline es una herramienta de gestión, no de imagen.'},
+      {id:18,q:'¿Cuándo se debe avanzar un lead a la siguiente etapa del pipeline en el CRM?',ans:1,
+       opts:['Cada semana automáticamente, sin importar el avance real','Solo cuando hay evidencia concreta de progreso: visita agendada, interés confirmado o propuesta enviada','Cuando el agente quiere que su reporte se vea mejor','Cuando el lead lleva más de 3 días sin responder'],
+       exp:'Solo con evidencia de progreso real: visita, interés confirmado o propuesta.',
+       guide:'Pida al agente que describa qué hace cuando un lead no responde en 5 días. Evalúe si tiene cadencia de seguimiento sin mover la etapa artificialmente.',
+       criterio:'Tiene protocolo claro para leads inactivos. Distingue entre lead frío y oportunidad perdida. Sabe cuándo cerrar un negocio como perdido.'},
+      {id:19,q:'¿Cómo debe un agente usar las fichas de Notion antes de presentar una propiedad a un cliente?',ans:1,
+       opts:['No es necesario revisarlas, el agente debe saber todo de memoria','Revisar la ficha para verificar disponibilidad, precio actualizado y características antes de hablar con el cliente','Compartir directamente la ficha al cliente sin revisarla','Esperar a que el cliente pregunte para buscar la información'],
+       exp:'Siempre verificar disponibilidad y precio actualizado antes de presentar.',
+       guide:'Haga una prueba en vivo: pida al agente que encuentre una ficha de propiedad específica y extraiga los argumentos comerciales relevantes para un perfil de cliente dado.',
+       criterio:'Navega Notion con fluidez. Interpreta la ficha técnica. Conecta las características de la propiedad con las necesidades del perfil del cliente.'},
+      {id:20,q:'¿Qué información es obligatoria registrar en Notion cuando una propiedad cambia de estado?',ans:1,
+       opts:['Solo el nombre del agente que la gestionó','La fecha del cambio, el nuevo estado y cualquier observación relevante para el equipo','No es necesario actualizar Notion si ya está en el CRM','Solo actualizarlo si el gerente lo solicita'],
+       exp:'Fecha, nuevo estado y observaciones: garantiza inventario limpio para todo el equipo.',
+       guide:'Pregunte: "¿Qué pasa si ofreces una propiedad que ya fue vendida?" Evalúe si comprende el impacto de tener Notion desactualizado en la experiencia del cliente.',
+       criterio:'Entiende que Notion es inventario en vivo. Actualizar no es opcional — afecta directamente a otros agentes y clientes.'},
+    ]
+  },
+  {
+    id:'a4', num:4, title:'Financiamiento, Tipos de Negocio y Operación', cls:'a4', tgcls:'tg-a4',
+    questions:[
+      {id:21,q:'¿Qué es la "capacidad de endeudamiento" en el contexto de un crédito hipotecario?',ans:1,
+       opts:['El monto total de deudas actuales del cliente','El porcentaje del ingreso mensual que puede destinarse al pago de la cuota hipotecaria sin comprometer la estabilidad financiera','El valor de la propiedad que desea comprar','El historial de pagos del cliente'],
+       exp:'Es el porcentaje del ingreso mensual disponible para cuota hipotecaria.',
+       guide:'Pregunte: "Si un cliente gana $3,000 al mes, ¿cuánto podría destinar a una cuota hipotecaria?" Evalúe si conoce rangos típicos (30-35%) y cómo varía por entidad financiera.',
+       criterio:'Puede orientar al cliente sobre capacidad de endeudamiento con ejemplos concretos sin dar cifras exactas de terceros sin validación.'},
+      {id:22,q:'¿Qué tipo de negocio aplica cuando un agente externo trae el lead y un agente asociado de Inmobiliario Latam cierra la venta?',ans:3,
+       opts:['Tipo 1','Tipo 2','Tipo 3 — Sinergia Interna','Tipo 4 — Sinergia Externa'],
+       exp:'Tipo 4 (Sinergia Externa): agente externo + agente asociado de IL.',
+       guide:'Presente 3 escenarios de negocios reales y pida al agente que identifique el tipo. Evalúe velocidad y seguridad en la respuesta. Señal de alerta: confunde Tipo 3 y Tipo 4.',
+       criterio:'Identifica correctamente los 4 tipos. Entiende el impacto en la comisión de cada uno. Sabe cómo reportar cada tipo para proteger su participación.'},
+      {id:23,q:'En el esquema de referidos Nivel 1, ¿qué porcentaje recibe el agente referidor?',ans:2,
+       opts:['5%','7.5%','10%','15%'],
+       exp:'Nivel 1: 10% de la utilidad neta de Inmobiliario Latam.',
+       guide:'Pregunte: "Si refieres a un agente y ese agente cierra un negocio, ¿cuándo y cómo recibes tu comisión?" Evalúe si entiende el flujo completo, no solo el porcentaje.',
+       criterio:'Conoce los dos niveles del esquema de referidos y puede explicarlo con un ejemplo de cálculo básico.'},
+      {id:24,q:'¿Qué preguntas puede hacer un agente para evaluar el perfil financiero de un cliente sin sonar invasivo?',ans:1,
+       opts:['¿Cuánto gana y cuáles son sus deudas exactas?','¿Planea usar crédito hipotecario o recursos propios? ¿Ya habló con alguna entidad financiera?','¿Puede mostrarme sus extractos bancarios de los últimos 6 meses?','¿Cuál es su historial crediticio completo?'],
+       exp:'Preguntas sobre financiamiento e intención son naturales y no invasivas.',
+       guide:'Haga roleplay: el agente debe calificar financieramente a un cliente en 3 preguntas sin que suene a interrogatorio. Evalúe el tono y la naturalidad.',
+       criterio:'Formula preguntas financieras de forma conversacional. No incomoda al cliente. Sabe qué información necesita y cuándo derivar a un asesor financiero.'},
+      {id:25,q:'¿Por qué es importante registrar cada interacción con el cliente en el CRM desde el primer contacto?',ans:1,
+       opts:['Para cumplir un trámite burocrático sin valor práctico','Para garantizar trazabilidad, proteger la comisión del agente y permitir continuidad al equipo','Solo para que el gerente pueda hacer seguimiento interno','Porque el sistema lo exige como requisito técnico obligatorio'],
+       exp:'Trazabilidad protege comisión, garantiza continuidad y fortalece al equipo.',
+       guide:'Pregunte: "¿Qué evidencia tienes tú hoy de los leads que gestionaste esta semana?" Evalúe si tiene registros concretos o solo memoria.',
+       criterio:'Registra de forma consistente. Entiende que sin registro no hay evidencia, sin evidencia no hay protección.'},
+      {id:26,q:'¿Escribe 3 principios fundamentales de Inmobiliario Latam que guían el trabajo del agente?',ans:1,
+       opts:['Velocidad, competencia y precio más bajo','Transparencia, trazabilidad y asesoría basada en datos y criterio de mercado','Exclusividad, comisión alta y captación masiva','Publicidad, visibilidad y volumen de propiedades'],
+       exp:'Transparencia, trazabilidad y asesoría basada en datos.',
+       guide:'Pregunte: "Dame un ejemplo de cuándo aplicaste la transparencia con un cliente, aunque fuera incómodo." Evalúe si los principios son vivenciales o solo teóricos.',
+       criterio:'Los principios no son declarativos, son conductuales. El agente puede dar ejemplos reales de cómo los aplica.'},
+      {id:27,q:'¿Cuál es la diferencia principal entre un crédito hipotecario VIS y uno No VIS?',ans:1,
+       opts:['El VIS es solo para inversionistas y el No VIS para primera vivienda','El VIS aplica a viviendas de interés social con topes de precio establecidos por el gobierno; el No VIS aplica a propiedades por encima de ese tope','No hay diferencia, ambos tienen las mismas tasas y condiciones','El VIS requiere cuota inicial del 50% y el No VIS del 20%'],
+       exp:'VIS tiene topes de precio gubernamentales; No VIS aplica a propiedades sobre ese tope.',
+       guide:'Pregunte: "Si un cliente tiene presupuesto de $150M, ¿buscarías propiedades VIS o No VIS?" Evalúe si entiende el impacto práctico del tope en el inventario que puede mostrar.',
+       criterio:'Conoce los rangos de precios VIS actuales. Sabe qué subsidios aplican para cada tipo y cómo orientar al cliente según su perfil.'},
+      {id:28,q:'En el Tipo 2 de negocio de Inmobiliario Latam, ¿quién aporta la variable que falta?',ans:1,
+       opts:['Otro agente asociado interno','El agente asociado aporta la variable que Inmobiliario Latam no suministra (lead o inventario)','Un agente externo a la empresa','El cliente directamente'],
+       exp:'En Tipo 2, el agente aporta lo que IL no suministra (lead o inventario).',
+       guide:'Presente un caso: "IL tiene el inventario pero no el cliente — ¿qué tipo de negocio es y qué porcentaje esperas?" Evalúe si conecta tipo con comisión.',
+       criterio:'Entiende la lógica de los tipos: a mayor aporte del agente, mayor comisión. Sabe qué aporta en cada escenario y cuánto le corresponde.'},
+      {id:29,q:'En una Sinergia Interna (Tipo 3), ¿cómo se distribuye la comisión entre los dos agentes asociados?',ans:1,
+       opts:['Todo va al agente que captó la propiedad','30% al agente captador y 30% al agente vendedor sobre la comisión neta del negocio','50% a cada agente sin importar el rol','La empresa decide la distribución caso por caso sin criterio fijo'],
+       exp:'30% captador + 30% vendedor sobre la comisión neta del negocio.',
+       guide:'Pregunte: "Si captaste una propiedad y un compañero la vende, ¿cómo se reparte?" Evalúe si sabe la fórmula exacta y si entiende la importancia de registrar correctamente su rol.',
+       criterio:'Conoce el esquema de distribución de la Sinergia Interna. Sabe cómo registrar su rol en el CRM para garantizar el pago correcto.'},
+      {id:30,q:'¿Cuándo NO es adecuado recomendar a un cliente que aplique a un crédito hipotecario de inmediato?',ans:1,
+       opts:['Cuando el cliente tiene empleo estable y buen historial crediticio','Cuando el cliente tiene deudas vigentes que comprometen su capacidad de endeudamiento o no cuenta con la cuota inicial mínima requerida','Cuando el cliente quiere comprar una propiedad No VIS','Cuando el cliente ya tiene una propiedad y quiere comprar otra'],
+       exp:'No recomendar crédito cuando hay deudas vigentes o falta de cuota inicial.',
+       guide:'Pregunte: "Un cliente quiere aplicar a crédito pero tiene 2 tarjetas de crédito al tope — ¿qué le dices?" Evalúe si orienta con honestidad aunque signifique perder la venta inmediata.',
+       criterio:'Prioriza el bienestar financiero del cliente sobre el cierre inmediato. Sabe cuándo recomendar esperar y prepararse mejor.'},
+    ]
+  }
+];
+
+let _tstName='', _tstEmail='', _tstAnswers={}, _tstSubmitted=false;
+
+function openTest(){
+  document.getElementById('test-overlay').style.display='block';
+  document.body.style.overflow='hidden';
+  _tstAnswers={}; _tstSubmitted=false;
+  // Reset
+  document.getElementById('tst-start').style.display='block';
+  document.getElementById('tst-quiz').style.display='none';
+  document.getElementById('tst-submit-bar').style.display='none';
+  document.getElementById('tst-results').style.display='none';
+  document.getElementById('tst-prog-bar').style.width='0%';
+  document.getElementById('tst-prog-badge').textContent='0/30';
+}
+
+function closeTest(){
+  if(_tstSubmitted||Object.keys(_tstAnswers).length===0||confirm('¿Seguro que quieres cerrar? Tu progreso se perderá.')){
+    document.getElementById('test-overlay').style.display='none';
+    document.body.style.overflow='';
+  }
+}
+
+function tstStart(){
+  const name=document.getElementById('tst-name').value.trim();
+  const email=document.getElementById('tst-email').value.trim();
+  if(!name){document.getElementById('tst-name').focus();alert('Por favor ingresa tu nombre.');return;}
+  if(!email||!email.includes('@')){document.getElementById('tst-email').focus();alert('Por favor ingresa un correo válido para recibir tu resultado.');return;}
+  _tstName=name; _tstEmail=email;
+  document.getElementById('tst-start').style.display='none';
+  document.getElementById('tst-quiz').style.display='block';
+  document.getElementById('tst-submit-bar').style.display='flex';
+  tstRenderQuiz();
+}
+
+function tstRenderQuiz(){
+  const con=document.getElementById('tst-quiz');
+  const letters=['a','b','c','d'];
+  let html='<div style="background:#fff;border-radius:0 0 12px 12px;padding:20px">';
+  AREAS.forEach(area=>{
+    html+=`<div class="tst-area-hdr tst-${area.cls}"><span class="tst-area-pill">ÁREA ${area.num}</span><span class="tst-area-title">${area.title}</span></div>`;
+    area.questions.forEach(q=>{
+      html+=`<div class="tst-qcard" id="tqc-${q.id}"><span class="tst-qnum">Pregunta ${q.id} de 30</span><div class="tst-qtext">${q.q}</div><div class="tst-opts">`;
+      q.opts.forEach((opt,i)=>{
+        html+=`<div class="tst-opt" id="topt-${q.id}-${i}" onclick="tstSelect(${q.id},${i})"><span class="tst-opt-ltr">${letters[i]}</span><span class="tst-opt-text">${opt}</span></div>`;
+      });
+      html+=`</div><div class="tst-fb" id="tfb-${q.id}"></div></div>`;
+    });
+  });
+  html+='</div>';
+  con.innerHTML=html;
+}
+
+function tstSelect(qid,idx){
+  if(_tstSubmitted)return;
+  _tstAnswers[qid]=idx;
+  AREAS.forEach(a=>a.questions.forEach(q=>{
+    if(q.id===qid){
+      q.opts.forEach((_,i)=>{
+        const el=document.getElementById('topt-'+qid+'-'+i);
+        if(el)el.classList.toggle('sel',i===idx);
+      });
+      const card=document.getElementById('tqc-'+qid);
+      if(card)card.classList.add('answered');
+    }
+  }));
+  const ans=Object.keys(_tstAnswers).length;
+  const pct=(ans/30)*100;
+  document.getElementById('tst-prog-bar').style.width=pct+'%';
+  document.getElementById('tst-prog-badge').textContent=ans+'/30';
+  const hint=document.getElementById('tst-hint'),btn=document.getElementById('tst-submit-btn');
+  if(ans===30){hint.textContent='✓ Todas respondidas';hint.style.color='#1A3D2B';btn.disabled=false;btn.style.opacity='1';}
+  else{hint.textContent=(30-ans)+' sin responder';hint.style.color='#5C5C5C';btn.disabled=true;btn.style.opacity='.4';}
+}
+
+function tstSubmit(){
+  if(Object.keys(_tstAnswers).length<30)return;
+  _tstSubmitted=true;
+  let correct=0;
+  const areaScores={};
+  AREAS.forEach(area=>{
+    let aOk=0;
+    area.questions.forEach(q=>{
+      const userAns=_tstAnswers[q.id],isOk=userAns===q.ans;
+      if(isOk){correct++;aOk++;}
+      q.opts.forEach((_,i)=>{
+        const el=document.getElementById('topt-'+q.id+'-'+i);
+        if(!el)return;
+        if(i===q.ans)el.classList.add('ok');
+        else if(i===userAns&&!isOk)el.classList.add('wrong');
+        el.style.pointerEvents='none';
+      });
+      const fb=document.getElementById('tfb-'+q.id);
+      if(fb){
+        fb.style.display='block';
+        const ltrs=['a','b','c','d'];
+        if(isOk){fb.className='tst-fb tst-fb-ok';fb.textContent='✓ Correcto. '+q.exp;}
+        else{fb.className='tst-fb tst-fb-err';fb.innerHTML='✗ Incorrecto. Respuesta correcta: <strong>'+ltrs[q.ans]+') '+q.opts[q.ans]+'</strong>. '+q.exp;}
+      }
+    });
+    areaScores[area.id]={ok:aOk,total:area.questions.length,title:area.title};
+  });
+  const pct=Math.round((correct/30)*100);
+  let status,stColor;
+  if(pct>=80){status='✓ Habilitado';stColor='#1A3D2B';}
+  else if(pct>=70){status='Habilitado con supervisión';stColor='#92400E';}
+  else{status='No habilitado temporalmente';stColor='#991B1B';}
+  document.getElementById('tst-submit-bar').style.display='none';
+  tstShowResults(correct,pct,status,stColor,areaScores);
+}
+
+function tstShowResults(correct,pct,status,stColor,areaScores){
+  const rs=document.getElementById('tst-results');
+  rs.style.display='block';
+  const failAreas=Object.values(areaScores).filter(a=>a.ok/a.total<0.8).map(a=>a.title.split('—')[0].trim());
+  let areasHTML='<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px">';
+  Object.values(areaScores).forEach(a=>{
+    const ap=Math.round((a.ok/a.total)*100);
+    areasHTML+=`<div style="background:#F5F4F2;border:1px solid #E0DDD8;border-radius:7px;padding:11px;text-align:center"><div style="font-size:10px;color:#5C5C5C;text-transform:uppercase;letter-spacing:.05em;margin-bottom:3px">${a.title.split('—')[0].trim()}</div><div style="font-size:18px;font-weight:700;color:${ap>=80?'#1A3D2B':'#991B1B'}">${a.ok}/${a.total}</div></div>`;
+  });
+  areasHTML+='</div>';
+  let refHTML='';
+  if(failAreas.length){refHTML=`<div style="background:#FEF3C7;border:1px solid #FDE68A;border-radius:8px;padding:13px;margin-bottom:13px"><div style="font-size:12px;font-weight:700;color:#92400E;margin-bottom:6px">📋 Áreas a reforzar en los próximos 30 días</div>${failAreas.map(a=>`<div style="font-size:12px;color:#92400E;margin-bottom:3px">• ${a}</div>`).join('')}</div>`;}
+  rs.innerHTML=`<div style="background:#fff;border-radius:0 0 12px 12px;padding:22px">
+    <div style="background:#0D0D0D;border-radius:10px;padding:26px;text-align:center;margin-bottom:16px">
+      <div style="font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#888;margin-bottom:6px">Resultado de ${_tstName}</div>
+      <div style="font-size:64px;font-weight:700;color:#E84E0F;line-height:1;margin-bottom:4px">${pct}</div>
+      <div style="font-size:14px;color:#666;margin-bottom:12px">puntos de 100</div>
+      <span style="font-size:14px;font-weight:700;padding:7px 20px;border-radius:20px;background:${pct>=80?'#D6EDE1':pct>=70?'#FEF3C7':'#FEE2E2'};color:${stColor}">${status}</span>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px">
+      <div style="background:#F5F4F2;border:1px solid #E0DDD8;border-radius:7px;padding:13px;text-align:center"><div style="font-size:10px;color:#5C5C5C;text-transform:uppercase;letter-spacing:.05em;margin-bottom:3px">Correctas</div><div style="font-size:22px;font-weight:700;color:#1A3D2B">${correct}</div></div>
+      <div style="background:#F5F4F2;border:1px solid #E0DDD8;border-radius:7px;padding:13px;text-align:center"><div style="font-size:10px;color:#5C5C5C;text-transform:uppercase;letter-spacing:.05em;margin-bottom:3px">Incorrectas</div><div style="font-size:22px;font-weight:700;color:#991B1B">${30-correct}</div></div>
+    </div>
+    ${areasHTML}${refHTML}
+    <div style="font-size:12px;color:#5C5C5C;margin-bottom:14px">Revisa cada pregunta arriba — la respuesta correcta y la explicación aparecen marcadas.</div>
+    <button onclick="openTest()" style="width:100%;background:#0D0D0D;color:#fff;border:none;padding:12px;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer">Intentar de nuevo →</button>
+  </div>`;
+  rs.scrollIntoView({behavior:'smooth',block:'start'});
+}
 </script>
 </body>
 </html>
