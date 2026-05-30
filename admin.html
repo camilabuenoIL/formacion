@@ -529,7 +529,7 @@ function getEmails(o){return o.split('/').map(n=>n.trim()).flatMap(n=>{const m=T
 
 // TOKEN
 function getGHToken(){return localStorage.getItem(GH_KEY)||'';}
-function saveToken(){const t=document.getElementById('gh-inp').value.trim();if(!t){ss('Ingresa un token válido','err');return;}localStorage.setItem(GH_KEY,t);document.getElementById('setup-scr').style.display='none';document.getElementById('main-scr').style.display='block';init();}
+function saveToken(){if(IS_FORMADOR_MODE)return;const t=document.getElementById('gh-inp').value.trim();if(!t){ss('Ingresa un token válido','err');return;}localStorage.setItem(GH_KEY,t);document.getElementById('setup-scr').style.display='none';document.getElementById('main-scr').style.display='block';init();}
 function resetToken(){if(!confirm('¿Borrar el token guardado?'))return;localStorage.removeItem(GH_KEY);location.reload();}
 
 // STATUS
@@ -1574,14 +1574,22 @@ const FTG_KEY = 'il_formador_guide';
 const LETTERS = ['a','b','c','d'];
 
 // ── INIT: detect ?formador=1 ──────────────────────────────────────────────────
-(function detectFormadorMode(){
-  const params = new URLSearchParams(location.search);
-  if(params.get('formador')==='1'){
-    document.getElementById('setup-scr').style.display='none';
-    document.getElementById('main-scr').style.display='none';
-    document.getElementById('formador-scr').style.display='block';
-  }
-})();
+// ── FORMADOR MODE — runs immediately, before anything else ──────────────────
+const IS_FORMADOR_MODE = new URLSearchParams(location.search).get('formador') === '1';
+if(IS_FORMADOR_MODE){
+  // Hide ALL other screens immediately — before any JS runs
+  document.addEventListener('DOMContentLoaded', function(){
+    ['setup-scr','main-scr'].forEach(id=>{
+      const el=document.getElementById(id);
+      if(el) el.style.setProperty('display','none','important');
+    });
+    const fs=document.getElementById('formador-scr');
+    if(fs) fs.style.display='block';
+  });
+  // Also set immediately
+  document.getElementById('setup-scr').style.setProperty('display','none','important');
+  document.getElementById('formador-scr').style.display='block';
+}
 
 function formadorLogin(){
   const pw = document.getElementById('formador-pw-inp').value;
@@ -1665,70 +1673,89 @@ function renderFormadorTest(){
 const DEFAULT_ORAL = {
   sections: [
     {
-      id:'rapidas', title:'Preguntas Orales Rápidas',
-      desc:'Aplicar al inicio de la sesión. El agente debe responder de forma ágil y directa.',
+      id:'rapidas',
+      title:'Preguntas Orales Rápidas',
+      desc:'Aplicar al inicio de la sesión. Duración: 5–7 minutos. El agente debe responder de forma ágil, directa y sin vacilar. No se busca perfección, sino criterio comercial y seguridad. Si el agente duda más de 10 segundos, anótalo.',
       items:[
-        '¿Qué es más importante al inicio de una venta: hablar o escuchar? ¿Por qué?',
-        '¿Cuál es la diferencia entre reserva y separación?',
-        'Menciona 3 factores que afectan el valor de una propiedad.',
-        '¿Qué revisarías primero en una partida registral?',
-        '¿Cuál es el error más común de un agente al negociar?'
+        '¿Qué es más importante al inicio de una venta: hablar o escuchar? ¿Por qué?\n→ Respuesta esperada: Escuchar. El agente debe explicar que escuchar permite identificar la necesidad real del cliente antes de ofrecer. Señal de alerta: si dice "hablar para convencer" sin justificación de valor.',
+        '¿Cuál es la diferencia entre reserva y separación?\n→ Separación: aparta la propiedad con monto inicial mientras se prepara documentación. Reserva: compromiso más formal, puede implicar firma de documento. Señal de alerta: si los confunde o no conoce la diferencia.',
+        'Menciona 3 factores que afectan el valor de una propiedad.\n→ Esperados: ubicación, estado del inmueble, metros cuadrados, acceso a servicios, plusvalía de la zona, acabados, antigüedad. Señal de alerta: si menciona factores no relacionados con el mercado o solo menciona uno.',
+        '¿Qué revisarías primero en una partida registral?\n→ Titularidad (quién es el dueño actual), gravámenes o hipotecas, afectaciones legales, historial de transferencias. Señal de alerta: si no sabe qué es una partida registral o la confunde con otro documento.',
+        '¿Cuál es el error más común de un agente al negociar?\n→ Esperado: bajar el precio sin explorar la objeción real, hablar demasiado, no escuchar al cliente, no tener datos del mercado. Señal de alerta: si su respuesta no refleja criterio comercial o habla de errores ajenos sin autocrítica.'
       ]
     },
     {
-      id:'roleplay', title:'Roleplay Comercial',
-      desc:'El formador actúa como cliente. Evaluar manejo de objeciones, tono y argumentación.',
+      id:'roleplay',
+      title:'Roleplay Comercial',
+      desc:'El formador actúa como cliente. Cada escenario dura máximo 3 minutos. Evaluar: tono de voz, manejo de la presión, argumentación basada en datos, y si define siempre un siguiente paso concreto. Aplicar uno o dos escenarios por agente según el tiempo disponible.',
       items:[
-        'Cliente: "Está muy caro." → Responder sin bajar precio inmediatamente. Señal de alerta: si baja el precio sin explorar la objeción.',
-        'Cliente: "Lo voy a pensar." → Profundizar correctamente la objeción. Evaluar si define el siguiente paso.',
-        'Propietario: "No quiero exclusividad." → Defender la exclusividad profesionalmente usando datos y confianza.',
-        'Cliente: "Encontré otro departamento más barato." → Comparar valor y no solo precio. Usar ACM si disponible.',
-        'Cliente de preventa: "Me preocupa que el proyecto se retrase." → Generar confianza con argumentos reales y transparencia.'
+        'Cliente: "Está muy caro." → El agente debe explorar la objeción antes de responder.\n→ Qué observar: ¿pregunta qué comparó el cliente? ¿usa el ACM para respaldar el precio? ¿propone un siguiente paso (nueva visita, envío de comparables)?\n→ Señal de alerta: baja el precio inmediatamente o se pone a la defensiva.',
+        'Cliente: "Lo voy a pensar." → El agente debe identificar qué hay detrás de la objeción.\n→ Qué observar: ¿pregunta qué lo frena específicamente? ¿identifica si es precio, tiempo, decisión familiar o desconfianza? ¿define una fecha concreta de seguimiento?\n→ Señal de alerta: dice "claro, avísame cuando quieras" y cierra sin próximo paso.',
+        'Propietario: "No quiero exclusividad." → El agente debe defender el valor de la exclusividad sin imponer.\n→ Qué observar: ¿argumenta beneficios concretos (marketing, dedicación, filtro de clientes)? ¿respeta la postura del propietario y propone alternativas?\n→ Señal de alerta: acepta de inmediato sin argumentar o presiona de forma agresiva.',
+        'Cliente: "Encontré otro departamento más barato." → El agente debe comparar valor, no precio.\n→ Qué observar: ¿pregunta sobre las características del otro inmueble? ¿usa argumentos de diferenciación (ubicación, acabados, plusvalía)? ¿evita hablar mal de la competencia?\n→ Señal de alerta: entra en una guerra de precios o descalifica al otro proyecto sin datos.',
+        'Cliente de preventa: "Me preocupa que el proyecto se retrase." → El agente debe generar confianza con transparencia.\n→ Qué observar: ¿reconoce el riesgo de forma honesta? ¿presenta evidencia del desarrollador (trayectoria, avance de obra, respaldo financiero)? ¿ofrece garantías reales?\n→ Señal de alerta: minimiza el riesgo sin argumentos o miente sobre garantías.'
       ]
     },
     {
-      id:'calificacion', title:'Calificación del Lead',
-      desc:'Evaluar si el agente hace las preguntas correctas y en el orden adecuado sin sonar invasivo.',
+      id:'calificacion',
+      title:'Calificación del Lead',
+      desc:'Evaluar si el agente aplica los 6 criterios de calificación (presupuesto, zona, forma de pago, urgencia, decisión, capacidad financiera) de forma natural, sin sonar a interrogatorio. Duración: 4–5 minutos por escenario.',
       items:[
-        '"Estoy viendo opciones." → ¿Qué preguntas harías para calificar presupuesto, urgencia y decisión?',
-        '"Quiero comprar este año." → ¿Cómo detectas si realmente tiene urgencia o es una expresión de deseo?',
-        '¿Qué datos mínimos debe tener una ficha de lead registrada en el CRM?',
-        '¿Cómo identificarías si el cliente realmente puede comprar al contado vs. crédito?',
-        '¿Qué harías si el cliente no es quien toma la decisión final de compra?'
+        '"Estoy viendo opciones." → El agente debe calificar sin asustar al cliente.\n→ Qué observar: ¿hace las preguntas en orden natural? ¿detecta el presupuesto y la urgencia sin presionar? ¿identifica quién toma la decisión?\n→ Señal de alerta: hace preguntas directas sobre dinero en los primeros 30 segundos o no califica en absoluto.',
+        '"Quiero comprar este año." → ¿El agente detecta si hay urgencia real o es una expresión de deseo?\n→ Qué observar: ¿pregunta si ya está buscando activamente o si es una idea a futuro? ¿identifica si tiene financiamiento listo?\n→ Señal de alerta: asume urgencia real sin verificar y avanza al proceso de compra prematuramente.',
+        '¿Qué datos mínimos debe tener una ficha de lead registrada en el CRM?\n→ Esperado: nombre, contacto, presupuesto aproximado, zona de interés, tipo de inmueble, forma de pago, urgencia, quién toma la decisión, origen del lead, fecha de primer contacto.\n→ Señal de alerta: menciona menos de 5 datos o no menciona el origen del lead.',
+        '¿Cómo identificarías si el cliente realmente puede comprar al contado?\n→ Esperado: preguntas indirectas sobre si ya tiene los fondos disponibles, si ha comprado propiedades antes, si necesita tiempo para "organizar" el dinero.\n→ Señal de alerta: pregunta directamente "¿tiene el dinero en efectivo?" sin estrategia conversacional.',
+        '¿Qué harías si el cliente no es quien toma la decisión final de compra?\n→ Esperado: identificar quién toma la decisión, proponer una reunión conjunta, no avanzar sin el decisor presente, adaptar la propuesta para que el cliente la pueda presentar a su familia/socio.\n→ Señal de alerta: continúa el proceso ignorando que hay otro decisor o no sabe cómo manejarlo.'
       ]
     },
     {
-      id:'negociacion', title:'Negociación y Cierre',
-      desc:'Evaluar criterio comercial, conocimiento de técnicas y capacidad de leer señales de compra.',
+      id:'negociacion',
+      title:'Negociación y Cierre',
+      desc:'Evaluar criterio comercial, conocimiento de técnicas (ancla, SPIN, silencio, cierre directo) y capacidad de leer señales de compra. Aplicar como conversación abierta, no como examen.',
       items:[
-        'Un cliente ofrece 20% menos del valor. → ¿Cómo responderías sin ceder de inmediato?',
-        '¿Cómo usarías la técnica del ancla en una propiedad de segundo uso? Da un ejemplo.',
-        'Dame un ejemplo práctico de pregunta SPIN para una familia que busca casa.',
-        '¿Qué harías si un propietario quiere vender muy por encima del precio de mercado?',
-        '¿Cuál crees que es la habilidad más importante de un agente inmobiliario y por qué?'
+        'Un cliente ofrece 20% menos del valor. → ¿Cómo responderías sin ceder de inmediato?\n→ Qué observar: ¿ancla el precio con datos del mercado? ¿identifica el piso de negociación? ¿propone un punto medio con argumentos?\n→ Señal de alerta: acepta la oferta sin contrapropuesta o se pone a la defensiva con el propietario.',
+        '¿Cómo usarías la técnica del ancla en una propiedad de segundo uso? Da un ejemplo práctico.\n→ Esperado: presentar primero el precio más alto del mercado como referencia antes de mostrar el precio de la propiedad, generando la percepción de que la propiedad es una buena oferta comparada con el ancla.\n→ Señal de alerta: no conoce la técnica o la confunde con otra.',
+        'Dame un ejemplo práctico de pregunta SPIN para una familia que busca casa.\n→ Esperado: S (Situación): "¿Cuántas personas viven en su hogar actualmente?" I (Implicación): "¿El espacio actual les genera algún problema en el día a día?" P (Problema): "¿Qué es lo que más les falta en su casa actual?" N (Necesidad): "Si tuvieran más espacio, ¿cómo cambiaría su rutina familiar?"\n→ Señal de alerta: da preguntas cerradas o no conoce la metodología SPIN.',
+        '¿Qué harías si un propietario quiere vender muy por encima del precio de mercado?\n→ Esperado: presentar el ACM con comparables reales, ser transparente sobre el riesgo de sobrevaluar (tiempo en mercado, desgaste), proponer un precio de lista realista con margen de negociación.\n→ Señal de alerta: acepta el precio del propietario para no perder el encargo o no tiene datos para argumentar.',
+        '¿Cuál crees que es la habilidad más importante de un agente inmobiliario y por qué?\n→ Esta pregunta es de criterio personal. No hay respuesta incorrecta, pero evaluar si el agente tiene claridad sobre su propio desarrollo y puede argumentar. Señal de alerta: respuesta genérica sin reflexión propia o copia la respuesta de otro.'
       ]
     }
   ],
   dinamicas:[
     {
-      id:'d1', title:'Dinámica 1 — El mejor cierre',
-      desc:'Cada agente tiene 1 minuto para cerrar una venta ficticia. El formador actúa como cliente con objeciones.',
-      criterios:'Evaluar: seguridad al hablar, técnica de cierre utilizada, manejo de la presión del tiempo.'
+      id:'d1',
+      title:'Dinámica 1 — El mejor cierre',
+      desc:'Cada agente tiene exactamente 1 minuto para cerrar una venta ficticia. El formador actúa como cliente interesado pero con una objeción final. Aplicar de forma cronometrada para evaluar desempeño bajo presión.',
+      criterios:'Evaluar: (1) Seguridad y convicción al hablar, (2) Técnica de cierre utilizada (directo, alternativa, prueba social, urgencia), (3) Manejo de la objeción final sin perder el hilo, (4) Si define un siguiente paso concreto antes de que se acabe el tiempo.'
     },
     {
-      id:'d2', title:'Dinámica 2 — Objeción sorpresa',
-      desc:'El formador lanza objeciones rápidas una por una. El agente responde en vivo sin preparación.',
-      criterios:'Evaluar: velocidad de reacción, naturalidad, argumentos usados.',
-      objeciones:['"No tengo cuota inicial."','"Mi familia no está convencida."','"Esperaré que bajen los precios."','"Ya tengo agente."','"El proyecto me parece arriesgado."']
+      id:'d2',
+      title:'Dinámica 2 — Objeción sorpresa',
+      desc:'El formador lanza objeciones una por una sin previo aviso. El agente responde en vivo. Duración: 30 segundos por objeción. No dar tiempo de preparación. El objetivo es evaluar reacción instintiva y manejo de presión.',
+      criterios:'Evaluar: (1) Velocidad de reacción sin paralización, (2) Naturalidad y tono (no robótico), (3) Calidad del argumento usado, (4) Si mantiene la postura o cede fácilmente.',
+      objeciones:[
+        '"No tengo cuota inicial." → ¿Ofrece opciones de financiamiento o deriva correctamente a un asesor?',
+        '"Mi familia no está convencida." → ¿Propone una reunión con la familia o pide hablar directamente con ellos?',
+        '"Esperaré que bajen los precios." → ¿Usa datos de plusvalía y costo de oportunidad para rebatir?',
+        '"Ya tengo otro agente." → ¿Respeta la relación o identifica si hay exclusividad firmada?',
+        '"El proyecto me parece arriesgado." → ¿Presenta respaldo del desarrollador con transparencia?'
+      ]
     },
     {
-      id:'d3', title:'Dinámica 3 — Captador experto',
-      desc:'Un agente hace de propietario difícil y otro debe captar la propiedad en 3 minutos.',
-      criterios:'Evaluar: uso del ACM, argumentación de valor, manejo de la negativa inicial, cierre de la captación.'
+      id:'d3',
+      title:'Dinámica 3 — Captador experto',
+      desc:'Un agente hace de propietario difícil (exigente, desconfiado, con precio sobrevaluado) y otro agente debe captar la propiedad en 3 minutos. El formador observa y toma nota. Rotar roles si el tiempo lo permite.',
+      criterios:'Evaluar: (1) Primer contacto — genera confianza antes de hablar de comisión, (2) Uso del ACM para justificar el precio sugerido, (3) Manejo de la resistencia a la exclusividad, (4) Si logra un compromiso o siguiente paso concreto al terminar los 3 minutos.'
     }
   ],
   puntaje:{
-    criterios:['Seguridad al hablar','Manejo de objeciones','Claridad comercial','Negociación','Creatividad'],
+    criterios:[
+      'Seguridad al hablar — fluidez, convicción, tono profesional',
+      'Manejo de objeciones — explora antes de responder, no cede sin argumentos',
+      'Claridad comercial — conoce el proceso, el producto y las herramientas',
+      'Negociación — usa datos, técnicas y define próximos pasos',
+      'Creatividad y criterio propio — respuestas originales, no mecánicas'
+    ],
     pts:10
   }
 };
@@ -1922,7 +1949,7 @@ async function init(){
   catch(e){ss('❌ '+e.message,'err');}
 }
 window.addEventListener('beforeunload',e=>{if(isDirty){e.preventDefault();e.returnValue='';}});
-if(location.hash.includes('access_token')||getGHToken()){document.getElementById('main-scr').style.display='block';init();}
+if(!IS_FORMADOR_MODE&&(location.hash.includes('access_token')||getGHToken())){document.getElementById('main-scr').style.display='block';init();}
 else{document.getElementById('setup-scr').style.display='block';}
 </script>
 </body>
