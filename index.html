@@ -137,6 +137,27 @@ body{font-family:'DM Sans',sans-serif;background:var(--gray-lt);color:var(--blac
   .btn-cal{font-size:11px;padding:5px 10px}
 }
 </style>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<style>
+@media print {
+  body > *:not(#test-overlay){ display:none!important; }
+  #test-overlay{
+    position:static!important;background:none!important;padding:0!important;overflow:visible!important;
+  }
+  #test-overlay > div{ max-width:100%!important;padding:0!important; }
+  .tst-area-hdr,.tst-qcard,.tst-fb{ break-inside:avoid; }
+  #tst-start,#tst-submit-bar,#tst-prog-bar,#tst-prog-badge{ display:none!important; }
+  .no-print{ display:none!important; }
+  #tst-results{ display:block!important; }
+  #tst-quiz{ display:block!important; }
+  .print-header{display:block!important;}
+}
+.print-header{
+  display:none;
+  background:#0D0D0D;color:#fff;padding:16px 22px;border-radius:8px;margin-bottom:16px;
+  font-size:15px;font-weight:700;
+}
+</style>
 </head>
 <body>
 
@@ -250,7 +271,12 @@ body{font-family:'DM Sans',sans-serif;background:var(--gray-lt);color:var(--blac
               <div style="font-size:14px;font-weight:700;color:#fff">Evaluación Final — Inmobiliario Latam</div>
               <div id="tst-prog-badge" style="background:#E84E0F;color:#fff;border-radius:20px;padding:2px 10px;font-size:11px;font-weight:600">0/30</div>
             </div>
-            <button onclick="closeTest()" style="background:rgba(255,255,255,.1);border:none;color:#fff;font-size:13px;cursor:pointer;padding:5px 12px;border-radius:5px">✕ Cerrar</button>
+            <button id="tst-close-btn" onclick="closeTest()" style="background:rgba(255,255,255,.1);border:none;color:#fff;font-size:13px;cursor:pointer;padding:5px 12px;border-radius:5px">✕ Cerrar</button>
+          </div>
+
+          <!-- Print header (only visible when printing) -->
+          <div id="tst-print-header" class="print-header">
+            INMOBILIARIO LATAM · Evaluación Final — Programa de Formación Agente Inmobiliario
           </div>
 
           <!-- Progress bar -->
@@ -699,6 +725,34 @@ const AREAS = [
 let _tstName='', _tstEmail='', _tstAnswers={}, _tstSubmitted=false;
 
 function openTest(){
+  // Check if already completed
+  const done=localStorage.getItem(TST_DONE_KEY);
+  if(done){
+    try{
+      const d=JSON.parse(done);
+      document.getElementById('test-overlay').style.display='block';
+      document.body.style.overflow='hidden';
+      // Show already-done screen instead of start form
+      document.getElementById('tst-start').innerHTML=`
+        <div style="padding:32px;text-align:center">
+          <div style="font-size:36px;margin-bottom:14px">✅</div>
+          <div style="font-size:17px;font-weight:700;color:#0D0D0D;margin-bottom:6px">Ya completaste la evaluación</div>
+          <div style="font-size:13px;color:#5C5C5C;line-height:1.7;margin-bottom:18px">
+            <strong>${d.name}</strong> completó el test el <strong>${d.date}</strong><br>
+            Puntaje obtenido: <strong>${d.pct}/100</strong> — ${d.status}
+          </div>
+          <div style="background:#FEF3C7;border:1px solid #FDE68A;border-radius:8px;padding:13px;margin-bottom:18px;font-size:12px;color:#92400E;line-height:1.6">
+            El test solo puede presentarse una vez. Si crees que esto es un error, comunícate con tu formador.
+          </div>
+          <button onclick="closeTest()" style="background:#0D0D0D;color:#fff;border:none;padding:11px 24px;border-radius:7px;font-size:13px;font-weight:600;cursor:pointer">Cerrar</button>
+        </div>`;
+      document.getElementById('tst-start').style.display='block';
+      document.getElementById('tst-quiz').style.display='none';
+      document.getElementById('tst-submit-bar').style.display='none';
+      document.getElementById('tst-results').style.display='none';
+      return;
+    }catch(e){}
+  }
   document.getElementById('test-overlay').style.display='block';
   document.body.style.overflow='hidden';
   _tstAnswers={}; _tstSubmitted=false;
@@ -770,6 +824,8 @@ function tstSelect(qid,idx){
   else{hint.textContent=(30-ans)+' sin responder';hint.style.color='#5C5C5C';btn.disabled=true;btn.style.opacity='.4';}
 }
 
+const TST_DONE_KEY='il_tst_done';
+
 function tstSubmit(){
   if(Object.keys(_tstAnswers).length<30)return;
   _tstSubmitted=true;
@@ -803,6 +859,17 @@ function tstSubmit(){
   else if(pct>=70){status='Habilitado con supervisión';stColor='#92400E';}
   else{status='No habilitado temporalmente';stColor='#991B1B';}
   document.getElementById('tst-submit-bar').style.display='none';
+
+  // Save result to Google Sheets centralized
+  const record={name:_tstName,email:_tstEmail,date:new Date().toLocaleDateString('es-ES'),pct,correct,status,areaScores};
+  tstSaveCentralized(record);
+
+  // Send email to agent
+  tstSendEmail(record, areaScores);
+
+  // Mark this email as done — no retries allowed
+  localStorage.setItem(TST_DONE_KEY, JSON.stringify({name:_tstName,email:_tstEmail,date:new Date().toLocaleDateString('es-ES'),pct,status}));
+
   tstShowResults(correct,pct,status,stColor,areaScores);
 }
 
@@ -831,9 +898,139 @@ function tstShowResults(correct,pct,status,stColor,areaScores){
     </div>
     ${areasHTML}${refHTML}
     <div style="font-size:12px;color:#5C5C5C;margin-bottom:14px">Revisa cada pregunta arriba — la respuesta correcta y la explicación aparecen marcadas.</div>
-    <button onclick="openTest()" style="width:100%;background:#0D0D0D;color:#fff;border:none;padding:12px;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer">Intentar de nuevo →</button>
+    <div style="background:#D6EDE1;border:1px solid #A5D6B5;border-radius:8px;padding:14px;margin-bottom:12px;text-align:center">
+      <div style="font-size:13px;font-weight:600;color:#1A3D2B;margin-bottom:4px">✓ Evaluación completada</div>
+      <div style="font-size:12px;color:#1A3D2B;line-height:1.6">Tu resultado ha sido registrado y enviado a tu correo. El formador recibirá tu reporte automáticamente.</div>
+    </div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap" class="no-print">
+      <button onclick="tstPrintPDF()" style="flex:1;min-width:140px;background:#0D0D0D;color:#fff;border:none;padding:11px 14px;border-radius:7px;font-size:13px;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px">
+        ⬇ Descargar PDF
+      </button>
+    </div>
   </div>`;
   rs.scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+// ── PDF PRINT ─────────────────────────────────────────────────────────────────
+function tstPrintPDF(){
+  // Show print header
+  const hdr = document.getElementById('tst-print-header');
+  if(hdr) hdr.style.display='block';
+  // Hide close button temporarily
+  const closeBtn = document.getElementById('tst-close-btn');
+  if(closeBtn) closeBtn.style.display='none';
+  window.print();
+  // Restore after print dialog closes
+  setTimeout(()=>{
+    if(hdr) hdr.style.display='none';
+    if(closeBtn) closeBtn.style.display='';
+  }, 1000);
+}
+
+// ── SAVE TO SHEETS ────────────────────────────────────────────────────────────
+const TST_PROXY='https://script.google.com/macros/s/AKfycbzZj-Ryd2r-NacAz-kDOma9Wnps1bfi768DyMzJJMAvWXpoZungosAHNiAkgRXHw62b/exec';
+
+async function tstSaveCentralized(record){
+  try{
+    await fetch(TST_PROXY,{
+      method:'POST',
+      headers:{'Content-Type':'text/plain'},
+      body:JSON.stringify({
+        action:'saveResult',
+        name:record.name, email:record.email, date:record.date,
+        pct:record.pct, status:record.status, correct:record.correct,
+        areaScores:record.areaScores
+      })
+    });
+  }catch(e){console.warn('Could not save to Sheets:',e);}
+}
+
+// ── SEND EMAIL ────────────────────────────────────────────────────────────────
+// ── EMAILJS CONFIG ────────────────────────────────────────────────────────────
+window.EMAILJS_PUBLIC_KEY    = 'Hw1tpzbhUbIFI1iQX';
+window.EMAILJS_SERVICE_ID    = 'service_kkv1mhm';
+window.EMAILJS_TEMPLATE_AGENT   = 'template_zv4alh7';
+window.EMAILJS_TEMPLATE_TRAINER = 'template_hoh5css';
+
+// Todos los formadores que reciben el reporte
+const TRAINER_EMAILS = [
+  'jpando@inmobiliariolatam.com',
+  'wlarias@inmobiliariolatam.com',
+  'sbueno@inmobiliariolatam.com',
+  'cbueno@inmobiliariolatam.com',
+  'avillanueva@inmobiliariolatam.com',
+];
+
+// Init EmailJS once on load
+document.addEventListener('DOMContentLoaded', function(){
+  if(typeof emailjs !== 'undefined'){
+    emailjs.init(window.EMAILJS_PUBLIC_KEY);
+  }
+});
+
+function tstSendEmail(record, areaScores){
+  if(typeof emailjs === 'undefined'){ console.warn('EmailJS not loaded'); return; }
+
+  const failAreas = Object.values(areaScores).filter(a=>a.ok/a.total<0.8).map(a=>a.title.split('—')[0].trim());
+  const goodAreas = Object.values(areaScores).filter(a=>a.ok/a.total>=0.8).map(a=>a.title.split('—')[0].trim());
+  const pct = record.pct;
+
+  const strengths     = goodAreas.length ? goodAreas.map(a=>'• '+a).join('\n') : '• Completaste el programa — sigue reforzando cada área.';
+  const failAreasText = failAreas.length ? failAreas.map(a=>'• '+a).join('\n') : '• Ninguna — excelente desempeño en todas las áreas.';
+
+  let nextStep, feedback;
+  if(pct >= 80){
+    nextStep = 'Estás habilitado para iniciar gestión comercial de forma autónoma. Tu líder te asignará los primeros leads y realizarás seguimiento semanal durante los próximos 30 días.';
+    feedback = '¡Felicitaciones! Alcanzaste el puntaje de habilitación. Tu dedicación durante el programa se refleja en este resultado.';
+  } else if(pct >= 70){
+    nextStep = 'Iniciarás gestión comercial con acompañamiento directo de tu formador. Tendrás sesiones de refuerzo enfocadas en las áreas indicadas.';
+    feedback = 'Estás muy cerca del puntaje de habilitación completa. Con el acompañamiento de tu equipo estarás listo muy pronto.';
+  } else {
+    nextStep = 'Participarás en una sesión de refuerzo con tu formador antes de iniciar gestión comercial. Se programará una nueva evaluación al terminar.';
+    feedback = 'Este resultado es una oportunidad de consolidar tu aprendizaje. Tu formador diseñará un plan de refuerzo personalizado.';
+  }
+
+  const agentParams = {
+    to_email: record.email,
+    to_name:  record.name,
+    score:    pct,
+    status:   record.status,
+    correct:  record.correct,
+    date:     record.date,
+    strengths,
+    fail_areas:  failAreasText,
+    next_step:   nextStep,
+    feedback
+  };
+
+  // 1. Send to agent
+  emailjs.send(window.EMAILJS_SERVICE_ID, window.EMAILJS_TEMPLATE_AGENT, agentParams)
+    .then(() => console.log('Agent email sent'))
+    .catch(e => console.error('Agent email error:', e));
+
+  // 2. Send to all trainers
+  const trainerParams = {
+    to_name:        'Equipo de Formación',
+    agent_name:     record.name,
+    agent_email:    record.email,
+    score:          pct,
+    status:         record.status,
+    correct:        record.correct,
+    date:           record.date,
+    fail_areas:     failAreasText,
+    strengths,
+    next_step:      nextStep,
+    feedback
+  };
+
+  TRAINER_EMAILS.forEach(email => {
+    emailjs.send(window.EMAILJS_SERVICE_ID, window.EMAILJS_TEMPLATE_TRAINER, {
+      ...trainerParams,
+      to_email: email
+    })
+    .then(() => console.log('Trainer email sent to', email))
+    .catch(e => console.error('Trainer email error:', email, e));
+  });
 }
 </script>
 </body>
