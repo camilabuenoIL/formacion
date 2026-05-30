@@ -257,6 +257,13 @@ body{font-family:'DM Sans',system-ui,sans-serif;background:var(--bg);color:var(-
   .g2,.g3,.g4,.team-row,.stat-grid{grid-template-columns:1fr}
   .tb-right .b-gh:not(#btn-cal){display:none}
 }
+
+@media print {
+  .topbar,.tabs-bar,.tb-right,.no-print{display:none!important}
+  #formador-login{display:none!important}
+  .fq-card{break-inside:avoid}
+  body{background:#fff}
+}
 </style>
 </head>
 <body>
@@ -277,7 +284,71 @@ body{font-family:'DM Sans',system-ui,sans-serif;background:var(--bg);color:var(-
 </div>
 
 <!-- MAIN -->
-<div id="main-scr" style="display:none">
+
+  <!-- ══ FORMADOR SCREEN ══════════════════════════════════════════════════════ -->
+  <div id="formador-scr" style="display:none;min-height:100vh;background:var(--bg)">
+
+    <!-- Login -->
+    <div id="formador-login" style="max-width:420px;margin:0 auto;padding:60px 20px">
+      <div style="text-align:center;margin-bottom:28px">
+        <div style="width:56px;height:56px;background:var(--black);border-radius:12px;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;font-size:26px">🎓</div>
+        <div style="font-size:11px;font-weight:700;color:var(--orange);letter-spacing:.12em;text-transform:uppercase;margin-bottom:6px">Inmobiliario Latam</div>
+        <div style="font-size:20px;font-weight:700;color:var(--black);margin-bottom:4px">Acceso formadores</div>
+        <div style="font-size:13px;color:var(--gray);line-height:1.6">Ingresa la contraseña para acceder al examen completo y la guía de evaluación.</div>
+      </div>
+      <div class="card">
+        <div class="fe" style="margin-bottom:12px">
+          <label>Contraseña</label>
+          <input type="password" id="formador-pw-inp" placeholder="••••••••••••"
+            style="text-align:center;letter-spacing:.2em;font-family:monospace;font-size:16px"
+            onkeydown="if(event.key==='Enter')formadorLogin()">
+        </div>
+        <div id="formador-pw-err" style="display:none;color:var(--red);font-size:12px;text-align:center;margin-bottom:10px">
+          Contraseña incorrecta. Inténtalo de nuevo.
+        </div>
+        <button class="btn b-or" onclick="formadorLogin()" style="width:100%">Ingresar →</button>
+      </div>
+    </div>
+
+    <!-- Panel (hidden until login) -->
+    <div id="formador-panel" style="display:none">
+
+      <!-- Topbar -->
+      <div class="topbar" style="position:sticky;top:0;z-index:100">
+        <div class="tb-left">
+          <span class="tb-brand">INMOBILIARIO <em>LATAM</em></span>
+          <span style="font-size:11px;background:#1A1A1A;color:var(--orange);padding:3px 10px;border-radius:20px;font-weight:600;margin-left:8px">🎓 Formador</span>
+        </div>
+        <div class="tb-right">
+          <button class="btn b-wh b-sm" onclick="window.print()" style="display:flex;align-items:center;gap:5px">
+            🖨 Imprimir
+          </button>
+          <button class="btn b-wh b-sm" onclick="formadorLogout()">Salir</button>
+        </div>
+      </div>
+
+      <!-- Sub-tabs -->
+      <div class="tabs-bar">
+        <div class="tabs">
+          <div class="tab on" id="ftab-test" onclick="switchFormadorTab('test',this)">📋 Test escrito</div>
+          <div class="tab" id="ftab-oral" onclick="switchFormadorTab('oral',this)">🎤 Guía oral</div>
+        </div>
+      </div>
+
+      <!-- ── TEST ESCRITO ── -->
+      <div class="page" id="fsec-test">
+        <div id="formador-test-content"></div>
+      </div>
+
+      <!-- ── GUÍA ORAL ── -->
+      <div class="page" id="fsec-oral" style="display:none">
+        <div id="formador-oral-content"></div>
+      </div>
+
+    </div>
+  </div>
+
+  <div id="main-scr" style="display:none">
 
   <div class="topbar">
     <div class="logo">INMOBILIARIO <em>LATAM</em><span class="logo-tag">Admin</span></div>
@@ -1495,6 +1566,354 @@ function exportEvalCSV(){
   a.href='data:text/csv;charset=utf-8,'+encodeURIComponent(csv);
   a.download='evaluaciones_inmobiliario_latam.csv';a.click();
 }
+
+
+// ══ FORMADOR MODULE ══════════════════════════════════════════════════════════
+const FPW = 'Inmolatam$2026$';
+const FTG_KEY = 'il_formador_guide';
+const LETTERS = ['a','b','c','d'];
+
+// ── INIT: detect ?formador=1 ──────────────────────────────────────────────────
+(function detectFormadorMode(){
+  const params = new URLSearchParams(location.search);
+  if(params.get('formador')==='1'){
+    document.getElementById('setup-scr').style.display='none';
+    document.getElementById('main-scr').style.display='none';
+    document.getElementById('formador-scr').style.display='block';
+  }
+})();
+
+function formadorLogin(){
+  const pw = document.getElementById('formador-pw-inp').value;
+  const err = document.getElementById('formador-pw-err');
+  if(pw !== FPW){ err.style.display='block'; return; }
+  err.style.display='none';
+  document.getElementById('formador-login').style.display='none';
+  document.getElementById('formador-panel').style.display='block';
+  renderFormadorTest();
+  renderFormadorOral();
+}
+
+function formadorLogout(){
+  document.getElementById('formador-login').style.display='block';
+  document.getElementById('formador-panel').style.display='none';
+  document.getElementById('formador-pw-inp').value='';
+}
+
+function switchFormadorTab(tab, el){
+  ['test','oral'].forEach(t=>{
+    document.getElementById('fsec-'+t).style.display = t===tab ? 'block':'none';
+    document.getElementById('ftab-'+t).classList.toggle('on', t===tab);
+  });
+}
+
+// ── TEST ESCRITO ──────────────────────────────────────────────────────────────
+function renderFormadorTest(){
+  const con = document.getElementById('formador-test-content');
+  if(!con || typeof AREAS === 'undefined') return;
+
+  const AREA_COLORS = {
+    a1:'background:#0D0D0D;color:#fff',
+    a2:'background:#E84E0F;color:#fff',
+    a3:'background:#1A2E4A;color:#fff',
+    a4:'background:#1A3D2B;color:#fff'
+  };
+
+  let html = `<div class="card" style="background:#FDE8DF;border-color:#F4A07A;margin-bottom:18px;padding:14px 16px">
+    <div style="font-size:13px;font-weight:600;color:#E84E0F;margin-bottom:3px">📋 Test escrito — Vista del formador</div>
+    <div style="font-size:12px;color:#5C3A1E;line-height:1.6">Respuestas correctas marcadas en verde · Guía oral integrada por pregunta · Solo visible para formadores</div>
+  </div>`;
+
+  AREAS.forEach(area=>{
+    const aStyle = AREA_COLORS[area.id] || 'background:#0D0D0D;color:#fff';
+    html += `<div style="${aStyle};padding:11px 16px;border-radius:8px;margin-bottom:10px;display:flex;align-items:center;gap:10px">
+      <span style="background:rgba(255,255,255,.2);font-size:10px;font-weight:700;padding:2px 8px;border-radius:2px;letter-spacing:.08em;text-transform:uppercase">ÁREA ${area.num}</span>
+      <span style="font-size:13px;font-weight:600">${area.title}</span>
+    </div>`;
+
+    area.questions.forEach(q=>{
+      html += `<div class="fq-card" style="border:1px solid var(--gray-mid);border-radius:10px;padding:15px;margin-bottom:10px;background:var(--white)">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+          <span style="font-size:10px;font-weight:700;color:var(--orange);background:var(--orange-lt);padding:2px 8px;border-radius:4px">P${q.id}</span>
+          <span style="font-size:11px;font-weight:600;color:var(--green-tx);background:var(--green-lt);padding:2px 9px;border-radius:4px">✓ ${LETTERS[q.ans]}) correcta</span>
+        </div>
+        <div style="font-size:13px;font-weight:600;color:var(--black);margin-bottom:10px;line-height:1.5">${q.q}</div>
+        <div style="display:flex;flex-direction:column;gap:5px;margin-bottom:10px">
+          ${q.opts.map((opt,i)=>{
+            const ok = i===q.ans;
+            return `<div style="padding:6px 10px;border-radius:6px;font-size:12px;
+              ${ok ? 'background:var(--green-lt);color:var(--green-tx);font-weight:600;border:1px solid var(--gn-bd,#A5D6B5)' : 'background:var(--gray-lt);color:var(--gray);border:1px solid var(--gray-mid)'}">
+              ${ok?'✓ ':''}<strong>${LETTERS[i]})</strong> ${opt}
+            </div>`;
+          }).join('')}
+        </div>
+        ${q.guide ? `<div style="background:#D4E4F7;border:1px solid #93C5FD;border-radius:7px;padding:10px 12px;font-size:12px;color:#1A2E4A;line-height:1.7;margin-bottom:7px">
+          <strong style="display:block;font-size:10px;text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px">🗣 Guía oral</strong>
+          ${q.guide}
+        </div>` : ''}
+        ${q.criterio ? `<div style="background:#FEF3C7;border:1px solid #FDE68A;border-radius:7px;padding:8px 12px;font-size:11px;color:#92400E;line-height:1.6">
+          <strong>📋 Criterio:</strong> ${q.criterio}
+        </div>` : ''}
+      </div>`;
+    });
+  });
+
+  con.innerHTML = html;
+}
+
+// ── GUÍA ORAL ─────────────────────────────────────────────────────────────────
+const DEFAULT_ORAL = {
+  sections: [
+    {
+      id:'rapidas', title:'Preguntas Orales Rápidas',
+      desc:'Aplicar al inicio de la sesión. El agente debe responder de forma ágil y directa.',
+      items:[
+        '¿Qué es más importante al inicio de una venta: hablar o escuchar? ¿Por qué?',
+        '¿Cuál es la diferencia entre reserva y separación?',
+        'Menciona 3 factores que afectan el valor de una propiedad.',
+        '¿Qué revisarías primero en una partida registral?',
+        '¿Cuál es el error más común de un agente al negociar?'
+      ]
+    },
+    {
+      id:'roleplay', title:'Roleplay Comercial',
+      desc:'El formador actúa como cliente. Evaluar manejo de objeciones, tono y argumentación.',
+      items:[
+        'Cliente: "Está muy caro." → Responder sin bajar precio inmediatamente. Señal de alerta: si baja el precio sin explorar la objeción.',
+        'Cliente: "Lo voy a pensar." → Profundizar correctamente la objeción. Evaluar si define el siguiente paso.',
+        'Propietario: "No quiero exclusividad." → Defender la exclusividad profesionalmente usando datos y confianza.',
+        'Cliente: "Encontré otro departamento más barato." → Comparar valor y no solo precio. Usar ACM si disponible.',
+        'Cliente de preventa: "Me preocupa que el proyecto se retrase." → Generar confianza con argumentos reales y transparencia.'
+      ]
+    },
+    {
+      id:'calificacion', title:'Calificación del Lead',
+      desc:'Evaluar si el agente hace las preguntas correctas y en el orden adecuado sin sonar invasivo.',
+      items:[
+        '"Estoy viendo opciones." → ¿Qué preguntas harías para calificar presupuesto, urgencia y decisión?',
+        '"Quiero comprar este año." → ¿Cómo detectas si realmente tiene urgencia o es una expresión de deseo?',
+        '¿Qué datos mínimos debe tener una ficha de lead registrada en el CRM?',
+        '¿Cómo identificarías si el cliente realmente puede comprar al contado vs. crédito?',
+        '¿Qué harías si el cliente no es quien toma la decisión final de compra?'
+      ]
+    },
+    {
+      id:'negociacion', title:'Negociación y Cierre',
+      desc:'Evaluar criterio comercial, conocimiento de técnicas y capacidad de leer señales de compra.',
+      items:[
+        'Un cliente ofrece 20% menos del valor. → ¿Cómo responderías sin ceder de inmediato?',
+        '¿Cómo usarías la técnica del ancla en una propiedad de segundo uso? Da un ejemplo.',
+        'Dame un ejemplo práctico de pregunta SPIN para una familia que busca casa.',
+        '¿Qué harías si un propietario quiere vender muy por encima del precio de mercado?',
+        '¿Cuál crees que es la habilidad más importante de un agente inmobiliario y por qué?'
+      ]
+    }
+  ],
+  dinamicas:[
+    {
+      id:'d1', title:'Dinámica 1 — El mejor cierre',
+      desc:'Cada agente tiene 1 minuto para cerrar una venta ficticia. El formador actúa como cliente con objeciones.',
+      criterios:'Evaluar: seguridad al hablar, técnica de cierre utilizada, manejo de la presión del tiempo.'
+    },
+    {
+      id:'d2', title:'Dinámica 2 — Objeción sorpresa',
+      desc:'El formador lanza objeciones rápidas una por una. El agente responde en vivo sin preparación.',
+      criterios:'Evaluar: velocidad de reacción, naturalidad, argumentos usados.',
+      objeciones:['"No tengo cuota inicial."','"Mi familia no está convencida."','"Esperaré que bajen los precios."','"Ya tengo agente."','"El proyecto me parece arriesgado."']
+    },
+    {
+      id:'d3', title:'Dinámica 3 — Captador experto',
+      desc:'Un agente hace de propietario difícil y otro debe captar la propiedad en 3 minutos.',
+      criterios:'Evaluar: uso del ACM, argumentación de valor, manejo de la negativa inicial, cierre de la captación.'
+    }
+  ],
+  puntaje:{
+    criterios:['Seguridad al hablar','Manejo de objeciones','Claridad comercial','Negociación','Creatividad'],
+    pts:10
+  }
+};
+
+function getOralGuide(){
+  const saved = localStorage.getItem(FTG_KEY);
+  if(saved){ try{ return JSON.parse(saved); }catch(e){} }
+  return JSON.parse(JSON.stringify(DEFAULT_ORAL));
+}
+
+function saveOralGuide(){
+  const g = getOralGuide();
+  // Sections
+  g.sections.forEach(sec=>{
+    const descEl = document.getElementById('fo-desc-'+sec.id);
+    if(descEl) sec.desc = descEl.value;
+    const items = [];
+    let i=0;
+    while(document.getElementById('fo-item-'+sec.id+'-'+i)){
+      items.push(document.getElementById('fo-item-'+sec.id+'-'+i).value);
+      i++;
+    }
+    if(items.length) sec.items = items;
+  });
+  // Dinámicas
+  g.dinamicas.forEach(d=>{
+    const descEl = document.getElementById('fo-d-desc-'+d.id);
+    const criEl = document.getElementById('fo-d-cri-'+d.id);
+    if(descEl) d.desc = descEl.value;
+    if(criEl) d.criterios = criEl.value;
+    if(d.objeciones){
+      const obs=[];let i=0;
+      while(document.getElementById('fo-obj-'+d.id+'-'+i)){
+        obs.push(document.getElementById('fo-obj-'+d.id+'-'+i).value);i++;
+      }
+      if(obs.length) d.objeciones=obs;
+    }
+  });
+  // Criterios puntaje
+  const cris=[];let i=0;
+  while(document.getElementById('fo-cri-'+i)){
+    cris.push(document.getElementById('fo-cri-'+i).value);i++;
+  }
+  if(cris.length) g.puntaje.criterios=cris;
+  localStorage.setItem(FTG_KEY, JSON.stringify(g));
+  ss('✓ Guía oral guardada.','ok');
+}
+
+function addOralItem(secId){
+  const g = getOralGuide();
+  const sec = g.sections.find(s=>s.id===secId);
+  if(sec){ sec.items.push('Nueva pregunta — edita este texto'); localStorage.setItem(FTG_KEY,JSON.stringify(g)); renderFormadorOral(); }
+}
+
+function removeOralItem(secId, idx){
+  const g = getOralGuide();
+  const sec = g.sections.find(s=>s.id===secId);
+  if(sec && sec.items.length>1){ sec.items.splice(idx,1); localStorage.setItem(FTG_KEY,JSON.stringify(g)); renderFormadorOral(); }
+}
+
+function addObjecion(dinId){
+  const g = getOralGuide();
+  const d = g.dinamicas.find(x=>x.id===dinId);
+  if(d){ if(!d.objeciones)d.objeciones=[]; d.objeciones.push('"Nueva objeción — edita este texto"'); localStorage.setItem(FTG_KEY,JSON.stringify(g)); renderFormadorOral(); }
+}
+
+function removeObjecion(dinId, idx){
+  const g = getOralGuide();
+  const d = g.dinamicas.find(x=>x.id===dinId);
+  if(d && d.objeciones && d.objeciones.length>1){ d.objeciones.splice(idx,1); localStorage.setItem(FTG_KEY,JSON.stringify(g)); renderFormadorOral(); }
+}
+
+function resetOralGuide(){
+  if(!confirm('¿Restaurar la guía oral al contenido original? Se perderán tus cambios.'))return;
+  localStorage.removeItem(FTG_KEY);
+  renderFormadorOral();
+  ss('Guía oral restaurada.','info');
+}
+
+function taStyle(){ return 'width:100%;padding:7px 10px;border:1px solid var(--gray-mid);border-radius:5px;font-size:12px;outline:none;font-family:inherit;resize:vertical;background:var(--white);color:var(--black)'; }
+
+function renderFormadorOral(){
+  const con = document.getElementById('formador-oral-content');
+  if(!con) return;
+  const g = getOralGuide();
+  const SEC_COLORS = ['c1','c2','c3','c4'];
+  const SEC_LABELS = ['A','B','C','D'];
+
+  let html = `<div class="card" style="background:#D4E4F7;border-color:#93C5FD;margin-bottom:16px;padding:14px 16px">
+    <div style="font-size:13px;font-weight:600;color:#1A2E4A;margin-bottom:3px">🎤 Guía de Evaluación Oral — Editable</div>
+    <div style="font-size:12px;color:#1A2E4A;line-height:1.6">Edita el contenido directamente. Agrega o elimina preguntas por sección. Los cambios se guardan en este navegador.</div>
+  </div>`;
+
+  // Sections
+  g.sections.forEach((sec,si)=>{
+    const color = SEC_COLORS[si];
+    html += `<div class="te-area" style="margin-bottom:12px">
+      <div class="te-area-hdr ${color}" onclick="toggleTeArea('fo-${sec.id}')">
+        <span class="te-area-pill">${SEC_LABELS[si]}</span>
+        <span class="te-area-name">${sec.title}</span>
+        <span class="te-area-arr" id="te-arr-fo-${sec.id}">▸</span>
+      </div>
+      <div class="te-area-body" id="te-body-fo-${sec.id}">
+        <div class="te-field" style="margin-bottom:10px">
+          <label>Descripción / instrucción para el formador</label>
+          <textarea id="fo-desc-${sec.id}" rows="2" style="${taStyle()}">${esc(sec.desc||'')}</textarea>
+        </div>
+        <div style="font-size:11px;font-weight:700;color:var(--gray);text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px">Preguntas</div>
+        ${sec.items.map((item,ii)=>`
+          <div class="te-q" style="display:flex;gap:8px;align-items:flex-start">
+            <span style="font-size:11px;font-weight:700;color:var(--orange);background:var(--orange-lt);padding:2px 7px;border-radius:4px;margin-top:6px;white-space:nowrap">${ii+1}</span>
+            <textarea id="fo-item-${sec.id}-${ii}" rows="2" style="${taStyle()};flex:1">${esc(item)}</textarea>
+            <button onclick="removeOralItem('${sec.id}',${ii})" class="btn b-wh b-sm" style="margin-top:4px;flex-shrink:0;color:var(--red);border-color:var(--red-lt)" title="Eliminar pregunta">−</button>
+          </div>`).join('')}
+        <div style="margin-top:8px">
+          <button onclick="addOralItem('${sec.id}')" class="btn b-wh b-sm" style="display:flex;align-items:center;gap:5px">
+            + Agregar pregunta
+          </button>
+        </div>
+      </div>
+    </div>`;
+  });
+
+  // Dinámicas
+  html += `<div class="te-area" style="margin-bottom:12px">
+    <div class="te-area-hdr c2" onclick="toggleTeArea('fo-dinamicas')">
+      <span class="te-area-pill">PARTE 2</span>
+      <span class="te-area-name">Dinámicas Adicionales</span>
+      <span class="te-area-arr" id="te-arr-fo-dinamicas">▸</span>
+    </div>
+    <div class="te-area-body" id="te-body-fo-dinamicas">
+      ${g.dinamicas.map(d=>`
+        <div class="te-q">
+          <span class="te-q-num">${d.title}</span>
+          <div class="te-field">
+            <label>Descripción</label>
+            <textarea id="fo-d-desc-${d.id}" rows="2" style="${taStyle()}">${esc(d.desc||'')}</textarea>
+          </div>
+          <div class="te-field">
+            <label>Criterio de evaluación</label>
+            <textarea id="fo-d-cri-${d.id}" rows="2" style="${taStyle()}">${esc(d.criterios||'')}</textarea>
+          </div>
+          ${d.objeciones ? `
+            <div style="font-size:11px;font-weight:700;color:var(--gray);text-transform:uppercase;letter-spacing:.05em;margin:8px 0 6px">Objeciones</div>
+            ${d.objeciones.map((obj,oi)=>`
+              <div style="display:flex;gap:7px;align-items:center;margin-bottom:6px">
+                <input type="text" id="fo-obj-${d.id}-${oi}" value="${esc(obj)}" style="flex:1;padding:6px 10px;border:1px solid var(--gray-mid);border-radius:5px;font-size:12px;outline:none;font-family:inherit;background:var(--white)">
+                <button onclick="removeObjecion('${d.id}',${oi})" class="btn b-wh b-sm" style="color:var(--red);border-color:var(--red-lt);flex-shrink:0">−</button>
+              </div>`).join('')}
+            <button onclick="addObjecion('${d.id}')" class="btn b-wh b-sm" style="display:flex;align-items:center;gap:5px;margin-top:4px">
+              + Agregar objeción
+            </button>` : ''}
+        </div>`).join('')}
+    </div>
+  </div>`;
+
+  // Puntaje
+  html += `<div class="te-area" style="margin-bottom:16px">
+    <div class="te-area-hdr c4" onclick="toggleTeArea('fo-puntaje')">
+      <span class="te-area-pill">PUNTAJE</span>
+      <span class="te-area-name">Sistema de Evaluación Oral — 50 puntos</span>
+      <span class="te-area-arr" id="te-arr-fo-puntaje">▸</span>
+    </div>
+    <div class="te-area-body" id="te-body-fo-puntaje">
+      ${g.puntaje.criterios.map((c,i)=>`
+        <div class="te-q" style="display:flex;gap:8px;align-items:center">
+          <span style="font-size:11px;font-weight:700;color:var(--green-tx);background:var(--green-lt);padding:2px 9px;border-radius:4px;white-space:nowrap">10 pts</span>
+          <input type="text" id="fo-cri-${i}" value="${esc(c)}" style="flex:1;padding:7px 10px;border:1px solid var(--gray-mid);border-radius:5px;font-size:12px;outline:none;font-family:inherit;background:var(--white)">
+        </div>`).join('')}
+      <div style="background:var(--black);border-radius:8px;padding:11px 16px;display:flex;justify-content:space-between;align-items:center;margin-top:8px">
+        <span style="font-size:13px;color:#fff;font-weight:600">Total</span>
+        <span style="font-size:20px;font-weight:700;color:var(--orange)">50 puntos</span>
+      </div>
+    </div>
+  </div>`;
+
+  // Save / reset buttons
+  html += `<div style="display:flex;gap:8px">
+    <button onclick="saveOralGuide()" class="btn b-or" style="flex:1">💾 Guardar guía oral</button>
+    <button onclick="resetOralGuide()" class="btn b-wh" style="width:auto;padding:10px 16px">↩ Restaurar original</button>
+  </div>`;
+
+  con.innerHTML = html;
+}
+// ══ END FORMADOR MODULE ═══════════════════════════════════════════════════════
 
 // INIT
 async function init(){
