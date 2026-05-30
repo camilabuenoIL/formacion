@@ -196,6 +196,37 @@ body{font-family:'DM Sans',system-ui,sans-serif;background:var(--bg);color:var(-
 .refuerzo-title{font-size:12px;font-weight:700;color:var(--amber);margin-bottom:7px}
 .refuerzo-item{font-size:12px;color:var(--amber);margin-bottom:3px;line-height:1.5}
 
+/* EVAL SUB-TABS */
+.eval-sub-tab{background:transparent;border:none;border-bottom:3px solid transparent;padding:10px 16px;font-size:13px;font-weight:500;color:var(--gray);cursor:pointer;margin-bottom:-2px;transition:all .15s;font-family:inherit}
+.eval-sub-tab:hover{color:var(--black)}
+.eval-sub-tab.on{color:var(--orange);border-bottom-color:var(--orange);font-weight:700}
+/* TEST EDITOR */
+.te-area{background:var(--white);border:1px solid var(--gray-mid);border-radius:10px;margin-bottom:12px;overflow:hidden}
+.te-area-hdr{padding:12px 16px;display:flex;align-items:center;gap:8px;cursor:pointer;user-select:none}
+.te-area-hdr.c1{background:var(--black)}.te-area-hdr.c2{background:var(--orange)}.te-area-hdr.c3{background:var(--blue)}.te-area-hdr.c4{background:var(--green)}
+.te-area-pill{font-size:10px;font-weight:700;padding:2px 8px;border-radius:2px;background:rgba(255,255,255,.2);color:#fff;letter-spacing:.08em;text-transform:uppercase}
+.te-area-name{font-size:13px;font-weight:600;color:#fff;flex:1}
+.te-area-arr{color:rgba(255,255,255,.7);font-size:14px;transition:transform .2s}
+.te-area-body{display:none;padding:14px;border-top:1px solid var(--gray-mid)}
+.te-area-body.open{display:block}
+.te-q{background:var(--gray-lt);border-radius:8px;padding:12px;margin-bottom:10px;border:1px solid var(--gray-mid)}
+.te-q:last-child{margin-bottom:0}
+.te-q-num{font-size:10px;font-weight:700;color:var(--orange);background:var(--orange-lt);padding:2px 7px;border-radius:4px;display:inline-block;margin-bottom:8px}
+.te-field{margin-bottom:8px}
+.te-field label{display:block;font-size:10px;font-weight:700;color:var(--gray);margin-bottom:3px;text-transform:uppercase;letter-spacing:.04em}
+.te-field input,.te-field textarea{width:100%;padding:7px 10px;border:1px solid var(--gray-mid);border-radius:5px;font-size:12px;outline:none;background:var(--white);font-family:inherit;color:var(--black);resize:vertical}
+.te-field input:focus,.te-field textarea:focus{border-color:var(--orange)}
+.te-opts-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:8px}
+.te-opt-row{display:flex;align-items:center;gap:5px}
+.te-opt-lbl{font-size:10px;font-weight:700;color:var(--gray);white-space:nowrap;width:16px}
+.te-opt-row input{flex:1;padding:6px 9px;border:1px solid var(--gray-mid);border-radius:5px;font-size:12px;outline:none;font-family:inherit}
+.te-opt-row input:focus{border-color:var(--orange)}
+.te-ans-row{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.te-ans-row label{font-size:10px;font-weight:700;color:var(--gray);white-space:nowrap;text-transform:uppercase;letter-spacing:.04em}
+.te-ans-row select{padding:6px 10px;border:1px solid var(--gray-mid);border-radius:5px;font-size:12px;background:var(--white);cursor:pointer;outline:none;font-family:inherit}
+.te-ans-row select:focus{border-color:var(--green)}
+.te-save-area{background:var(--white);border-top:1px solid var(--gray-mid);padding:14px;display:flex;gap:8px;align-items:center}
+
 /* EVAL TABLE */
 .eval-table{width:100%;border-collapse:collapse;background:var(--white);border-radius:10px;overflow:hidden;border:1px solid var(--gray-mid);font-size:13px}
 .eval-table th{background:var(--black);color:#fff;padding:10px 14px;text-align:left;font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;white-space:nowrap}
@@ -328,12 +359,24 @@ body{font-family:'DM Sans',system-ui,sans-serif;background:var(--bg);color:var(-
 
     <!-- ── EVALUACIONES ── -->
     <div class="sec" id="tab-evaluaciones">
-      <div id="eval-panel">
-        <div class="card" style="text-align:center;padding:32px">
-          <div style="font-size:32px;margin-bottom:10px">⏳</div>
-          <div style="font-size:14px;font-weight:600;color:var(--black);margin-bottom:4px">Cargando resultados...</div>
-          <div style="font-size:12px;color:var(--gray)">Conectando con Google Sheets</div>
+      <!-- Sub-tabs -->
+      <div style="display:flex;gap:4px;margin-bottom:16px;border-bottom:2px solid var(--gray-mid);padding-bottom:0">
+        <button class="eval-sub-tab on" id="est-resultados" onclick="switchEvalSub('resultados')">📊 Resultados</button>
+        <button class="eval-sub-tab" id="est-test" onclick="switchEvalSub('test')">✏️ Editar test</button>
+      </div>
+      <!-- Results panel -->
+      <div id="eval-sub-resultados">
+        <div id="eval-panel">
+          <div class="card" style="text-align:center;padding:32px">
+            <div style="font-size:32px;margin-bottom:10px">⏳</div>
+            <div style="font-size:14px;font-weight:600;color:var(--black);margin-bottom:4px">Cargando resultados...</div>
+            <div style="font-size:12px;color:var(--gray)">Conectando con Google Sheets</div>
+          </div>
         </div>
+      </div>
+      <!-- Test editor panel -->
+      <div id="eval-sub-test" style="display:none">
+        <div id="test-editor-panel"></div>
       </div>
     </div>
 
@@ -835,6 +878,130 @@ function onModChange(k,wi,di,si){
   else if(!needsMeet){sec.innerHTML='';}
 }
 function editMeet(k,wi,di,si){const s=DATA.weeks[wi]?.days[di]?.sessions[si];document.getElementById('meet-sec-'+k).innerHTML=`<div class="meet-row"><input type="text" id="meet-${k}" class="meet-inp" value="${esc(s?.meetUrl||'')}" oninput="dirty('${k}')" /><button class="btn b-gn b-sm" onclick="createMeet(${wi},${di},${si})">🎥 Nuevo Meet</button></div>`;}
+
+// ── EVAL SUB-TABS ─────────────────────────────────────────────────────────────
+function switchEvalSub(tab){
+  ['resultados','test'].forEach(t=>{
+    document.getElementById('eval-sub-'+t).style.display=t===tab?'block':'none';
+    document.getElementById('est-'+t).classList.toggle('on',t===tab);
+  });
+  if(tab==='test') renderTestEditor();
+}
+
+// ── TEST EDITOR ───────────────────────────────────────────────────────────────
+const TE_KEY='il_test_edits';
+
+function getTestData(){
+  const saved=localStorage.getItem(TE_KEY);
+  if(saved){try{return JSON.parse(saved);}catch(e){}}
+  // Pull from live AREAS in the page
+  return JSON.parse(JSON.stringify(typeof AREAS!=='undefined'?AREAS:[]));
+}
+
+function renderTestEditor(){
+  const panel=document.getElementById('test-editor-panel');
+  const areas=getTestData();
+  if(!areas||!areas.length){
+    panel.innerHTML=`<div class="card" style="text-align:center;padding:30px;color:var(--gray)">El test no está disponible en este contexto. Ábrelo desde la página de agentes.</div>`;
+    return;
+  }
+  const COLORS=['c1','c2','c3','c4'];
+  const LETTERS=['a','b','c','d'];
+  let html=`<div class="card" style="background:var(--orange-lt);border-color:var(--orange);margin-bottom:14px;padding:14px 16px">
+    <div style="font-size:13px;font-weight:600;color:var(--orange);margin-bottom:3px">✏️ Editor del test</div>
+    <div style="font-size:12px;color:#5C3A1E;line-height:1.6">Edita preguntas, opciones y respuestas correctas. Los cambios se aplican inmediatamente al test que ven los agentes en la página de formación.</div>
+  </div>`;
+  areas.forEach((area,ai)=>{
+    html+=`<div class="te-area">
+      <div class="te-area-hdr ${COLORS[ai]}" onclick="toggleTeArea(${ai})">
+        <span class="te-area-pill">ÁREA ${area.num||ai+1}</span>
+        <span class="te-area-name">${area.title}</span>
+        <span class="te-area-arr" id="te-arr-${ai}">▸</span>
+      </div>
+      <div class="te-area-body" id="te-body-${ai}">`;
+    area.questions.forEach((q,qi)=>{
+      html+=`<div class="te-q">
+        <span class="te-q-num">P${q.id||qi+1}</span>
+        <div class="te-field">
+          <label>Pregunta</label>
+          <textarea id="teq-${ai}-${qi}" rows="2">${esc(q.q)}</textarea>
+        </div>
+        <div class="te-opts-grid">`;
+      q.opts.forEach((opt,oi)=>{
+        html+=`<div class="te-opt-row">
+          <span class="te-opt-lbl">${LETTERS[oi]})</span>
+          <input type="text" id="teo-${ai}-${qi}-${oi}" value="${esc(opt)}" />
+        </div>`;
+      });
+      html+=`</div>
+        <div class="te-ans-row">
+          <label>Respuesta correcta:</label>
+          <select id="tea-${ai}-${qi}">
+            ${q.opts.map((o,oi)=>`<option value="${oi}" ${q.ans===oi?'selected':''}>${LETTERS[oi]}) ${o.substring(0,40)}${o.length>40?'...':''}</option>`).join('')}
+          </select>
+        </div>
+        <div class="te-field">
+          <label>Explicación (visible al agente al terminar)</label>
+          <input type="text" id="tee-${ai}-${qi}" value="${esc(q.exp||'')}" />
+        </div>
+      </div>`;
+    });
+    html+=`<div class="te-save-area">
+        <button onclick="saveTeArea(${ai})" class="btn b-or b-sm">💾 Guardar área ${area.num||ai+1}</button>
+        <span id="te-saved-${ai}" style="font-size:12px;color:var(--green-tx);display:none">✓ Guardado</span>
+      </div>
+      </div>
+    </div>`;
+  });
+  html+=`<div style="display:flex;gap:8px;margin-top:4px">
+    <button onclick="saveAllTe()" class="btn b-or" style="flex:1">💾 Guardar todo el test</button>
+    <button onclick="resetTe()" class="btn b-wh" style="width:auto;padding:10px 16px">↩ Restaurar original</button>
+  </div>`;
+  panel.innerHTML=html;
+}
+
+function toggleTeArea(ai){
+  const body=document.getElementById('te-body-'+ai);
+  const arr=document.getElementById('te-arr-'+ai);
+  const open=body.classList.toggle('open');
+  arr.textContent=open?'▾':'▸';
+  arr.style.transform=open?'none':'none';
+}
+
+function saveTeArea(ai){
+  const areas=getTestData();
+  const area=areas[ai];
+  const LETTERS=['a','b','c','d'];
+  area.questions.forEach((q,qi)=>{
+    const qEl=document.getElementById('teq-'+ai+'-'+qi);
+    const aEl=document.getElementById('tea-'+ai+'-'+qi);
+    const eEl=document.getElementById('tee-'+ai+'-'+qi);
+    if(qEl)q.q=qEl.value.trim();
+    if(aEl)q.ans=parseInt(aEl.value);
+    if(eEl)q.exp=eEl.value.trim();
+    q.opts.forEach((_,oi)=>{
+      const oEl=document.getElementById('teo-'+ai+'-'+qi+'-'+oi);
+      if(oEl)q.opts[oi]=oEl.value.trim();
+    });
+  });
+  localStorage.setItem(TE_KEY,JSON.stringify(areas));
+  const saved=document.getElementById('te-saved-'+ai);
+  if(saved){saved.style.display='inline';setTimeout(()=>{saved.style.display='none';},2500);}
+  ss('✓ Área '+(ai+1)+' del test guardada correctamente.','ok');
+}
+
+function saveAllTe(){
+  const n=getTestData().length;
+  for(let i=0;i<n;i++) saveTeArea(i);
+  ss('✓ Test completo guardado. Los agentes verán las preguntas actualizadas.','ok');
+}
+
+function resetTe(){
+  if(!confirm('¿Restaurar el test original? Se perderán todos los cambios guardados.'))return;
+  localStorage.removeItem(TE_KEY);
+  renderTestEditor();
+  ss('Test restaurado a las preguntas originales.','info');
+}
 
 // EVALUACIONES ─────────────────────────────────────────────────────────────
 const EVAL_PROXY='https://script.google.com/macros/s/AKfycbzZj-Ryd2r-NacAz-kDOma9Wnps1bfi768DyMzJJMAvWXpoZungosAHNiAkgRXHw62b/exec';
