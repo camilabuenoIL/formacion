@@ -1067,8 +1067,11 @@ function tstSendEmail(record, areaScores){
   // 2. Send to all trainers
   const trainerParams = {
     to_name:        'Equipo de Formación',
+    to_email:       '',  // set per-trainer below
     agent_name:     record.name,
     agent_email:    record.email,
+    // Also send as standard names in case template uses these
+    name:           record.name,
     score:          pct,
     status:         record.status,
     correct:        record.correct,
