@@ -748,7 +748,7 @@ function openTest(){
         </div>`;
       document.getElementById('tst-start').style.display='block';
       document.getElementById('tst-quiz').style.display='none';
-      document.getElementById('tst-submit-bar').style.display='none';
+      const submitBar=document.getElementById('tst-submit-bar'); if(submitBar){submitBar.style.display='none';submitBar.style.flexDirection='row';}
       document.getElementById('tst-results').style.display='none';
       return;
     }catch(e){}
@@ -913,18 +913,20 @@ function tstShowResults(correct,pct,status,stColor,areaScores){
 
 // ── PDF PRINT ─────────────────────────────────────────────────────────────────
 function tstPrintPDF(){
-  // Show print header
-  const hdr = document.getElementById('tst-print-header');
+  const hdr=document.getElementById('tst-print-header');
+  const closeBtn=document.getElementById('tst-close-btn');
+  const quiz=document.getElementById('tst-quiz');
+  // Make quiz visible for printing
+  if(quiz) quiz.style.display='block';
   if(hdr) hdr.style.display='block';
-  // Hide close button temporarily
-  const closeBtn = document.getElementById('tst-close-btn');
   if(closeBtn) closeBtn.style.display='none';
-  window.print();
-  // Restore after print dialog closes
   setTimeout(()=>{
-    if(hdr) hdr.style.display='none';
-    if(closeBtn) closeBtn.style.display='';
-  }, 1000);
+    window.print();
+    setTimeout(()=>{
+      if(hdr) hdr.style.display='none';
+      if(closeBtn) closeBtn.style.display='';
+    },500);
+  },100);
 }
 
 // ── SAVE TO SHEETS ────────────────────────────────────────────────────────────
@@ -932,7 +934,7 @@ const TST_PROXY='https://script.google.com/macros/s/AKfycbzZj-Ryd2r-NacAz-kDOma9
 
 async function tstSaveCentralized(record){
   try{
-    await fetch(TST_PROXY,{
+    const resp=await fetch(TST_PROXY,{
       method:'POST',
       headers:{'Content-Type':'text/plain'},
       body:JSON.stringify({
@@ -942,7 +944,10 @@ async function tstSaveCentralized(record){
         areaScores:record.areaScores
       })
     });
-  }catch(e){console.warn('Could not save to Sheets:',e);}
+    const d=await resp.json();
+    if(d.error) console.error('Sheets save error:',d.error);
+    else console.log('✓ Saved to Sheets, row:',d.rowAdded);
+  }catch(e){console.error('Could not save to Sheets:',e);}
 }
 
 // ── SEND EMAIL ────────────────────────────────────────────────────────────────
