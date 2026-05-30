@@ -1084,160 +1084,168 @@ function getTestData(){
 function renderTrainerGuideAdmin(){
   const panel=document.getElementById('trainer-guide-admin-panel');
   if(!panel)return;
+  const TG_KEY='il_trainer_guide';
 
-  const html=`
-  <div class="card" style="background:#D4E4F7;border-color:#93C5FD;margin-bottom:14px;padding:14px 16px">
-    <div style="font-size:13px;font-weight:600;color:#1A2E4A;margin-bottom:3px">🎓 Guía de Evaluación Oral — Solo formadores</div>
-    <div style="font-size:12px;color:#1A2E4A;line-height:1.6">Esta guía complementa el test escrito. Úsala como referencia durante la sesión de evaluación del Día 10. Contiene preguntas orales, dinámicas prácticas y sistema de puntaje.</div>
-  </div>
+  // Load saved edits or use defaults
+  function getGuide(){
+    const saved=localStorage.getItem(TG_KEY);
+    if(saved){try{return JSON.parse(saved);}catch(e){}}
+    return getDefaultGuide();
+  }
 
-  <!-- CAMPOS -->
-  <div class="card" style="margin-bottom:12px">
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
-      <div style="border:1px solid var(--gray-mid);border-radius:7px;padding:10px">
-        <div style="font-size:10px;font-weight:700;color:var(--gray);text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px">Nombre del agente</div>
-        <div style="border-bottom:1px solid var(--gray-mid);height:24px"></div>
-      </div>
-      <div style="border:1px solid var(--gray-mid);border-radius:7px;padding:10px">
-        <div style="font-size:10px;font-weight:700;color:var(--gray);text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px">Evaluador</div>
-        <div style="border-bottom:1px solid var(--gray-mid);height:24px"></div>
-      </div>
-    </div>
-    <div style="font-size:11px;background:var(--gray-lt);border-radius:7px;padding:10px;margin-top:10px;color:var(--gray);line-height:1.6">
-      <strong style="color:var(--black)">Objetivo:</strong> Evaluar conocimientos comerciales, negociación, captación, manejo de objeciones y desenvolvimiento oral del equipo inmobiliario mediante dinámicas prácticas.
-    </div>
-  </div>
-
-  <!-- PARTE 1: PREGUNTAS GENERALES -->
-  <div class="te-area">
-    <div class="te-area-hdr c1" onclick="toggleTeArea('tg-gen')">
-      <span class="te-area-pill">PARTE 1</span>
-      <span class="te-area-name">Preguntas Generales</span>
-      <span class="te-area-arr" id="te-arr-tg-gen">▸</span>
-    </div>
-    <div class="te-area-body" id="te-body-tg-gen">
-
-      <!-- Preguntas orales rápidas -->
-      <div style="font-size:11px;font-weight:700;color:var(--orange);text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px">Preguntas orales rápidas</div>
-      ${[
+  function getDefaultGuide(){
+    return {
+      rapidas:[
         '¿Qué es más importante al inicio de una venta: hablar o escuchar? ¿Por qué?',
         '¿Cuál es la diferencia entre reserva y separación?',
         'Menciona 3 factores que afectan el valor de una propiedad.',
         '¿Qué revisarías primero en una partida registral?',
         '¿Cuál es el error más común de un agente al negociar?'
-      ].map((q,i)=>`<div class="te-q">
-        <span class="te-q-num">P${i+1}</span>
-        <div style="font-size:13px;font-weight:600;color:var(--black);line-height:1.5">${q}</div>
-        <div style="margin-top:8px;height:32px;border-bottom:1px dashed var(--gray-mid)"></div>
-      </div>`).join('')}
-
-      <!-- Roleplay comercial -->
-      <div style="font-size:11px;font-weight:700;color:var(--orange);text-transform:uppercase;letter-spacing:.08em;margin:16px 0 8px">Roleplay comercial</div>
-      ${[
+      ],
+      roleplay:[
         'Cliente: "Está muy caro." → Responder sin bajar precio inmediatamente.',
         'Cliente: "Lo voy a pensar." → Profundizar correctamente la objeción.',
         'Propietario: "No quiero exclusividad." → Defender la exclusividad profesionalmente.',
         'Cliente: "Encontré otro departamento más barato." → Comparar valor y no solo precio.',
         'Cliente de preventa: "Me preocupa que el proyecto se retrase." → Generar confianza.'
-      ].map((q,i)=>`<div class="te-q">
-        <span class="te-q-num">R${i+1}</span>
-        <div style="font-size:13px;font-weight:600;color:var(--black);line-height:1.5">${q}</div>
-        <div style="margin-top:8px;height:32px;border-bottom:1px dashed var(--gray-mid)"></div>
-      </div>`).join('')}
-
-      <!-- Calificación del lead -->
-      <div style="font-size:11px;font-weight:700;color:var(--orange);text-transform:uppercase;letter-spacing:.08em;margin:16px 0 8px">Calificación del lead</div>
-      ${[
+      ],
+      calificacion:[
         'Llega un cliente diciendo: "Estoy viendo opciones." → ¿Qué preguntas harías para calificarlo?',
         'Cliente: "Quiero comprar este año." → ¿Cómo detectas si realmente tiene urgencia?',
         '¿Qué datos mínimos debe tener una ficha de lead?',
         '¿Cómo identificarías si el cliente realmente puede comprar al contado?',
         '¿Qué harías si el cliente no es quien toma la decisión final?'
-      ].map((q,i)=>`<div class="te-q">
-        <span class="te-q-num">C${i+1}</span>
-        <div style="font-size:13px;font-weight:600;color:var(--black);line-height:1.5">${q}</div>
-        <div style="margin-top:8px;height:32px;border-bottom:1px dashed var(--gray-mid)"></div>
-      </div>`).join('')}
-
-      <!-- Negociación y cierre -->
-      <div style="font-size:11px;font-weight:700;color:var(--orange);text-transform:uppercase;letter-spacing:.08em;margin:16px 0 8px">Negociación y cierre</div>
-      ${[
+      ],
+      negociacion:[
         'Un cliente ofrece 20% menos del valor. → ¿Cómo responderías profesionalmente?',
         '¿Cómo usarías la técnica del ancla en una propiedad de segundo uso?',
         'Dame un ejemplo práctico de pregunta SPIN para una familia que busca casa.',
         '¿Qué harías si un propietario quiere vender muy por encima del mercado?',
         '¿Cuál crees que es la habilidad más importante de un agente inmobiliario y por qué?'
-      ].map((q,i)=>`<div class="te-q">
-        <span class="te-q-num">N${i+1}</span>
-        <div style="font-size:13px;font-weight:600;color:var(--black);line-height:1.5">${q}</div>
-        <div style="margin-top:8px;height:32px;border-bottom:1px dashed var(--gray-mid)"></div>
+      ],
+      dinamica1:'Cada agente tiene 1 minuto para cerrar una venta ficticia. El formador actúa como cliente con objeciones. Evaluar seguridad, argumentación y uso de técnica de cierre.',
+      dinamica2:'El líder lanza objeciones rápidas y el agente responde en vivo. Evaluar velocidad de reacción y manejo de presión.',
+      objeciones:['"No tengo cuota inicial."','"Mi familia no está convencida."','"Esperaré que bajen los precios."'],
+      dinamica3:'Un agente hace de propietario difícil y otro debe captar la propiedad. Evaluar argumentación de valor, manejo de objeciones y uso del ACM.',
+      criterios:['Seguridad al hablar','Manejo de objeciones','Claridad comercial','Negociación','Creatividad']
+    };
+  }
+
+  function saveGuide(){
+    const g={
+      rapidas:    getInputs('tg-rap',5),
+      roleplay:   getInputs('tg-rol',5),
+      calificacion:getInputs('tg-cal',5),
+      negociacion:getInputs('tg-neg',5),
+      dinamica1:  val('tg-din1'),
+      dinamica2:  val('tg-din2'),
+      objeciones: getInputs('tg-obj',3),
+      dinamica3:  val('tg-din3'),
+      criterios:  getInputs('tg-cri',5)
+    };
+    localStorage.setItem(TG_KEY,JSON.stringify(g));
+    ss('✓ Guía oral guardada correctamente.','ok');
+  }
+
+  function resetGuide(){
+    if(!confirm('¿Restaurar la guía oral a los valores originales?'))return;
+    localStorage.removeItem(TG_KEY);
+    renderTrainerGuideAdmin();
+    ss('Guía oral restaurada a contenido original.','info');
+  }
+
+  function val(id){return document.getElementById(id)?.value||'';}
+  function getInputs(prefix,n){return Array.from({length:n},(_,i)=>val(prefix+'-'+i));}
+
+  const g=getGuide();
+  const COLORS=['c1','c2','c3','c4'];
+
+  function sectionHTML(title,color,bodyId,content){
+    return `<div class="te-area">
+      <div class="te-area-hdr ${color}" onclick="toggleTeArea('${bodyId}')">
+        <span class="te-area-pill">SECCIÓN</span>
+        <span class="te-area-name">${title}</span>
+        <span class="te-area-arr" id="te-arr-${bodyId}">▸</span>
+      </div>
+      <div class="te-area-body" id="te-body-${bodyId}">${content}</div>
+    </div>`;
+  }
+
+  function qListHTML(prefix,items,placeholder){
+    return items.map((q,i)=>`
+      <div class="te-q">
+        <span class="te-q-num">${i+1}</span>
+        <div class="te-field">
+          <textarea id="${prefix}-${i}" rows="2" style="width:100%;padding:7px 10px;border:1px solid var(--gray-mid);border-radius:5px;font-size:12px;outline:none;font-family:inherit;resize:vertical"
+            onfocus="this.style.borderColor='var(--orange)'" onblur="this.style.borderColor='var(--gray-mid)'">${esc(q)}</textarea>
+        </div>
+      </div>`).join('');
+  }
+
+  const html=`
+    <div class="card" style="background:#D4E4F7;border-color:#93C5FD;margin-bottom:14px;padding:14px 16px">
+      <div style="font-size:13px;font-weight:600;color:#1A2E4A;margin-bottom:3px">🎓 Guía de Evaluación Oral — Editable</div>
+      <div style="font-size:12px;color:#1A2E4A;line-height:1.6">Edita directamente el contenido de cada sección. Los cambios se guardan en este navegador y aplican inmediatamente.</div>
+    </div>
+
+    ${sectionHTML('Preguntas Orales Rápidas','c1','tg-rap-body',qListHTML('tg-rap',g.rapidas))}
+    ${sectionHTML('Roleplay Comercial','c2','tg-rol-body',qListHTML('tg-rol',g.roleplay))}
+    ${sectionHTML('Calificación del Lead','c3','tg-cal-body',qListHTML('tg-cal',g.calificacion))}
+    ${sectionHTML('Negociación y Cierre','c4','tg-neg-body',qListHTML('tg-neg',g.negociacion))}
+
+    ${sectionHTML('Dinámicas Adicionales','c1','tg-din-body',`
+      <div class="te-q">
+        <span class="te-q-num">Dinámica 1 — El mejor cierre</span>
+        <div class="te-field">
+          <textarea id="tg-din1" rows="2" style="width:100%;padding:7px 10px;border:1px solid var(--gray-mid);border-radius:5px;font-size:12px;outline:none;font-family:inherit;resize:vertical"
+            onfocus="this.style.borderColor='var(--orange)'" onblur="this.style.borderColor='var(--gray-mid)'">${esc(g.dinamica1)}</textarea>
+        </div>
+      </div>
+      <div class="te-q">
+        <span class="te-q-num">Dinámica 2 — Objeción sorpresa</span>
+        <div class="te-field">
+          <textarea id="tg-din2" rows="2" style="width:100%;padding:7px 10px;border:1px solid var(--gray-mid);border-radius:5px;font-size:12px;outline:none;font-family:inherit;resize:vertical"
+            onfocus="this.style.borderColor='var(--orange)'" onblur="this.style.borderColor='var(--gray-mid)'">${esc(g.dinamica2)}</textarea>
+        </div>
+        <div style="font-size:11px;font-weight:600;color:var(--gray);text-transform:uppercase;letter-spacing:.05em;margin:8px 0 5px">Objeciones de ejemplo:</div>
+        ${g.objeciones.map((o,i)=>`<div class="te-field"><textarea id="tg-obj-${i}" rows="1" style="width:100%;padding:6px 10px;border:1px solid var(--gray-mid);border-radius:5px;font-size:12px;outline:none;font-family:inherit"
+          onfocus="this.style.borderColor='var(--orange)'" onblur="this.style.borderColor='var(--gray-mid)'">${esc(o)}</textarea></div>`).join('')}
+      </div>
+      <div class="te-q">
+        <span class="te-q-num">Dinámica 3 — Captador experto</span>
+        <div class="te-field">
+          <textarea id="tg-din3" rows="2" style="width:100%;padding:7px 10px;border:1px solid var(--gray-mid);border-radius:5px;font-size:12px;outline:none;font-family:inherit;resize:vertical"
+            onfocus="this.style.borderColor='var(--orange)'" onblur="this.style.borderColor='var(--gray-mid)'">${esc(g.dinamica3)}</textarea>
+        </div>
+      </div>
+    `)}
+
+    ${sectionHTML('Sistema de Puntaje','c4','tg-pts-body',`
+      <div style="font-size:11px;color:var(--gray);margin-bottom:10px;line-height:1.6">Cada criterio vale 10 puntos. Total: 50 puntos.</div>
+      ${g.criterios.map((c,i)=>`<div class="te-q">
+        <span class="te-q-num">✓ ${10} pts</span>
+        <div class="te-field">
+          <input type="text" id="tg-cri-${i}" value="${esc(c)}" style="width:100%;padding:7px 10px;border:1px solid var(--gray-mid);border-radius:5px;font-size:12px;outline:none;font-family:inherit"
+            onfocus="this.style.borderColor='var(--orange)'" onblur="this.style.borderColor='var(--gray-mid)'" />
+        </div>
       </div>`).join('')}
-    </div>
-  </div>
+      <div style="background:var(--black);border-radius:7px;padding:10px 14px;display:flex;justify-content:space-between;align-items:center;margin-top:8px">
+        <span style="font-size:13px;color:#fff;font-weight:600">Puntaje total oral</span>
+        <span style="font-size:18px;font-weight:700;color:var(--orange)">50 puntos</span>
+      </div>
+    `)}
 
-  <!-- PARTE 2: DINÁMICAS -->
-  <div class="te-area">
-    <div class="te-area-hdr c2" onclick="toggleTeArea('tg-din')">
-      <span class="te-area-pill">PARTE 2</span>
-      <span class="te-area-name">Dinámicas Adicionales</span>
-      <span class="te-area-arr" id="te-arr-tg-din">▸</span>
+    <div style="display:flex;gap:8px;margin-top:14px">
+      <button onclick="saveGuide()" class="btn b-or" style="flex:1">💾 Guardar guía oral</button>
+      <button onclick="resetGuide()" class="btn b-wh" style="width:auto;padding:10px 16px">↩ Restaurar original</button>
     </div>
-    <div class="te-area-body" id="te-body-tg-din">
-      <div class="te-q">
-        <span class="te-q-num">Dinámica 1</span>
-        <div style="font-size:13px;font-weight:600;color:var(--black);margin-bottom:6px">El mejor cierre</div>
-        <div style="font-size:12px;color:var(--gray);line-height:1.6">Cada agente tiene <strong>1 minuto</strong> para cerrar una venta ficticia. El formador actúa como cliente con objeciones. Evaluar seguridad, argumentación y uso de técnica de cierre.</div>
-      </div>
-      <div class="te-q">
-        <span class="te-q-num">Dinámica 2</span>
-        <div style="font-size:13px;font-weight:600;color:var(--black);margin-bottom:6px">Objeción sorpresa</div>
-        <div style="font-size:12px;color:var(--gray);line-height:1.6;margin-bottom:8px">El líder lanza objeciones rápidas y el agente responde en vivo. Evaluar velocidad de reacción y manejo de presión.</div>
-        <div style="display:flex;flex-direction:column;gap:5px">
-          ${['"No tengo cuota inicial."','"Mi familia no está convencida."','"Esperaré que bajen los precios."'].map(o=>`<div style="background:var(--orange-lt);border-radius:5px;padding:7px 10px;font-size:12px;color:var(--orange);font-weight:500">${o}</div>`).join('')}
-        </div>
-      </div>
-      <div class="te-q">
-        <span class="te-q-num">Dinámica 3</span>
-        <div style="font-size:13px;font-weight:600;color:var(--black);margin-bottom:6px">Captador experto</div>
-        <div style="font-size:12px;color:var(--gray);line-height:1.6">Un agente hace de <strong>propietario difícil</strong> y otro debe captar la propiedad. Evaluar argumentación de valor, manejo de objeciones y uso del ACM.</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- SISTEMA DE PUNTAJE -->
-  <div class="te-area">
-    <div class="te-area-hdr c4" onclick="toggleTeArea('tg-pts')">
-      <span class="te-area-pill">Puntaje</span>
-      <span class="te-area-name">Sistema de Evaluación Oral</span>
-      <span class="te-area-arr" id="te-arr-tg-pts">▸</span>
-    </div>
-    <div class="te-area-body" id="te-body-tg-pts">
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px">
-        ${[
-          ['Seguridad al hablar','10 pts'],
-          ['Manejo de objeciones','10 pts'],
-          ['Claridad comercial','10 pts'],
-          ['Negociación','10 pts'],
-          ['Creatividad','10 pts'],
-        ].map(([c,p])=>`<div style="background:var(--gray-lt);border-radius:7px;padding:10px;display:flex;justify-content:space-between;align-items:center">
-          <span style="font-size:12px;color:var(--black);font-weight:500">✓ ${c}</span>
-          <span style="font-size:13px;font-weight:700;color:var(--green)">${p}</span>
-        </div>`).join('')}
-        <div style="background:var(--black);border-radius:7px;padding:10px;display:flex;justify-content:space-between;align-items:center;grid-column:1/-1">
-          <span style="font-size:13px;color:#fff;font-weight:700">Puntaje total</span>
-          <span style="font-size:18px;font-weight:700;color:var(--orange)">50 puntos</span>
-        </div>
-      </div>
-      <div style="font-size:11px;color:var(--gray);line-height:1.7;background:var(--gray-lt);border-radius:7px;padding:10px">
-        <strong style="color:var(--black)">Notas del evaluador:</strong><br>
-        <div style="border-bottom:1px dashed var(--gray-mid);height:22px;margin-top:4px"></div>
-        <div style="border-bottom:1px dashed var(--gray-mid);height:22px;margin-top:8px"></div>
-        <div style="border-bottom:1px dashed var(--gray-mid);height:22px;margin-top:8px"></div>
-      </div>
-    </div>
-  </div>
   `;
+
   panel.innerHTML=html;
+
+  // Expose saveGuide and resetGuide to window scope for onclick
+  window.saveGuide=saveGuide;
+  window.resetGuide=resetGuide;
 }
 
 function renderTestEditor(){
