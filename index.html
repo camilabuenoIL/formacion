@@ -138,26 +138,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--gray-lt);color:var(--blac
 }
 </style>
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-<style>
-@media print {
-  body > *:not(#test-overlay){ display:none!important; }
-  #test-overlay{
-    position:static!important;background:none!important;padding:0!important;overflow:visible!important;
-  }
-  #test-overlay > div{ max-width:100%!important;padding:0!important; }
-  .tst-area-hdr,.tst-qcard,.tst-fb{ break-inside:avoid; }
-  #tst-start,#tst-submit-bar,#tst-prog-bar,#tst-prog-badge{ display:none!important; }
-  .no-print{ display:none!important; }
-  #tst-results{ display:block!important; }
-  #tst-quiz{ display:block!important; }
-  .print-header{display:block!important;}
-}
-.print-header{
-  display:none;
-  background:#0D0D0D;color:#fff;padding:16px 22px;border-radius:8px;margin-bottom:16px;
-  font-size:15px;font-weight:700;
-}
-</style>
+<!-- PDF generated in new window, no print CSS needed -->
 </head>
 <body>
 
@@ -860,6 +841,10 @@ function tstSubmit(){
   else{status='No habilitado temporalmente';stColor='#991B1B';}
   document.getElementById('tst-submit-bar').style.display='none';
 
+  // Store for PDF generation
+  _tstLastPct=pct; _tstLastName=_tstName; _tstLastEmail=_tstEmail;
+  _tstLastStatus=status; _tstLastAnswers={..._tstAnswers};
+
   // Save result to Google Sheets centralized
   const record={name:_tstName,email:_tstEmail,date:new Date().toLocaleDateString('es-ES'),pct,correct,status,areaScores};
   tstSaveCentralized(record);
@@ -912,21 +897,81 @@ function tstShowResults(correct,pct,status,stColor,areaScores){
 }
 
 // ── PDF PRINT ─────────────────────────────────────────────────────────────────
+function tstBuildPDFHTML(forEmail){
+  // Build complete HTML for PDF - includes results + all questions with corrections
+  const ltrs=['a','b','c','d'];
+  const statusColor = _tstLastPct>=80?'#1A3D2B':_tstLastPct>=70?'#92400E':'#991B1B';
+  const statusBg = _tstLastPct>=80?'#D6EDE1':_tstLastPct>=70?'#FEF3C7':'#FEE2E2';
+
+  let questionsHTML = '';
+  AREAS.forEach(area=>{
+    const aColors={'a1':'#0D0D0D','a2':'#E84E0F','a3':'#1A2E4A','a4':'#1A3D2B'};
+    questionsHTML += `<div style="background:${aColors[area.id]};color:#fff;padding:10px 16px;border-radius:6px;margin:20px 0 10px;font-size:13px;font-weight:700">
+      ÁREA ${area.num} · ${area.title}
+    </div>`;
+    area.questions.forEach(q=>{
+      const userAns = _tstLastAnswers[q.id];
+      const isOk = userAns === q.ans;
+      questionsHTML += `<div style="border:1px solid ${isOk?'#A5D6B5':'#FECACA'};border-left:4px solid ${isOk?'#1A3D2B':'#991B1B'};border-radius:6px;padding:12px 14px;margin-bottom:8px;background:${isOk?'#F0FBF4':'#FFF5F5'}">
+        <div style="font-size:12px;font-weight:700;color:#E84E0F;margin-bottom:6px">Pregunta ${q.id}</div>
+        <div style="font-size:13px;font-weight:600;color:#0D0D0D;margin-bottom:8px">${q.q}</div>
+        ${q.opts.map((opt,i)=>{
+          const letter=ltrs[i];
+          const isCorrect=i===q.ans;
+          const isUser=i===userAns;
+          let bg='transparent',color='#5C5C5C',weight='400',prefix='';
+          if(isCorrect&&isUser){bg='#D6EDE1';color='#1A3D2B';weight='700';prefix='✓ ';}
+          else if(isCorrect){bg='#EDF7F0';color='#1A3D2B';weight='600';prefix='✓ ';}
+          else if(isUser&&!isOk){bg='#FEE2E2';color='#991B1B';weight='600';prefix='✗ ';}
+          return `<div style="padding:5px 10px;background:${bg};color:${color};font-weight:${weight};font-size:12px;border-radius:4px;margin-bottom:3px">${prefix}${letter}) ${opt}</div>`;
+        }).join('')}
+        <div style="font-size:11px;color:${isOk?'#1A3D2B':'#991B1B'};margin-top:6px;font-style:italic">${isOk?'✓ Correcto':'✗ '+q.exp}</div>
+      </div>`;
+    });
+  });
+
+  return `<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8">
+    <title>Resultado Evaluación — ${_tstLastName}</title>
+    <style>
+      body{font-family:Arial,sans-serif;color:#0D0D0D;max-width:750px;margin:0 auto;padding:28px;font-size:13px}
+      @media print{body{padding:10px}@page{margin:15mm}}
+    </style>
+  </head><body>
+    <div style="background:#0D0D0D;color:#fff;padding:16px 22px;border-radius:8px;margin-bottom:20px;display:flex;align-items:center;justify-content:space-between">
+      <div>
+        <div style="font-size:11px;color:#E84E0F;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:3px">Inmobiliario Latam</div>
+        <div style="font-size:18px;font-weight:700">Evaluación Final — Programa de Formación</div>
+      </div>
+      <div style="text-align:right;font-size:12px;color:#aaa">${new Date().toLocaleDateString('es-ES')}</div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px">
+      <div style="border:1px solid #E0DDD8;border-radius:8px;padding:14px">
+        <div style="font-size:11px;color:#5C5C5C;text-transform:uppercase;letter-spacing:.05em;margin-bottom:3px">Agente</div>
+        <div style="font-size:15px;font-weight:700">${_tstLastName}</div>
+        <div style="font-size:12px;color:#5C5C5C">${_tstLastEmail}</div>
+      </div>
+      <div style="border:1px solid #E0DDD8;border-radius:8px;padding:14px;text-align:center">
+        <div style="font-size:11px;color:#5C5C5C;text-transform:uppercase;letter-spacing:.05em;margin-bottom:3px">Resultado</div>
+        <div style="font-size:42px;font-weight:700;color:#E84E0F;line-height:1">${_tstLastPct}</div>
+        <div style="font-size:12px;color:#5C5C5C">puntos de 100</div>
+        <div style="background:${statusBg};color:${statusColor};font-weight:700;padding:4px 12px;border-radius:20px;display:inline-block;font-size:12px;margin-top:6px">${_tstLastStatus}</div>
+      </div>
+    </div>
+    <h3 style="font-size:14px;color:#0D0D0D;margin-bottom:12px;border-bottom:2px solid #E84E0F;padding-bottom:6px">Preguntas y correcciones</h3>
+    ${questionsHTML}
+  </body></html>`;
+}
+
+let _tstLastPct=0, _tstLastName='', _tstLastEmail='', _tstLastStatus='', _tstLastAnswers={};
+
 function tstPrintPDF(){
-  const hdr=document.getElementById('tst-print-header');
-  const closeBtn=document.getElementById('tst-close-btn');
-  const quiz=document.getElementById('tst-quiz');
-  // Make quiz visible for printing
-  if(quiz) quiz.style.display='block';
-  if(hdr) hdr.style.display='block';
-  if(closeBtn) closeBtn.style.display='none';
-  setTimeout(()=>{
-    window.print();
-    setTimeout(()=>{
-      if(hdr) hdr.style.display='none';
-      if(closeBtn) closeBtn.style.display='';
-    },500);
-  },100);
+  const pdfHTML = tstBuildPDFHTML(false);
+  const win = window.open('','_blank');
+  if(!win){ alert('Permite ventanas emergentes para descargar el PDF.'); return; }
+  win.document.write(pdfHTML);
+  win.document.close();
+  win.focus();
+  setTimeout(()=>{ win.print(); }, 500);
 }
 
 // ── SAVE TO SHEETS ────────────────────────────────────────────────────────────
@@ -951,13 +996,15 @@ async function tstSaveCentralized(record){
 }
 
 // ── SEND EMAIL ────────────────────────────────────────────────────────────────
+// ── EMAILJS CONFIG defined above ─────────────────────────────────────────────
+
 // ── EMAILJS CONFIG ────────────────────────────────────────────────────────────
 window.EMAILJS_PUBLIC_KEY    = 'Hw1tpzbhUbIFI1iQX';
 window.EMAILJS_SERVICE_ID    = 'service_kkv1mhm';
 window.EMAILJS_TEMPLATE_AGENT   = 'template_zv4alh7';
 window.EMAILJS_TEMPLATE_TRAINER = 'template_hoh5css';
 
-// Todos los formadores que reciben el reporte
+// Formadores que reciben el reporte
 const TRAINER_EMAILS = [
   'jpando@inmobiliariolatam.com',
   'wlarias@inmobiliariolatam.com',
@@ -966,12 +1013,16 @@ const TRAINER_EMAILS = [
   'bvillanueva@inmobiliariolatam.com',
 ];
 
-// Init EmailJS once on load
-document.addEventListener('DOMContentLoaded', function(){
-  if(typeof emailjs !== 'undefined'){
-    emailjs.init(window.EMAILJS_PUBLIC_KEY);
+// Init EmailJS — runs after CDN script loads (script tag is above)
+function initEmailJS(){
+  if(typeof emailjs !== 'undefined' && window.EMAILJS_PUBLIC_KEY){
+    try{ emailjs.init(window.EMAILJS_PUBLIC_KEY); console.log('✓ EmailJS initialized'); }
+    catch(e){ console.error('EmailJS init failed:', e); }
   }
-});
+}
+// Try immediately (CDN already loaded) and also on DOMContentLoaded
+initEmailJS();
+document.addEventListener('DOMContentLoaded', initEmailJS);
 
 function tstSendEmail(record, areaScores){
   if(typeof emailjs === 'undefined'){ console.warn('EmailJS not loaded'); return; }
