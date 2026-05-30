@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "26 de mayo de 2026",
+  "lastUpdated": "19 de mayo de 2026",
   "startDate": "Lunes 18 de mayo de 2026",
   "weeks": [
     {
@@ -32,8 +32,7 @@
               "meetUrl": "https://meet.google.com/dso-cutw-qhn",
               "calEventId": "lju7n7nbtb62uh61c3n5er8sms"
             }
-          ],
-          "_isoDate": "2026-05-18"
+          ]
         },
         {
           "num": 2,
@@ -58,8 +57,7 @@
               "desc": "Impuestos aplicables en compraventa y arrendamiento · tratamiento de comisiones · obligaciones tributarias del agente · conceptos clave para asesorar con criterio financiero",
               "calEventId": "goivvnrjhpvaegukmh9icqpr40"
             }
-          ],
-          "_isoDate": "2026-05-19"
+          ]
         },
         {
           "num": 3,
@@ -93,8 +91,7 @@
               "desc": "Motivaciones, miedos y proceso de decisión · tipos de cliente: inversionista, primera vivienda, familia, crédito, contado e indeciso",
               "calEventId": "5oleel1k9kqm4hnpio1d2bvpns"
             }
-          ],
-          "_isoDate": "2026-05-20"
+          ]
         },
         {
           "num": 4,
@@ -129,8 +126,7 @@
               "meetUrl": "https://meet.google.com/asn-xowc-sot",
               "calEventId": "6mkkm23ui5plnas6rbh2gjaupc"
             }
-          ],
-          "_isoDate": "2026-05-21"
+          ]
         },
         {
           "num": 5,
@@ -157,8 +153,7 @@
               "meetUrl": "https://meet.google.com/ncp-jvdb-vxr",
               "calEventId": "9tr4bptc3inafqhbs40c4v2h6s"
             }
-          ],
-          "_isoDate": "2026-05-22"
+          ]
         }
       ]
     },
@@ -201,8 +196,7 @@
               "desc": "Bases de datos, guías internas, procesos y biblioteca comercial · cómo navegar y consultar recursos disponibles para el agente",
               "calEventId": "0e8sc4dodgogarboosmqjuves8"
             }
-          ],
-          "_isoDate": "2026-05-25"
+          ]
         },
         {
           "num": 7,
@@ -226,25 +220,23 @@
               "title": "Tipos de negocio, comisiones y esquema de referidos",
               "desc": "Tipos de negocio (Tipo 1 al 4) · modelos de comisión y cómo escalan · esquema de referidos Nivel 1 y Nivel 2 · ejemplos prácticos de liquidación · reglas de trazabilidad para proteger la comisión",
               "calEventId": "1ffa0jcja6bdqinjjv71hmb9f8"
+            },
+            {
+              "time": "3:00 – 5:00",
+              "owner": "Brooke Villanueva",
+              "slot": "Tarde",
+              "modality": "Presencial",
+              "title": "Notion 2ª cap. — Inventario y gestión de información",
+              "desc": "Carga y consulta de propiedades · lectura de ficha inmobiliaria · estados de disponibilidad · cómo traducir la ficha en argumentos comerciales",
+              "calEventId": "msqhs3l9emk47bb27bb9s75vqo"
             }
-          ],
-          "_isoDate": "2026-05-26"
+          ]
         },
         {
           "num": 8,
           "date": "Miércoles 27 de mayo",
           "badge": null,
           "sessions": [
-            {
-              "time": "9:00 – 10:30",
-              "owner": "Sofía Herreño",
-              "slot": "Mañana",
-              "modality": "Virtual",
-              "title": "Optimización de perfiles digitales — Parte 3: Facebook e Instagram",
-              "desc": "Facebook e Instagram: configuración profesional de perfil, bio, foto, portada e historias destacadas coherentes con Inmobiliario Latam (Continuación)",
-              "meetUrl": "https://meet.google.com/mjj-spqu-twp",
-              "calEventId": "66oh51l5o77dukd0astq0tenk4"
-            },
             {
               "time": "10:30 – 12:00",
               "owner": "Sofía Herreño",
@@ -256,26 +248,15 @@
               "calEventId": "f6h2prs9joho6nq0ptueh793i0"
             },
             {
-              "time": "3:00 – 4:00",
+              "time": "3:00 – 5:00",
               "owner": "Jorge Pando",
               "slot": "Tarde",
               "modality": "Presencial",
               "title": "Técnicas de seguimiento y captación de propiedades",
               "desc": "Cadencia comercial sin saturar al cliente · prospección de propietarios · primer contacto · valuación básica y argumentos para captar el inmueble",
               "calEventId": "ccs0l0angmvl4dmrrtas7hl7gc"
-            },
-            {
-              "time": "4:00 – 5:30",
-              "owner": "Walter Arias / Brooke Villanueva",
-              "slot": "Tarde",
-              "modality": "Presencial",
-              "title": "Notion 2ª cap. — Inventario y gestión de información",
-              "desc": "Carga y consulta de propiedades · lectura de ficha inmobiliaria · estados de disponibilidad · cómo traducir la ficha en argumentos comerciales",
-              "meetUrl": "https://meet.google.com/kxx-vedp-nzd",
-              "calEventId": "8t3msp1o8f4rqf89vkprc28gjk"
             }
-          ],
-          "_isoDate": "2026-05-27"
+          ]
         },
         {
           "num": 9,
@@ -301,8 +282,7 @@
               "meetUrl": "https://meet.google.com/byk-tcpi-pfj",
               "calEventId": "r7qdk8jhbm3lpb6l3tanv28jbk"
             }
-          ],
-          "_isoDate": "2026-05-28"
+          ]
         },
         {
           "num": 10,
@@ -313,11 +293,11 @@
               "time": "11:00 – 12:00",
               "owner": "Jorge Pando / Sofía Herreño",
               "slot": "Mañana",
-              "modality": "Presencial/Virtual",
+              "modality": "Presencial",
               "title": "Simulación de visita y caso práctico en CRM",
               "desc": "Roleplay completo: recepción del cliente, recorrido, manejo de objeciones en vivo · caso práctico en CRM con trazabilidad completa",
-              "meetUrl": "https://meet.google.com/eem-qrsh-jik",
-              "calEventId": "vlhlv62v5mb309g2efu9ga3bo8"
+              "isCampo": true,
+              "calEventId": "ters1ac3t9a170bg3feamo1u7c"
             },
             {
               "time": "3:00 – 5:00",
@@ -329,8 +309,7 @@
               "isEval": true,
               "calEventId": "h0kktan4a38oqflieo3mb8omu4"
             }
-          ],
-          "_isoDate": "2026-05-29"
+          ]
         }
       ]
     }
