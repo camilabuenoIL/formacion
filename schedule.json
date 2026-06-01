@@ -1,6 +1,6 @@
 {
-  "lastUpdated": "19 de mayo de 2026",
-  "startDate": "Lunes 18 de mayo de 2026",
+  "lastUpdated": "1 de junio de 2026",
+  "startDate": "Lunes 1 de junio de 2026",
   "weeks": [
     {
       "label": "Semana 1",
@@ -9,7 +9,7 @@
       "days": [
         {
           "num": 1,
-          "date": "Lunes 18 de mayo",
+          "date": "lunes 1 de junio de 2026",
           "badge": "reunion",
           "sessions": [
             {
@@ -32,11 +32,12 @@
               "meetUrl": "https://meet.google.com/dso-cutw-qhn",
               "calEventId": "lju7n7nbtb62uh61c3n5er8sms"
             }
-          ]
+          ],
+          "_isoDate": "2026-06-01"
         },
         {
           "num": 2,
-          "date": "Martes 19 de mayo",
+          "date": "martes 2 de junio de 2026",
           "badge": null,
           "sessions": [
             {
@@ -57,11 +58,12 @@
               "desc": "Impuestos aplicables en compraventa y arrendamiento · tratamiento de comisiones · obligaciones tributarias del agente · conceptos clave para asesorar con criterio financiero",
               "calEventId": "goivvnrjhpvaegukmh9icqpr40"
             }
-          ]
+          ],
+          "_isoDate": "2026-06-02"
         },
         {
           "num": 3,
-          "date": "Miércoles 20 de mayo",
+          "date": "miércoles 3 de junio de 2026",
           "badge": null,
           "sessions": [
             {
@@ -91,11 +93,12 @@
               "desc": "Motivaciones, miedos y proceso de decisión · tipos de cliente: inversionista, primera vivienda, familia, crédito, contado e indeciso",
               "calEventId": "5oleel1k9kqm4hnpio1d2bvpns"
             }
-          ]
+          ],
+          "_isoDate": "2026-06-03"
         },
         {
           "num": 4,
-          "date": "Jueves 21 de mayo",
+          "date": "jueves 4 de junio de 2026",
           "badge": null,
           "sessions": [
             {
@@ -126,11 +129,12 @@
               "meetUrl": "https://meet.google.com/asn-xowc-sot",
               "calEventId": "6mkkm23ui5plnas6rbh2gjaupc"
             }
-          ]
+          ],
+          "_isoDate": "2026-06-04"
         },
         {
           "num": 5,
-          "date": "Viernes 22 de mayo",
+          "date": "viernes 5 de junio de 2026",
           "badge": null,
           "sessions": [
             {
@@ -153,7 +157,8 @@
               "meetUrl": "https://meet.google.com/ncp-jvdb-vxr",
               "calEventId": "9tr4bptc3inafqhbs40c4v2h6s"
             }
-          ]
+          ],
+          "_isoDate": "2026-06-05"
         }
       ]
     },
@@ -164,7 +169,7 @@
       "days": [
         {
           "num": 6,
-          "date": "Lunes 25 de mayo",
+          "date": "lunes 8 de junio de 2026",
           "badge": "reunion",
           "sessions": [
             {
@@ -196,11 +201,12 @@
               "desc": "Bases de datos, guías internas, procesos y biblioteca comercial · cómo navegar y consultar recursos disponibles para el agente",
               "calEventId": "0e8sc4dodgogarboosmqjuves8"
             }
-          ]
+          ],
+          "_isoDate": "2026-06-08"
         },
         {
           "num": 7,
-          "date": "Martes 26 de mayo",
+          "date": "martes 9 de junio de 2026",
           "badge": null,
           "sessions": [
             {
@@ -230,11 +236,12 @@
               "desc": "Carga y consulta de propiedades · lectura de ficha inmobiliaria · estados de disponibilidad · cómo traducir la ficha en argumentos comerciales",
               "calEventId": "msqhs3l9emk47bb27bb9s75vqo"
             }
-          ]
+          ],
+          "_isoDate": "2026-06-09"
         },
         {
           "num": 8,
-          "date": "Miércoles 27 de mayo",
+          "date": "miércoles 10 de junio de 2026",
           "badge": null,
           "sessions": [
             {
@@ -256,11 +263,12 @@
               "desc": "Cadencia comercial sin saturar al cliente · prospección de propietarios · primer contacto · valuación básica y argumentos para captar el inmueble",
               "calEventId": "ccs0l0angmvl4dmrrtas7hl7gc"
             }
-          ]
+          ],
+          "_isoDate": "2026-06-10"
         },
         {
           "num": 9,
-          "date": "Jueves 28 de mayo",
+          "date": "jueves 11 de junio de 2026",
           "badge": null,
           "sessions": [
             {
@@ -282,11 +290,12 @@
               "meetUrl": "https://meet.google.com/byk-tcpi-pfj",
               "calEventId": "r7qdk8jhbm3lpb6l3tanv28jbk"
             }
-          ]
+          ],
+          "_isoDate": "2026-06-11"
         },
         {
           "num": 10,
-          "date": "Viernes 29 de mayo",
+          "date": "viernes 12 de junio de 2026",
           "badge": "eval",
           "sessions": [
             {
@@ -309,7 +318,8 @@
               "isEval": true,
               "calEventId": "h0kktan4a38oqflieo3mb8omu4"
             }
-          ]
+          ],
+          "_isoDate": "2026-06-12"
         }
       ]
     }
@@ -616,5 +626,6 @@
         }
       ]
     }
-  }
+  },
+  "cohorteName": "Junio 2026"
 }
