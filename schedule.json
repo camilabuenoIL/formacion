@@ -22,16 +22,6 @@
               "isReunion": true,
               "calEventId": "nudvqoag8knht3qcfjfdkv4mdo",
               "meetUrl": ""
-            },
-            {
-              "time": "3:00 – 5:00",
-              "owner": "Walter Arias",
-              "slot": "Tarde",
-              "modality": "Virtual",
-              "title": "Presentación e inducción Inmobiliario Latam + Modelo de negocio",
-              "desc": "Cultura, valores, estructura de la empresa y roles · tipos de operación, comisiones, participaciones y responsabilidades de trazabilidad",
-              "meetUrl": "https://meet.google.com/rzw-ejob-jnz",
-              "calEventId": "v571884c7ngkpot9kb30mia524"
             }
           ],
           "_isoDate": "2026-06-01"
@@ -60,6 +50,16 @@
               "desc": "Impuestos aplicables en compraventa y arrendamiento · tratamiento de comisiones · obligaciones tributarias del agente · conceptos clave para asesorar con criterio financiero",
               "calEventId": "nhiuuapnd90g6ntq6iqdstgk38",
               "meetUrl": ""
+            },
+            {
+              "time": "4:00 – 5:00",
+              "owner": "Walter Arias",
+              "slot": "Tarde",
+              "modality": "Presencial",
+              "title": "Presentación e inducción Inmobiliario Latam + Modelo de negocio",
+              "desc": "Cultura, valores, estructura de la empresa y roles · tipos de operación, comisiones, participaciones y responsabilidades de trazabilidad",
+              "meetUrl": "",
+              "calEventId": "2215f7cjqu96bhqno3128nkt90"
             }
           ],
           "_isoDate": "2026-06-02"
