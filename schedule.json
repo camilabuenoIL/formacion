@@ -148,6 +148,16 @@
               "meetUrl": ""
             },
             {
+              "time": "10:00 – 12:00",
+              "owner": "Walter Arias",
+              "slot": "Mañana",
+              "modality": "Virtual",
+              "title": "Tipos de negocio, comisiones y esquema de referidos",
+              "desc": "Tipos de negocio (Tipo 1 al 4) · modelos de comisión y cómo escalan · esquema de referidos Nivel 1 y Nivel 2 · ejemplos prácticos de liquidación · reglas de trazabilidad para proteger la comisión",
+              "meetUrl": "https://meet.google.com/gge-gchr-enz",
+              "calEventId": "6p87652lv8qg2q31lu0dg6f8dc"
+            },
+            {
               "time": "3:00 – 4:00",
               "owner": "Camila Bueno / Camila Bueno",
               "slot": "Tarde",
@@ -166,36 +176,6 @@
               "desc": "WhatsApp Business y LinkedIn: configuración profesional de perfil, bio, foto y mensaje de bienvenida coherentes con Inmobiliario Latam",
               "meetUrl": "https://meet.google.com/zzg-esfh-ugt",
               "calEventId": "ordio4m6dljknjfr94mlj2cki8"
-            },
-            {
-              "time": "10:00 – 12:00",
-              "owner": "Walter Arias",
-              "slot": "Mañana",
-              "modality": "Virtual",
-              "title": "Tipos de negocio, comisiones y esquema de referidos",
-              "desc": "Tipos de negocio (Tipo 1 al 4) · modelos de comisión y cómo escalan · esquema de referidos Nivel 1 y Nivel 2 · ejemplos prácticos de liquidación · reglas de trazabilidad para proteger la comisión",
-              "meetUrl": "https://meet.google.com/gge-gchr-enz",
-              "calEventId": "6p87652lv8qg2q31lu0dg6f8dc"
-            },
-            {
-              "time": "4:00 – 5:00",
-              "owner": "Camila Bueno / Camila Bueno",
-              "slot": "Tarde",
-              "modality": "Virtual",
-              "title": "Flujo de atención de leads y scripts de primer contacto",
-              "desc": "Proceso completo desde la llegada del lead hasta la oportunidad · tipos de leads · criterios de priorización · mensajes estándar para WhatsApp y llamada",
-              "meetUrl": "https://meet.google.com/eci-rzdj-htb",
-              "calEventId": "vl8jt95k39u3bcg68d9k1lj8bc"
-            },
-            {
-              "time": "4:00 – 5:00",
-              "owner": "Camila Bueno / Camila Bueno",
-              "slot": "Tarde",
-              "modality": "Virtual",
-              "title": "Flujo de atención de leads y scripts de primer contacto",
-              "desc": "Proceso completo desde la llegada del lead hasta la oportunidad · tipos de leads · criterios de priorización · mensajes estándar para WhatsApp y llamada",
-              "meetUrl": "https://meet.google.com/uwb-dyjp-gvf",
-              "calEventId": "vvjuotsbvkeg894amrlfatbujg"
             }
           ],
           "_isoDate": "2026-06-11"
@@ -206,24 +186,24 @@
           "badge": null,
           "sessions": [
             {
-              "time": "10:00 – 12:00",
+              "time": "09:00 – 11:00",
+              "owner": "Walter Arias / Jorge Pando",
+              "slot": "Mañana",
+              "modality": "Presencial/Virtual",
+              "title": "Reunión semanal de equipo — Revisión de semana",
+              "desc": "Revisión de avance y cumplimiento de objetivos.",
+              "meetUrl": "",
+              "calEventId": "ssticteqiq0ltfa3mtc2u3ck38"
+            },
+            {
+              "time": "11:00 – 12:30",
               "owner": "Camila Bueno / Sofía Herreño",
               "slot": "Mañana",
               "modality": "Virtual",
               "title": "Optimización de perfiles digitales — Parte 2: Facebook e Instagram",
               "desc": "Facebook e Instagram: configuración profesional de perfil, bio, foto, portada e historias destacadas coherentes con Inmobiliario Latam",
-              "meetUrl": "https://meet.google.com/ohj-shaa-cyi",
-              "calEventId": "6baqdfd89pc064ukba104dk40s"
-            },
-            {
-              "time": "2:00 – 3:00",
-              "owner": "Camila Bueno / Sofía Herreño",
-              "slot": "Tarde",
-              "modality": "Virtual",
-              "title": "Flujo de atención de leads y scripts de primer contacto",
-              "desc": "Proceso completo desde la llegada del lead hasta la oportunidad · tipos de leads · criterios de priorización · mensajes estándar para WhatsApp y llamada",
-              "meetUrl": "https://meet.google.com/rxw-jzco-xjx",
-              "calEventId": "bjdi5vkuh8k5mlkdnjen2jors0"
+              "meetUrl": "https://meet.google.com/pch-hwfx-rhs",
+              "calEventId": "85mh83khu1rvfot66s2hu4vajg"
             }
           ],
           "_isoDate": "2026-06-12"
