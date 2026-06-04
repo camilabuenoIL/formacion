@@ -159,7 +159,7 @@
               "time": "09:00 – 11:00",
               "owner": "Walter Arias / Jorge Pando",
               "slot": "Mañana",
-              "modality": "Presencial/Virtual",
+              "modality": "Presencial",
               "title": "Reunión semanal de equipo — Revisión de semana",
               "desc": "Revisión de avance y cumplimiento de objetivos.",
               "meetUrl": "https://meet.google.com/ykd-gbmi-ewz",
@@ -343,6 +343,16 @@
           "date": "viernes 19 de junio de 2026",
           "badge": "eval",
           "sessions": [
+            {
+              "time": "09:00 – 11:00",
+              "owner": "Walter Arias / Jorge Pando",
+              "slot": "Mañana",
+              "modality": "Presencial",
+              "title": "Reunión semanal de equipo — Revisión de semana",
+              "desc": "Revisión de avance y cumplimiento de objetivos.",
+              "meetUrl": "",
+              "calEventId": "f0idmj02hdn63e8rnfvdv0fp68"
+            },
             {
               "time": "3:00 – 5:00",
               "owner": "Walter Arias / Jorge Pando",
