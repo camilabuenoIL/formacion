@@ -236,7 +236,7 @@
               "owner": "Walter Arias",
               "slot": "Tarde",
               "modality": "Presencial",
-              "title": "Negocios calificados como \"Nuevos requerimientos\"",
+              "title": "Negocios calificados como \"Nuevos Requerimientos\"",
               "desc": "Unidad de negocio - Explicación procesos de busqueda - Calificación de nuevos requerimientos",
               "meetUrl": "",
               "calEventId": "3d3c6m7u2cqfld1qps9605s714"
@@ -250,7 +250,7 @@
           "badge": null,
           "sessions": [
             {
-              "time": "10:00 – 11:00",
+              "time": "9:30 – 10:30",
               "owner": "Jorge Pando",
               "slot": "Mañana",
               "modality": "Presencial",
@@ -260,7 +260,7 @@
               "calEventId": "ibk6dpml6qi4u72qodrdov65fc"
             },
             {
-              "time": "11:30 – 12:30",
+              "time": "11:00 – 01:00",
               "owner": "Jorge Pando",
               "slot": "Mañana",
               "modality": "Presencial",
