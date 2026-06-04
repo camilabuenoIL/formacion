@@ -284,7 +284,7 @@
               "owner": "Jorge Pando / Walter Arias",
               "slot": "Tarde",
               "modality": "Presencial",
-              "title": "Entrenamiento practico - Llamadas de calificación leads nuevos requerimientos",
+              "title": "Entrenamiento practico 1 - Llamadas de calificación leads nuevos requerimientos",
               "desc": "El agente realizar llamadas como entrenamiento para leads calificados como \"nuevos requerimientos\"",
               "meetUrl": "",
               "calEventId": "ohmdngtf0msou3risuktp0v0i4"
@@ -326,6 +326,16 @@
               "desc": "Cadencia comercial sin saturar al cliente · prospección de propietarios · primer contacto · valuación básica y argumentos para captar el inmueble",
               "calEventId": "3jh1rgmml9lseftipo7u35snf4",
               "meetUrl": ""
+            },
+            {
+              "time": "4:00 – 6:00",
+              "owner": "Jorge Pando / Walter Arias",
+              "slot": "Tarde",
+              "modality": "Presencial",
+              "title": "Entrenamiento práctico 2",
+              "desc": "E",
+              "meetUrl": "",
+              "calEventId": "nnjvsv3g9keil0hq0mb3gnqsi8"
             }
           ],
           "_isoDate": "2026-06-17"
