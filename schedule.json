@@ -344,17 +344,6 @@
           "badge": "eval",
           "sessions": [
             {
-              "time": "11:00 – 12:00",
-              "owner": "Jorge Pando / Sofía Herreño",
-              "slot": "Mañana",
-              "modality": "Presencial",
-              "title": "Simulación de visita y caso práctico en CRM",
-              "desc": "Roleplay completo: recepción del cliente, recorrido, manejo de objeciones en vivo · caso práctico en CRM con trazabilidad completa",
-              "isCampo": true,
-              "calEventId": "sbp59gdpnfkj17sq2bdbj4qsd0",
-              "meetUrl": ""
-            },
-            {
               "time": "3:00 – 5:00",
               "owner": "Walter Arias / Jorge Pando",
               "slot": "Tarde",
