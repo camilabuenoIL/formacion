@@ -270,7 +270,17 @@
           "badge": null,
           "sessions": [
             {
-              "time": "11:00 – 12:00",
+              "time": "10:00 – 11:00",
+              "owner": "Jorge Pando",
+              "slot": "Mañana",
+              "modality": "Presencial",
+              "title": "Impuestos y obligaciones tributarias en el sector inmobiliario",
+              "desc": "Impuestos aplicables en compraventa y arrendamiento · tratamiento de comisiones · obligaciones tributarias del agente · conceptos clave para asesorar con criterio financiero.",
+              "meetUrl": "",
+              "calEventId": "ibk6dpml6qi4u72qodrdov65fc"
+            },
+            {
+              "time": "11:30 – 12:30",
               "owner": "Jorge Pando",
               "slot": "Mañana",
               "modality": "Presencial",
