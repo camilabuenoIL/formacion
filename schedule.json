@@ -13,7 +13,7 @@
           "badge": "reunion",
           "sessions": [
             {
-              "time": "9:00 – 10:30",
+              "time": "9:00 – 11:00",
               "owner": "Jorge Pando",
               "slot": "Mañana",
               "modality": "Presencial",
@@ -231,7 +231,7 @@
           "badge": "reunion",
           "sessions": [
             {
-              "time": "9:00 – 10:30",
+              "time": "9:00 – 11:00",
               "owner": "Jorge Pando",
               "slot": "Mañana",
               "modality": "Presencial",
@@ -243,11 +243,11 @@
             },
             {
               "time": "3:00 – 4:30",
-              "owner": "Sofía Herreño",
+              "owner": "Jorge Pando",
               "slot": "Tarde",
-              "modality": "Virtual",
-              "title": "CRM 1ª cap. — Presentación inicial",
-              "desc": "Introducción al sistema · módulos, flujo base y navegación · contactos, actividades, tareas, estados y primeras cargas guiadas",
+              "modality": "Presencial",
+              "title": "Impuestos y obligaciones tributarias en el sector inmobiliario",
+              "desc": "Impuestos aplicables en compraventa y arrendamiento · tratamiento de comisiones · obligaciones tributarias del agente · conceptos clave para asesorar con criterio financiero.",
               "meetUrl": "https://meet.google.com/qdx-gqxm-ids",
               "calEventId": "91c4er7i2kccm3fscbalrjro8c"
             },
@@ -271,11 +271,11 @@
           "sessions": [
             {
               "time": "11:00 – 12:00",
-              "owner": "Walter Arias",
+              "owner": "Jorge Pando",
               "slot": "Mañana",
               "modality": "Presencial",
-              "title": "Tipos de negocio, comisiones y esquema de referidos",
-              "desc": "Tipos de negocio (Tipo 1 al 4) · modelos de comisión y cómo escalan · esquema de referidos Nivel 1 y Nivel 2 · ejemplos prácticos de liquidación · reglas de trazabilidad para proteger la comisión",
+              "title": "Derecho inmobiliario — documentación y gestión",
+              "desc": "Marco legal básico: contratos, escrituras, due diligence · límites del rol del agente · momentos de escalamiento y documentos que debe conocer",
               "calEventId": "c3rc6ata68cnegtlmn1ir9ufio",
               "meetUrl": ""
             },
