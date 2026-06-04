@@ -70,7 +70,7 @@
           "badge": null,
           "sessions": [
             {
-              "time": "9:00 – 10:00",
+              "time": "10:00 – 11:00",
               "owner": "Allison Villanueva",
               "slot": "Mañana",
               "modality": "Presencial",
@@ -80,7 +80,7 @@
               "meetUrl": ""
             },
             {
-              "time": "10:00 – 11:00",
+              "time": "11:30 – 12:30",
               "owner": "Jorge Pando",
               "slot": "Mañana",
               "modality": "Presencial",
@@ -90,7 +90,7 @@
               "meetUrl": ""
             },
             {
-              "time": "3:00 – 5:00",
+              "time": "3:00 – 4:00",
               "owner": "Jorge Pando",
               "slot": "Tarde",
               "modality": "Presencial",
@@ -128,7 +128,7 @@
               "meetUrl": ""
             },
             {
-              "time": "3:00 – 5:00",
+              "time": "3:00 – 4:30",
               "owner": "Camila Bueno / Sofía Herreño",
               "slot": "Tarde",
               "modality": "Virtual",
