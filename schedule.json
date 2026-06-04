@@ -1,6 +1,6 @@
 {
   "lastUpdated": "4 de junio de 2026",
-  "startDate": "Lunes 1 de junio de 2026",
+  "startDate": "Lunes 8 de junio de 2026",
   "weeks": [
     {
       "label": "Semana 1",
@@ -9,7 +9,7 @@
       "days": [
         {
           "num": 1,
-          "date": "lunes 1 de junio de 2026",
+          "date": "lunes 8 de junio de 2026",
           "badge": "reunion",
           "sessions": [
             {
@@ -34,11 +34,11 @@
               "calEventId": "dd0ld8vkof8r1eaqu9srcserbo"
             }
           ],
-          "_isoDate": "2026-06-01"
+          "_isoDate": "2026-06-08"
         },
         {
           "num": 2,
-          "date": "martes 2 de junio de 2026",
+          "date": "martes 9 de junio de 2026",
           "badge": null,
           "sessions": [
             {
@@ -62,11 +62,11 @@
               "meetUrl": ""
             }
           ],
-          "_isoDate": "2026-06-02"
+          "_isoDate": "2026-06-09"
         },
         {
           "num": 3,
-          "date": "miércoles 3 de junio de 2026",
+          "date": "miércoles 10 de junio de 2026",
           "badge": null,
           "sessions": [
             {
@@ -100,11 +100,11 @@
               "meetUrl": ""
             }
           ],
-          "_isoDate": "2026-06-03"
+          "_isoDate": "2026-06-10"
         },
         {
           "num": 4,
-          "date": "jueves 4 de junio de 2026",
+          "date": "jueves 11 de junio de 2026",
           "badge": null,
           "sessions": [
             {
@@ -138,11 +138,11 @@
               "calEventId": "5it2a4utsapt3sgqb97v8ivq0o"
             }
           ],
-          "_isoDate": "2026-06-04"
+          "_isoDate": "2026-06-11"
         },
         {
           "num": 5,
-          "date": "viernes 5 de junio de 2026",
+          "date": "viernes 12 de junio de 2026",
           "badge": null,
           "sessions": [
             {
@@ -166,7 +166,7 @@
               "calEventId": "oeovg54ekc252fr9pqtgf9bl1c"
             }
           ],
-          "_isoDate": "2026-06-05"
+          "_isoDate": "2026-06-12"
         }
       ]
     },
@@ -177,7 +177,7 @@
       "days": [
         {
           "num": 6,
-          "date": "lunes 8 de junio de 2026",
+          "date": "lunes 15 de junio de 2026",
           "badge": "reunion",
           "sessions": [
             {
@@ -212,11 +212,11 @@
               "meetUrl": ""
             }
           ],
-          "_isoDate": "2026-06-08"
+          "_isoDate": "2026-06-15"
         },
         {
           "num": 7,
-          "date": "martes 9 de junio de 2026",
+          "date": "martes 16 de junio de 2026",
           "badge": null,
           "sessions": [
             {
@@ -249,11 +249,11 @@
               "calEventId": "2fd63cf932hp936ltfurn6t5is"
             }
           ],
-          "_isoDate": "2026-06-09"
+          "_isoDate": "2026-06-16"
         },
         {
           "num": 8,
-          "date": "miércoles 10 de junio de 2026",
+          "date": "miércoles 17 de junio de 2026",
           "badge": null,
           "sessions": [
             {
@@ -277,11 +277,11 @@
               "meetUrl": ""
             }
           ],
-          "_isoDate": "2026-06-10"
+          "_isoDate": "2026-06-17"
         },
         {
           "num": 9,
-          "date": "jueves 11 de junio de 2026",
+          "date": "jueves 18 de junio de 2026",
           "badge": null,
           "sessions": [
             {
@@ -305,11 +305,11 @@
               "calEventId": "t4n9bp1qam2nga4p4b2c3amev4"
             }
           ],
-          "_isoDate": "2026-06-11"
+          "_isoDate": "2026-06-18"
         },
         {
           "num": 10,
-          "date": "viernes 12 de junio de 2026",
+          "date": "viernes 19 de junio de 2026",
           "badge": "eval",
           "sessions": [
             {
@@ -334,7 +334,7 @@
               "meetUrl": ""
             }
           ],
-          "_isoDate": "2026-06-12"
+          "_isoDate": "2026-06-19"
         }
       ]
     }
