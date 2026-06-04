@@ -192,8 +192,8 @@
               "modality": "Presencial/Virtual",
               "title": "Reunión semanal de equipo — Revisión de semana",
               "desc": "Revisión de avance y cumplimiento de objetivos.",
-              "meetUrl": "",
-              "calEventId": "ssticteqiq0ltfa3mtc2u3ck38"
+              "meetUrl": "https://meet.google.com/ykd-gbmi-ewz",
+              "calEventId": "4dtmj16ut8dg6gt8emdqvqfun0"
             },
             {
               "time": "11:00 – 12:30",
@@ -204,6 +204,16 @@
               "desc": "Facebook e Instagram: configuración profesional de perfil, bio, foto, portada e historias destacadas coherentes con Inmobiliario Latam",
               "meetUrl": "https://meet.google.com/pch-hwfx-rhs",
               "calEventId": "85mh83khu1rvfot66s2hu4vajg"
+            },
+            {
+              "time": "2:00 – 3:30",
+              "owner": "Sofía Herreño",
+              "slot": "Tarde",
+              "modality": "Virtual",
+              "title": "CRM 1ª cap. — Presentación inicial",
+              "desc": "Introducción al sistema · módulos, flujo base y navegación · contactos, actividades, tareas, estados y primeras cargas guiadas",
+              "meetUrl": "https://meet.google.com/ixz-zyks-app",
+              "calEventId": "mvboi085jotc6i2t2bisel3pbk"
             }
           ],
           "_isoDate": "2026-06-12"
