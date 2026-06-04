@@ -90,14 +90,24 @@
           "badge": null,
           "sessions": [
             {
-              "time": "10:00 – 11:00",
-              "owner": "Allison Villanueva",
+              "time": "9:30 – 11:00",
+              "owner": "Jorge Pando",
               "slot": "Mañana",
               "modality": "Presencial",
-              "title": "Financiamiento inmobiliario y crédito hipotecario",
-              "desc": "Tipos de crédito hipotecario · cuota inicial · capacidad de endeudamiento · entidades financieras y criterios de aprobación · cómo orientar al cliente según su perfil financiero",
-              "calEventId": "bhsns1a5c8pp3mkaofts3qc97c",
-              "meetUrl": ""
+              "title": "Calificación comercial y matriz del lead",
+              "desc": "Presupuesto, zona, forma de pago, urgencia, decisión y disponibilidad · plantilla de calificación lista para usar desde el primer lead",
+              "meetUrl": "",
+              "calEventId": "po7n3s431qt3mc4ttlbln4us7c"
+            },
+            {
+              "time": "11:30 – 12:30",
+              "owner": "Jorge Pando",
+              "slot": "Mañana",
+              "modality": "Presencial",
+              "title": "Técnicas de negociación y manejo de objeciones",
+              "desc": "Negociación consultiva y ética · anclas, concesiones, contraofertas · respuestas profesionales ante objeciones frecuentes del rubro inmobiliario",
+              "meetUrl": "",
+              "calEventId": "2s90upuuavpd9f26sg58nckj1s"
             },
             {
               "time": "11:30 – 12:30",
@@ -107,6 +117,16 @@
               "title": "Proceso de compra inmobiliaria y conceptos clave",
               "desc": "Ruta del cliente: reserva, separación, minuta, escritura, crédito, cuota inicial, partida registral · glosario mínimo para conversaciones comerciales seguras",
               "calEventId": "8aimd3hk1cst38fu6qilh2si74",
+              "meetUrl": ""
+            },
+            {
+              "time": "4:30 – 5:30",
+              "owner": "Allison Villanueva",
+              "slot": "Tarde",
+              "modality": "Presencial",
+              "title": "Financiamiento inmobiliario y crédito hipotecario",
+              "desc": "Tipos de crédito hipotecario · cuota inicial · capacidad de endeudamiento · entidades financieras y criterios de aprobación · cómo orientar al cliente según su perfil financiero",
+              "calEventId": "bhsns1a5c8pp3mkaofts3qc97c",
               "meetUrl": ""
             }
           ],
@@ -125,16 +145,6 @@
               "title": "Derecho inmobiliario — documentación y gestión",
               "desc": "Marco legal básico: contratos, escrituras, due diligence · límites del rol del agente · momentos de escalamiento y documentos que debe conocer",
               "calEventId": "g9b6bq3lpbtvu89l6cobj5bcn4",
-              "meetUrl": ""
-            },
-            {
-              "time": "10:00 – 11:00",
-              "owner": "Jorge Pando",
-              "slot": "Mañana",
-              "modality": "Presencial",
-              "title": "Calificación comercial y matriz del lead",
-              "desc": "Presupuesto, zona, forma de pago, urgencia, decisión y disponibilidad · plantilla de calificación lista para usar desde el primer lead",
-              "calEventId": "9n60up9siivv483b482kcqr3ok",
               "meetUrl": ""
             },
             {
@@ -229,16 +239,6 @@
           "date": "martes 16 de junio de 2026",
           "badge": null,
           "sessions": [
-            {
-              "time": "9:00 – 11:00",
-              "owner": "Jorge Pando",
-              "slot": "Mañana",
-              "modality": "Presencial",
-              "title": "Técnicas de negociación y manejo de objeciones",
-              "desc": "Negociación consultiva y ética · anclas, concesiones, contraofertas · respuestas profesionales ante objeciones frecuentes del rubro inmobiliario",
-              "calEventId": "c42fh8ghtf467lkethb06a9t9k",
-              "meetUrl": ""
-            },
             {
               "time": "11:00 – 12:00",
               "owner": "Walter Arias",
