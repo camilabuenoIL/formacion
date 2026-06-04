@@ -67,7 +67,7 @@
               "slot": "Tarde",
               "modality": "Presencial/Virtual",
               "title": "Introducción al CRM y Herramientas Digitales de Gestión Comercial",
-              "desc": "Introducción al CRM como sistema de gestión y trazabilidad comercial · uso de herramientas clave del equipo: HubspotmNotion, WhatsApp Business y perfiles digitales · cómo organizar leads, registrar avances y dar seguimiento dentro del flujo diario de trabajo.",
+              "desc": "Introducción al CRM como sistema de gestión y trazabilidad comercial · uso de herramientas clave del equipo: Hubspot, Notion, WhatsApp Business y perfiles digitales · cómo organizar leads, registrar avances y dar seguimiento dentro del flujo diario de trabajo.",
               "meetUrl": "https://meet.google.com/eqw-uxjr-nrs",
               "calEventId": "h0h6sco9motmaqs9pp5s7phd1c"
             }
@@ -360,8 +360,8 @@
               "owner": "Jorge Pando / Sofía Herreño",
               "slot": "Tarde",
               "modality": "Presencial/Virtual",
-              "title": "Caso práctico de llamada y gestión CRM",
-              "desc": "Roleplay completo: recepción del cliente, recorrido, manejo de objeciones en vivo · caso práctico en CRM con trazabilidad completa",
+              "title": "Simulación de llamadas y registro actividades CRM",
+              "desc": "Roleplay completo de llamadas: recepción del cliente, recorrido, manejo de objeciones en vivo · registro de actividades en CRM con trazabilidad completa",
               "meetUrl": "https://meet.google.com/qty-hxub-dea",
               "calEventId": "tcsrv4rt45q5m9g9as25crh3e8"
             }
