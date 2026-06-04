@@ -17,8 +17,8 @@
               "owner": "Jorge Pando",
               "slot": "Mañana",
               "modality": "Presencial",
-              "title": "Reunión semanal de equipo — Bienvenida oficial",
-              "desc": "Presentación formal de nuevos agentes · entrega kit bienvenida · dinámica del lunes · cada agente responde en 2 min quién es, su experiencia comercial y qué quiere construir en Inmobiliario Latam.",
+              "title": "Bienvenida Oficial e Integración al Equipo Comercial",
+              "desc": "Bienvenida formal a los nuevos agentes, presentación del equipo y entrega del kit de bienvenida. En esta sesión se explicará la dinámica semanal de trabajo y cada agente compartirá brevemente su experiencia, perfil comercial y objetivos dentro de Inmobiliario Latam.",
               "isReunion": true,
               "calEventId": "giunbmsqsjq1th38lglridremo",
               "meetUrl": ""
@@ -28,8 +28,8 @@
               "owner": "Walter Arias",
               "slot": "Tarde",
               "modality": "Virtual",
-              "title": "Presentación e inducción Inmobiliario Latam + Modelo de negocio",
-              "desc": "Cultura, valores, estructura de la empresa y roles · tipos de operación, participaciones y responsabilidades de trazabilidad.",
+              "title": "Inducción Institucional y Modelo Comercial de Inmobiliario Latam",
+              "desc": "Presentación de la cultura, valores y estructura de Inmobiliario Latam. En esta sesión el agente conocerá el modelo comercial, los tipos de operación, las participaciones, los roles del equipo y las responsabilidades de trazabilidad dentro del proceso inmobiliario.",
               "meetUrl": "https://meet.google.com/ivy-ncvd-nzd",
               "calEventId": "gc1dbnql52cqi202rreeqilq64"
             }
@@ -46,8 +46,8 @@
               "owner": "Jorge Pando",
               "slot": "Mañana",
               "modality": "Presencial",
-              "title": "Introducción al sector inmobiliario",
-              "desc": "Actores del mercado, tipos de inmuebles, proyectos y propiedades usadas · oportunidades del rubro, diferencias con otros sectores de ventas y crecimiento de la industria.",
+              "title": "Fundamentos del Mercado Inmobiliario y Oportunidades del Sector",
+              "desc": "Introducción al mercado inmobiliario, sus principales actores, tipos de inmuebles y oportunidades comerciales. El agente comprenderá las diferencias entre proyectos y propiedades usadas, así como el potencial del sector frente a otros rubros de ventas.",
               "calEventId": "bkbh2p5e00d6jm12qe5stlh0rs",
               "meetUrl": ""
             },
@@ -56,8 +56,8 @@
               "owner": "Jorge Pando",
               "slot": "Mañana",
               "modality": "Presencial",
-              "title": "Perfil del comprador inmobiliario",
-              "desc": "Motivaciones, miedos y proceso de decisión · tipos de cliente: inversionista, primera vivienda, familia, crédito, contado e indeciso",
+              "title": "Perfil del Comprador Inmobiliario y Proceso de Decisión",
+              "desc": "Análisis del comprador inmobiliario, sus motivaciones, miedos y proceso de decisión. El agente aprenderá a reconocer diferentes tipos de cliente y adaptar su comunicación según el perfil, necesidad y nivel de intención de compra.",
               "meetUrl": "",
               "calEventId": "8jvo5budrs7ofp2a4gp2r7drf4"
             },
@@ -66,8 +66,8 @@
               "owner": "Walter Arias",
               "slot": "Tarde",
               "modality": "Presencial/Virtual",
-              "title": "Introducción al uso CRM´s y Herramientas tecnólogicas",
-              "desc": "Teoría sobre CRM y herramientas del equipo: qué es, para qué sirve y cómo se integra en el trabajo diario. Presentación de Notion, WhatsApp Business y perfiles digitales.",
+              "title": "Introducción al CRM y Herramientas Digitales de Gestión Comercial",
+              "desc": "Introducción al uso del CRM y herramientas digitales del equipo. El agente aprenderá para qué sirven, cómo se integran en su trabajo diario y por qué son clave para organizar leads, hacer seguimiento y mantener trazabilidad comercial.",
               "meetUrl": "https://meet.google.com/eqw-uxjr-nrs",
               "calEventId": "h0h6sco9motmaqs9pp5s7phd1c"
             }
