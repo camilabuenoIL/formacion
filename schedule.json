@@ -243,11 +243,11 @@
             },
             {
               "time": "3:00 – 4:30",
-              "owner": "Jorge Pando",
+              "owner": "Sofía Herreño",
               "slot": "Tarde",
-              "modality": "Presencial",
-              "title": "Impuestos y obligaciones tributarias en el sector inmobiliario",
-              "desc": "Impuestos aplicables en compraventa y arrendamiento · tratamiento de comisiones · obligaciones tributarias del agente · conceptos clave para asesorar con criterio financiero.",
+              "modality": "Virtual",
+              "title": "CRM 2ª cap. — Gestión de leads",
+              "desc": "Pipeline y etapas del funnel · actualización de registros · interacciones, estados, notas y tareas · criterios para avanzar un lead en el sistema.",
               "meetUrl": "https://meet.google.com/qdx-gqxm-ids",
               "calEventId": "91c4er7i2kccm3fscbalrjro8c"
             },
@@ -312,8 +312,8 @@
               "owner": "Sofía Herreño",
               "slot": "Mañana",
               "modality": "Virtual",
-              "title": "CRM 2ª cap. — Gestión de leads",
-              "desc": "Pipeline y etapas del funnel · actualización de registros · interacciones, estados, notas y tareas · criterios para avanzar un lead en el sistema",
+              "title": "CRM 3ª cap. — Gestión de negocios",
+              "desc": "Creación y avance de oportunidades en el pipeline · reportes y métricas clave · cierre de negocios en sistema y trazabilidad completa.",
               "meetUrl": "https://meet.google.com/dee-vhbc-cdi",
               "calEventId": "m3icqp94srd690ahvv43gdo7i8"
             },
