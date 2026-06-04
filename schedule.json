@@ -298,7 +298,17 @@
               "calEventId": "m3icqp94srd690ahvv43gdo7i8"
             },
             {
-              "time": "3:00 – 5:00",
+              "time": "3:00 – 4:00",
+              "owner": "Jorge Pando",
+              "slot": "Tarde",
+              "modality": "Presencial",
+              "title": "Proceso de compra inmobiliaria y conceptos clave",
+              "desc": "Ruta del cliente: reserva, separación, minuta, escritura, crédito, cuota inicial, partida registral · glosario mínimo para conversaciones comerciales seguras",
+              "meetUrl": "",
+              "calEventId": "1pd1ltah8rrvailm5l527i1940"
+            },
+            {
+              "time": "4:00 – 5:00",
               "owner": "Jorge Pando",
               "slot": "Tarde",
               "modality": "Presencial",
