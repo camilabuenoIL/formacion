@@ -149,7 +149,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--gray-lt);color:var(--blac
 .s-card{background:var(--white);border:1px solid var(--gray-mid);border-radius:10px;padding:16px;box-shadow:0 1px 3px rgba(0,0,0,.05)}
 
 /* TEAM SECTION IMPROVED */
-#tab-equipo .sec-hd{padding:0;margin-bottom:24px}
+#tab-equipo .sec-hd{margin-bottom:24px}
 .sec-sub{font-size:14px;color:var(--gray);line-height:1.7;margin-top:8px;max-width:640px}
 #tab-equipo .s-card{padding:16px;display:flex;flex-direction:column;gap:0;min-width:0;word-break:break-word}
 #tab-equipo .s-card a{word-break:break-all}
@@ -161,7 +161,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--gray-lt);color:var(--blac
 }
 
 
-#tab-faq > div > div > div{padding:0 4px}
+/* fixed */
 .faq-item{margin:0;width:100%;box-sizing:border-box}
 .faq-item summary{padding:14px 16px;line-height:1.4}
 .faq-body{padding:0 16px 14px 16px;margin-top:0}
@@ -197,6 +197,126 @@ body{font-family:'DM Sans',sans-serif;background:var(--gray-lt);color:var(--blac
   .team-grid{grid-template-columns:1fr}
   .faq-item summary{padding:13px 15px;font-size:12px}
   .faq-body{padding:12px 15px 14px;font-size:12px}
+}
+
+/* ═══ MODULES SECTION ═══════════════════════════════════════════════════════ */
+.mod-week-hdr{
+  background:var(--black);color:#fff;
+  font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  padding:8px 14px;border-radius:6px;margin:28px 0 12px;display:inline-flex;
+  align-items:center;gap:8px
+}
+.mod-week-hdr::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--orange)}
+.mod-day-block{margin-bottom:4px}
+.mod-day-hdr{
+  display:flex;align-items:center;gap:10px;
+  padding:10px 14px;background:var(--gray-lt);
+  border-radius:8px 8px 0 0;border:1px solid var(--gray-mid);border-bottom:none;
+  margin-top:8px
+}
+.mod-day-pill{
+  font-size:10px;font-weight:700;color:#fff;background:var(--orange);
+  padding:3px 10px;border-radius:20px;letter-spacing:.06em;white-space:nowrap
+}
+.mod-day-date{font-size:13px;font-weight:500;color:var(--black)}
+.mod-cards-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
+  gap:0;border:1px solid var(--gray-mid);border-top:none;
+  border-radius:0 0 8px 8px;overflow:hidden
+}
+.mod-card{
+  background:#fff;padding:16px;
+  border-right:1px solid var(--gray-mid);border-bottom:1px solid var(--gray-mid);
+  display:flex;flex-direction:column;gap:6px;
+  transition:background .12s
+}
+.mod-card:hover{background:var(--gray-lt)}
+.mod-card-train{background:#FFFBEB;border-left:3px solid #F59E0B}
+.mod-card-train:hover{background:#FEF3C7}
+.mod-train-tag{
+  font-size:10px;font-weight:700;color:#92400E;
+  background:#FEF3C7;border-radius:4px;padding:2px 8px;
+  width:fit-content;letter-spacing:.06em;text-transform:uppercase
+}
+.mod-card-title{font-size:13px;font-weight:600;color:var(--black);line-height:1.4}
+.mod-card-desc{font-size:12px;color:var(--gray);line-height:1.55;flex:1}
+.mod-card-ft{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:8px;margin-top:4px;padding-top:8px;
+  border-top:1px solid var(--gray-mid);flex-wrap:wrap
+}
+.mod-card-who{font-size:11px;color:var(--gray)}
+@media(max-width:580px){
+  .mod-cards-grid{grid-template-columns:1fr}
+  .mod-card{border-right:none}
+}
+
+/* ═══ FAQ SECTION ════════════════════════════════════════════════════════════ */
+#tab-faq .sec-hd{margin-bottom:20px}
+.faq-list{display:flex;flex-direction:column;gap:8px}
+.faq-item{
+  background:#fff;border:1px solid var(--gray-mid);
+  border-radius:10px;overflow:hidden;
+  box-shadow:0 1px 3px rgba(0,0,0,.04)
+}
+.faq-item summary{
+  padding:16px 18px;font-size:13px;font-weight:600;
+  color:var(--black);cursor:pointer;list-style:none;
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  line-height:1.4
+}
+.faq-item summary::after{
+  content:"▸";font-size:13px;color:var(--gray);
+  transition:transform .2s;flex-shrink:0
+}
+.faq-item[open] summary::after{transform:rotate(90deg);color:var(--orange)}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-body{
+  padding:0 18px 16px;font-size:13px;color:var(--gray);
+  line-height:1.7;border-top:1px solid var(--gray-mid)
+}
+.faq-body p{margin-top:12px}
+@media(max-width:580px){
+  .faq-item summary{padding:14px 16px;font-size:12px}
+  .faq-body{padding:0 16px 14px;font-size:12px}
+}
+
+/* ═══ EQUIPO SECTION ═════════════════════════════════════════════════════════ */
+#tab-equipo .sec-hd{margin-bottom:20px}
+.team-section-label{
+  font-size:11px;font-weight:700;color:var(--orange);
+  text-transform:uppercase;letter-spacing:.1em;
+  margin-bottom:14px;padding-bottom:6px;
+  border-bottom:1px solid var(--gray-mid)
+}
+.team-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(200px,1fr));
+  gap:14px;margin-bottom:28px
+}
+.team-card{
+  background:#fff;border:1px solid var(--gray-mid);
+  border-radius:12px;padding:18px;
+  box-shadow:0 1px 4px rgba(0,0,0,.06);
+  display:flex;flex-direction:column
+}
+.team-card-av{
+  width:44px;height:44px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:14px;font-weight:700;color:#fff;
+  margin-bottom:12px;flex-shrink:0
+}
+.team-card-name{font-size:14px;font-weight:600;color:var(--black);margin-bottom:3px}
+.team-card-role{font-size:12px;color:var(--orange);font-weight:500;margin-bottom:10px;line-height:1.4;flex:1}
+.team-card-ct{
+  display:flex;flex-direction:column;gap:5px;
+  margin-top:auto;padding-top:10px;
+  border-top:1px solid var(--gray-mid)
+}
+.team-card-email{font-size:11px;color:var(--gray);text-decoration:underline;word-break:break-all}
+.team-card-phone{font-size:11px;color:var(--gray)}
+@media(max-width:580px){
+  .team-grid{grid-template-columns:1fr}
 }
 </style>
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
@@ -739,7 +859,7 @@ loadSchedule();
 .tst-fb-err{background:#FEE2E2;color:#991B1B;border:1px solid #FECACA}
 
 /* TEAM SECTION IMPROVED */
-#tab-equipo .sec-hd{padding:0;margin-bottom:24px}
+#tab-equipo .sec-hd{margin-bottom:24px}
 .sec-sub{font-size:14px;color:var(--gray);line-height:1.7;margin-top:8px;max-width:640px}
 #tab-equipo .s-card{padding:16px;display:flex;flex-direction:column;gap:0;min-width:0;word-break:break-word}
 #tab-equipo .s-card a{word-break:break-all}
@@ -751,7 +871,7 @@ loadSchedule();
 }
 
 
-#tab-faq > div > div > div{padding:0 4px}
+/* fixed */
 .faq-item{margin:0;width:100%;box-sizing:border-box}
 .faq-item summary{padding:14px 16px;line-height:1.4}
 .faq-body{padding:0 16px 14px 16px;margin-top:0}
@@ -1198,7 +1318,7 @@ function tstBuildPDFHTML(forEmail){
       @media print{body{padding:10px}@page{margin:15mm}}
     
 /* TEAM SECTION IMPROVED */
-#tab-equipo .sec-hd{padding:0;margin-bottom:24px}
+#tab-equipo .sec-hd{margin-bottom:24px}
 .sec-sub{font-size:14px;color:var(--gray);line-height:1.7;margin-top:8px;max-width:640px}
 #tab-equipo .s-card{padding:16px;display:flex;flex-direction:column;gap:0;min-width:0;word-break:break-word}
 #tab-equipo .s-card a{word-break:break-all}
@@ -1210,7 +1330,7 @@ function tstBuildPDFHTML(forEmail){
 }
 
 
-#tab-faq > div > div > div{padding:0 4px}
+/* fixed */
 .faq-item{margin:0;width:100%;box-sizing:border-box}
 .faq-item summary{padding:14px 16px;line-height:1.4}
 .faq-body{padding:0 16px 14px 16px;margin-top:0}
