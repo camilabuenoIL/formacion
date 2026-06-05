@@ -157,8 +157,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--gray-lt);color:var(--blac
   #tab-equipo [style*="grid-template-columns"]{grid-template-columns:repeat(2,1fr)!important}
 }
 
-/* FAQ IMPROVED */
-#tab-faq .sec-hd{padding:0 4px}
+
 #tab-faq > div > div > div{padding:0 4px}
 .faq-item{margin:0;width:100%;box-sizing:border-box}
 .faq-item summary{padding:14px 16px;line-height:1.4}
@@ -169,8 +168,33 @@ body{font-family:'DM Sans',sans-serif;background:var(--gray-lt);color:var(--blac
 }
 
 /* TRAINING HIGHLIGHT */
-.session.training-sess{background:#FFFBEB!important;border-left:3px solid #F59E0B!important}
-.training-badge{display:inline-flex;align-items:center;gap:4px;background:#FEF3C7;color:#92400E;font-size:10px;font-weight:700;padding:2px 7px;border-radius:4px;margin-bottom:4px;border:1px solid #FDE68A}
+.training-wrapper{border-radius:10px;overflow:hidden;border:2px solid #F59E0B;margin-bottom:2px}
+.training-wrapper .training-top{background:#FEF3C7;color:#92400E;font-size:11px;font-weight:700;padding:7px 20px;display:flex;align-items:center;gap:5px;border-bottom:1px solid #FDE68A}
+.training-wrapper .session{border-top:none!important;background:#FFFBEB}
+
+/* TEAM CARDS */
+.team-section-label{font-size:11px;font-weight:700;color:var(--orange);text-transform:uppercase;letter-spacing:.1em;margin-bottom:14px;padding-bottom:6px;border-bottom:1px solid var(--gray-mid)}
+.team-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px;margin-bottom:28px}
+.team-card{background:var(--white);border:1px solid var(--gray-mid);border-radius:12px;padding:18px;box-shadow:0 1px 4px rgba(0,0,0,.06);display:flex;flex-direction:column}
+.team-card-av{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:#fff;margin-bottom:12px;flex-shrink:0}
+.team-card-name{font-size:14px;font-weight:600;color:var(--black);margin-bottom:3px}
+.team-card-role{font-size:12px;color:var(--orange);font-weight:500;margin-bottom:10px;line-height:1.4;flex:1}
+.team-card-ct{display:flex;flex-direction:column;gap:5px;margin-top:auto;padding-top:10px;border-top:1px solid var(--gray-mid)}
+.team-card-email{font-size:11px;color:var(--gray);text-decoration:underline;word-break:break-all}
+.team-card-phone{font-size:11px;color:var(--gray)}
+/* FAQ LIST */
+.faq-list{display:flex;flex-direction:column;gap:10px}
+.faq-item{background:var(--white);border:1px solid var(--gray-mid);border-radius:10px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.faq-item summary{padding:15px 18px;font-size:13px;font-weight:600;color:var(--black);cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;gap:12px;line-height:1.4}
+.faq-item summary::after{content:"▸";font-size:13px;color:var(--gray);transition:transform .2s;flex-shrink:0}
+.faq-item[open] summary::after{transform:rotate(90deg);color:var(--orange)}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-body{padding:13px 18px 16px;font-size:13px;color:var(--gray);line-height:1.7;border-top:1px solid var(--gray-mid)}
+@media(max-width:600px){
+  .team-grid{grid-template-columns:1fr}
+  .faq-item summary{padding:13px 15px;font-size:12px}
+  .faq-body{padding:12px 15px 14px;font-size:12px}
+}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 <!-- PDF generated in new window, no print CSS needed -->
@@ -236,7 +260,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--gray-lt);color:var(--blac
   <div class="section" id="tab-modulos">
     <div class="sec-header">
       <div class="sec-title">Resumen de módulos</div>
-      <p class="sec-desc">Los 23 módulos del programa con responsable, día y franja asignada.</p>
+      <p class="sec-desc">El programa está organizado en módulos progresivos que combinan formación teórica, herramientas digitales, práctica comercial y evaluación final.</p>
     </div>
     <div id="modules-container"></div>
   </div>
@@ -370,121 +394,110 @@ body{font-family:'DM Sans',sans-serif;background:var(--gray-lt);color:var(--blac
       <div class="sec-title">Nuestro equipo</div>
       <div class="sec-sub">Conoce a las personas que conforman Inmobiliario Latam y que estarán acompañándote durante tu formación y carrera como agente.</div>
     </div>
-
-    <div style="font-size:11px;font-weight:700;color:var(--orange);text-transform:uppercase;letter-spacing:.1em;margin-bottom:12px">Dirección</div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-bottom:24px">
-      <div class="s-card" style="border-top:3px solid #0D0D0D">
-        <div style="width:40px;height:40px;border-radius:50%;background:#0D0D0D;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;color:#fff;margin-bottom:10px">WA</div>
-        <div style="font-size:14px;font-weight:600;color:var(--black);margin-bottom:2px">Walter Arias</div>
-        <div style="font-size:12px;color:var(--orange);font-weight:500;margin-bottom:8px;line-height:1.4">Director de Tecnología e Innovación</div>
-        <a href="mailto:wlarias@inmobiliariolatam.com" style="font-size:11px;color:var(--gray);text-decoration:underline">wlarias@inmobiliariolatam.com</a>
-        <div style="font-size:11px;color:var(--gray);margin-top:4px">📱 +57 311 544 8932</div>
-      </div>
-      <div class="s-card" style="border-top:3px solid var(--orange)">
-        <div style="width:40px;height:40px;border-radius:50%;background:var(--orange);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;color:#fff;margin-bottom:10px">JP</div>
-        <div style="font-size:14px;font-weight:600;color:var(--black);margin-bottom:2px">Jorge Pando</div>
-        <div style="font-size:12px;color:var(--orange);font-weight:500;margin-bottom:8px;line-height:1.4">Director Comercial</div>
-        <a href="mailto:jpando@inmobiliariolatam.com" style="font-size:11px;color:var(--gray);text-decoration:underline">jpando@inmobiliariolatam.com</a>
-        <div style="font-size:11px;color:var(--gray);margin-top:4px">📱 +51 984 513 381</div>
-      </div>
-      <div class="s-card" style="border-top:3px solid #1A3D2B">
-        <div style="width:40px;height:40px;border-radius:50%;background:#1A3D2B;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;color:#fff;margin-bottom:10px">CB</div>
-        <div style="font-size:14px;font-weight:600;color:var(--black);margin-bottom:2px">Camila Bueno</div>
-        <div style="font-size:12px;color:var(--orange);font-weight:500;margin-bottom:8px;line-height:1.4">Directora Administrativa y de Gestión</div>
-        <a href="mailto:cbueno@inmobiliariolatam.com" style="font-size:11px;color:var(--gray);text-decoration:underline">cbueno@inmobiliariolatam.com</a>
-        <div style="font-size:11px;color:var(--gray);margin-top:4px">📱 +57 316 530 5770</div>
-      </div>
-    </div>
-
-    <div style="font-size:11px;font-weight:700;color:var(--orange);text-transform:uppercase;letter-spacing:.1em;margin-bottom:12px">Coordinación</div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-bottom:24px">
-      <div class="s-card" style="border-top:3px solid #1A2E4A">
-        <div style="width:40px;height:40px;border-radius:50%;background:#1A2E4A;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;color:#fff;margin-bottom:10px">SH</div>
-        <div style="font-size:14px;font-weight:600;color:var(--black);margin-bottom:2px">Ana Sofía Herreño</div>
-        <div style="font-size:12px;color:var(--orange);font-weight:500;margin-bottom:8px;line-height:1.4">Coordinadora de Operaciones Comerciales y Tecnología</div>
-        <a href="mailto:sbueno@inmobiliariolatam.com" style="font-size:11px;color:var(--gray);text-decoration:underline">sbueno@inmobiliariolatam.com</a>
-        <div style="font-size:11px;color:var(--gray);margin-top:4px">📱 +57 319 287 0952</div>
-      </div>
-      <div class="s-card" style="border-top:3px solid #534AB7">
-        <div style="width:40px;height:40px;border-radius:50%;background:#534AB7;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;color:#fff;margin-bottom:10px">RA</div>
-        <div style="font-size:14px;font-weight:600;color:var(--black);margin-bottom:2px">Rodrigo Arauco</div>
-        <div style="font-size:12px;color:var(--orange);font-weight:500;margin-bottom:8px;line-height:1.4">Ejecutivo de Soporte Comercial</div>
-        <a href="mailto:rarauco@inmobiliariolatam.com" style="font-size:11px;color:var(--gray);text-decoration:underline">rarauco@inmobiliariolatam.com</a>
-        <div style="font-size:11px;color:var(--gray);margin-top:4px">📱 +51 935 261 893</div>
-      </div>
-    </div>
-
-    <div style="font-size:11px;font-weight:700;color:var(--orange);text-transform:uppercase;letter-spacing:.1em;margin-bottom:12px">Soporte y Áreas Especializadas</div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-bottom:24px">
-      <div class="s-card" style="border-top:3px solid #888780">
-        <div style="width:40px;height:40px;border-radius:50%;background:#888780;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;color:#fff;margin-bottom:10px">BV</div>
-        <div style="font-size:14px;font-weight:600;color:var(--black);margin-bottom:2px">Brooke Villanueva</div>
-        <div style="font-size:12px;color:var(--orange);font-weight:500;margin-bottom:8px;line-height:1.4">Soporte Administrativo</div>
-        <a href="mailto:bvillanueva@inmobiliariolatam.com" style="font-size:11px;color:var(--gray);text-decoration:underline">bvillanueva@inmobiliariolatam.com</a>
-        <div style="font-size:11px;color:var(--gray);margin-top:4px">📱 +51 950 108 521</div>
-      </div>
-      <div class="s-card" style="border-top:3px solid #888780">
-        <div style="width:40px;height:40px;border-radius:50%;background:#888780;display:flex;align-items:center;justify-content:center;color:#fff;margin-bottom:10px">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+    <div class="team-section-label">Dirección</div>
+    <div class="team-grid">
+      <div class="team-card" style="border-top:3px solid #0D0D0D">
+        <div class="team-card-av" style="background:#0D0D0D">WA</div>
+        <div class="team-card-name">Walter Arias</div>
+        <div class="team-card-role">Director de Tecnología e Innovación</div>
+        <div class="team-card-ct">
+          <a href="mailto:wlarias@inmobiliariolatam.com" class="team-card-email">wlarias@inmobiliariolatam.com</a>
+          <span class="team-card-phone">📱 +57 311 544 8932</span>
         </div>
-        <div style="font-size:14px;font-weight:600;color:var(--black);margin-bottom:2px">Área Legal</div>
-        <div style="font-size:12px;color:var(--orange);font-weight:500;margin-bottom:8px;line-height:1.4">Asesoría Jurídica y Cumplimiento</div>
-        <a href="mailto:legal@inmobiliariolatam.com" style="font-size:11px;color:var(--gray);text-decoration:underline">legal@inmobiliariolatam.com</a>
       </div>
-      <div class="s-card" style="border-top:3px solid #888780">
-        <div style="width:40px;height:40px;border-radius:50%;background:#888780;display:flex;align-items:center;justify-content:center;color:#fff;margin-bottom:10px">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+      <div class="team-card" style="border-top:3px solid #E84E0F">
+        <div class="team-card-av" style="background:#E84E0F">JP</div>
+        <div class="team-card-name">Jorge Pando</div>
+        <div class="team-card-role">Director Comercial</div>
+        <div class="team-card-ct">
+          <a href="mailto:jpando@inmobiliariolatam.com" class="team-card-email">jpando@inmobiliariolatam.com</a>
+          <span class="team-card-phone">📱 +51 984 513 381</span>
         </div>
-        <div style="font-size:14px;font-weight:600;color:var(--black);margin-bottom:2px">Área Contable</div>
-        <div style="font-size:12px;color:var(--orange);font-weight:500;margin-bottom:8px;line-height:1.4">Gestión Financiera y Tributaria</div>
-        <a href="mailto:contabilidad@inmobiliariolatam.com" style="font-size:11px;color:var(--gray);text-decoration:underline">contabilidad@inmobiliariolatam.com</a>
+      </div>
+      <div class="team-card" style="border-top:3px solid #1A3D2B">
+        <div class="team-card-av" style="background:#1A3D2B">CB</div>
+        <div class="team-card-name">Camila Bueno</div>
+        <div class="team-card-role">Directora Administrativa y de Gestión</div>
+        <div class="team-card-ct">
+          <a href="mailto:cbueno@inmobiliariolatam.com" class="team-card-email">cbueno@inmobiliariolatam.com</a>
+          <span class="team-card-phone">📱 +57 316 530 5770</span>
+        </div>
       </div>
     </div>
-
+    <div class="team-section-label">Coordinación</div>
+    <div class="team-grid">
+      <div class="team-card" style="border-top:3px solid #1A2E4A">
+        <div class="team-card-av" style="background:#1A2E4A">SH</div>
+        <div class="team-card-name">Ana Sofía Herreño</div>
+        <div class="team-card-role">Coordinadora de Operaciones Comerciales y Tecnología</div>
+        <div class="team-card-ct">
+          <a href="mailto:sbueno@inmobiliariolatam.com" class="team-card-email">sbueno@inmobiliariolatam.com</a>
+          <span class="team-card-phone">📱 +57 319 287 0952</span>
+        </div>
+      </div>
+      <div class="team-card" style="border-top:3px solid #534AB7">
+        <div class="team-card-av" style="background:#534AB7">RA</div>
+        <div class="team-card-name">Rodrigo Arauco</div>
+        <div class="team-card-role">Ejecutivo de Soporte Comercial</div>
+        <div class="team-card-ct">
+          <a href="mailto:rarauco@inmobiliariolatam.com" class="team-card-email">rarauco@inmobiliariolatam.com</a>
+          <span class="team-card-phone">📱 +51 935 261 893</span>
+        </div>
+      </div>
+    </div>
+    <div class="team-section-label">Soporte y Áreas Especializadas</div>
+    <div class="team-grid">
+      <div class="team-card" style="border-top:3px solid #888780">
+        <div class="team-card-av" style="background:#888780">BV</div>
+        <div class="team-card-name">Brooke Villanueva</div>
+        <div class="team-card-role">Soporte Administrativo</div>
+        <div class="team-card-ct">
+          <a href="mailto:bvillanueva@inmobiliariolatam.com" class="team-card-email">bvillanueva@inmobiliariolatam.com</a>
+          <span class="team-card-phone">📱 +51 950 108 521</span>
+        </div>
+      </div>
+      <div class="team-card" style="border-top:3px solid #888780">
+        <div class="team-card-av" style="background:#888780"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:20px;height:20px"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <div class="team-card-name">Área Legal</div>
+        <div class="team-card-role">Asesoría Jurídica y Cumplimiento</div>
+        <div class="team-card-ct"><a href="mailto:legal@inmobiliariolatam.com" class="team-card-email">legal@inmobiliariolatam.com</a></div>
+      </div>
+      <div class="team-card" style="border-top:3px solid #888780">
+        <div class="team-card-av" style="background:#888780"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:20px;height:20px"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+        <div class="team-card-name">Área Contable</div>
+        <div class="team-card-role">Gestión Financiera y Tributaria</div>
+        <div class="team-card-ct"><a href="mailto:contabilidad@inmobiliariolatam.com" class="team-card-email">contabilidad@inmobiliariolatam.com</a></div>
+      </div>
+    </div>
     <div style="background:var(--gray-lt);border-radius:10px;padding:20px;margin-top:4px">
       <div style="font-size:14px;font-weight:600;color:var(--black);margin-bottom:5px">¿Tienes dudas durante tu proceso de formación?</div>
-      <div style="font-size:13px;color:var(--gray);line-height:1.7;margin-bottom:14px">Estamos para acompañarte en cada etapa del programa. Si tienes preguntas sobre el cronograma, sesiones, evaluación, acceso a herramientas o próximos pasos, puedes comunicarte con nuestro equipo.</div>
-      <div style="font-size:12px;font-weight:700;color:var(--black);margin-bottom:8px">Podemos ayudarte con:</div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:5px;margin-bottom:14px">
-        <div style="font-size:12px;color:var(--gray)">✅ Confirmación de horarios y modalidad</div>
-        <div style="font-size:12px;color:var(--gray)">✅ Dudas sobre el cronograma</div>
-        <div style="font-size:12px;color:var(--gray)">✅ Acceso a materiales y herramientas</div>
-        <div style="font-size:12px;color:var(--gray)">✅ Consultas sobre la evaluación final</div>
-        <div style="font-size:12px;color:var(--gray)">✅ Información sobre habilitación de leads</div>
-        <div style="font-size:12px;color:var(--gray)">✅ Acompañamiento en tus primeros pasos</div>
-      </div>
-      <div style="border-top:1px solid var(--gray-mid);padding-top:12px;margin-bottom:12px">
-        <div style="font-size:12px;color:var(--gray);line-height:1.8">
-          <strong style="color:var(--black)">Temas comerciales:</strong> Jorge Pando o Rodrigo Arauco<br>
-          <strong style="color:var(--black)">Accesos, CRM y herramientas:</strong> Walter Arias o Ana Sofía Herreño<br>
-          <strong style="color:var(--black)">Temas administrativos:</strong> Camila Bueno o Brooke Villanueva
-        </div>
+      <div style="font-size:13px;color:var(--gray);line-height:1.7;margin-bottom:14px">Estamos para acompañarte en cada etapa. Comunícate con el área correspondiente según tu consulta.</div>
+      <div style="font-size:12px;color:var(--gray);line-height:1.8;margin-bottom:14px;border-top:1px solid var(--gray-mid);padding-top:12px">
+        <strong style="color:var(--black)">Temas comerciales:</strong> Jorge Pando o Rodrigo Arauco<br>
+        <strong style="color:var(--black)">Accesos, CRM y herramientas:</strong> Walter Arias o Ana Sofía Herreño<br>
+        <strong style="color:var(--black)">Temas administrativos:</strong> Camila Bueno o Brooke Villanueva
       </div>
       <div style="display:flex;gap:8px;flex-wrap:wrap">
-        <a href="mailto:cbueno@inmobiliariolatam.com" style="display:inline-flex;align-items:center;gap:6px;background:var(--black);color:#fff;padding:9px 16px;border-radius:7px;font-size:12px;font-weight:600;text-decoration:none">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-          Escribir por correo
-        </a>
-        <a href="https://wa.me/573165305770?text=Hola%20Camila%2C%20tengo%20una%20consulta%20sobre%20el%20programa%20de%20formaci%C3%B3n" target="_blank" style="display:inline-flex;align-items:center;gap:6px;background:#25D366;color:#fff;padding:9px 16px;border-radius:7px;font-size:12px;font-weight:600;text-decoration:none">
-          <svg viewBox="0 0 24 24" fill="currentColor" style="width:14px;height:14px"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.117 1.523 5.845L.057 23.568a.5.5 0 00.609.61l5.74-1.508A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22a9.95 9.95 0 01-5.073-1.381l-.361-.214-3.742.983.998-3.648-.235-.374A9.952 9.952 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
-          Contactar por WhatsApp
-        </a>
+        <a href="mailto:cbueno@inmobiliariolatam.com" style="display:inline-flex;align-items:center;gap:6px;background:var(--black);color:#fff;padding:9px 16px;border-radius:7px;font-size:12px;font-weight:600;text-decoration:none"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>Escribir por correo</a>
+        <a href="https://wa.me/573165305770?text=Hola%20Camila%2C%20tengo%20una%20consulta%20sobre%20el%20programa%20de%20formaci%C3%B3n" target="_blank" style="display:inline-flex;align-items:center;gap:6px;background:#25D366;color:#fff;padding:9px 16px;border-radius:7px;font-size:12px;font-weight:600;text-decoration:none"><svg viewBox="0 0 24 24" fill="currentColor" style="width:14px;height:14px"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.117 1.523 5.845L.057 23.568a.5.5 0 00.609.61l5.74-1.508A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22a9.95 9.95 0 01-5.073-1.381l-.361-.214-3.742.983.998-3.648-.235-.374A9.952 9.952 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>WhatsApp</a>
       </div>
     </div>
   </div>
 
   <div class="section" id="tab-faq">
-    <div class="sec-hd"><div class="sec-title">Preguntas frecuentes</div><div class="sec-sub">Resolvemos las dudas más comunes del proceso de formación.</div></div>
-    <div style="display:flex;flex-direction:column;gap:10px">
+    <div class="sec-hd">
+      <div class="sec-title">Preguntas frecuentes</div>
+      <div class="sec-sub">Resolvemos las dudas más comunes del proceso de formación.</div>
+    </div>
+    <div class="faq-list">
       <details class="faq-item"><summary>¿Qué pasa si falto a una sesión?</summary><div class="faq-body">Debes coordinar con el responsable de formación para revisar el contenido pendiente. La asistencia completa es importante para garantizar tu habilitación al finalizar el programa.</div></details>
       <details class="faq-item"><summary>¿Cuándo puedo recibir leads?</summary><div class="faq-body">Después de completar la formación, aprobar la evaluación final y tener tus herramientas y perfiles digitales completamente habilitados. El equipo te notificará cuando estés listo para operar.</div></details>
       <details class="faq-item"><summary>¿La formación garantiza ingresos inmediatos?</summary><div class="faq-body">No. La formación te prepara para operar bajo el método comercial de Inmobiliario Latam, pero los resultados dependen de tu gestión, seguimiento y desempeño.</div></details>
       <details class="faq-item"><summary>¿Qué ocurre después de la evaluación?</summary><div class="faq-body">Ingresas a un período de acompañamiento comercial de 30 días donde se revisan tus primeros leads, seguimiento en CRM, habilidades de cierre y desempeño general.</div></details>
-      <details class="faq-item"><summary>¿Cómo accedo al CRM y las herramientas digitales?</summary><div class="faq-body">Los accesos se configuran durante el programa, en las sesiones de CRM y Notion. Si tienes algún problema, comunícate con Walter Arias (wlarias@inmobiliariolatam.com).</div></details>
-      <details class="faq-item"><summary>¿Puedo comunicarme con el equipo fuera de las sesiones?</summary><div class="faq-body">Sí. Puedes escribir por correo o WhatsApp al equipo de soporte. Para dudas rápidas usa el botón de WhatsApp. Para consultas formales usa el correo institucional del responsable del área.</div></details>
+      <details class="faq-item"><summary>¿Cómo accedo al CRM y las herramientas digitales?</summary><div class="faq-body">Los accesos se configuran durante el programa, en las sesiones de CRM y Notion. Si tienes algún problema, comunícate con Walter Arias o Ana Sofía Herreño.</div></details>
+      <details class="faq-item"><summary>¿Puedo comunicarme con el equipo fuera de las sesiones?</summary><div class="faq-body">Sí. Para dudas rápidas usa el botón de WhatsApp en la sección de Equipo. Para consultas formales usa el correo institucional del responsable del área.</div></details>
     </div>
   </div>
-
 
 <script>
 const REPO = 'camilabuenoIL/formacion';
@@ -605,8 +618,8 @@ function renderSchedule(data) {
 
       day.sessions.forEach(function(s) {
         var isTrain=/entren|roleplay/i.test(s.title||'');
+        if(isTrain) html += '<div class="training-wrapper"><div class="training-top">⭐ Entrenamiento práctico</div>';
         html += '<div class="session' + (isTrain?' training-sess':'') + '">'
-          + (isTrain?'<div class="training-badge">⭐ Entrenamiento práctico</div>':'')
           + '<div class="s-left">'
           + '<span class="s-time ' + timeClass(s) + '">' + s.time + '</span>'
           + '<span class="s-owner">' + s.owner + '</span>'
@@ -619,6 +632,7 @@ function renderSchedule(data) {
           + buildActions(s, day.num)
           + '</div>'
           + '</div>';
+        if(isTrain) html += '</div>';
       });
 
       html += '</div></div>';
@@ -651,17 +665,14 @@ function renderModules(data) {
         var bg = mod==='Virtual'?'#D4E4F7':mod==='Presencial/Virtual'?'#F0EBF8':'#D6EDE1';
         var tx = mod==='Virtual'?'#1A2E4A':mod==='Presencial/Virtual'?'#5B21B6':'#1A3D2B';
         var ic = mod==='Virtual'?'💻':mod==='Presencial/Virtual'?'🔄':'📍';
-        var desc = (s.desc||''); if(desc.length>140) desc=desc.substring(0,140)+'…';
-        var trainingBadge = isTraining ? '<div style="display:inline-flex;align-items:center;gap:4px;background:#FEF3C7;color:#92400E;font-size:10px;font-weight:700;padding:3px 9px;border-radius:4px;margin-bottom:7px;border:1px solid #FDE68A">⭐ Entrenamiento práctico</div>' : '';
-        var cardBorder = isTraining ? 'border:1px solid #FDE68A;border-top:3px solid #F59E0B' : 'border:1px solid var(--gray-mid)';
-        html += '<div class="mod-card" style="' + cardBorder + '">'
-          + trainingBadge
+        var desc = (s.desc||''); if(desc.length>130) desc=desc.substring(0,130)+'…';
+        html += '<div class="mod-card' + (isTraining?' mod-card-train':'') + '">'
+          + (isTraining?'<div class="mod-train-tag">⭐ Entrenamiento práctico</div>':'')
           + '<div class="mod-card-title">' + (s.title||'') + '</div>'
-          + (desc ? '<div class="mod-card-desc">' + desc + '</div>' : '')
-          + '<div class="mod-card-meta">'
-            + '<div class="mod-card-row"><span class="mod-meta-icon">⏰</span><span class="mod-meta-val">' + (s.time||'') + '</span></div>'
-            + '<div class="mod-card-row"><span class="mod-meta-icon">👤</span><span class="mod-meta-val">' + (s.owner||'') + '</span></div>'
-            + '<div style="margin-top:5px"><span style="background:' + bg + ';color:' + tx + ';font-size:10px;font-weight:600;padding:2px 8px;border-radius:3px">' + ic + ' ' + mod + '</span></div>'
+          + (desc?'<div class="mod-card-desc">' + desc + '</div>':'')
+          + '<div class="mod-card-ft">'
+            + '<span class="mod-card-who">👤 ' + (s.owner||'') + '</span>'
+            + '<span style="background:' + bg + ';color:' + tx + ';font-size:10px;font-weight:600;padding:2px 8px;border-radius:3px;white-space:nowrap">' + ic + ' ' + mod + '</span>'
           + '</div>'
         + '</div>';
       });
@@ -735,8 +746,7 @@ loadSchedule();
   #tab-equipo [style*="grid-template-columns"]{grid-template-columns:repeat(2,1fr)!important}
 }
 
-/* FAQ IMPROVED */
-#tab-faq .sec-hd{padding:0 4px}
+
 #tab-faq > div > div > div{padding:0 4px}
 .faq-item{margin:0;width:100%;box-sizing:border-box}
 .faq-item summary{padding:14px 16px;line-height:1.4}
@@ -747,8 +757,33 @@ loadSchedule();
 }
 
 /* TRAINING HIGHLIGHT */
-.session.training-sess{background:#FFFBEB!important;border-left:3px solid #F59E0B!important}
-.training-badge{display:inline-flex;align-items:center;gap:4px;background:#FEF3C7;color:#92400E;font-size:10px;font-weight:700;padding:2px 7px;border-radius:4px;margin-bottom:4px;border:1px solid #FDE68A}
+.training-wrapper{border-radius:10px;overflow:hidden;border:2px solid #F59E0B;margin-bottom:2px}
+.training-wrapper .training-top{background:#FEF3C7;color:#92400E;font-size:11px;font-weight:700;padding:7px 20px;display:flex;align-items:center;gap:5px;border-bottom:1px solid #FDE68A}
+.training-wrapper .session{border-top:none!important;background:#FFFBEB}
+
+/* TEAM CARDS */
+.team-section-label{font-size:11px;font-weight:700;color:var(--orange);text-transform:uppercase;letter-spacing:.1em;margin-bottom:14px;padding-bottom:6px;border-bottom:1px solid var(--gray-mid)}
+.team-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px;margin-bottom:28px}
+.team-card{background:var(--white);border:1px solid var(--gray-mid);border-radius:12px;padding:18px;box-shadow:0 1px 4px rgba(0,0,0,.06);display:flex;flex-direction:column}
+.team-card-av{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:#fff;margin-bottom:12px;flex-shrink:0}
+.team-card-name{font-size:14px;font-weight:600;color:var(--black);margin-bottom:3px}
+.team-card-role{font-size:12px;color:var(--orange);font-weight:500;margin-bottom:10px;line-height:1.4;flex:1}
+.team-card-ct{display:flex;flex-direction:column;gap:5px;margin-top:auto;padding-top:10px;border-top:1px solid var(--gray-mid)}
+.team-card-email{font-size:11px;color:var(--gray);text-decoration:underline;word-break:break-all}
+.team-card-phone{font-size:11px;color:var(--gray)}
+/* FAQ LIST */
+.faq-list{display:flex;flex-direction:column;gap:10px}
+.faq-item{background:var(--white);border:1px solid var(--gray-mid);border-radius:10px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.faq-item summary{padding:15px 18px;font-size:13px;font-weight:600;color:var(--black);cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;gap:12px;line-height:1.4}
+.faq-item summary::after{content:"▸";font-size:13px;color:var(--gray);transition:transform .2s;flex-shrink:0}
+.faq-item[open] summary::after{transform:rotate(90deg);color:var(--orange)}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-body{padding:13px 18px 16px;font-size:13px;color:var(--gray);line-height:1.7;border-top:1px solid var(--gray-mid)}
+@media(max-width:600px){
+  .team-grid{grid-template-columns:1fr}
+  .faq-item summary{padding:13px 15px;font-size:12px}
+  .faq-body{padding:12px 15px 14px;font-size:12px}
+}
 </style>
 <script>
 /* ── TEST INMOBILIARIO LATAM ──────────────────────────────────────────── */
@@ -1169,8 +1204,7 @@ function tstBuildPDFHTML(forEmail){
   #tab-equipo [style*="grid-template-columns"]{grid-template-columns:repeat(2,1fr)!important}
 }
 
-/* FAQ IMPROVED */
-#tab-faq .sec-hd{padding:0 4px}
+
 #tab-faq > div > div > div{padding:0 4px}
 .faq-item{margin:0;width:100%;box-sizing:border-box}
 .faq-item summary{padding:14px 16px;line-height:1.4}
@@ -1181,8 +1215,33 @@ function tstBuildPDFHTML(forEmail){
 }
 
 /* TRAINING HIGHLIGHT */
-.session.training-sess{background:#FFFBEB!important;border-left:3px solid #F59E0B!important}
-.training-badge{display:inline-flex;align-items:center;gap:4px;background:#FEF3C7;color:#92400E;font-size:10px;font-weight:700;padding:2px 7px;border-radius:4px;margin-bottom:4px;border:1px solid #FDE68A}
+.training-wrapper{border-radius:10px;overflow:hidden;border:2px solid #F59E0B;margin-bottom:2px}
+.training-wrapper .training-top{background:#FEF3C7;color:#92400E;font-size:11px;font-weight:700;padding:7px 20px;display:flex;align-items:center;gap:5px;border-bottom:1px solid #FDE68A}
+.training-wrapper .session{border-top:none!important;background:#FFFBEB}
+
+/* TEAM CARDS */
+.team-section-label{font-size:11px;font-weight:700;color:var(--orange);text-transform:uppercase;letter-spacing:.1em;margin-bottom:14px;padding-bottom:6px;border-bottom:1px solid var(--gray-mid)}
+.team-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px;margin-bottom:28px}
+.team-card{background:var(--white);border:1px solid var(--gray-mid);border-radius:12px;padding:18px;box-shadow:0 1px 4px rgba(0,0,0,.06);display:flex;flex-direction:column}
+.team-card-av{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:#fff;margin-bottom:12px;flex-shrink:0}
+.team-card-name{font-size:14px;font-weight:600;color:var(--black);margin-bottom:3px}
+.team-card-role{font-size:12px;color:var(--orange);font-weight:500;margin-bottom:10px;line-height:1.4;flex:1}
+.team-card-ct{display:flex;flex-direction:column;gap:5px;margin-top:auto;padding-top:10px;border-top:1px solid var(--gray-mid)}
+.team-card-email{font-size:11px;color:var(--gray);text-decoration:underline;word-break:break-all}
+.team-card-phone{font-size:11px;color:var(--gray)}
+/* FAQ LIST */
+.faq-list{display:flex;flex-direction:column;gap:10px}
+.faq-item{background:var(--white);border:1px solid var(--gray-mid);border-radius:10px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.faq-item summary{padding:15px 18px;font-size:13px;font-weight:600;color:var(--black);cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;gap:12px;line-height:1.4}
+.faq-item summary::after{content:"▸";font-size:13px;color:var(--gray);transition:transform .2s;flex-shrink:0}
+.faq-item[open] summary::after{transform:rotate(90deg);color:var(--orange)}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-body{padding:13px 18px 16px;font-size:13px;color:var(--gray);line-height:1.7;border-top:1px solid var(--gray-mid)}
+@media(max-width:600px){
+  .team-grid{grid-template-columns:1fr}
+  .faq-item summary{padding:13px 15px;font-size:12px}
+  .faq-body{padding:12px 15px 14px;font-size:12px}
+}
 </style>
   </head><body>
     <div style="background:#0D0D0D;color:#fff;padding:16px 22px;border-radius:8px;margin-bottom:20px;display:flex;align-items:center;justify-content:space-between">
