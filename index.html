@@ -42,7 +42,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--gray-lt);color:var(--blac
 
 /* MAIN */
 .main{max-width:880px;margin:0 auto;padding:36px 28px 80px}
-.section{display:none}.section.active{display:block}
+.section{display:none}.section.active{display:block;padding-top:4px}
 
 /* WEEK BANNER */
 .week-banner{padding:14px 20px;border-radius:8px 8px 0 0;margin-top:32px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
@@ -130,6 +130,8 @@ body{font-family:'DM Sans',sans-serif;background:var(--gray-lt);color:var(--blac
 /* RESPONSIVE */
 @media(max-width:580px){
   .hero-inner,.main{padding-left:16px;padding-right:16px}
+  .tabs{padding:0 16px}
+  .tab{padding:13px 12px;font-size:12px}
   .session{grid-template-columns:1fr}
   .s-left{border-bottom:1px solid var(--gray-mid)}
   .eval-grid{grid-template-columns:1fr}
@@ -147,7 +149,8 @@ body{font-family:'DM Sans',sans-serif;background:var(--gray-lt);color:var(--blac
 .s-card{background:var(--white);border:1px solid var(--gray-mid);border-radius:10px;padding:16px;box-shadow:0 1px 3px rgba(0,0,0,.05)}
 
 /* TEAM SECTION IMPROVED */
-#tab-equipo .sec-hd{padding:0 4px}
+#tab-equipo .sec-hd{padding:0;margin-bottom:24px}
+.sec-sub{font-size:14px;color:var(--gray);line-height:1.7;margin-top:8px;max-width:640px}
 #tab-equipo .s-card{padding:16px;display:flex;flex-direction:column;gap:0;min-width:0;word-break:break-word}
 #tab-equipo .s-card a{word-break:break-all}
 @media(max-width:480px){
@@ -736,7 +739,8 @@ loadSchedule();
 .tst-fb-err{background:#FEE2E2;color:#991B1B;border:1px solid #FECACA}
 
 /* TEAM SECTION IMPROVED */
-#tab-equipo .sec-hd{padding:0 4px}
+#tab-equipo .sec-hd{padding:0;margin-bottom:24px}
+.sec-sub{font-size:14px;color:var(--gray);line-height:1.7;margin-top:8px;max-width:640px}
 #tab-equipo .s-card{padding:16px;display:flex;flex-direction:column;gap:0;min-width:0;word-break:break-word}
 #tab-equipo .s-card a{word-break:break-all}
 @media(max-width:480px){
@@ -1194,7 +1198,8 @@ function tstBuildPDFHTML(forEmail){
       @media print{body{padding:10px}@page{margin:15mm}}
     
 /* TEAM SECTION IMPROVED */
-#tab-equipo .sec-hd{padding:0 4px}
+#tab-equipo .sec-hd{padding:0;margin-bottom:24px}
+.sec-sub{font-size:14px;color:var(--gray);line-height:1.7;margin-top:8px;max-width:640px}
 #tab-equipo .s-card{padding:16px;display:flex;flex-direction:column;gap:0;min-width:0;word-break:break-word}
 #tab-equipo .s-card a{word-break:break-all}
 @media(max-width:480px){
