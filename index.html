@@ -145,6 +145,32 @@ body{font-family:'DM Sans',sans-serif;background:var(--gray-lt);color:var(--blac
 .faq-item summary::-webkit-details-marker{display:none}
 .faq-body{padding:12px 16px 14px;font-size:13px;color:var(--gray);line-height:1.7;border-top:1px solid var(--gray-mid)}
 .s-card{background:var(--white);border:1px solid var(--gray-mid);border-radius:10px;padding:16px;box-shadow:0 1px 3px rgba(0,0,0,.05)}
+
+/* TEAM SECTION IMPROVED */
+#tab-equipo .sec-hd{padding:0 4px}
+#tab-equipo .s-card{padding:16px;display:flex;flex-direction:column;gap:0;min-width:0;word-break:break-word}
+#tab-equipo .s-card a{word-break:break-all}
+@media(max-width:480px){
+  #tab-equipo [style*="grid-template-columns"]{grid-template-columns:1fr!important}
+}
+@media(min-width:481px) and (max-width:768px){
+  #tab-equipo [style*="grid-template-columns"]{grid-template-columns:repeat(2,1fr)!important}
+}
+
+/* FAQ IMPROVED */
+#tab-faq .sec-hd{padding:0 4px}
+#tab-faq > div > div > div{padding:0 4px}
+.faq-item{margin:0;width:100%;box-sizing:border-box}
+.faq-item summary{padding:14px 16px;line-height:1.4}
+.faq-body{padding:0 16px 14px 16px;margin-top:0}
+@media(max-width:600px){
+  .faq-item summary{padding:12px 14px;font-size:12px}
+  .faq-body{padding:0 14px 12px 14px;font-size:12px}
+}
+
+/* TRAINING HIGHLIGHT */
+.session.training-sess{background:#FFFBEB!important;border-left:3px solid #F59E0B!important}
+.training-badge{display:inline-flex;align-items:center;gap:4px;background:#FEF3C7;color:#92400E;font-size:10px;font-weight:700;padding:2px 7px;border-radius:4px;margin-bottom:4px;border:1px solid #FDE68A}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 <!-- PDF generated in new window, no print CSS needed -->
@@ -219,6 +245,10 @@ body{font-family:'DM Sans',sans-serif;background:var(--gray-lt);color:var(--blac
     <div class="sec-header">
       <div class="sec-title">¿Qué necesitas para ser habilitado?</div>
       <p class="sec-desc">La evaluación es el Día 10 (viernes 19 de junio de 2026). La habilitación te permite recibir leads reales de forma autónoma.</p>
+    </div>
+    <div style="background:#FEF3C7;border:1px solid #FDE68A;border-left:4px solid var(--orange);border-radius:8px;padding:14px 16px;margin-bottom:16px">
+      <div style="font-size:13px;font-weight:600;color:#92400E;margin-bottom:3px">💡 Importante</div>
+      <div style="font-size:13px;color:#92400E;line-height:1.6">Esta evaluación no busca excluir, sino identificar el nivel de preparación del agente antes de entregarle leads reales para su gestión comercial.</div>
     </div>
     <table class="tbl">
       <tr><th>Criterio</th><th>Peso</th><th>Cómo se evalúa</th></tr>
@@ -348,18 +378,21 @@ body{font-family:'DM Sans',sans-serif;background:var(--gray-lt);color:var(--blac
         <div style="font-size:14px;font-weight:600;color:var(--black);margin-bottom:2px">Walter Arias</div>
         <div style="font-size:12px;color:var(--orange);font-weight:500;margin-bottom:8px;line-height:1.4">Director de Tecnología e Innovación</div>
         <a href="mailto:wlarias@inmobiliariolatam.com" style="font-size:11px;color:var(--gray);text-decoration:underline">wlarias@inmobiliariolatam.com</a>
+        <div style="font-size:11px;color:var(--gray);margin-top:4px">📱 +57 311 544 8932</div>
       </div>
       <div class="s-card" style="border-top:3px solid var(--orange)">
         <div style="width:40px;height:40px;border-radius:50%;background:var(--orange);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;color:#fff;margin-bottom:10px">JP</div>
         <div style="font-size:14px;font-weight:600;color:var(--black);margin-bottom:2px">Jorge Pando</div>
         <div style="font-size:12px;color:var(--orange);font-weight:500;margin-bottom:8px;line-height:1.4">Director Comercial</div>
         <a href="mailto:jpando@inmobiliariolatam.com" style="font-size:11px;color:var(--gray);text-decoration:underline">jpando@inmobiliariolatam.com</a>
+        <div style="font-size:11px;color:var(--gray);margin-top:4px">📱 +51 984 513 381</div>
       </div>
       <div class="s-card" style="border-top:3px solid #1A3D2B">
         <div style="width:40px;height:40px;border-radius:50%;background:#1A3D2B;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;color:#fff;margin-bottom:10px">CB</div>
         <div style="font-size:14px;font-weight:600;color:var(--black);margin-bottom:2px">Camila Bueno</div>
         <div style="font-size:12px;color:var(--orange);font-weight:500;margin-bottom:8px;line-height:1.4">Directora Administrativa y de Gestión</div>
         <a href="mailto:cbueno@inmobiliariolatam.com" style="font-size:11px;color:var(--gray);text-decoration:underline">cbueno@inmobiliariolatam.com</a>
+        <div style="font-size:11px;color:var(--gray);margin-top:4px">📱 +57 316 530 5770</div>
       </div>
     </div>
 
@@ -370,12 +403,14 @@ body{font-family:'DM Sans',sans-serif;background:var(--gray-lt);color:var(--blac
         <div style="font-size:14px;font-weight:600;color:var(--black);margin-bottom:2px">Ana Sofía Herreño</div>
         <div style="font-size:12px;color:var(--orange);font-weight:500;margin-bottom:8px;line-height:1.4">Coordinadora de Operaciones Comerciales y Tecnología</div>
         <a href="mailto:sbueno@inmobiliariolatam.com" style="font-size:11px;color:var(--gray);text-decoration:underline">sbueno@inmobiliariolatam.com</a>
+        <div style="font-size:11px;color:var(--gray);margin-top:4px">📱 +57 319 287 0952</div>
       </div>
       <div class="s-card" style="border-top:3px solid #534AB7">
         <div style="width:40px;height:40px;border-radius:50%;background:#534AB7;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;color:#fff;margin-bottom:10px">RA</div>
         <div style="font-size:14px;font-weight:600;color:var(--black);margin-bottom:2px">Rodrigo Arauco</div>
         <div style="font-size:12px;color:var(--orange);font-weight:500;margin-bottom:8px;line-height:1.4">Ejecutivo de Soporte Comercial</div>
         <a href="mailto:rarauco@inmobiliariolatam.com" style="font-size:11px;color:var(--gray);text-decoration:underline">rarauco@inmobiliariolatam.com</a>
+        <div style="font-size:11px;color:var(--gray);margin-top:4px">📱 +51 935 261 893</div>
       </div>
     </div>
 
@@ -386,6 +421,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--gray-lt);color:var(--blac
         <div style="font-size:14px;font-weight:600;color:var(--black);margin-bottom:2px">Brooke Villanueva</div>
         <div style="font-size:12px;color:var(--orange);font-weight:500;margin-bottom:8px;line-height:1.4">Soporte Administrativo</div>
         <a href="mailto:bvillanueva@inmobiliariolatam.com" style="font-size:11px;color:var(--gray);text-decoration:underline">bvillanueva@inmobiliariolatam.com</a>
+        <div style="font-size:11px;color:var(--gray);margin-top:4px">📱 +51 950 108 521</div>
       </div>
       <div class="s-card" style="border-top:3px solid #888780">
         <div style="width:40px;height:40px;border-radius:50%;background:#888780;display:flex;align-items:center;justify-content:center;color:#fff;margin-bottom:10px">
@@ -419,8 +455,8 @@ body{font-family:'DM Sans',sans-serif;background:var(--gray-lt);color:var(--blac
       </div>
       <div style="border-top:1px solid var(--gray-mid);padding-top:12px;margin-bottom:12px">
         <div style="font-size:12px;color:var(--gray);line-height:1.8">
-          <strong style="color:var(--black)">Temas comerciales:</strong> Jorge Pando o Ana Sofía Herreño<br>
-          <strong style="color:var(--black)">Accesos, CRM y herramientas:</strong> Walter Arias<br>
+          <strong style="color:var(--black)">Temas comerciales:</strong> Jorge Pando o Rodrigo Arauco<br>
+          <strong style="color:var(--black)">Accesos, CRM y herramientas:</strong> Walter Arias o Ana Sofía Herreño<br>
           <strong style="color:var(--black)">Temas administrativos:</strong> Camila Bueno o Brooke Villanueva
         </div>
       </div>
@@ -568,7 +604,9 @@ function renderSchedule(data) {
         + '<div class="sessions' + (isOpen?' open':'') + '">';
 
       day.sessions.forEach(function(s) {
-        html += '<div class="session">'
+        var isTrain=/entren|roleplay/i.test(s.title||'');
+        html += '<div class="session' + (isTrain?' training-sess':'') + '">'
+          + (isTrain?'<div class="training-badge">⭐ Entrenamiento práctico</div>':'')
           + '<div class="s-left">'
           + '<span class="s-time ' + timeClass(s) + '">' + s.time + '</span>'
           + '<span class="s-owner">' + s.owner + '</span>'
@@ -592,15 +630,45 @@ function renderSchedule(data) {
 
 function renderModules(data) {
   var c = document.getElementById('modules-container');
+  if(!c) return;
+  var weeks = (data.weeks || []);
+  if(!weeks.length) return;
   var html = '';
-  data.modules.forEach(function(m) {
-    html += '<div class="mod-row">'
-      + '<span class="mod-n">' + m.num + '</span>'
-      + '<div><div class="mod-t">' + m.title + '</div><div class="mod-o">' + m.owner + '</div></div>'
-      + '<span class="mod-d">' + m.dia + '</span>'
-      + '</div>';
+  weeks.forEach(function(week){
+    html += '<div class="mod-week-hdr">Semana ' + (week.num||'') + '</div>';
+    (week.days||[]).forEach(function(day){
+      var sessions = day.sessions||[];
+      if(!sessions.length) return;
+      var ddate = (day.date||'').replace(/^./,function(c){return c.toUpperCase();});
+      html += '<div class="mod-day-block">'
+        + '<div class="mod-day-hdr">'
+          + '<div class="mod-day-pill">DÍA ' + (day.num||'') + '</div>'
+          + '<div class="mod-day-date">' + ddate + '</div>'
+        + '</div><div class="mod-cards-grid">';
+      sessions.forEach(function(s){
+        var mod = s.modality||'Presencial';
+        var isTraining = /entren|roleplay/i.test(s.title||'');
+        var bg = mod==='Virtual'?'#D4E4F7':mod==='Presencial/Virtual'?'#F0EBF8':'#D6EDE1';
+        var tx = mod==='Virtual'?'#1A2E4A':mod==='Presencial/Virtual'?'#5B21B6':'#1A3D2B';
+        var ic = mod==='Virtual'?'💻':mod==='Presencial/Virtual'?'🔄':'📍';
+        var desc = (s.desc||''); if(desc.length>140) desc=desc.substring(0,140)+'…';
+        var trainingBadge = isTraining ? '<div style="display:inline-flex;align-items:center;gap:4px;background:#FEF3C7;color:#92400E;font-size:10px;font-weight:700;padding:3px 9px;border-radius:4px;margin-bottom:7px;border:1px solid #FDE68A">⭐ Entrenamiento práctico</div>' : '';
+        var cardBorder = isTraining ? 'border:1px solid #FDE68A;border-top:3px solid #F59E0B' : 'border:1px solid var(--gray-mid)';
+        html += '<div class="mod-card" style="' + cardBorder + '">'
+          + trainingBadge
+          + '<div class="mod-card-title">' + (s.title||'') + '</div>'
+          + (desc ? '<div class="mod-card-desc">' + desc + '</div>' : '')
+          + '<div class="mod-card-meta">'
+            + '<div class="mod-card-row"><span class="mod-meta-icon">⏰</span><span class="mod-meta-val">' + (s.time||'') + '</span></div>'
+            + '<div class="mod-card-row"><span class="mod-meta-icon">👤</span><span class="mod-meta-val">' + (s.owner||'') + '</span></div>'
+            + '<div style="margin-top:5px"><span style="background:' + bg + ';color:' + tx + ';font-size:10px;font-weight:600;padding:2px 8px;border-radius:3px">' + ic + ' ' + mod + '</span></div>'
+          + '</div>'
+        + '</div>';
+      });
+      html += '</div></div>';
+    });
   });
-  c.innerHTML = html;
+  c.innerHTML = html || '<div style="color:var(--gray);font-size:13px;padding:20px">Cargando módulos...</div>';
 }
 
 async function loadSchedule() {
@@ -655,6 +723,32 @@ loadSchedule();
 .tst-fb{margin-top:9px;padding:9px 12px;border-radius:6px;font-size:12px;line-height:1.6;display:none}
 .tst-fb-ok{background:#D6EDE1;color:#1A3D2B;border:1px solid #A5D6B5}
 .tst-fb-err{background:#FEE2E2;color:#991B1B;border:1px solid #FECACA}
+
+/* TEAM SECTION IMPROVED */
+#tab-equipo .sec-hd{padding:0 4px}
+#tab-equipo .s-card{padding:16px;display:flex;flex-direction:column;gap:0;min-width:0;word-break:break-word}
+#tab-equipo .s-card a{word-break:break-all}
+@media(max-width:480px){
+  #tab-equipo [style*="grid-template-columns"]{grid-template-columns:1fr!important}
+}
+@media(min-width:481px) and (max-width:768px){
+  #tab-equipo [style*="grid-template-columns"]{grid-template-columns:repeat(2,1fr)!important}
+}
+
+/* FAQ IMPROVED */
+#tab-faq .sec-hd{padding:0 4px}
+#tab-faq > div > div > div{padding:0 4px}
+.faq-item{margin:0;width:100%;box-sizing:border-box}
+.faq-item summary{padding:14px 16px;line-height:1.4}
+.faq-body{padding:0 16px 14px 16px;margin-top:0}
+@media(max-width:600px){
+  .faq-item summary{padding:12px 14px;font-size:12px}
+  .faq-body{padding:0 14px 12px 14px;font-size:12px}
+}
+
+/* TRAINING HIGHLIGHT */
+.session.training-sess{background:#FFFBEB!important;border-left:3px solid #F59E0B!important}
+.training-badge{display:inline-flex;align-items:center;gap:4px;background:#FEF3C7;color:#92400E;font-size:10px;font-weight:700;padding:2px 7px;border-radius:4px;margin-bottom:4px;border:1px solid #FDE68A}
 </style>
 <script>
 /* ── TEST INMOBILIARIO LATAM ──────────────────────────────────────────── */
@@ -1063,7 +1157,33 @@ function tstBuildPDFHTML(forEmail){
     <style>
       body{font-family:Arial,sans-serif;color:#0D0D0D;max-width:750px;margin:0 auto;padding:28px;font-size:13px}
       @media print{body{padding:10px}@page{margin:15mm}}
-    </style>
+    
+/* TEAM SECTION IMPROVED */
+#tab-equipo .sec-hd{padding:0 4px}
+#tab-equipo .s-card{padding:16px;display:flex;flex-direction:column;gap:0;min-width:0;word-break:break-word}
+#tab-equipo .s-card a{word-break:break-all}
+@media(max-width:480px){
+  #tab-equipo [style*="grid-template-columns"]{grid-template-columns:1fr!important}
+}
+@media(min-width:481px) and (max-width:768px){
+  #tab-equipo [style*="grid-template-columns"]{grid-template-columns:repeat(2,1fr)!important}
+}
+
+/* FAQ IMPROVED */
+#tab-faq .sec-hd{padding:0 4px}
+#tab-faq > div > div > div{padding:0 4px}
+.faq-item{margin:0;width:100%;box-sizing:border-box}
+.faq-item summary{padding:14px 16px;line-height:1.4}
+.faq-body{padding:0 16px 14px 16px;margin-top:0}
+@media(max-width:600px){
+  .faq-item summary{padding:12px 14px;font-size:12px}
+  .faq-body{padding:0 14px 12px 14px;font-size:12px}
+}
+
+/* TRAINING HIGHLIGHT */
+.session.training-sess{background:#FFFBEB!important;border-left:3px solid #F59E0B!important}
+.training-badge{display:inline-flex;align-items:center;gap:4px;background:#FEF3C7;color:#92400E;font-size:10px;font-weight:700;padding:2px 7px;border-radius:4px;margin-bottom:4px;border:1px solid #FDE68A}
+</style>
   </head><body>
     <div style="background:#0D0D0D;color:#fff;padding:16px 22px;border-radius:8px;margin-bottom:20px;display:flex;align-items:center;justify-content:space-between">
       <div>
