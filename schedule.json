@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "12 de junio de 2026",
+  "lastUpdated": "16 de junio de 2026",
   "startDate": "Lunes 8 de junio de 2026",
   "weeks": [
     {
@@ -268,16 +268,6 @@
               "desc": "Uso de Notion para consultar y gestionar inventario inmobiliario · lectura de fichas de propiedades, estados de disponibilidad y datos comerciales clave · transformación de la información técnica en argumentos útiles para el cliente.",
               "calEventId": "vas2dbh9n8j8klo88825ar9580",
               "meetUrl": ""
-            },
-            {
-              "time": "5:00 – 6:00",
-              "owner": "Jorge Pando / Walter Arias",
-              "slot": "Tarde",
-              "modality": "Presencial",
-              "title": "Entrenamiento Práctico 1: Llamadas de Calificación para Nuevos Requerimientos",
-              "desc": "Práctica guiada de llamadas de calificación para leads categorizados como Nuevos Requerimientos · aplicación de preguntas clave, validación de necesidades, registro de información y definición del siguiente paso comercial.",
-              "meetUrl": "",
-              "calEventId": "ohmdngtf0msou3risuktp0v0i4"
             }
           ],
           "_isoDate": "2026-06-16"
