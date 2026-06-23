@@ -972,7 +972,7 @@ function openTest(){
   document.getElementById('tst-submit-bar').style.display='none';
   document.getElementById('tst-results').style.display='none';
   document.getElementById('tst-prog-bar').style.width='0%';
-  document.getElementById('tst-prog-badge').textContent='0/30';
+  document.getElementById('tst-prog-badge').textContent='0/34';
 }
 
 function closeTest(){
@@ -1026,18 +1026,18 @@ function tstSelect(qid,idx){
     }
   }));
   const ans=Object.keys(_tstAnswers).length;
-  const pct=(ans/30)*100;
+  const pct=(ans/34)*100;
   document.getElementById('tst-prog-bar').style.width=pct+'%';
-  document.getElementById('tst-prog-badge').textContent=ans+'/30';
+  document.getElementById('tst-prog-badge').textContent=ans+'/34';
   const hint=document.getElementById('tst-hint'),btn=document.getElementById('tst-submit-btn');
   if(ans===30){hint.textContent='✓ Todas respondidas';hint.style.color='#1A3D2B';btn.disabled=false;btn.style.opacity='1';}
-  else{hint.textContent=(30-ans)+' sin responder';hint.style.color='#5C5C5C';btn.disabled=true;btn.style.opacity='.4';}
+  else{hint.textContent=(34-ans)+' sin responder';hint.style.color='#5C5C5C';btn.disabled=true;btn.style.opacity='.4';}
 }
 
 const TST_DONE_KEY='il_tst_done';
 
 function tstSubmit(){
-  if(Object.keys(_tstAnswers).length<30)return;
+  if(Object.keys(_tstAnswers).length<34)return;
   _tstSubmitted=true;
   let correct=0;
   const areaScores={};
@@ -1063,7 +1063,7 @@ function tstSubmit(){
     });
     areaScores[area.id]={ok:aOk,total:area.questions.length,title:area.title};
   });
-  const pct=Math.round((correct/30)*100);
+  const pct=Math.round((correct/34)*100);
   let status,stColor;
   if(pct>=80){status='✓ Habilitado';stColor='#1A3D2B';}
   else if(pct>=70){status='Habilitado con supervisión';stColor='#92400E';}
