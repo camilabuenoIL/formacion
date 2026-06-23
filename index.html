@@ -966,6 +966,16 @@ function openTest(){
   document.getElementById('test-overlay').style.display='block';
   document.body.style.overflow='hidden';
   _tstAnswers={}; _tstSubmitted=false;
+  // Check for saved progress
+  try{
+    const _saved=JSON.parse(localStorage.getItem(TST_PROG_KEY)||'null');
+    if(_saved && _saved.name && _saved.email){
+      document.getElementById('tst-name').value=_saved.name;
+      document.getElementById('tst-email').value=_saved.email;
+      const _hint=document.getElementById('tst-resume-hint');
+      if(_hint){_hint.style.display='block';_hint.textContent='↩ Retomando sesión de '+_saved.name+' — responde desde donde quedaste';}
+    }
+  }catch(e){}
   // Reset
   document.getElementById('tst-start').style.display='block';
   document.getElementById('tst-quiz').style.display='none';
@@ -977,6 +987,7 @@ function openTest(){
 
 function closeTest(){
   if(_tstSubmitted||Object.keys(_tstAnswers).length===0||confirm('¿Seguro que quieres cerrar? Tu progreso se perderá.')){
+    localStorage.removeItem(TST_PROG_KEY);
     document.getElementById('test-overlay').style.display='none';
     document.body.style.overflow='';
   }
@@ -1010,6 +1021,31 @@ function tstRenderQuiz(){
   });
   html+='</div>';
   con.innerHTML=html;
+  // Restore scroll position if saved
+  const _prog=JSON.parse(localStorage.getItem(TST_PROG_KEY)||'null');
+  if(_prog && _prog.email===_tstEmail){
+    const lastCard=document.getElementById('tqc-'+_prog.lastQ);
+    if(lastCard) setTimeout(()=>lastCard.scrollIntoView({behavior:'smooth',block:'center'}),300);
+  }
+  // Save scroll position on scroll (debounced)
+  let _scrollTimer=null;
+  document.getElementById('test-overlay').addEventListener('scroll',function(){
+    clearTimeout(_scrollTimer);
+    _scrollTimer=setTimeout(function(){
+      // Find topmost visible question card
+      const cards=document.querySelectorAll('.tst-qcard');
+      let lastVisible=null;
+      cards.forEach(c=>{
+        const rect=c.getBoundingClientRect();
+        const overlay=document.getElementById('test-overlay');
+        const ovRect=overlay?overlay.getBoundingClientRect():{top:0};
+        if(rect.top < ovRect.top + (overlay?overlay.clientHeight:window.innerHeight)*0.6) lastVisible=c.id.replace('tqc-','');
+      });
+      if(lastVisible && _tstName && _tstEmail){
+        localStorage.setItem(TST_PROG_KEY,JSON.stringify({name:_tstName,email:_tstEmail,lastQ:lastVisible,ts:Date.now()}));
+      }
+    },400);
+  });
 }
 
 function tstSelect(qid,idx){
@@ -1035,10 +1071,12 @@ function tstSelect(qid,idx){
 }
 
 const TST_DONE_KEY='il_tst_done';
+const TST_PROG_KEY='il_tst_progress_v1';
 
 function tstSubmit(){
   if(Object.keys(_tstAnswers).length<34)return;
   _tstSubmitted=true;
+  localStorage.removeItem(TST_PROG_KEY);
   let correct=0;
   const areaScores={};
   AREAS.forEach(area=>{
