@@ -1162,13 +1162,19 @@ function switchEvalSub(tab){
 }
 
 // ── TEST EDITOR ───────────────────────────────────────────────────────────────
-const TE_KEY='il_test_edits';
+const TE_KEY='il_test_edits_v34';
 
 function getTestData(){
   const saved=localStorage.getItem(TE_KEY);
   if(saved){try{return JSON.parse(saved);}catch(e){}}
   // Pull from live AREAS in the page
   return JSON.parse(JSON.stringify(typeof AREAS!=='undefined'?AREAS:[]));
+}
+
+function resetTestToOriginal(){
+  if(!confirm('¿Restaurar las 34 preguntas originales? Se perderán los cambios guardados en este navegador.')) return;
+  localStorage.removeItem(TE_KEY);
+  renderTestEditor();
 }
 
 function renderTrainerGuideAdmin(){
@@ -1350,6 +1356,7 @@ function renderTestEditor(){
   let html=`<div class="card" style="background:var(--orange-lt);border-color:var(--orange);margin-bottom:14px;padding:14px 16px">
     <div style="font-size:13px;font-weight:600;color:var(--orange);margin-bottom:3px">✏️ Editor del test</div>
     <div style="font-size:12px;color:#5C3A1E;line-height:1.6">Edita preguntas, opciones y respuestas correctas. Los cambios se aplican inmediatamente al test que ven los agentes en la página de formación.</div>
+    <button onclick="resetTestToOriginal()" style="margin-top:10px;padding:6px 14px;background:var(--black);color:#fff;border:none;border-radius:6px;font-size:12px;font-weight:600;cursor:pointer;">↩ Restaurar preguntas originales (34)</button>
   </div>`;
   areas.forEach((area,ai)=>{
     html+=`<div class="te-area">
