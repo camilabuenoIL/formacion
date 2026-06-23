@@ -1358,6 +1358,7 @@ function renderTestEditor(){
     <div style="font-size:12px;color:#5C3A1E;line-height:1.6">Edita preguntas, opciones y respuestas correctas. Los cambios se aplican inmediatamente al test que ven los agentes en la página de formación.</div>
     <button onclick="resetTestToOriginal()" style="margin-top:10px;padding:6px 14px;background:var(--black);color:#fff;border:none;border-radius:6px;font-size:12px;font-weight:600;cursor:pointer;">↩ Restaurar preguntas originales (34)</button>
   </div>`;
+  let _qNum=0;
   areas.forEach((area,ai)=>{
     html+=`<div class="te-area">
       <div class="te-area-hdr ${COLORS[ai]}" onclick="toggleTeArea(${ai})">
@@ -1368,7 +1369,7 @@ function renderTestEditor(){
       <div class="te-area-body" id="te-body-${ai}">`;
     area.questions.forEach((q,qi)=>{
       html+=`<div class="te-q">
-        <span class="te-q-num">P${q.id||qi+1}</span>
+        <span class="te-q-num">P${++_qNum}</span>
         <div class="te-field">
           <label>Pregunta</label>
           <textarea id="teq-${ai}-${qi}" rows="2">${esc(q.q)}</textarea>
@@ -1658,6 +1659,7 @@ function renderFormadorTest(){
     <div style="font-size:12px;color:#5C3A1E;line-height:1.6">Respuestas correctas marcadas en verde · Guía oral integrada por pregunta · Solo visible para formadores</div>
   </div>`;
 
+  let _n=0;
   AREAS.forEach(area=>{
     const aStyle = AREA_COLORS[area.id] || 'background:#0D0D0D;color:#fff';
     html += `<div style="${aStyle};padding:11px 16px;border-radius:8px;margin-bottom:10px;display:flex;align-items:center;gap:10px">
@@ -1668,7 +1670,7 @@ function renderFormadorTest(){
     area.questions.forEach(q=>{
       html += `<div class="fq-card" style="border:1px solid var(--gray-mid);border-radius:10px;padding:15px;margin-bottom:10px;background:var(--white)">
         <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
-          <span style="font-size:10px;font-weight:700;color:var(--orange);background:var(--orange-lt);padding:2px 8px;border-radius:4px">P${q.id}</span>
+          <span style="font-size:10px;font-weight:700;color:var(--orange);background:var(--orange-lt);padding:2px 8px;border-radius:4px">P${++_n}</span>
           <span style="font-size:11px;font-weight:600;color:var(--green-tx);background:var(--green-lt);padding:2px 9px;border-radius:4px">✓ ${LETTERS[q.ans]}) correcta</span>
         </div>
         <div style="font-size:13px;font-weight:600;color:var(--black);margin-bottom:10px;line-height:1.5">${q.q}</div>
