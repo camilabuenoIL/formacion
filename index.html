@@ -1030,7 +1030,7 @@ function tstSelect(qid,idx){
   document.getElementById('tst-prog-bar').style.width=pct+'%';
   document.getElementById('tst-prog-badge').textContent=ans+'/34';
   const hint=document.getElementById('tst-hint'),btn=document.getElementById('tst-submit-btn');
-  if(ans===30){hint.textContent='✓ Todas respondidas';hint.style.color='#1A3D2B';btn.disabled=false;btn.style.opacity='1';}
+  if(ans===34){hint.textContent='✓ Todas respondidas';hint.style.color='#1A3D2B';btn.disabled=false;btn.style.opacity='1';}
   else{hint.textContent=(34-ans)+' sin responder';hint.style.color='#5C5C5C';btn.disabled=true;btn.style.opacity='.4';}
 }
 
