@@ -383,10 +383,11 @@ document.getElementById('surveyForm').addEventListener('submit', async e => {
   };
 
   try {
+    const form = new FormData();
+    form.append('data', JSON.stringify(payload));
     await fetch(SURVEY_PROXY, {
       method: 'POST',
-      headers: { 'Content-Type': 'text/plain' },
-      body: JSON.stringify(payload),
+      body: form,
       mode: 'no-cors'
     });
 
