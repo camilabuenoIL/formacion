@@ -1,16 +1,17 @@
 {
-  "lastUpdated": "16 de junio de 2026",
-  "startDate": "Lunes 8 de junio de 2026",
+  "lastUpdated": "17 de julio de 2026",
+  "startDate": "Lunes 20 de julio de 2026",
   "weeks": [
     {
       "label": "Semana 1",
       "title": "Identidad, fundamentos y criterio comercial",
-      "subtitle": "18 – 22 mayo",
+      "subtitle": "20 – 24 de julio",
       "days": [
         {
           "num": 1,
-          "date": "lunes 8 de junio de 2026",
+          "date": "lunes 20 de julio de 2026",
           "badge": "reunion",
+          "_isoDate": "2026-07-20",
           "sessions": [
             {
               "time": "9:00 – 11:00",
@@ -20,26 +21,24 @@
               "title": "Bienvenida Oficial e Integración al Equipo Comercial",
               "desc": "Integración de los nuevos agentes al equipo · entrega del kit de bienvenida · explicación de la dinámica semanal de trabajo · presentación breve de cada agente sobre su experiencia, perfil comercial y objetivos dentro de Inmobiliario Latam.",
               "isReunion": true,
-              "calEventId": "giunbmsqsjq1th38lglridremo",
               "meetUrl": ""
             },
             {
-              "time": "11:00 – 01:00",
+              "time": "3:00 – 4:30",
               "owner": "Walter Arias",
               "slot": "Tarde",
               "modality": "Presencial",
               "title": "Inducción Institucional y Modelo Comercial de Inmobiliario Latam",
               "desc": "Introducción a la cultura, valores y estructura de Inmobiliario Latam · explicación del modelo comercial · roles del equipo · tipos de operación · participaciones, responsabilidades y criterios de trazabilidad en la gestión inmobiliaria.",
-              "meetUrl": "https://meet.google.com/ivy-ncvd-nzd",
-              "calEventId": "gc1dbnql52cqi202rreeqilq64"
+              "meetUrl": "https://meet.google.com/ivy-ncvd-nzd"
             }
-          ],
-          "_isoDate": "2026-06-08"
+          ]
         },
         {
           "num": 2,
-          "date": "martes 9 de junio de 2026",
+          "date": "martes 21 de julio de 2026",
           "badge": null,
+          "_isoDate": "2026-07-21",
           "sessions": [
             {
               "time": "9:00 – 11:00",
@@ -48,7 +47,6 @@
               "modality": "Presencial",
               "title": "Fundamentos del Mercado Inmobiliario y Oportunidades del Sector",
               "desc": "Panorama general del sector inmobiliario · actores clave del mercado · tipos de inmuebles · diferencias entre proyectos y propiedades usadas · oportunidades comerciales del rubro y particularidades frente a otros sectores de venta.",
-              "calEventId": "bkbh2p5e00d6jm12qe5stlh0rs",
               "meetUrl": ""
             },
             {
@@ -58,8 +56,7 @@
               "modality": "Presencial",
               "title": "Perfil del Comprador Inmobiliario y Proceso de Decisión",
               "desc": "Análisis del comportamiento del comprador inmobiliario · motivaciones, miedos y factores de decisión · identificación de perfiles: inversionista, primera vivienda, familia, crédito, contado e indeciso · adaptación del discurso comercial según cada cliente.",
-              "meetUrl": "",
-              "calEventId": "8jvo5budrs7ofp2a4gp2r7drf4"
+              "meetUrl": ""
             },
             {
               "time": "2:30 – 3:30",
@@ -68,16 +65,15 @@
               "modality": "Presencial",
               "title": "Introducción al CRM y Herramientas Digitales de Gestión Comercial",
               "desc": "Introducción al CRM como sistema de gestión y trazabilidad comercial · uso de herramientas clave del equipo: Hubspot, Notion, WhatsApp Business y perfiles digitales · importancia del orden, la trazabilidad y el seguimiento de leads dentro del trabajo diario del agente.",
-              "meetUrl": "https://meet.google.com/eqw-uxjr-nrs",
-              "calEventId": "h0h6sco9motmaqs9pp5s7phd1c"
+              "meetUrl": "https://meet.google.com/eqw-uxjr-nrs"
             }
-          ],
-          "_isoDate": "2026-06-09"
+          ]
         },
         {
           "num": 3,
-          "date": "miércoles 10 de junio de 2026",
+          "date": "miércoles 22 de julio de 2026",
           "badge": null,
+          "_isoDate": "2026-07-22",
           "sessions": [
             {
               "time": "9:30 – 11:00",
@@ -86,8 +82,7 @@
               "modality": "Presencial",
               "title": "Calificación Comercial y Matriz de Priorización del Lead",
               "desc": "Criterios para identificar la calidad de un lead inmobiliario · evaluación de presupuesto, zona de interés, forma de pago, urgencia, capacidad de decisión y disponibilidad · uso de una plantilla de calificación para priorizar oportunidades reales desde el primer contacto.",
-              "meetUrl": "",
-              "calEventId": "po7n3s431qt3mc4ttlbln4us7c"
+              "meetUrl": ""
             },
             {
               "time": "11:30 – 12:30",
@@ -96,99 +91,120 @@
               "modality": "Presencial",
               "title": "Negociación Consultiva y Manejo de Objeciones Inmobiliarias",
               "desc": "Introducción a la negociación consultiva y ética · manejo de anclas, concesiones y contraofertas · respuestas profesionales ante objeciones frecuentes del cliente inmobiliario · cómo sostener una conversación comercial sin presionar ni perder autoridad.",
-              "meetUrl": "",
-              "calEventId": "2s90upuuavpd9f26sg58nckj1s"
+              "meetUrl": ""
             },
             {
-              "time": "3:00 – 4:00",
+              "time": "2:00 – 3:00",
               "owner": "Allison Villanueva",
               "slot": "Tarde",
               "modality": "Presencial",
               "title": "Financiamiento Inmobiliario y Perfil Financiero del Cliente",
               "desc": "Conceptos básicos de crédito hipotecario y cuota inicial · capacidad de endeudamiento del cliente · rol de las entidades financieras y criterios generales de aprobación · cómo orientar al comprador según su perfil financiero y forma de pago.",
-              "calEventId": "bhsns1a5c8pp3mkaofts3qc97c",
               "meetUrl": ""
+            },
+            {
+              "time": "3:00 – 4:00",
+              "owner": "Camila Bueno",
+              "slot": "Tarde",
+              "modality": "Virtual",
+              "title": "Flujo de Atención de Leads y Primer Contacto Comercial",
+              "desc": "Proceso de gestión desde la llegada del lead hasta su conversión en oportunidad comercial · tipos de leads, criterios de priorización y tiempos de respuesta · uso de scripts iniciales para WhatsApp y llamada según el perfil e intención del cliente.",
+              "meetUrl": "https://meet.google.com/xsb-ishx-xsj"
             }
-          ],
-          "_isoDate": "2026-06-10"
+          ]
         },
         {
           "num": 4,
-          "date": "jueves 11 de junio de 2026",
+          "date": "jueves 23 de julio de 2026",
           "badge": null,
+          "_isoDate": "2026-07-23",
           "sessions": [
             {
               "time": "10:00 – 12:00",
               "owner": "Walter Arias",
               "slot": "Mañana",
-              "modality": "Presencial",
+              "modality": "Virtual",
               "title": "Tipos de Negocio, Comisiones y Esquema de Referidos",
               "desc": "Explicación de los tipos de negocio de Inmobiliario Latam, del Tipo 1 al Tipo 4 · modelos de comisión y escalabilidad · esquema de referidos Nivel 1 y Nivel 2 · ejemplos prácticos de liquidación · reglas de trazabilidad para proteger correctamente la comisión del agente.",
-              "meetUrl": "https://meet.google.com/gge-gchr-enz",
-              "calEventId": "6p87652lv8qg2q31lu0dg6f8dc"
+              "meetUrl": "https://meet.google.com/gge-gchr-enz"
             },
             {
-              "time": "3:00 – 4:00",
-              "owner": "Camila Bueno / Camila Bueno",
-              "slot": "Tarde",
+              "time": "12:00 – 1:00",
+              "owner": "Walter Arias",
+              "slot": "Mañana",
               "modality": "Virtual",
-              "title": "Flujo de Atención de Leads y Primer Contacto Comercial",
-              "desc": "Proceso de gestión desde la llegada del lead hasta su conversión en oportunidad comercial · tipos de leads, criterios de priorización y tiempos de respuesta · uso de scripts iniciales para WhatsApp y llamada según el perfil e intención del cliente.",
-              "meetUrl": "https://meet.google.com/xsb-ishx-xsj",
-              "calEventId": "dnehegp1b00o5af3adpsjeeal4"
+              "title": "Nuevos Requerimientos: Proceso de Búsqueda y Calificación",
+              "desc": "Explicación de la unidad de negocio de Nuevos Requerimientos · proceso de búsqueda de opciones para clientes activos · criterios de calificación, seguimiento y gestión de requerimientos inmobiliarios.",
+              "meetUrl": ""
             },
             {
-              "time": "4:00 – 5:30",
+              "time": "3:00 – 4:30",
               "owner": "Camila Bueno / Sofía Herreño",
               "slot": "Tarde",
               "modality": "Virtual",
               "title": "Optimización de Perfil Profesional — Parte 1: WhatsApp y LinkedIn",
               "desc": "Configuración profesional de WhatsApp Business y LinkedIn · revisión de foto, nombre, bio, titular, mensaje de bienvenida y datos de contacto · alineación del perfil del agente con la imagen, tono y propuesta de valor de Inmobiliario Latam.",
-              "meetUrl": "https://meet.google.com/zzg-esfh-ugt",
-              "calEventId": "ordio4m6dljknjfr94mlj2cki8"
+              "meetUrl": "https://meet.google.com/zzg-esfh-ugt"
+            },
+            {
+              "time": "4:30 – 6:00",
+              "owner": "Sofía Herreño",
+              "slot": "Tarde",
+              "modality": "Virtual",
+              "title": "CRM 1ª cap. — Navegación y Gestión Inicial",
+              "desc": "Introducción práctica al sistema CRM · reconocimiento de módulos principales, flujo base y navegación general · gestión inicial de contactos, actividades, tareas, estados y primeras cargas guiadas dentro del proceso comercial.",
+              "meetUrl": "https://meet.google.com/ixz-zyks-app"
             }
-          ],
-          "_isoDate": "2026-06-11"
+          ]
         },
         {
           "num": 5,
-          "date": "viernes 12 de junio de 2026",
-          "badge": null,
+          "date": "viernes 24 de julio de 2026",
+          "badge": "reunion",
+          "_isoDate": "2026-07-24",
           "sessions": [
             {
-              "time": "09:00 – 11:00",
-              "owner": "Walter Arias / Jorge Pando",
+              "time": "9:00 – 11:00",
+              "owner": "Walter Arias",
               "slot": "Mañana",
-              "modality": "Presencial",
+              "modality": "Virtual",
               "title": "Reunión Semanal de Equipo y Revisión de Avances",
               "desc": "Espacio de seguimiento para revisar avances de la semana, cumplimiento de objetivos y compromisos individuales · identificación de pendientes, oportunidades de mejora y próximos pasos dentro del proceso de formación y gestión comercial.",
-              "meetUrl": "https://meet.google.com/ykd-gbmi-ewz",
-              "calEventId": "4dtmj16ut8dg6gt8emdqvqfun0"
+              "isReunion": true,
+              "meetUrl": ""
             },
             {
               "time": "2:00 – 3:30",
               "owner": "Sofía Herreño",
               "slot": "Tarde",
               "modality": "Virtual",
-              "title": "CRM 1ª cap. — Navegación y Gestión Inicial",
-              "desc": "Introducción práctica al sistema CRM · reconocimiento de módulos principales, flujo base y navegación general · gestión inicial de contactos, actividades, tareas, estados y primeras cargas guiadas dentro del proceso comercial.",
-              "meetUrl": "https://meet.google.com/ixz-zyks-app",
-              "calEventId": "mvboi085jotc6i2t2bisel3pbk"
+              "title": "Optimización de Perfil Profesional — Parte 2: Facebook e Instagram",
+              "desc": "Configuración profesional de Facebook e Instagram · revisión de foto, biografía, portada, datos de contacto e historias destacadas · adecuación del perfil digital del agente para proyectar confianza, coherencia y respaldo institucional de Inmobiliario Latam.",
+              "meetUrl": "https://meet.google.com/uhy-edzp-yan"
+            },
+            {
+              "time": "3:30 – 5:00",
+              "owner": "Sofía Herreño",
+              "slot": "Tarde",
+              "modality": "Virtual",
+              "title": "CRM 2ª cap. — Gestión de Leads y Funnel Comercial",
+              "desc": "Gestión de leads dentro del CRM · revisión de pipeline y etapas del funnel · actualización de registros, interacciones, estados, notas y tareas · criterios para avanzar correctamente un lead dentro del sistema.",
+              "meetUrl": "https://meet.google.com/qdx-gqxm-ids"
             }
-          ],
-          "_isoDate": "2026-06-12"
+          ]
         }
       ]
     },
     {
       "label": "Semana 2",
       "title": "Herramientas, negociación y habilitación",
-      "subtitle": "25 – 29 mayo",
+      "subtitle": "30 – 31 de julio",
       "days": [
         {
           "num": 6,
-          "date": "lunes 15 de junio de 2026",
+          "date": "jueves 30 de julio de 2026",
           "badge": "reunion",
+          "_isoDate": "2026-07-30",
           "sessions": [
             {
               "time": "9:00 – 11:00",
@@ -198,510 +214,110 @@
               "title": "Reunión Semanal de Equipo: Revisión y Planificación Comercial",
               "desc": "Participación activa en la reunión semanal del equipo · revisión de avances, aprendizajes y pendientes de la semana anterior · análisis de casos reales de gestión comercial · planificación de objetivos, compromisos y prioridades para la semana en curso.",
               "isReunion": true,
-              "calEventId": "k17d7skojv0a1ujeln9snhmmvs",
               "meetUrl": ""
             },
             {
-              "time": "2:00 – 3:30",
-              "owner": "Sofía Herreño",
-              "slot": "Tarde",
-              "modality": "Virtual",
-              "title": "CRM 2ª cap. — Gestión de Leads y Funnel Comercial",
-              "desc": "Gestión de leads dentro del CRM · revisión de pipeline y etapas del funnel · actualización de registros, interacciones, estados, notas y tareas · criterios para avanzar correctamente un lead dentro del sistema.",
-              "meetUrl": "https://meet.google.com/qdx-gqxm-ids",
-              "calEventId": "91c4er7i2kccm3fscbalrjro8c"
-            },
-            {
-              "time": "3:30 – 4:30",
-              "owner": "Brooke Villanueva",
-              "slot": "Tarde",
-              "modality": "Presencial",
-              "title": "Notion 1ª cap. — Recursos Digitales de la Empresa",
-              "desc": "Introducción a Notion como biblioteca interna de trabajo · navegación por bases de datos, guías, procesos y recursos comerciales · consulta de información clave para apoyar la gestión diaria del agente.",
-              "calEventId": "mifll2s006m544c0m4noqimeuo",
-              "meetUrl": ""
-            },
-            {
-              "time": "5:00 – 6:00",
-              "owner": "Walter Arias",
-              "slot": "Tarde",
-              "modality": "Presencial",
-              "title": "Nuevos Requerimientos: Proceso de Búsqueda y Calificación",
-              "desc": "Explicación de la unidad de negocio de Nuevos Requerimientos · proceso de búsqueda de opciones para clientes activos · criterios de calificación, seguimiento y gestión de requerimientos inmobiliarios.",
-              "meetUrl": "",
-              "calEventId": "3d3c6m7u2cqfld1qps9605s714"
-            }
-          ],
-          "_isoDate": "2026-06-15"
-        },
-        {
-          "num": 7,
-          "date": "martes 16 de junio de 2026",
-          "badge": null,
-          "sessions": [
-            {
-              "time": "9:30 – 10:30",
+              "time": "11:00 – 12:00",
               "owner": "Jorge Pando",
               "slot": "Mañana",
               "modality": "Presencial",
               "title": "Impuestos y Obligaciones Tributarias en Operaciones Inmobiliarias",
               "desc": "Conceptos tributarios básicos en compraventa y arrendamiento · impuestos aplicables, tratamiento de comisiones y obligaciones generales del agente · criterios clave para orientar al cliente sin asumir funciones contables o fiscales.",
-              "meetUrl": "",
-              "calEventId": "ibk6dpml6qi4u72qodrdov65fc"
+              "meetUrl": ""
             },
             {
-              "time": "11:00 – 01:00",
+              "time": "2:00 – 3:30",
+              "owner": "Brooke Villanueva",
+              "slot": "Tarde",
+              "modality": "Presencial",
+              "title": "Notion 1ª cap. — Recursos Digitales de la Empresa",
+              "desc": "Introducción a Notion como biblioteca interna de trabajo · navegación por bases de datos, guías, procesos y recursos comerciales · consulta de información clave para apoyar la gestión diaria del agente.",
+              "meetUrl": ""
+            },
+            {
+              "time": "3:30 – 5:00",
+              "owner": "Sofía Herreño",
+              "slot": "Tarde",
+              "modality": "Virtual",
+              "title": "CRM 3ª cap. — Gestión de Negocios y Oportunidades",
+              "desc": "Creación, actualización y avance de oportunidades dentro del pipeline comercial · seguimiento de negocios activos · revisión de reportes y métricas clave · cierre de negocios en el sistema y registro completo de la trazabilidad comercial.",
+              "meetUrl": "https://meet.google.com/dee-vhbc-cdi"
+            }
+          ]
+        },
+        {
+          "num": 7,
+          "date": "viernes 31 de julio de 2026",
+          "badge": "eval",
+          "_isoDate": "2026-07-31",
+          "sessions": [
+            {
+              "time": "9:00 – 10:00",
               "owner": "Jorge Pando",
               "slot": "Mañana",
               "modality": "Presencial",
               "title": "Derecho Inmobiliario: Documentación, Contratos y Alcance del Agente",
               "desc": "Marco legal básico del proceso inmobiliario · contratos, escrituras, due diligence y documentos clave · límites del rol del agente, manejo responsable de información y momentos en los que debe escalarse a un especialista.",
-              "calEventId": "c3rc6ata68cnegtlmn1ir9ufio",
               "meetUrl": ""
             },
             {
-              "time": "2:30 – 4:30",
+              "time": "10:00 – 11:00",
+              "owner": "Jorge Pando",
+              "slot": "Mañana",
+              "modality": "Presencial",
+              "title": "Proceso de Compra Inmobiliaria y Conceptos Comerciales Clave",
+              "desc": "Ruta general del cliente en una operación inmobiliaria · reserva, separación, minuta, escritura, crédito hipotecario, cuota inicial y partida registral · glosario básico para sostener conversaciones comerciales con mayor seguridad y criterio.",
+              "meetUrl": ""
+            },
+            {
+              "time": "11:00 – 12:00",
+              "owner": "Paul Unsihuay Vila",
+              "slot": "Mañana",
+              "modality": "Presencial",
+              "title": "ACM — Análisis Comparativo de Mercado y Presentación Comercial",
+              "desc": "Criterios para analizar precio, zona, competencia y comportamiento del mercado · uso del ACM para sustentar recomendaciones ante propietarios y clientes compradores · revisión de portales inmobiliarios, referencias comparables y pautas para una publicación efectiva.",
+              "meetUrl": ""
+            },
+            {
+              "time": "2:00 – 3:00",
               "owner": "Brooke Villanueva",
               "slot": "Tarde",
               "modality": "Presencial",
               "title": "Notion 2ª cap. — Inventario y Gestión de Información",
               "desc": "Uso de Notion para consultar y gestionar inventario inmobiliario · lectura de fichas de propiedades, estados de disponibilidad y datos comerciales clave · transformación de la información técnica en argumentos útiles para el cliente.",
-              "calEventId": "vas2dbh9n8j8klo88825ar9580",
               "meetUrl": ""
-            }
-          ],
-          "_isoDate": "2026-06-16"
-        },
-        {
-          "num": 8,
-          "date": "miércoles 17 de junio de 2026",
-          "badge": null,
-          "sessions": [
-            {
-              "time": "09:30 – 10:30",
-              "owner": "Sofía Herreño",
-              "slot": "Mañana",
-              "modality": "Virtual",
-              "title": "Optimización de Perfil Profesional — Parte 2: Facebook e Instagram",
-              "desc": "Configuración profesional de Facebook e Instagram · revisión de foto, biografía, portada, datos de contacto e historias destacadas · adecuación del perfil digital del agente para proyectar confianza, coherencia y respaldo institucional de Inmobiliario Latam.",
-              "meetUrl": "https://meet.google.com/uhy-edzp-yan",
-              "calEventId": "kpqgihksdv171bttut7mdi74so"
-            },
-            {
-              "time": "10:30 – 12:00",
-              "owner": "Sofía Herreño",
-              "slot": "Mañana",
-              "modality": "Virtual",
-              "title": "CRM 3ª cap. — Gestión de Negocios y Oportunidades",
-              "desc": "Creación, actualización y avance de oportunidades dentro del pipeline comercial · seguimiento de negocios activos · revisión de reportes y métricas clave · cierre de negocios en el sistema y registro completo de la trazabilidad comercial.",
-              "meetUrl": "https://meet.google.com/dee-vhbc-cdi",
-              "calEventId": "m3icqp94srd690ahvv43gdo7i8"
             },
             {
               "time": "3:00 – 4:00",
               "owner": "Jorge Pando",
               "slot": "Tarde",
               "modality": "Presencial",
-              "title": "Proceso de Compra Inmobiliaria y Conceptos Comerciales Clave",
-              "desc": "Ruta general del cliente en una operación inmobiliaria · reserva, separación, minuta, escritura, crédito hipotecario, cuota inicial y partida registral · glosario básico para sostener conversaciones comerciales con mayor seguridad y criterio.",
-              "meetUrl": "",
-              "calEventId": "1pd1ltah8rrvailm5l527i1940"
+              "title": "Proceso de Venta Consultiva Inmobiliaria en 7 Pasos",
+              "desc": "Metodología estratégica para comprender las necesidades reales del cliente, generar confianza y aportar valor durante todo el proceso comercial · guía práctica para avanzar desde el primer contacto hasta el cierre, aplicando escucha activa, diagnóstico, presentación de opciones, manejo de objeciones y seguimiento efectivo.",
+              "meetUrl": ""
             },
             {
               "time": "4:00 – 5:00",
-              "owner": "Jorge Pando",
+              "owner": "Jorge Pando / Walter Arias",
               "slot": "Tarde",
               "modality": "Presencial",
               "title": "Técnicas de Seguimiento Comercial y Captación de Propiedades",
               "desc": "Técnicas de seguimiento sin saturar al cliente · prospección de propietarios · estructura del primer contacto · criterios básicos de valuación y argumentos comerciales para captar propiedades de forma profesional.",
-              "calEventId": "3jh1rgmml9lseftipo7u35snf4",
               "meetUrl": ""
             },
             {
-              "time": "5:00 – 6:00",
-              "owner": "Jorge Pando / Walter Arias",
-              "slot": "Tarde",
-              "modality": "Presencial",
-              "title": "Entrenamiento Práctico 2: Llamadas de Calificación para Nuevos Requerimientos",
-              "desc": "Segunda práctica guiada de llamadas para leads categorizados como Nuevos Requerimientos · aplicación de preguntas de calificación · validación de presupuesto, zona, urgencia y forma de pago · registro de información y definición del siguiente paso comercial.",
-              "meetUrl": "",
-              "calEventId": "nnjvsv3g9keil0hq0mb3gnqsi8"
-            }
-          ],
-          "_isoDate": "2026-06-17"
-        },
-        {
-          "num": 9,
-          "date": "jueves 18 de junio de 2026",
-          "badge": null,
-          "sessions": [
-            {
-              "time": "10:00 – 12:00",
-              "owner": "Paul Unsihuay Vila",
-              "slot": "Mañana",
-              "modality": "Presencial",
-              "title": "ACM — Análisis Comparativo de Mercado y Presentación Comercial",
-              "desc": "Criterios para analizar precio, zona, competencia y comportamiento del mercado · uso del ACM para sustentar recomendaciones ante propietarios y clientes compradores · revisión de portales inmobiliarios, referencias comparables y pautas para una publicación efectiva.",
-              "calEventId": "939guii5ksp9vqajd4l0tq3eoo",
-              "meetUrl": ""
-            },
-            {
-              "time": "3:00 – 5:00",
+              "time": "5:00 – 6:30",
               "owner": "Jorge Pando / Sofía Herreño",
               "slot": "Tarde",
               "modality": "Presencial/Virtual",
-              "title": "Entrenamiento Práctico Final: Roleplay Comercial Integral",
-              "desc": "Simulación completa del proceso comercial mediante roleplay · recepción del cliente, identificación de necesidades, presentación de opciones, manejo de objeciones y cierre del siguiente paso · registro de actividades en CRM con trazabilidad completa.",
-              "meetUrl": "https://meet.google.com/qty-hxub-dea",
-              "calEventId": "tcsrv4rt45q5m9g9as25crh3e8"
-            }
-          ],
-          "_isoDate": "2026-06-18"
-        },
-        {
-          "num": 10,
-          "date": "viernes 19 de junio de 2026",
-          "badge": "eval",
-          "sessions": [
-            {
-              "time": "09:00 – 11:00",
-              "owner": "Walter Arias / Jorge Pando",
-              "slot": "Mañana",
-              "modality": "Presencial",
-              "title": "Reunión Semanal de Equipo y Revisión de Avances",
-              "desc": "Espacio de seguimiento para revisar avances de la semana, cumplimiento de objetivos y compromisos individuales · identificación de pendientes, oportunidades de mejora y próximos pasos dentro del proceso de formación y gestión comercial.",
-              "meetUrl": "",
-              "calEventId": "f0idmj02hdn63e8rnfvdv0fp68"
-            },
-            {
-              "time": "2:00 – 3:00",
-              "owner": "Jorge Pando",
-              "slot": "Tarde",
-              "modality": "Presencial",
-              "title": "Proceso de Venta Consultiva Inmobiliaria en 7 Pasos",
-              "desc": "Metodología estratégica para comprender las necesidades reales del cliente, generar confianza y aportar valor durante todo el proceso comercial · guía práctica para avanzar desde el primer contacto hasta el cierre, aplicando escucha activa, diagnóstico, presentación de opciones, manejo de objeciones y seguimiento efectivo.",
-              "meetUrl": "",
-              "calEventId": "uo92d09tp07j81gunmufduqrug"
-            },
-            {
-              "time": "3:00 – 5:00",
-              "owner": "Walter Arias / Jorge Pando",
-              "slot": "Tarde",
-              "modality": "Presencial",
-              "title": "Evaluación Final y Plan de Acción Individual",
-              "desc": "Evaluación integral del proceso de formación · test teórico, roleplay de calificación y presentación comercial · retroalimentación individual del desempeño · definición de plan de mejora y decisión sobre la habilitación comercial del agente.",
+              "title": "Entrenamiento Práctico Final: Roleplay Comercial Integral y Evaluación",
+              "desc": "Simulación completa del proceso comercial mediante roleplay · recepción del cliente, identificación de necesidades, presentación de opciones, manejo de objeciones y cierre del siguiente paso · registro de actividades en CRM con trazabilidad completa · retroalimentación individual y decisión de habilitación.",
               "isEval": true,
-              "calEventId": "l1042rmq3n4hacu5r9530ed9sg",
-              "meetUrl": ""
+              "meetUrl": "https://meet.google.com/qty-hxub-dea"
             }
-          ],
-          "_isoDate": "2026-06-19"
+          ]
         }
       ]
     }
-  ],
-  "modules": [
-    {
-      "num": "0",
-      "title": "Pre-onboarding: registro, accesos y diagnóstico",
-      "owner": "Camila Bueno",
-      "dia": "Previo al Día 1"
-    },
-    {
-      "num": "1",
-      "title": "Reunión de equipo — bienvenida y presentación oficial",
-      "owner": "Jorge Pando",
-      "dia": "Día 1 · Mañana 9:00 · Presencial"
-    },
-    {
-      "num": "2",
-      "title": "Inducción Inmobiliario Latam + modelo de negocio",
-      "owner": "Walter Arias",
-      "dia": "Día 1 · Tarde 3:00 · Virtual"
-    },
-    {
-      "num": "3",
-      "title": "Introducción al sector inmobiliario",
-      "owner": "Jorge Pando",
-      "dia": "Día 2 · Mañana 9:00 · Presencial"
-    },
-    {
-      "num": "4",
-      "title": "Fiscalidad e impuestos en el negocio inmobiliario",
-      "owner": "Jorge Pando",
-      "dia": "Día 2 · Tarde 3:00 · Presencial"
-    },
-    {
-      "num": "5",
-      "title": "Financiamiento inmobiliario y crédito hipotecario",
-      "owner": "Allison Villanueva",
-      "dia": "Día 3 · Mañana 9:00 · Presencial"
-    },
-    {
-      "num": "6",
-      "title": "Proceso de compra inmobiliaria y conceptos clave",
-      "owner": "Jorge Pando",
-      "dia": "Día 3 · Mañana 10:00 · Presencial"
-    },
-    {
-      "num": "7",
-      "title": "Perfil del comprador inmobiliario",
-      "owner": "Jorge Pando",
-      "dia": "Día 3 · Tarde 3:00 · Presencial"
-    },
-    {
-      "num": "8",
-      "title": "Derecho inmobiliario — documentación y gestión",
-      "owner": "Jorge Pando",
-      "dia": "Día 4 · Mañana 9:00 · Presencial"
-    },
-    {
-      "num": "9",
-      "title": "Calificación comercial y matriz del lead",
-      "owner": "Jorge Pando",
-      "dia": "Día 4 · Mañana 10:00 · Presencial"
-    },
-    {
-      "num": "10",
-      "title": "Optimización perfiles — Parte 1: WhatsApp y LinkedIn",
-      "owner": "Camila Bueno / Sofía Herreño",
-      "dia": "Día 4 · Tarde 3:00 · Virtual"
-    },
-    {
-      "num": "11",
-      "title": "Optimización perfiles — Parte 2: Facebook e Instagram",
-      "owner": "Camila Bueno / Sofía Herreño",
-      "dia": "Día 5 · Mañana 10:00 · Virtual"
-    },
-    {
-      "num": "12",
-      "title": "Flujo de atención de leads y scripts de primer contacto",
-      "owner": "Camila Bueno / Sofía Herreño",
-      "dia": "Día 5 · Tarde 2:00 · Virtual"
-    },
-    {
-      "num": "13",
-      "title": "Reunión de equipo — semana 2",
-      "owner": "Jorge Pando",
-      "dia": "Día 6 · Mañana 9:00 · Presencial"
-    },
-    {
-      "num": "14",
-      "title": "CRM 1ª cap. — Presentación inicial",
-      "owner": "Sofía Herreño",
-      "dia": "Día 6 · Tarde 3:00 · Virtual"
-    },
-    {
-      "num": "15",
-      "title": "Notion 1ª cap. — Recursos digitales de la empresa",
-      "owner": "Brooke Villanueva",
-      "dia": "Día 6 · Tarde 4:30 · Presencial"
-    },
-    {
-      "num": "16",
-      "title": "Técnicas de negociación y manejo de objeciones",
-      "owner": "Jorge Pando",
-      "dia": "Día 7 · Mañana 9:00 · Presencial"
-    },
-    {
-      "num": "17",
-      "title": "Tipos de negocio, comisiones y esquema de referidos",
-      "owner": "Walter Arias",
-      "dia": "Día 7 · Mañana 11:00 · Presencial"
-    },
-    {
-      "num": "18",
-      "title": "Notion 2ª cap. — Inventario y gestión de información",
-      "owner": "Brooke Villanueva",
-      "dia": "Día 7 · Tarde 3:00 · Presencial"
-    },
-    {
-      "num": "19",
-      "title": "CRM 2ª cap. — Gestión de leads",
-      "owner": "Sofía Herreño",
-      "dia": "Día 8 · Mañana 10:30 · Virtual"
-    },
-    {
-      "num": "20",
-      "title": "Técnicas de seguimiento y captación de propiedades",
-      "owner": "Jorge Pando",
-      "dia": "Día 8 · Tarde 3:00 · Presencial"
-    },
-    {
-      "num": "21",
-      "title": "ACM — Análisis comparativo de mercado y presentación comercial",
-      "owner": "Paul Unsihuay Vila",
-      "dia": "Día 9 · Mañana 10:00 · Presencial"
-    },
-    {
-      "num": "22",
-      "title": "CRM 3ª cap. — Gestión de negocios",
-      "owner": "Sofía Herreño",
-      "dia": "Día 9 · Tarde 3:00 · Virtual"
-    },
-    {
-      "num": "23",
-      "title": "Simulación de visita y caso práctico en CRM",
-      "owner": "Jorge Pando / Sofía Herreño",
-      "dia": "Día 10 · Mañana 11:00 · Presencial"
-    },
-    {
-      "num": "24",
-      "title": "Evaluación final y plan de acción individual",
-      "owner": "Walter Arias / Jorge Pando",
-      "dia": "Día 10 · Tarde 3:00 · Presencial"
-    },
-    {
-      "num": "25",
-      "title": "Acompañamiento supervisado — 30 días post-habilitación",
-      "owner": "Líder comercial",
-      "dia": "Post Día 10"
-    }
-  ],
-  "title": "Programa de Formación Agente Inmobiliario",
-  "subtitle": "Cronograma de capacitación para nuevos agentes",
-  "calConfig": {
-    "calendarId": "808b334f4c90bb4b1eb29808d7c5cb5d0264486286c6ebc5ecd22c13e0dba77e@group.calendar.google.com",
-    "timezone": "America/Bogota"
-  },
-  "responsibles": {
-    "Paul Unsihuay Vila": "pvila@inmobiliariolatam.com"
-  },
-  "content": {
-    "hero": {
-      "tag": "Inmobiliario Latam",
-      "title": "Programa de Formación",
-      "titleHighlight": "Agente Inmobiliario",
-      "subtitle": "Cronograma de capacitación · nuevos agentes · mayo 2026",
-      "metaDuration": "10 días hábiles · 2 semanas",
-      "metaModality": "Presencial y virtual"
-    },
-    "infoBox": "🔔 <strong>Reunión de equipo todos los lunes a las 9:00 a.m.</strong> — El primer lunes presentación oficial de nuevos agentes al equipo. El segundo lunes participan como oyentes activos dentro de la dinámica comercial.",
-    "metodologia": {
-      "title": "Metodología de aprendizaje",
-      "intro": "La ruta avanza en 7 capas progresivas. Cada fase prepara la siguiente, evitando la saturación de información y facilitando una formación progresiva.",
-      "regla": "💡 <strong>Regla clave:</strong> No recibirás leads de forma autónoma hasta completar los perfiles digitales, el flujo comercial, el CRM y la práctica final.",
-      "capas": [
-        {
-          "capa": "1 · Identidad y equipo",
-          "que": "Quiénes somos, cómo trabajamos y cuál es tu rol.",
-          "porQue": "Pertenencia y alineación cultural desde el día 1."
-        },
-        {
-          "capa": "2 · Fundamentos inmobiliarios",
-          "que": "Cómo funciona el mercado, tipos de inmuebles, proceso de compra.",
-          "porQue": "Lenguaje y seguridad antes de hablar con clientes."
-        },
-        {
-          "capa": "3 · Cliente y criterio",
-          "que": "Cómo entender al comprador y calificar un lead.",
-          "porQue": "Diagnosticar antes de vender."
-        },
-        {
-          "capa": "4 · Presencia digital",
-          "que": "Proyectarte profesionalmente en redes y WhatsApp.",
-          "porQue": "Confianza digital antes de contactar leads."
-        },
-        {
-          "capa": "5 · Flujo y herramientas",
-          "que": "Atender leads, usar el CRM y Notion.",
-          "porQue": "Proceso primero, herramienta después."
-        },
-        {
-          "capa": "6 · Producto y negociación",
-          "que": "Leer el mercado, presentar propiedades y negociar.",
-          "porQue": "Aplica con criterio cuando ya dominas el proceso."
-        },
-        {
-          "capa": "7 · Práctica y evaluación",
-          "que": "Simulación real, roleplay y evaluación final.",
-          "porQue": "Consolida todo antes de recibir leads reales."
-        }
-      ]
-    },
-    "evaluacion": {
-      "title": "¿Qué necesitas para ser habilitado?",
-      "intro": "La evaluación es el Día 10 (viernes 29 de mayo). La habilitación te permite recibir leads reales de forma autónoma.",
-      "criterios": [
-        {
-          "criterio": "Fundamentos inmobiliarios",
-          "peso": "20%",
-          "como": "Preguntas sobre proceso de compra y tipos de operaciones."
-        },
-        {
-          "criterio": "Calificación comercial",
-          "peso": "20%",
-          "como": "Roleplay con cliente simulado usando la matriz de calificación."
-        },
-        {
-          "criterio": "Comunicación y seguimiento",
-          "peso": "20%",
-          "como": "Primer contacto y manejo de objeciones básicas."
-        },
-        {
-          "criterio": "CRM y trazabilidad",
-          "peso": "20%",
-          "como": "Caso práctico real en el sistema."
-        },
-        {
-          "criterio": "Perfiles digitales",
-          "peso": "10%",
-          "como": "Tus 4 canales revisados y aprobados."
-        },
-        {
-          "criterio": "Documentación y cierre",
-          "peso": "10%",
-          "como": "Conocimiento de reserva y documentos básicos."
-        }
-      ],
-      "resultados": [
-        {
-          "puntaje": "80 – 100",
-          "decision": "✓ Habilitado",
-          "clase": "g",
-          "desc": "Recibes leads de forma autónoma. Entras al seguimiento de 30 días."
-        },
-        {
-          "puntaje": "70 – 79",
-          "decision": "Habilitado con supervisión",
-          "clase": "a",
-          "desc": "Recibes leads con acompañamiento. Plan de refuerzo en puntos débiles."
-        },
-        {
-          "puntaje": "< 70",
-          "decision": "No habilitado temporalmente",
-          "clase": "r",
-          "desc": "Reforzamiento y nueva evaluación antes de recibir leads."
-        }
-      ]
-    },
-    "treintaDias": {
-      "title": "Tus primeros 30 días",
-      "intro": "La formación no termina el Día 10. Tendrás acompañamiento semanal con tu líder comercial.",
-      "infoBox": "Participas en las reuniones de los lunes como miembro activo del equipo desde tu habilitación.",
-      "semanas": [
-        {
-          "semana": "Semana 1",
-          "enfoque": "Tus primeros leads",
-          "revisa": "Cómo contactas, registras en CRM y cumples tareas."
-        },
-        {
-          "semana": "Semana 2",
-          "enfoque": "Calificación y seguimiento",
-          "revisa": "Cómo calificas oportunidades y haces seguimiento."
-        },
-        {
-          "semana": "Semana 3",
-          "enfoque": "Presentación y objeciones",
-          "revisa": "Cómo presentas propiedades y manejas dudas del cliente."
-        },
-        {
-          "semana": "Semana 4",
-          "enfoque": "Resultados y habilitación",
-          "revisa": "KPIs iniciales, fortalezas, brechas y habilitación definitiva."
-        }
-      ]
-    }
-  },
-  "cohorteName": "Junio 2026"
+  ]
 }
