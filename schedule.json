@@ -317,11 +317,11 @@
               "time": "9:00 – 11:00",
               "owner": "Jorge Pando",
               "slot": "Mañana",
-              "modality": "Presencial/Virtual",
+              "modality": "Presencial",
               "title": "Reunión Semanal de Equipo y Revisión de Avances",
               "desc": "Espacio de seguimiento para revisar avances de la semana, cumplimiento de objetivos y compromisos individuales · identificación de pendientes, oportunidades de mejora y próximos pasos dentro del proceso de formación y gestión comercial.",
               "isReunion": true,
-              "meetUrl": "https://meet.google.com/ivy-ncvd-nzd"
+              "meetUrl": ""
             },
             {
               "time": "2:30 – 4:00",
