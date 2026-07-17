@@ -268,7 +268,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--gray-lt);color:var(--blac
   <div class="section" id="tab-evaluacion">
     <div class="sec-header">
       <div class="sec-title">¿Qué necesitas para ser habilitado?</div>
-      <p class="sec-desc">La evaluación es el Día 10 (viernes 19 de junio de 2026). La habilitación te permite recibir leads reales de forma autónoma.</p>
+      <p class="sec-desc">La evaluación es el Día 8 (viernes 31 de julio de 2026). La habilitación te permite recibir leads reales de forma autónoma.</p>
     </div>
     <div style="background:#FEF3C7;border:1px solid #FDE68A;border-left:4px solid var(--orange);border-radius:8px;padding:14px 16px;margin-bottom:16px">
       <div style="font-size:13px;font-weight:600;color:#92400E;margin-bottom:3px">💡 Importante</div>
@@ -690,7 +690,7 @@ async function loadSchedule() {
     var data = await r.json();
     renderSchedule(data);
     renderModules(data);
-    document.getElementById('last-updated').textContent = 'Última actualización: ' + (data.lastUpdated || 'Mayo 2026');
+    document.getElementById('last-updated').textContent = 'Última actualización: ' + (data.lastUpdated || 'Julio 2026');
     if(data.startDate) document.getElementById('meta-inicio').textContent = data.startDate;
   } catch(e) {
     document.getElementById('schedule-container').innerHTML = '<p style="color:var(--gray);font-size:13px;padding:20px 0">Error cargando datos. Intenta recargar la página.</p>';
