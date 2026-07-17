@@ -24,15 +24,6 @@
               "meetUrl": ""
             },
             {
-              "time": "11:00 – 12:00",
-              "owner": "Jorge Pando",
-              "slot": "Mañana",
-              "modality": "Presencial",
-              "title": "Impuestos y Obligaciones Tributarias en Operaciones Inmobiliarias",
-              "desc": "Conceptos tributarios básicos en compraventa y arrendamiento · impuestos aplicables, tratamiento de comisiones y obligaciones generales del agente · criterios clave para orientar al cliente sin asumir funciones contables o fiscales.",
-              "meetUrl": ""
-            },
-            {
               "time": "3:00 – 4:30",
               "owner": "Walter Arias",
               "slot": "Tarde",
@@ -43,12 +34,12 @@
             },
             {
               "time": "4:30 – 5:30",
-              "owner": "Walter Arias",
+              "owner": "Jorge Pando",
               "slot": "Tarde",
               "modality": "Presencial",
-              "title": "Tipos de Negocio, Comisiones y Esquema de Referidos",
-              "desc": "Explicación de los tipos de negocio de Inmobiliario Latam, del Tipo 1 al Tipo 4 · modelos de comisión y escalabilidad · esquema de referidos Nivel 1 y Nivel 2 · ejemplos prácticos de liquidación · reglas de trazabilidad para proteger correctamente la comisión del agente.",
-              "meetUrl": "https://meet.google.com/gge-gchr-enz"
+              "title": "Fundamentos del Mercado Inmobiliario y Oportunidades del Sector",
+              "desc": "Panorama general del sector inmobiliario · actores clave del mercado · tipos de inmuebles · diferencias entre proyectos y propiedades usadas · oportunidades comerciales del rubro y particularidades frente a otros sectores de venta.",
+              "meetUrl": ""
             }
           ]
         },
@@ -63,8 +54,8 @@
               "owner": "Jorge Pando",
               "slot": "Mañana",
               "modality": "Presencial",
-              "title": "Fundamentos del Mercado Inmobiliario y Oportunidades del Sector",
-              "desc": "Panorama general del sector inmobiliario · actores clave del mercado · tipos de inmuebles · diferencias entre proyectos y propiedades usadas · oportunidades comerciales del rubro y particularidades frente a otros sectores de venta.",
+              "title": "Perfil del Comprador Inmobiliario y Proceso de Decisión",
+              "desc": "Análisis del comportamiento del comprador inmobiliario · motivaciones, miedos y factores de decisión · identificación de perfiles: inversionista, primera vivienda, familia, crédito, contado e indeciso · adaptación del discurso comercial según cada cliente.",
               "meetUrl": ""
             },
             {
@@ -72,8 +63,8 @@
               "owner": "Jorge Pando",
               "slot": "Mañana",
               "modality": "Presencial",
-              "title": "Perfil del Comprador Inmobiliario y Proceso de Decisión",
-              "desc": "Análisis del comportamiento del comprador inmobiliario · motivaciones, miedos y factores de decisión · identificación de perfiles: inversionista, primera vivienda, familia, crédito, contado e indeciso · adaptación del discurso comercial según cada cliente.",
+              "title": "Derecho Inmobiliario: Documentación, Contratos y Alcance del Agente",
+              "desc": "Marco legal básico del proceso inmobiliario · contratos, escrituras, due diligence y documentos clave · límites del rol del agente, manejo responsable de información y momentos en los que debe escalarse a un especialista.",
               "meetUrl": ""
             },
             {
@@ -122,7 +113,7 @@
             },
             {
               "time": "3:00 – 4:30",
-              "owner": "Camila Bueno",
+              "owner": "Camila Bueno / Sofía Herreño",
               "slot": "Tarde",
               "modality": "Virtual",
               "title": "Flujo de Atención de Leads y Primer Contacto Comercial",
@@ -131,7 +122,7 @@
             },
             {
               "time": "4:30 – 6:00",
-              "owner": "Camila Bueno / Sofía Herreño",
+              "owner": "Sofía Herreño",
               "slot": "Tarde",
               "modality": "Virtual",
               "title": "Optimización de Perfil Profesional — Parte 1: WhatsApp y LinkedIn",
@@ -147,21 +138,21 @@
           "_isoDate": "2026-07-23",
           "sessions": [
             {
-              "time": "9:00 – 10:00",
+              "time": "9:00 – 10:30",
+              "owner": "Sofía Herreño",
+              "slot": "Mañana",
+              "modality": "Virtual",
+              "title": "Optimización de Perfil Profesional — Parte 2: Facebook e Instagram",
+              "desc": "Configuración profesional de Facebook e Instagram · revisión de foto, biografía, portada, datos de contacto e historias destacadas · adecuación del perfil digital del agente para proyectar confianza, coherencia y respaldo institucional de Inmobiliario Latam.",
+              "meetUrl": "https://meet.google.com/uhy-edzp-yan"
+            },
+            {
+              "time": "10:30 – 12:30",
               "owner": "Walter Arias",
               "slot": "Mañana",
               "modality": "Virtual",
               "title": "Nuevos Requerimientos: Proceso de Búsqueda y Calificación",
               "desc": "Explicación de la unidad de negocio de Nuevos Requerimientos · proceso de búsqueda de opciones para clientes activos · criterios de calificación, seguimiento y gestión de requerimientos inmobiliarios.",
-              "meetUrl": ""
-            },
-            {
-              "time": "10:00 – 12:00",
-              "owner": "Walter Arias",
-              "slot": "Mañana",
-              "modality": "Virtual",
-              "title": "Derecho Inmobiliario: Documentación, Contratos y Alcance del Agente",
-              "desc": "Marco legal básico del proceso inmobiliario · contratos, escrituras, due diligence y documentos clave · límites del rol del agente, manejo responsable de información y momentos en los que debe escalarse a un especialista.",
               "meetUrl": ""
             },
             {
@@ -175,12 +166,12 @@
             },
             {
               "time": "4:30 – 6:00",
-              "owner": "Sofía Herreño",
+              "owner": "Brooke Villanueva",
               "slot": "Tarde",
-              "modality": "Virtual",
-              "title": "Optimización de Perfil Profesional — Parte 2: Facebook e Instagram",
-              "desc": "Configuración profesional de Facebook e Instagram · revisión de foto, biografía, portada, datos de contacto e historias destacadas · adecuación del perfil digital del agente para proyectar confianza, coherencia y respaldo institucional de Inmobiliario Latam.",
-              "meetUrl": "https://meet.google.com/uhy-edzp-yan"
+              "modality": "Presencial",
+              "title": "Notion 1ª cap. — Recursos Digitales de la Empresa",
+              "desc": "Introducción a Notion como biblioteca interna de trabajo · navegación por bases de datos, guías, procesos y recursos comerciales · consulta de información clave para apoyar la gestión diaria del agente.",
+              "meetUrl": ""
             }
           ]
         },
@@ -223,8 +214,8 @@
               "owner": "Brooke Villanueva",
               "slot": "Tarde",
               "modality": "Presencial",
-              "title": "Notion 1ª cap. — Recursos Digitales de la Empresa",
-              "desc": "Introducción a Notion como biblioteca interna de trabajo · navegación por bases de datos, guías, procesos y recursos comerciales · consulta de información clave para apoyar la gestión diaria del agente.",
+              "title": "Notion 2ª cap. — Inventario y Gestión de Información",
+              "desc": "Uso de Notion para consultar y gestionar inventario inmobiliario · lectura de fichas de propiedades, estados de disponibilidad y datos comerciales clave · transformación de la información técnica en argumentos útiles para el cliente.",
               "meetUrl": ""
             }
           ]
@@ -239,16 +230,17 @@
         {
           "num": 6,
           "date": "lunes 27 de julio de 2026",
-          "badge": null,
+          "badge": "reunion",
           "_isoDate": "2026-07-27",
           "sessions": [
             {
               "time": "9:00 – 10:30",
-              "owner": "Brooke Villanueva",
+              "owner": "Walter Arias",
               "slot": "Mañana",
-              "modality": "Presencial",
-              "title": "Notion 2ª cap. — Inventario y Gestión de Información",
-              "desc": "Uso de Notion para consultar y gestionar inventario inmobiliario · lectura de fichas de propiedades, estados de disponibilidad y datos comerciales clave · transformación de la información técnica en argumentos útiles para el cliente.",
+              "modality": "Virtual",
+              "title": "Reunión Semanal de Equipo: Revisión y Planificación Comercial",
+              "desc": "Participación activa en la reunión semanal del equipo · revisión de avances, aprendizajes y pendientes de la semana anterior · análisis de casos reales de gestión comercial · planificación de objetivos, compromisos y prioridades para la semana en curso.",
+              "isReunion": true,
               "meetUrl": ""
             },
             {
@@ -261,29 +253,20 @@
               "meetUrl": "https://meet.google.com/dee-vhbc-cdi"
             },
             {
-              "time": "3:00 – 4:30",
-              "owner": "Camila Bueno",
-              "slot": "Tarde",
-              "modality": "Virtual",
-              "title": "Proceso de Compra Inmobiliaria y Conceptos Comerciales Clave",
-              "desc": "Ruta general del cliente en una operación inmobiliaria · reserva, separación, minuta, escritura, crédito hipotecario, cuota inicial y partida registral · glosario básico para sostener conversaciones comerciales con mayor seguridad y criterio.",
-              "meetUrl": ""
-            },
-            {
-              "time": "4:30 – 6:00",
+              "time": "3:30 – 5:00",
               "owner": "Walter Arias",
               "slot": "Tarde",
               "modality": "Virtual",
-              "title": "Venta Consultiva Inmobiliaria en 7 Pasos",
-              "desc": "Metodología estratégica para comprender las necesidades reales del cliente, generar confianza y aportar valor durante todo el proceso comercial · guía práctica para avanzar desde el primer contacto hasta el cierre, aplicando escucha activa, diagnóstico, presentación de opciones, manejo de objeciones y seguimiento efectivo.",
-              "meetUrl": ""
+              "title": "Tipos de Negocio, Comisiones y Esquema de Referidos",
+              "desc": "Explicación de los tipos de negocio de Inmobiliario Latam, del Tipo 1 al Tipo 4 · modelos de comisión y escalabilidad · esquema de referidos Nivel 1 y Nivel 2 · ejemplos prácticos de liquidación · reglas de trazabilidad para proteger correctamente la comisión del agente.",
+              "meetUrl": "https://meet.google.com/gge-gchr-enz"
             }
           ]
         },
         {
           "num": 7,
           "date": "jueves 30 de julio de 2026",
-          "badge": "reunion",
+          "badge": null,
           "_isoDate": "2026-07-30",
           "sessions": [
             {
@@ -291,13 +274,12 @@
               "owner": "Jorge Pando",
               "slot": "Mañana",
               "modality": "Presencial",
-              "title": "Reunión Semanal de Equipo: Revisión y Planificación Comercial",
-              "desc": "Participación activa en la reunión semanal del equipo · revisión de avances, aprendizajes y pendientes de la semana anterior · análisis de casos reales de gestión comercial · planificación de objetivos, compromisos y prioridades para la semana en curso.",
-              "isReunion": true,
+              "title": "Proceso de Compra Inmobiliaria y Conceptos Comerciales Clave",
+              "desc": "Ruta general del cliente en una operación inmobiliaria · reserva, separación, minuta, escritura, crédito hipotecario, cuota inicial y partida registral · glosario básico para sostener conversaciones comerciales con mayor seguridad y criterio.",
               "meetUrl": ""
             },
             {
-              "time": "11:00 – 12:00",
+              "time": "11:00 – 12:30",
               "owner": "Jorge Pando",
               "slot": "Mañana",
               "modality": "Presencial",
@@ -307,21 +289,21 @@
             },
             {
               "time": "3:00 – 4:30",
+              "owner": "Jorge Pando",
+              "slot": "Tarde",
+              "modality": "Presencial",
+              "title": "Impuestos y Obligaciones Tributarias en Operaciones Inmobiliarias",
+              "desc": "Conceptos tributarios básicos en compraventa y arrendamiento · impuestos aplicables, tratamiento de comisiones y obligaciones generales del agente · criterios clave para orientar al cliente sin asumir funciones contables o fiscales.",
+              "meetUrl": ""
+            },
+            {
+              "time": "4:30 – 6:00",
               "owner": "Jorge Pando / Walter Arias",
               "slot": "Tarde",
               "modality": "Presencial",
               "title": "Entrenamiento Práctico: Llamadas de Calificación para Nuevos Requerimientos",
               "desc": "Práctica guiada de llamadas para leads categorizados como Nuevos Requerimientos · aplicación de preguntas de calificación · validación de presupuesto, zona, urgencia y forma de pago · registro de información y definición del siguiente paso comercial · integra los ejercicios de los Entrenamientos Prácticos 1 y 2 del programa original.",
               "meetUrl": ""
-            },
-            {
-              "time": "4:30 – 6:00",
-              "owner": "Jorge Pando / Sofía Herreño",
-              "slot": "Tarde",
-              "modality": "Presencial/Virtual",
-              "title": "Entrenamiento Práctico Final: Roleplay Comercial Integral",
-              "desc": "Simulación completa del proceso comercial mediante roleplay · recepción del cliente, identificación de necesidades, presentación de opciones, manejo de objeciones y cierre del siguiente paso · registro de actividades en CRM con trazabilidad completa.",
-              "meetUrl": "https://meet.google.com/qty-hxub-dea"
             }
           ]
         },
@@ -333,7 +315,7 @@
           "sessions": [
             {
               "time": "9:00 – 11:00",
-              "owner": "Walter Arias / Jorge Pando",
+              "owner": "Jorge Pando",
               "slot": "Mañana",
               "modality": "Presencial",
               "title": "Reunión Semanal de Equipo y Revisión de Avances",
@@ -342,7 +324,16 @@
               "meetUrl": ""
             },
             {
-              "time": "3:00 – 5:00",
+              "time": "2:30 – 4:00",
+              "owner": "Jorge Pando",
+              "slot": "Tarde",
+              "modality": "Presencial",
+              "title": "Proceso de Venta Consultiva Inmobiliaria en 7 Pasos",
+              "desc": "Metodología estratégica para comprender las necesidades reales del cliente, generar confianza y aportar valor durante todo el proceso comercial · guía práctica para avanzar desde el primer contacto hasta el cierre, aplicando escucha activa, diagnóstico, presentación de opciones, manejo de objeciones y seguimiento efectivo.",
+              "meetUrl": ""
+            },
+            {
+              "time": "4:00 – 6:00",
               "owner": "Walter Arias / Jorge Pando",
               "slot": "Tarde",
               "modality": "Presencial",
