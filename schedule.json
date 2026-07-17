@@ -288,7 +288,7 @@
               "meetUrl": ""
             },
             {
-              "time": "3:00 – 4:00",
+              "time": "3:00 – 3:45",
               "owner": "Jorge Pando",
               "slot": "Tarde",
               "modality": "Presencial",
@@ -297,7 +297,7 @@
               "meetUrl": ""
             },
             {
-              "time": "4:00 – 5:00",
+              "time": "3:45 – 4:30",
               "owner": "Jorge Pando / Walter Arias",
               "slot": "Tarde",
               "modality": "Presencial",
@@ -306,14 +306,32 @@
               "meetUrl": ""
             },
             {
-              "time": "5:00 – 6:30",
+              "time": "4:30 – 5:30",
+              "owner": "Jorge Pando / Walter Arias",
+              "slot": "Tarde",
+              "modality": "Presencial",
+              "title": "Entrenamiento Práctico: Llamadas de Calificación para Nuevos Requerimientos",
+              "desc": "Práctica guiada de llamadas para leads categorizados como Nuevos Requerimientos · aplicación de preguntas de calificación · validación de presupuesto, zona, urgencia y forma de pago · registro de información y definición del siguiente paso comercial · integra los ejercicios de los Entrenamientos Prácticos 1 y 2 del programa original.",
+              "meetUrl": ""
+            },
+            {
+              "time": "5:30 – 6:30",
               "owner": "Jorge Pando / Sofía Herreño",
               "slot": "Tarde",
               "modality": "Presencial/Virtual",
-              "title": "Entrenamiento Práctico Final: Roleplay Comercial Integral y Evaluación",
-              "desc": "Simulación completa del proceso comercial mediante roleplay · recepción del cliente, identificación de necesidades, presentación de opciones, manejo de objeciones y cierre del siguiente paso · registro de actividades en CRM con trazabilidad completa · retroalimentación individual y decisión de habilitación.",
-              "isEval": true,
+              "title": "Entrenamiento Práctico Final: Roleplay Comercial Integral",
+              "desc": "Simulación completa del proceso comercial mediante roleplay · recepción del cliente, identificación de necesidades, presentación de opciones, manejo de objeciones y cierre del siguiente paso · registro de actividades en CRM con trazabilidad completa.",
               "meetUrl": "https://meet.google.com/qty-hxub-dea"
+            },
+            {
+              "time": "6:30 – 7:30",
+              "owner": "Walter Arias / Jorge Pando",
+              "slot": "Tarde",
+              "modality": "Presencial",
+              "title": "Evaluación Final y Plan de Acción Individual",
+              "desc": "Evaluación integral del proceso de formación · test teórico, roleplay de calificación y presentación comercial · retroalimentación individual del desempeño · definición de plan de mejora y decisión sobre la habilitación comercial del agente.",
+              "isEval": true,
+              "meetUrl": ""
             }
           ]
         }
