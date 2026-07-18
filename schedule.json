@@ -163,15 +163,6 @@
               "title": "CRM 1ª cap. — Navegación y Gestión Inicial",
               "desc": "Introducción práctica al sistema CRM · reconocimiento de módulos principales, flujo base y navegación general · gestión inicial de contactos, actividades, tareas, estados y primeras cargas guiadas dentro del proceso comercial.",
               "meetUrl": "https://meet.google.com/ixz-zyks-app"
-            },
-            {
-              "time": "4:30 – 6:00",
-              "owner": "Brooke Villanueva",
-              "slot": "Tarde",
-              "modality": "Presencial",
-              "title": "Notion 1ª cap. — Recursos Digitales de la Empresa",
-              "desc": "Introducción a Notion como biblioteca interna de trabajo · navegación por bases de datos, guías, procesos y recursos comerciales · consulta de información clave para apoyar la gestión diaria del agente.",
-              "meetUrl": ""
             }
           ]
         },
@@ -208,15 +199,6 @@
               "title": "CRM 2ª cap. — Gestión de Leads y Funnel Comercial",
               "desc": "Gestión de leads dentro del CRM · revisión de pipeline y etapas del funnel · actualización de registros, interacciones, estados, notas y tareas · criterios para avanzar correctamente un lead dentro del sistema.",
               "meetUrl": "https://meet.google.com/qdx-gqxm-ids"
-            },
-            {
-              "time": "4:30 – 6:00",
-              "owner": "Brooke Villanueva",
-              "slot": "Tarde",
-              "modality": "Presencial",
-              "title": "Notion 2ª cap. — Inventario y Gestión de Información",
-              "desc": "Uso de Notion para consultar y gestionar inventario inmobiliario · lectura de fichas de propiedades, estados de disponibilidad y datos comerciales clave · transformación de la información técnica en argumentos útiles para el cliente.",
-              "meetUrl": ""
             }
           ]
         }
@@ -225,7 +207,7 @@
     {
       "label": "Semana 2",
       "title": "Herramientas, negociación y habilitación",
-      "subtitle": "27 – 31 de julio",
+      "subtitle": "27 de julio – 5 de agosto",
       "days": [
         {
           "num": 6,
@@ -241,7 +223,7 @@
               "title": "Reunión Semanal de Equipo: Revisión y Planificación Comercial",
               "desc": "Participación activa en la reunión semanal del equipo · revisión de avances, aprendizajes y pendientes de la semana anterior · análisis de casos reales de gestión comercial · planificación de objetivos, compromisos y prioridades para la semana en curso.",
               "isReunion": true,
-              "meetUrl": "https://meet.google.com/eqw-uxjr-nrs"
+              "meetUrl": "https://meet.google.com/eqw-uxjr-nzd"
             },
             {
               "time": "10:30 – 12:00",
@@ -289,20 +271,11 @@
             },
             {
               "time": "3:00 – 4:30",
-              "owner": "Jorge Pando",
+              "owner": "Brooke Villanueva",
               "slot": "Tarde",
               "modality": "Presencial",
-              "title": "Impuestos y Obligaciones Tributarias en Operaciones Inmobiliarias",
-              "desc": "Conceptos tributarios básicos en compraventa y arrendamiento · impuestos aplicables, tratamiento de comisiones y obligaciones generales del agente · criterios clave para orientar al cliente sin asumir funciones contables o fiscales.",
-              "meetUrl": ""
-            },
-            {
-              "time": "4:30 – 6:00",
-              "owner": "Jorge Pando / Walter Arias",
-              "slot": "Tarde",
-              "modality": "Presencial/Virtual",
-              "title": "Entrenamiento Práctico: Llamadas de Calificación para Nuevos Requerimientos",
-              "desc": "Práctica guiada de llamadas para leads categorizados como Nuevos Requerimientos · aplicación de preguntas de calificación · validación de presupuesto, zona, urgencia y forma de pago · registro de información y definición del siguiente paso comercial · integra los ejercicios de los Entrenamientos Prácticos 1 y 2 del programa original.",
+              "title": "Notion 1ª cap. — Recursos Digitales de la Empresa",
+              "desc": "Introducción a Notion como biblioteca interna de trabajo · navegación por bases de datos, guías, procesos y recursos comerciales · consulta de información clave para apoyar la gestión diaria del agente.",
               "meetUrl": ""
             }
           ]
@@ -310,7 +283,7 @@
         {
           "num": 8,
           "date": "viernes 31 de julio de 2026",
-          "badge": "eval",
+          "badge": null,
           "_isoDate": "2026-07-31",
           "sessions": [
             {
@@ -324,7 +297,7 @@
               "meetUrl": ""
             },
             {
-              "time": "2:30 – 4:00",
+              "time": "3:00 – 4:30",
               "owner": "Jorge Pando",
               "slot": "Tarde",
               "modality": "Presencial",
@@ -333,7 +306,60 @@
               "meetUrl": ""
             },
             {
-              "time": "4:00 – 6:00",
+              "time": "4:30 – 6:00",
+              "owner": "Brooke Villanueva",
+              "slot": "Tarde",
+              "modality": "Presencial",
+              "title": "Notion 2ª cap. — Inventario y Gestión de Información",
+              "desc": "Uso de Notion para consultar y gestionar inventario inmobiliario · lectura de fichas de propiedades, estados de disponibilidad y datos comerciales clave · transformación de la información técnica en argumentos útiles para el cliente.",
+              "meetUrl": ""
+            }
+          ]
+        },
+        {
+          "num": 9,
+          "date": "lunes 4 de agosto de 2026",
+          "badge": "reunion",
+          "_isoDate": "2026-08-04",
+          "sessions": [
+            {
+              "time": "9:00 – 11:00",
+              "owner": "Jorge Pando",
+              "slot": "Mañana",
+              "modality": "Presencial",
+              "title": "Reunión Semanal de Equipo: Revisión y Planificación Comercial",
+              "desc": "Participación activa en la reunión semanal del equipo · revisión de avances, aprendizajes y pendientes de la semana anterior · análisis de casos reales de gestión comercial · planificación de objetivos, compromisos y prioridades para la semana en curso.",
+              "isReunion": true,
+              "meetUrl": ""
+            },
+            {
+              "time": "4:30 – 6:00",
+              "owner": "Jorge Pando / Walter Arias",
+              "slot": "Tarde",
+              "modality": "Presencial/Virtual",
+              "title": "Entrenamiento Práctico: Llamadas de Calificación para Nuevos Requerimientos",
+              "desc": "Práctica guiada de llamadas para leads categorizados como Nuevos Requerimientos · aplicación de preguntas de calificación · validación de presupuesto, zona, urgencia y forma de pago · registro de información y definición del siguiente paso comercial · integra los ejercicios de los Entrenamientos Prácticos 1 y 2 del programa original.",
+              "meetUrl": "https://meet.google.com/qty-hxub-dea"
+            }
+          ]
+        },
+        {
+          "num": 10,
+          "date": "martes 5 de agosto de 2026",
+          "badge": "eval",
+          "_isoDate": "2026-08-05",
+          "sessions": [
+            {
+              "time": "9:00 – 10:00",
+              "owner": "Jorge Pando",
+              "slot": "Mañana",
+              "modality": "Presencial",
+              "title": "Impuestos y Obligaciones Tributarias en Operaciones Inmobiliarias",
+              "desc": "Conceptos tributarios básicos en compraventa y arrendamiento · impuestos aplicables, tratamiento de comisiones y obligaciones generales del agente · criterios clave para orientar al cliente sin asumir funciones contables o fiscales.",
+              "meetUrl": ""
+            },
+            {
+              "time": "3:00 – 5:00",
               "owner": "Walter Arias / Jorge Pando",
               "slot": "Tarde",
               "modality": "Presencial/Virtual",
