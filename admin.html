@@ -252,10 +252,74 @@ body{font-family:'DM Sans',system-ui,sans-serif;background:var(--bg);color:var(-
 .refuerzo-item{font-size:12px;color:var(--amber);margin-bottom:3px;line-height:1.5}
 
 /* RESPONSIVE */
-@media(max-width:600px){
-  .topbar,.tabs-bar,.page{padding-left:16px;padding-right:16px}
+@media(max-width:768px){
+  /* Layout general */
+  .topbar{padding:10px 14px;flex-wrap:wrap;gap:8px}
+  .topbar .logo{font-size:16px}
+  .tb-right{gap:6px;flex-wrap:wrap}
+  .tb-right .b-gh:not(#btn-cal-top){display:none}
+  .tabs-bar{padding:0 12px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .tabs-bar::-webkit-scrollbar{display:none}
+  .tab{white-space:nowrap;padding:10px 14px;font-size:13px}
+  .page{padding:14px 12px}
+
+  /* Cards */
+  .card{padding:14px;margin-bottom:12px}
+  .card-hd{margin-bottom:10px}
+  .card-tt{font-size:14px}
   .g2,.g3,.g4,.team-row,.stat-grid{grid-template-columns:1fr}
-  .tb-right .b-gh:not(#btn-cal){display:none}
+
+  /* Cronograma — sesiones */
+  .ses-row{flex-direction:column;gap:8px}
+  .ses-time{font-size:12px}
+  .ses-meta{flex-direction:column;gap:4px;align-items:flex-start}
+
+  /* Botones */
+  .btn{padding:10px 14px;font-size:13px}
+  .b-or{width:100%}
+
+  /* Editor de test */
+  .te-q{padding:12px}
+  .te-opts{grid-template-columns:1fr}
+
+  /* Inputs */
+  input[type=text],input[type=email],input[type=date],textarea,select{
+    font-size:16px!important;
+    padding:10px 12px;
+    border-radius:8px;
+    width:100%;
+    box-sizing:border-box
+  }
+
+  /* Publicar */
+  #btn-pub-main,#btn-pub-gh{width:100%;margin-bottom:8px}
+  .pub-btns{flex-direction:column}
+
+  /* Nueva cohorte */
+  .cohort-form{flex-direction:column}
+  .cohort-form input{width:100%}
+
+  /* Evaluaciones tabla */
+  .eval-table{font-size:12px}
+  .eval-table th,.eval-table td{padding:6px 8px}
+
+  /* Stat cards */
+  .stat-num{font-size:28px}
+
+  /* Log output */
+  #pub-log,#cal-log{font-size:11px;max-height:150px}
+
+  /* Crear eventos card */
+  div[style*="border:2px solid #E84E0F"]{padding:14px}
+}
+
+@media(max-width:480px){
+  .topbar .logo span:last-child{display:none}
+  .tab{padding:10px 10px;font-size:12px}
+  .card-tt{font-size:13px}
+  .stat-num{font-size:24px}
+  /* Ocultar columnas menos importantes en tablas */
+  .eval-table .col-hide{display:none}
 }
 
 @media print {
