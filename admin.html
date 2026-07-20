@@ -473,12 +473,17 @@ body{font-family:'DM Sans',system-ui,sans-serif;background:var(--bg);color:var(-
           <div class="stat-sub"><a href="https://camilabuenoil.github.io/formacion/" target="_blank" style="color:var(--orange);text-decoration:none;font-size:11px">Ver página ↗</a></div>
         </div>
       </div>
+      <div class="card" style="border:2px solid #E84E0F">
+        <div class="card-hd"><div class="card-tt" style="color:#E84E0F">📅 Crear eventos en Google Calendar</div></div>
+        <p style="font-size:13px;color:#666;margin-bottom:12px">Crea los 30 eventos del cronograma actual con link de Meet. No modifica la programación.</p>
+        <button class="btn b-or" id="btn-cal-all" onclick="createAllCalEvents()" style="width:100%;padding:12px;font-size:14px">📅 Crear todos los eventos en Calendar</button>
+        <div id="cal-log" style="margin-top:8px;font-size:12px;max-height:200px;overflow-y:auto"></div>
+      </div>
       <div class="card">
         <div class="card-hd"><div class="card-tt">Publicar cambios</div></div>
         <div style="display:flex;gap:8px;flex-wrap:wrap">
           <button class="btn b-or" id="btn-pub-main" onclick="publishAll()" disabled>🚀 GitHub + Google Calendar</button>
           <button class="btn b-wh" id="btn-pub-gh" onclick="pubGH()" disabled>📁 Solo GitHub</button>
-          <button class="btn b-wh" id="btn-cal-all" onclick="createAllCalEvents()" style="margin-top:8px;width:100%">📅 Crear todos los eventos en Calendar</button>
           <button class="btn b-gh b-sm" onclick="resetToken()" style="margin-left:auto">🔑 Cambiar token</button>
         </div>
         <div id="pub-log"></div>
