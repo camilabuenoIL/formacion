@@ -478,6 +478,7 @@ body{font-family:'DM Sans',system-ui,sans-serif;background:var(--bg);color:var(-
         <div style="display:flex;gap:8px;flex-wrap:wrap">
           <button class="btn b-or" id="btn-pub-main" onclick="publishAll()" disabled>🚀 GitHub + Google Calendar</button>
           <button class="btn b-wh" id="btn-pub-gh" onclick="pubGH()" disabled>📁 Solo GitHub</button>
+          <button class="btn b-wh" id="btn-cal-all" onclick="createAllCalEvents()" style="margin-top:8px;width:100%">📅 Crear todos los eventos en Calendar</button>
           <button class="btn b-gh b-sm" onclick="resetToken()" style="margin-left:auto">🔑 Cambiar token</button>
         </div>
         <div id="pub-log"></div>
@@ -733,6 +734,54 @@ function collect(){const d=JSON.parse(JSON.stringify(DATA));d.startDate=document
 function lg(m,c){const e=document.getElementById('pub-log');e.style.display='block';e.innerHTML+='<span'+(c?' class="'+c+'"':'')+'>'+m+'</span>\n';e.scrollTop=e.scrollHeight;}
 async function publishAll(){if(!calTok&&!localStorage.getItem(CAL_KEY)){ss('Calendar no conectado — publicando solo en GitHub.','warn');await _pub(false);return;}await _pub(true);}
 async function pubGH(){await _pub(false);}
+
+async function createAllCalEvents(){
+  const tok = calTok || localStorage.getItem(CAL_KEY);
+  if(!tok){ ss('Calendar no conectado. Haz clic en "Conectar Calendar" primero.','warn'); return; }
+  const btn = document.getElementById('btn-cal-all');
+  btn.disabled = true; btn.textContent = '⏳ Creando eventos...';
+  ss('Creando todos los eventos en Calendar...','info');
+  let ok=0, errs=[], total=0;
+  const nd = DATA;
+  for(let wi=0; wi<nd.weeks.length; wi++){
+    const week = nd.weeks[wi];
+    for(let di=0; di<week.days.length; di++){
+      const day = week.days[di];
+      const dateStr = day._isoDate;
+      if(!dateStr){ lg('⚠ Sin fecha ISO para Día '+day.num,'warn'); continue; }
+      for(let si=0; si<day.sessions.length; si++){
+        const s = day.sessions[si];
+        total++;
+        try{
+          lg('Creando: '+s.title.substring(0,50)+'...','info');
+          const res = await createCalEv(s, day.num, dateStr, true); // withMeet=true para todos
+          if(res){
+            s.calEventId = res.eventId;
+            if(res.meetUrl){ s.meetUrl = res.meetUrl; }
+            ok++;
+            lg('  ✓ '+s.title.substring(0,45)+' → Meet: '+(res.meetUrl||'sin Meet'),'ok');
+          }
+        } catch(e){
+          errs.push(s.title.substring(0,30)+': '+e.message);
+          lg('  ✗ '+e.message,'err');
+        }
+        await new Promise(r=>setTimeout(r,800)); // pausa entre eventos
+      }
+    }
+  }
+  // Save updated schedule with event IDs and Meet URLs to GitHub
+  try{
+    lg('\n⬆ Guardando Meet URLs en GitHub...','info');
+    await saveGH(nd);
+    DATA = nd;
+    lg('✓ GitHub actualizado con Meet URLs','ok');
+  } catch(e){ lg('⚠ Error guardando en GitHub: '+e.message,'warn'); }
+  
+  const msg = '✓ '+ok+'/'+total+' eventos creados en Calendar.'+(errs.length?' Errores: '+errs.length:'');
+  ss(msg, errs.length?'warn':'ok');
+  lg('\n'+msg, errs.length?'warn':'ok');
+  btn.disabled = false; btn.textContent = '📅 Crear todos los eventos en Calendar';
+}
 async function _pub(cal){
   ['btn-pub-top','btn-pub-main','btn-pub-gh'].forEach(id=>{const b=document.getElementById(id);if(b)b.disabled=true;});
   document.getElementById('btn-pub-top').innerHTML='⏳';document.getElementById('pub-log').innerHTML='';
