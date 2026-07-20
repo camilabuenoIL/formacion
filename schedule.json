@@ -25,16 +25,6 @@
               "calEventId": "gn3o7a6jata5rnsntdfvv3npio"
             },
             {
-              "time": "3:00 – 4:30",
-              "owner": "Walter Arias",
-              "slot": "Tarde",
-              "modality": "Virtual",
-              "title": "Inducción Institucional y Modelo Comercial de Inmobiliario Latam",
-              "desc": "Introducción a la cultura, valores y estructura de Inmobiliario Latam · explicación del modelo comercial · roles del equipo · tipos de operación · participaciones, responsabilidades y criterios de trazabilidad en la gestión inmobiliaria.",
-              "meetUrl": "https://meet.google.com/ivy-ncvd-nzd",
-              "calEventId": "5gi28docg3jvruupjdk7itk9bc"
-            },
-            {
               "time": "12:00 – 1:00",
               "owner": "Jorge Pando",
               "slot": "Tarde",
@@ -43,6 +33,16 @@
               "desc": "Panorama general del sector inmobiliario · actores clave del mercado · tipos de inmuebles · diferencias entre proyectos y propiedades usadas · oportunidades comerciales del rubro y particularidades frente a otros sectores de venta.",
               "meetUrl": "",
               "calEventId": "n3sieuo0soontb1epid97qbknk"
+            },
+            {
+              "time": "3:00 – 4:30",
+              "owner": "Walter Arias",
+              "slot": "Tarde",
+              "modality": "Virtual",
+              "title": "Inducción Institucional y Modelo Comercial de Inmobiliario Latam",
+              "desc": "Introducción a la cultura, valores y estructura de Inmobiliario Latam · explicación del modelo comercial · roles del equipo · tipos de operación · participaciones, responsabilidades y criterios de trazabilidad en la gestión inmobiliaria.",
+              "meetUrl": "https://meet.google.com/ivy-ncvd-nzd",
+              "calEventId": "5gi28docg3jvruupjdk7itk9bc"
             }
           ]
         },
