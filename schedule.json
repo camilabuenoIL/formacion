@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "20 de julio de 2026",
+  "lastUpdated": "21 de julio de 2026",
   "startDate": "Lunes 20 de julio de 2026",
   "weeks": [
     {
@@ -122,16 +122,6 @@
             },
             {
               "time": "3:00 – 4:30",
-              "owner": "Walter Arias",
-              "slot": "Tarde",
-              "modality": "Virtual",
-              "title": "Introducción al CRM y Herramientas Digitales de Gestión Comercial",
-              "desc": "Introducción al CRM como sistema de gestión y trazabilidad comercial · uso de herramientas clave del equipo: Hubspot, Notion, WhatsApp Business y perfiles digitales · importancia del orden, la trazabilidad y el seguimiento de leads dentro del trabajo diario del agente.",
-              "meetUrl": "https://meet.google.com/fou-urtr-riq",
-              "calEventId": "0jf7fn2rqois5rp1ucl4c9igs4"
-            },
-            {
-              "time": "4:30 – 6:00",
               "owner": "Sofía Herreño",
               "slot": "Tarde",
               "modality": "Virtual",
@@ -139,6 +129,16 @@
               "desc": "Configuración profesional de WhatsApp Business y LinkedIn · revisión de foto, nombre, bio, titular, mensaje de bienvenida y datos de contacto · alineación del perfil del agente con la imagen, tono y propuesta de valor de Inmobiliario Latam.",
               "meetUrl": "https://meet.google.com/exv-jgbk-ddj",
               "calEventId": "0b15slet31o6otsora2jiutkj0"
+            },
+            {
+              "time": "4:30 – 6:00",
+              "owner": "Walter Arias",
+              "slot": "Tarde",
+              "modality": "Virtual",
+              "title": "Introducción al CRM y Herramientas Digitales de Gestión Comercial",
+              "desc": "Introducción al CRM como sistema de gestión y trazabilidad comercial · uso de herramientas clave del equipo: Hubspot, Notion, WhatsApp Business y perfiles digitales · importancia del orden, la trazabilidad y el seguimiento de leads dentro del trabajo diario del agente.",
+              "meetUrl": "https://meet.google.com/fou-urtr-riq",
+              "calEventId": "0jf7fn2rqois5rp1ucl4c9igs4"
             }
           ]
         },
