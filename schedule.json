@@ -344,7 +344,7 @@
         },
         {
           "num": 9,
-          "date": "lunes 4 de agosto de 2026",
+          "date": "lunes 3 de agosto de 2026",
           "badge": "reunion",
           "_isoDate": "2026-08-04",
           "sessions": [
@@ -366,14 +366,14 @@
               "modality": "Presencial/Virtual",
               "title": "Entrenamiento Práctico: Llamadas de Calificación para Nuevos Requerimientos",
               "desc": "Práctica guiada de llamadas para leads categorizados como Nuevos Requerimientos · aplicación de preguntas de calificación · validación de presupuesto, zona, urgencia y forma de pago · registro de información y definición del siguiente paso comercial · integra los ejercicios de los Entrenamientos Prácticos 1 y 2 del programa original.",
-              "meetUrl": "https://meet.google.com/qty-hxub-dea",
+              "meetUrl": "https://meet.google.com/unf-mrwo-qzn",
               "calEventId": "1kri9pjigcj2rdt32rbelcr8g4"
             }
           ]
         },
         {
           "num": 10,
-          "date": "martes 5 de agosto de 2026",
+          "date": "martes 4 de agosto de 2026",
           "badge": "eval",
           "_isoDate": "2026-08-05",
           "sessions": [
@@ -395,7 +395,7 @@
               "title": "Evaluación Final y Plan de Acción Individual",
               "desc": "Evaluación integral del proceso de formación · test teórico, roleplay de calificación y presentación comercial · retroalimentación individual del desempeño · definición de plan de mejora y decisión sobre la habilitación comercial del agente.",
               "isEval": true,
-              "meetUrl": "https://meet.google.com/qty-hxub-dea",
+              "meetUrl": "https://meet.google.com/shb-uvsa-viz",
               "calEventId": "uiu4h0smc6lmjg69tj0vfb8p9k"
             }
           ]
