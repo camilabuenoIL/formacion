@@ -129,16 +129,6 @@
               "desc": "Introducción al CRM como sistema de gestión y trazabilidad comercial · uso de herramientas clave del equipo: Hubspot, Notion, WhatsApp Business y perfiles digitales · importancia del orden, la trazabilidad y el seguimiento de leads dentro del trabajo diario del agente.",
               "meetUrl": "https://meet.google.com/fou-urtr-riq",
               "calEventId": "0jf7fn2rqois5rp1ucl4c9igs4"
-            },
-            {
-              "time": "3:00 – 4:30",
-              "owner": "Sofía Herreño",
-              "slot": "Tarde",
-              "modality": "Virtual",
-              "title": "Optimización de Perfil Profesional — Parte 1: WhatsApp y LinkedIn",
-              "desc": "Configuración profesional de Facebook e Instagram · revisión de foto, biografía, portada, datos de contacto e historias destacadas · adecuación del perfil digital del agente para proyectar confianza, coherencia y respaldo institucional de Inmobiliario Latam.",
-              "meetUrl": "https://meet.google.com/qyr-mezg-yje",
-              "calEventId": "198id8896hu24jvl57mjdh9j3o"
             }
           ]
         },
@@ -226,14 +216,14 @@
               "isReunion": true
             },
             {
-              "time": "10:30 – 12:00",
-              "owner": "Paul Unsihuay Vila",
+              "time": "11:00 – 12:30",
+              "owner": "Sofía Herreño",
               "slot": "Mañana",
-              "modality": "Presencial",
-              "title": "ACM — Análisis Comparativo de Mercado y Presentación Comercial",
-              "desc": "Criterios para analizar precio, zona, competencia y comportamiento del mercado · uso del ACM para sustentar recomendaciones ante propietarios y clientes compradores · revisión de portales inmobiliarios, referencias comparables y pautas para una publicación efectiva.",
-              "meetUrl": "",
-              "calEventId": "pla1u7ah21olvndbtjdpgeiej4"
+              "modality": "Virtual",
+              "title": "Optimización de Perfil Profesional — Parte 2: Facebook e Instagram",
+              "desc": "Configuración profesional de Facebook e Instagram · revisión de foto, biografía, portada, datos de contacto e historias destacadas · adecuación del perfil digital del agente para proyectar confianza, coherencia y respaldo institucional de Inmobiliario Latam.",
+              "meetUrl": "https://meet.google.com/qyr-mezg-yje",
+              "calEventId": "7cdo1uacbn01jhg82i67a4j3dg"
             },
             {
               "time": "3:00 – 4:30",
@@ -246,14 +236,14 @@
               "calEventId": "rbcka3ithp6rcq0hfnrmo7d444"
             },
             {
-              "time": "4:30 – 6:00",
-              "owner": "Sofía Herreño",
-              "slot": "Tarde",
-              "modality": "Virtual",
-              "title": "CRM 2ª cap. — Gestión de Leads y Funnel Comercial",
-              "desc": "Gestión de leads dentro del CRM · revisión de pipeline y etapas del funnel · actualización de registros, interacciones, estados, notas y tareas · criterios para avanzar correctamente un lead dentro del sistema..",
-              "meetUrl": "https://meet.google.com/qds-uuid-yxf",
-              "calEventId": "6ueite7ijqsp81jebfba0a8erk"
+              "time": "10:30 – 12:00",
+              "owner": "Paul Unsihuay Vila",
+              "slot": "Mañana",
+              "modality": "Presencial",
+              "title": "ACM — Análisis Comparativo de Mercado y Presentación Comercial",
+              "desc": "Criterios para analizar precio, zona, competencia y comportamiento del mercado · uso del ACM para sustentar recomendaciones ante propietarios y clientes compradores · revisión de portales inmobiliarios, referencias comparables y pautas para una publicación efectiva.",
+              "meetUrl": "",
+              "calEventId": "pla1u7ah21olvndbtjdpgeiej4"
             }
           ]
         },
@@ -264,17 +254,7 @@
           "_isoDate": "2026-07-30",
           "sessions": [
             {
-              "time": "9:00 – 10:30",
-              "owner": "Sofía Herreño",
-              "slot": "Mañana",
-              "modality": "Virtual",
-              "title": "CRM 3ª cap. — Gestión de Negocios y Oportunidades",
-              "desc": "Creación, actualización y avance de oportunidades dentro del pipeline comercial · seguimiento de negocios activos · revisión de reportes y métricas clave · cierre de negocios en el sistema y registro completo de la trazabilidad comercial..",
-              "meetUrl": "https://meet.google.com/wyg-mjat-hxd",
-              "calEventId": "acnl615igo4sps60ub6p87arp8"
-            },
-            {
-              "time": "10:30 – 12:00",
+              "time": "9:30 – 11:00",
               "owner": "Jorge Pando",
               "slot": "Mañana",
               "modality": "Presencial",
@@ -282,6 +262,16 @@
               "desc": "Ruta general del cliente en una operación inmobiliaria · reserva, separación, minuta, escritura, crédito hipotecario, cuota inicial y partida registral · glosario básico para sostener conversaciones comerciales con mayor seguridad y criterio.",
               "meetUrl": "",
               "calEventId": "ftsfq2djqlogc54nhgb9q5sbq0"
+            },
+            {
+              "time": "11:00 – 12:30",
+              "owner": "Sofía Herreño",
+              "slot": "Mañana",
+              "modality": "Virtual",
+              "title": "CRM 2ª cap. — Gestión de Leads y Funnel Comercial",
+              "desc": "Gestión de leads dentro del CRM · revisión de pipeline y etapas del funnel · actualización de registros, interacciones, estados, notas y tareas · criterios para avanzar correctamente un lead dentro del sistema..",
+              "meetUrl": "https://meet.google.com/qds-uuid-yxf",
+              "calEventId": "acnl615igo4sps60ub6p87arp8"
             },
             {
               "time": "3:00 – 4:30",
