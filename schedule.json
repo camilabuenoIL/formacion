@@ -160,16 +160,6 @@
               "calEventId": "j1d1o51aigfe6e035igqhikrvc"
             },
             {
-              "time": "3:00 – 4:30",
-              "owner": "Walter Arias",
-              "slot": "Tarde",
-              "modality": "Virtual",
-              "title": "Nuevos Requerimientos: Proceso de Búsqueda y Calificación",
-              "desc": "Explicación de la unidad de negocio de Nuevos Requerimientos · proceso de búsqueda de opciones para clientes activos · criterios de calificación, seguimiento y gestión de requerimientos inmobiliarios.",
-              "meetUrl": "https://meet.google.com/nzn-mgeu-kxk",
-              "calEventId": "ussa5a292vhiv6s6n689ptnvns"
-            },
-            {
               "time": "4:30 – 6:00",
               "owner": "Sofía Herreño / Camila Bueno",
               "slot": "Tarde",
@@ -180,14 +170,14 @@
               "calEventId": "vpd2ndv2brrgshs4tt6023n5lo"
             },
             {
-              "time": "06:00 – 08:30",
-              "owner": "Sofía Herreño",
-              "slot": "Mañana",
+              "time": "3:00 – 4:30",
+              "owner": "Walter Arias",
+              "slot": "Tarde",
               "modality": "Virtual",
-              "title": "Optimización de Perfil Profesional — Parte 2: Facebook e Instagram",
-              "desc": "Configuración profesional de Facebook e Instagram · revisión de foto, biografía, portada, datos de contacto e historias destacadas · adecuación del perfil digital del agente para proyectar confianza, coherencia y respaldo institucional de Inmobiliario Latam.",
-              "meetUrl": "https://meet.google.com/qyr-mezg-yje",
-              "calEventId": "198id8896hu24jvl57mjdh9j3o"
+              "title": "Nuevos Requerimientos: Proceso de Búsqueda y Calificación",
+              "desc": "Explicación de la unidad de negocio de Nuevos Requerimientos · proceso de búsqueda de opciones para clientes activos · criterios de calificación, seguimiento y gestión de requerimientos inmobiliarios.",
+              "meetUrl": "https://meet.google.com/nzn-mgeu-kxk",
+              "calEventId": "ussa5a292vhiv6s6n689ptnvns"
             }
           ]
         }
