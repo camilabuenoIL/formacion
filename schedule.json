@@ -121,16 +121,6 @@
               "calEventId": "qt0hiad5o43qvhokr0blh6gbns"
             },
             {
-              "time": "3:00 – 4:30",
-              "owner": "Sofía Herreño",
-              "slot": "Tarde",
-              "modality": "Virtual",
-              "title": "Optimización de Perfil Profesional — Parte 1: WhatsApp y LinkedIn",
-              "desc": "Configuración profesional de Facebook e Instagram · revisión de foto, biografía, portada, datos de contacto e historias destacadas · adecuación del perfil digital del agente para proyectar confianza, coherencia y respaldo institucional de Inmobiliario Latam.",
-              "meetUrl": "https://meet.google.com/qyr-mezg-yje",
-              "calEventId": "198id8896hu24jvl57mjdh9j3o"
-            },
-            {
               "time": "4:30 – 6:00",
               "owner": "Walter Arias",
               "slot": "Tarde",
@@ -139,6 +129,16 @@
               "desc": "Introducción al CRM como sistema de gestión y trazabilidad comercial · uso de herramientas clave del equipo: Hubspot, Notion, WhatsApp Business y perfiles digitales · importancia del orden, la trazabilidad y el seguimiento de leads dentro del trabajo diario del agente.",
               "meetUrl": "https://meet.google.com/fou-urtr-riq",
               "calEventId": "0jf7fn2rqois5rp1ucl4c9igs4"
+            },
+            {
+              "time": "3:00 – 4:30",
+              "owner": "Sofía Herreño",
+              "slot": "Tarde",
+              "modality": "Virtual",
+              "title": "Optimización de Perfil Profesional — Parte 1: WhatsApp y LinkedIn",
+              "desc": "Configuración profesional de Facebook e Instagram · revisión de foto, biografía, portada, datos de contacto e historias destacadas · adecuación del perfil digital del agente para proyectar confianza, coherencia y respaldo institucional de Inmobiliario Latam.",
+              "meetUrl": "https://meet.google.com/qyr-mezg-yje",
+              "calEventId": "198id8896hu24jvl57mjdh9j3o"
             }
           ]
         },
@@ -164,10 +164,10 @@
               "owner": "Sofía Herreño",
               "slot": "Mañana",
               "modality": "Virtual",
-              "title": "Optimización de Perfil Profesional — Parte 2: Facebook e Instagram",
+              "title": "Optimización de Perfil Profesional — Parte 1: WhatsApp y LinkedIn",
               "desc": "Configuración profesional de Facebook e Instagram · revisión de foto, biografía, portada, datos de contacto e historias destacadas · adecuación del perfil digital del agente para proyectar confianza, coherencia y respaldo institucional de Inmobiliario Latam.",
-              "meetUrl": "https://meet.google.com/qyr-mezg-yje",
-              "calEventId": "198id8896hu24jvl57mjdh9j3o"
+              "meetUrl": "https://meet.google.com/sjt-krsc-xnd",
+              "calEventId": "j1d1o51aigfe6e035igqhikrvc"
             },
             {
               "time": "3:00 – 4:30",
@@ -188,6 +188,16 @@
               "desc": "Proceso de gestión desde la llegada del lead hasta su conversión en oportunidad comercial · tipos de leads, criterios de priorización y tiempos de respuesta · uso de scripts iniciales para WhatsApp y llamada según el perfil e intención del cliente.",
               "meetUrl": "https://meet.google.com/adj-raga-dzo",
               "calEventId": "vpd2ndv2brrgshs4tt6023n5lo"
+            },
+            {
+              "time": "06:00 – 08:30",
+              "owner": "Sofía Herreño",
+              "slot": "Mañana",
+              "modality": "Virtual",
+              "title": "Optimización de Perfil Profesional — Parte 2: Facebook e Instagram",
+              "desc": "Configuración profesional de Facebook e Instagram · revisión de foto, biografía, portada, datos de contacto e historias destacadas · adecuación del perfil digital del agente para proyectar confianza, coherencia y respaldo institucional de Inmobiliario Latam.",
+              "meetUrl": "https://meet.google.com/qyr-mezg-yje",
+              "calEventId": "198id8896hu24jvl57mjdh9j3o"
             }
           ]
         }
