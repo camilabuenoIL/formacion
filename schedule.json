@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "22 de julio de 2026",
+  "lastUpdated": "25 de julio de 2026",
   "startDate": "Lunes 20 de julio de 2026",
   "weeks": [
     {
@@ -195,18 +195,28 @@
           "_isoDate": "2026-07-27",
           "sessions": [
             {
-              "time": "9:00 – 10:30",
+              "time": "9:00 – 11:00",
               "owner": "Jorge Pando",
               "slot": "Mañana",
-              "modality": "Presencial",
+              "modality": "Presencial/Virtual",
               "title": "Reunión Semanal de Equipo: Revisión y Planificación Comercial",
               "desc": "Participación activa en la reunión semanal del equipo · revisión de avances, aprendizajes y pendientes de la semana anterior · análisis de casos reales de gestión comercial · planificación de objetivos, compromisos y prioridades para la semana en curso.",
-              "meetUrl": "",
-              "calEventId": "46q4s6l6a4b24f45ghj2tne0oo",
+              "meetUrl": "https://meet.google.com/wai-gfyh-bvy",
+              "calEventId": "em40tgt9h9id9mr8quprp5qt40",
               "isReunion": true
             },
             {
-              "time": "11:00 – 12:30",
+              "time": "11:00 – 12:00",
+              "owner": "Paul Unsihuay Vila",
+              "slot": "Mañana",
+              "modality": "Presencial",
+              "title": "ACM — Análisis Comparativo de Mercado y Presentación Comercial",
+              "desc": "Criterios para analizar precio, zona, competencia y comportamiento del mercado · uso del ACM para sustentar recomendaciones ante propietarios y clientes compradores · revisión de portales inmobiliarios, referencias comparables y pautas para una publicación efectiva.",
+              "meetUrl": "",
+              "calEventId": "pla1u7ah21olvndbtjdpgeiej4"
+            },
+            {
+              "time": "02:30 – 4:00",
               "owner": "Sofía Herreño",
               "slot": "Mañana",
               "modality": "Virtual",
@@ -216,7 +226,7 @@
               "calEventId": "7cdo1uacbn01jhg82i67a4j3dg"
             },
             {
-              "time": "3:00 – 4:30",
+              "time": "4:00 – 5:30",
               "owner": "Sofía Herreño",
               "slot": "Tarde",
               "modality": "Virtual",
@@ -224,16 +234,6 @@
               "desc": "Introducción práctica al sistema CRM · reconocimiento de módulos principales, flujo base y navegación general · gestión inicial de contactos, actividades, tareas, estados y primeras cargas guiadas dentro del proceso comercial.",
               "meetUrl": "https://meet.google.com/uxh-pzxb-xfa",
               "calEventId": "rbcka3ithp6rcq0hfnrmo7d444"
-            },
-            {
-              "time": "10:30 – 12:00",
-              "owner": "Paul Unsihuay Vila",
-              "slot": "Mañana",
-              "modality": "Presencial",
-              "title": "ACM — Análisis Comparativo de Mercado y Presentación Comercial",
-              "desc": "Criterios para analizar precio, zona, competencia y comportamiento del mercado · uso del ACM para sustentar recomendaciones ante propietarios y clientes compradores · revisión de portales inmobiliarios, referencias comparables y pautas para una publicación efectiva.",
-              "meetUrl": "",
-              "calEventId": "pla1u7ah21olvndbtjdpgeiej4"
             }
           ]
         },
