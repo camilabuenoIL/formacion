@@ -218,22 +218,22 @@
             {
               "time": "02:30 – 4:00",
               "owner": "Sofía Herreño",
-              "slot": "Mañana",
-              "modality": "Virtual",
-              "title": "Optimización de Perfil Profesional — Parte 2: Facebook e Instagram",
-              "desc": "Configuración profesional de Facebook e Instagram · revisión de foto, biografía, portada, datos de contacto e historias destacadas · adecuación del perfil digital del agente para proyectar confianza, coherencia y respaldo institucional de Inmobiliario Latam.",
-              "meetUrl": "https://meet.google.com/qyr-mezg-yje",
-              "calEventId": "7cdo1uacbn01jhg82i67a4j3dg"
-            },
-            {
-              "time": "4:00 – 5:30",
-              "owner": "Sofía Herreño",
               "slot": "Tarde",
               "modality": "Virtual",
               "title": "CRM 1ª cap. — Navegación y Gestión Inicial",
               "desc": "Introducción práctica al sistema CRM · reconocimiento de módulos principales, flujo base y navegación general · gestión inicial de contactos, actividades, tareas, estados y primeras cargas guiadas dentro del proceso comercial.",
               "meetUrl": "https://meet.google.com/uxh-pzxb-xfa",
               "calEventId": "rbcka3ithp6rcq0hfnrmo7d444"
+            },
+            {
+              "time": "04:00 – 5:30",
+              "owner": "Sofía Herreño",
+              "slot": "Mañana",
+              "modality": "Virtual",
+              "title": "Optimización de Perfil Profesional — Parte 2: Facebook e Instagram",
+              "desc": "Configuración profesional de Facebook e Instagram · revisión de foto, biografía, portada, datos de contacto e historias destacadas · adecuación del perfil digital del agente para proyectar confianza, coherencia y respaldo institucional de Inmobiliario Latam.",
+              "meetUrl": "https://meet.google.com/qyr-mezg-yje",
+              "calEventId": "7cdo1uacbn01jhg82i67a4j3dg"
             }
           ]
         },
@@ -327,8 +327,8 @@
               "owner": "Jorge Pando / Walter Arias",
               "slot": "Tarde",
               "modality": "Presencial/Virtual",
-              "title": "Entrenamiento Práctico: Llamadas de Calificación para Nuevos Requerimientos",
-              "desc": "Práctica guiada de llamadas para leads categorizados como Nuevos Requerimientos · aplicación de preguntas de calificación · validación de presupuesto, zona, urgencia y forma de pago · registro de información y definición del siguiente paso comercial · integra los ejercicios de los Entrenamientos Prácticos 1 y 2 del programa original.",
+              "title": "Entrenamiento Práctico Final: Roleplay Comercial Integral",
+              "desc": "Simulación completa del proceso comercial mediante roleplay · recepción del cliente, identificación de necesidades, presentación de opciones, manejo de objeciones y cierre del siguiente paso · registro de actividades en CRM con trazabilidad completa.",
               "meetUrl": "https://meet.google.com/unf-mrwo-qzn",
               "calEventId": "1kri9pjigcj2rdt32rbelcr8g4"
             }
