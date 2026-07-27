@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "25 de julio de 2026",
+  "lastUpdated": "27 de julio de 2026",
   "startDate": "Lunes 20 de julio de 2026",
   "weeks": [
     {
@@ -194,17 +194,6 @@
           "badge": "reunion",
           "_isoDate": "2026-07-27",
           "sessions": [
-            {
-              "time": "9:00 – 11:00",
-              "owner": "Jorge Pando",
-              "slot": "Mañana",
-              "modality": "Presencial/Virtual",
-              "title": "Reunión Semanal de Equipo: Revisión y Planificación Comercial",
-              "desc": "Participación activa en la reunión semanal del equipo · revisión de avances, aprendizajes y pendientes de la semana anterior · análisis de casos reales de gestión comercial · planificación de objetivos, compromisos y prioridades para la semana en curso.",
-              "meetUrl": "https://meet.google.com/wai-gfyh-bvy",
-              "calEventId": "em40tgt9h9id9mr8quprp5qt40",
-              "isReunion": true
-            },
             {
               "time": "11:00 – 12:00",
               "owner": "Paul Unsihuay Vila",
