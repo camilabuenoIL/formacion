@@ -341,7 +341,7 @@
               "isReunion": true
             },
             {
-              "time": "3:00 – 4:00",
+              "time": "2:00 – 3:00",
               "owner": "Jorge Pando",
               "slot": "Tarde",
               "modality": "Presencial",
@@ -351,8 +351,18 @@
               "calEventId": "jokrll56mb538d4ubk2v486m4c"
             },
             {
-              "time": "4:00 – 6:00",
-              "owner": "Sofia Herreño / Jorge Pando",
+              "time": "3:00 – 4:30",
+              "owner": "Jorge Pando / Sofía Herreño",
+              "slot": "Tarde",
+              "modality": "Presencial/Virtual",
+              "title": "Entrenamiento Práctico Final: Roleplay Comercial Integral",
+              "desc": "Simulación completa del proceso comercial mediante roleplay · recepción del cliente, identificación de necesidades, presentación de opciones, manejo de objeciones y cierre del siguiente paso · registro de actividades en CRM con trazabilidad completa.",
+              "meetUrl": "https://meet.google.com/ywy-mdfu-njd",
+              "calEventId": "2slqqlequfnpvp3sr5l7e7fo1s"
+            },
+            {
+              "time": "4:30 – 6:00",
+              "owner": "Walter Arias / Jorge Pando",
               "slot": "Tarde",
               "modality": "Presencial/Virtual",
               "title": "Evaluación Final y Plan de Acción Individual",
