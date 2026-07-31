@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "27 de julio de 2026",
+  "lastUpdated": "31 de julio de 2026",
   "startDate": "Lunes 20 de julio de 2026",
   "weeks": [
     {
@@ -281,14 +281,14 @@
           "_isoDate": "2026-07-31",
           "sessions": [
             {
-              "time": "9:00 – 11:00",
-              "owner": "Jorge Pando",
+              "time": "9:30 – 11:00",
+              "owner": "Walter Arias",
               "slot": "Mañana",
-              "modality": "Presencial",
+              "modality": "Presencial/Virtual",
               "title": "Reunión Semanal de Equipo y Revisión de Avances",
               "desc": "Espacio de seguimiento para revisar avances de la semana, cumplimiento de objetivos y compromisos individuales · identificación de pendientes, oportunidades de mejora y próximos pasos dentro del proceso de formación y gestión comercial.",
-              "meetUrl": "",
-              "calEventId": "962588ht2evofm0ikkj62do01k",
+              "meetUrl": "https://meet.google.com/fyy-zqzs-fxc",
+              "calEventId": "ekmb3i44nnktm8bk6u95nr1pfo",
               "isReunion": true
             },
             {
@@ -313,7 +313,7 @@
             },
             {
               "time": "4:30 – 6:00",
-              "owner": "Jorge Pando / Walter Arias",
+              "owner": "Jorge Pando / Sofía Herreño",
               "slot": "Tarde",
               "modality": "Presencial/Virtual",
               "title": "Entrenamiento Práctico Final: Roleplay Comercial Integral",
@@ -352,7 +352,7 @@
             },
             {
               "time": "4:00 – 6:00",
-              "owner": "Walter Arias / Jorge Pando",
+              "owner": "Sofia Herreño / Jorge Pando",
               "slot": "Tarde",
               "modality": "Presencial/Virtual",
               "title": "Evaluación Final y Plan de Acción Individual",
