@@ -186,7 +186,7 @@
     {
       "label": "Semana 2",
       "title": "Herramientas, negociación y habilitación",
-      "subtitle": "27 de julio – 5 de agosto",
+      "subtitle": "27 de julio – 4 de agosto",
       "days": [
         {
           "num": 5,
@@ -329,6 +329,45 @@
               "meetUrl": "",
               "calEventId": "46q4s6l6a4b24f45ghj2tne0oo",
               "isReunion": true
+            }
+          ]
+        },
+        {
+          "num": 9,
+          "date": "martes 4 de agosto de 2026",
+          "badge": "eval",
+          "_isoDate": "2026-08-04",
+          "sessions": [
+            {
+              "time": "2:00 – 3:00",
+              "owner": "Jorge Pando",
+              "slot": "Tarde",
+              "modality": "Presencial",
+              "title": "Impuestos y Obligaciones Tributarias en Operaciones Inmobiliarias",
+              "desc": "Conceptos tributarios básicos en compraventa y arrendamiento · impuestos aplicables, tratamiento de comisiones y obligaciones generales del agente · criterios clave para orientar al cliente sin asumir funciones contables o fiscales.",
+              "meetUrl": "",
+              "calEventId": "jokrll56mb538d4ubk2v486m4c"
+            },
+            {
+              "time": "3:00 – 4:30",
+              "owner": "Jorge Pando / Sofía Herreño",
+              "slot": "Tarde",
+              "modality": "Presencial/Virtual",
+              "title": "Entrenamiento Práctico Final: Roleplay Comercial Integral",
+              "desc": "Simulación completa del proceso comercial mediante roleplay · recepción del cliente, identificación de necesidades, presentación de opciones, manejo de objeciones y cierre del siguiente paso · registro de actividades en CRM con trazabilidad completa.",
+              "meetUrl": "https://meet.google.com/ywy-mdfu-njd",
+              "calEventId": "2slqqlequfnpvp3sr5l7e7fo1s"
+            },
+            {
+              "time": "4:30 – 6:00",
+              "owner": "Walter Arias / Jorge Pando",
+              "slot": "Tarde",
+              "modality": "Presencial/Virtual",
+              "title": "Evaluación Final y Plan de Acción Individual",
+              "desc": "Evaluación integral del proceso de formación · test teórico, roleplay de calificación y presentación comercial · retroalimentación individual del desempeño · definición de plan de mejora y decisión sobre la habilitación comercial del agente.",
+              "meetUrl": "https://meet.google.com/shb-uvsa-viz",
+              "calEventId": "uiu4h0smc6lmjg69tj0vfb8p9k",
+              "isEval": true
             }
           ]
         }
